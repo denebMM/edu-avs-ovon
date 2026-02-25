@@ -1,0 +1,20 @@
+# python
+__pycache__/
+*.pyc
+venv/
+.env
+
+# docker
+*.log
+*.sqlite
+data/
+
+# ollama modelos pesados (NO subir)
+*.gguf
+models/
+
+# vscode
+.vscode/
+
+# sistema
+.DS_Store

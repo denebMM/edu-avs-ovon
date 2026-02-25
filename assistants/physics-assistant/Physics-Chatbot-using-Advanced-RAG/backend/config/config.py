@@ -1,0 +1,12 @@
+CHUNK_SIZE = 512  # Desired size of each text chunk
+CHUNK_OVERLAP_PERCENTAGE = 0.10  # Overlap percentage for chunking
+MONGO_URI = "mongodb://localhost:27017" # MongoDB connection URL
+DB_NAME = "AllChat" # Database Name
+COLLECTION_NAME = "PhysicsChat" # Collection Name
+EMBEDDING_MODEL = "bge-large:335m"  # Use this variable for your embedding model # Embedding Model
+PDF_PATH = "../Data/PhysicsBook.pdf"
+GENERATE_API_URL = "http://host.docker.internal:11434/api/generate" #"http://localhost:11434/api/generate"  # URL for the response generation API
+# GENERATE_API_URL = "http://127.0.0.1:11434/api/generate"  # URL for the response generation API
+VECTOR_DB_PATH = "../Data/vectorDB"
+SECONDARY_MODEL = "qwen2.5:3b"
+SUMMARY_MODEL = "qwen2.5:3b"

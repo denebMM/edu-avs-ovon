@@ -1,0 +1,237 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\newcommand{\pslisting}[1]{\hrule\vskip0.2cm\includegraphics{#1}\vskip0.2cm\hrule}
+\begin{document}
+\noindent
+\begin{center}
+\Large\textbf{RITS System Architecture}
+\end{center}
+
+\vspace{1cm}
+\noindent
+The Rule-based Intelligent Tutoring System (RITS) contains and
+controls all logic for interacting with users. Each client (which we
+use as a synonym for ``user'' throughout) sends user actions to RITS,
+and then queries RITS for the next action to be performed. To use
+RITS, add the following line to your Prolog code:
+
+\bigskip
+\textbf{:- use\_module(rits).}
+\bigskip
+
+\noindent RITS is accessible via the following API calls:
+
+\begin{itemize}
+\item \textbf{rits\_start(-Start)}\\\textbf{Start} is unified with a
+  Prolog term that represents the initial state of RITS, before the
+  system has received any client (i.e., user) actions.
+
+\item \textbf{rits\_next\_action(+A0, -A, +S0, -S)}\\
+  This predicate relates a client action \textbf{A0} and a RITS state
+  \textbf{S0} to the next RITS action \textbf{A} and next
+  state~\textbf{S}.
+
+\item \textbf{rits\_history(+S, -Hist)}\\
+  \textbf{Hist} is unified with a list of Prolog terms that represent
+  the history of client interactions up to and including state~\textbf{S}.
+\end{itemize}
+
+These predicates are completely \textit{pure}: They do not emit any
+output, do not write any files, and do not query the user in any way.
+Therefore, they can be quite safely executed in a hosting environment.
+
+Client actions are described in Table~\ref{tab:useractions}. The most
+important RITS actions are described in Table~\ref{tab:ritsactions}.
+RITS clients are expected to interpret RITS actions ``appropriately'',
+such as: displaying messages on the terminal or via HTML, allowing
+users to give answers etc.
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{cp{8cm}}
+    \hline
+    \textbf{solve(Task)} & Guide the student through solving \textbf{Task}.\\
+    \textbf{student\_answers(T)} & Tell RITS that the student has responded with the Prolog term~\textbf{T}. This action is only admissible if the directly preceding RITS action was \textbf{read\_answer}.\\
+    \textbf{next} & Query RITS for its next action. \\
+    \textbf{skip} & The student wants to skip solving the subproblem that is
+    currently in progress. (\textit{TODO})\\
+    \hline
+  \end{tabular}
+\caption{Admissible client actions}
+  \label{tab:useractions}
+\end{table}
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{cp{8cm}}
+    \hline
+    \textbf{enter} & Start of a subproblem that the student must solve.\\
+    \textbf{exit} & The most recently spawned subproblem was solved.\\
+    \textbf{format(F)} & The string \textbf{F} is to be displayed.\\
+    \textbf{format(F,As)} & The format string \textbf{F} is to be displayed. \textbf{As} is a list of arguments that are output, in sequence, in place of each \texttt{\~\ $\!\!\!$w} that appears in \textbf{F}.\\
+    \textbf{read\_answer} & The student is to be queried for a an answer.\\
+    \textbf{student\_answers(T)} & The Prolog term~\textbf{T} is the \textit{parsed} student answer. \\
+    \textbf{solve(Task)} & The student should be given the task \textbf{Task}.\\
+    \textbf{done} & There are no further actions.\\
+    \hline
+  \end{tabular}
+\caption{The most important RITS actions}
+  \label{tab:ritsactions}
+\end{table}
+
+
+\vspace{0.7cm}
+
+Due to their purity, these predicates are also very amenable to
+regression testing and further analysis. (\textit{more to follow})
+
+\vspace{0.7cm}
+
+The RITS engine may be accessed directly via Prolog, remotely via
+JavaScript and \textit{pengines} using JSON encoding of Prolog terms,
+or via any other language embedding.
+
+\bigskip
+\begin{center}
+  \large\textbf{Extending RITS}
+\end{center}
+
+\medskip
+\noindent Internally, RITS uses the following predicates to decide
+what to do. All of them are DCG rules that describe a list of RITS
+actions that need to be performed in response to certain client actions.
+
+\begin{itemize}
+\item \textbf{rits:solve//1}: this is called with argument \textbf{Task}
+  for client actions of the form \textbf{solve(Task)}.
+
+\item \textbf{rits:actions//3}: This is called with arguments
+  \textbf{Task} and \textbf{Answer} after the user (i.e., client)
+  answered the question posed after \textbf{solve(Task)} with
+  \textbf{Answer}. The third argument is a Prolog representation of
+  previous interactions of the form \textbf{T=A}, in reverse
+  chronological order.
+
+\end{itemize}
+
+RITS can be extended in a \textit{modular} way to handle new domains.
+To teach RITS additional rules, define a Prolog module that provides
+its own (additional) DCG rules for \textbf{rits:solve//1} and
+\textbf{rits:actions//3}. 
+
+In these DCG rules, modules may provide their own custom RITS actions
+as Prolog terms that must be handled by the client when they appear as
+a RITS action upon calling \textbf{rits\_next\_action/4}.
+
+See the file \textbf{rits\_multiple\_choice.pl} for the definition of
+simple multiple choice tests that are repeated when wrong answers are
+given.
+
+\pagebreak
+
+\begin{center}
+  \large\textbf{LORITS: The extensible language of RITS}
+\end{center}
+
+\medskip
+\noindent
+Preparing teaching material and exercises for students is one of the
+most common and essential tasks that teachers need to perform
+every day. It requires judicious human creativity and knowledge and
+cannot be automated.
+
+Describing the material that is to be taught is a \textit{declarative}
+task: We primarily want to describe \textit{what} should be presented
+to students. \textit{How} it is presented can vary by circumstances.
+For example, on a text terminal, we expect a presentation of the
+material that differs from that on mobile phones, Braille terminals,
+and sheets of paper.
+
+RITS makes it easy for you to declaratively describe \textit{what}
+should be done. RITS comes with built-in modules that describe what it
+means for students to ``solve'' a task like canceling fractions. In
+addition, you can supply your own rules for RITS, thereby stating what
+you mean by custom tasks that you define for your students.
+
+The language of RITS is called LORITS and lets you state actions that
+need to be performed in order for students to ``solve'' a task. For
+example, it is easy to declaratively describe your ``Lesson 1'', which
+may consist of showing a video that contains some facts, and then have
+students automatically go through a custom multiple-choice test that
+asks them questions about the video in order to assess their
+understanding:
+
+\begin{verbatim}
+ rits:solve(lesson_1) -->
+         [video("http://www.youtube.com/VideoAboutMozambique"),
+          solve(mchoice("What is the capitol of Mozambique?\n",
+                        ['Maputo','Pretoria',
+                         'Nairobi','Vienna'], 1)),
+          done].
+\end{verbatim}
+
+LORITS provides predefined actions such as formatting texts, going
+through multiple-choice tests, playing videos etc., which makes it
+easy to put together custom lessons that students can work through.
+
+\bigskip \textit{Here, it is our task to provide teachers with
+  suitable building blocks of RITS actions, so that custom lessons can
+  be put together quickly, possibly with our initial assistance. The
+  task here is to find good and versatile actions to cover a large
+  variety of interaction styles.}
+
+\pagebreak
+
+\begin{center}
+  \large\textbf{UTRITS: Expressing Unit Tests for RITS}
+\end{center}
+
+\medskip
+\noindent
+UTRITS is a domain-specific language that lets you express
+\textit{unit tests} for RITS. A unit test is a sequence of RITS
+actions and client responses, with some possibilities for
+abbreviations. The elements of UTRITS are described in
+Table~\ref{tab:utrits}.
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{cp{8.5cm}}
+    \hline
+    \textit{String} & True when RITS ``emits'' (via RITS action \textbf{format}) a string that contains \textit{String}. \\
+    \textbf{solve(Task)} & Start solving \textbf{Task}. This can be initiated either by RITS itself (for example, when spawning a subproblem), or by the client.\\
+    \textbf{$=>$(T)} & Respond to the preceding RITS action, which must have been \textbf{read\_answer}, with the client action~\textbf{student\_answers(T)}. \\
+    \textbf{*} & The precise meaning of \textbf{*} depends on the next UTRITS element~$E$ in the sequence. In all cases, \textbf{*} means to \textit{ignore} all RITS actions, until:
+    \begin{itemize}
+    \item If $E$ has the form \textbf{$=>$(T)} and the next RITS action is \textbf{read\_answer}, in which case \textbf{student\_answers(T)} is sent to RITS and normal interaction is resumed.
+    \item If $E$ is a literal string and RITS emits a string that contains~$E$, in which case normal interaction is resumed.
+    \item If there is no next UTRITS element, then all further interaction is ignored.
+    \end{itemize}\\
+    \hline
+  \end{tabular}
+\caption{Admissible elements of UTRITS}
+  \label{tab:utrits}
+\end{table}
+
+A sample unit test and its result is shown in Fig.~\ref{snip:utrits}.
+Notice how messaging flips between server and client, just like in
+a real-world example of using RITS.
+
+Due to the side-effect free and declarative nature of LORITS, it is
+easy to detect when users must be queried for a response, and to
+simulate user input. Unit tests that cover many possible interaction
+patterns can therefore be formulated quickly and conveniently with
+UTRITS.
+
+
+\begin{figure}[ht]
+  \centering
+  \pslisting{utrits.ps}
+  \caption{Sample unit test with UTRITS and the resulting interaction}
+  \label{snip:utrits}
+\end{figure}
+
+\vfil
+\end{document}
+

@@ -1,0 +1,106 @@
+# docker-compose.yml - Versión corregida para que el orquestador vea los manifests
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama_server
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_models:/root/.ollama
+    restart: unless-stopped
+    networks:
+      - ofp_network
+    deploy:                       # CUDA
+      resources:
+       limits:
+        memory: 12G   # No cumple uncion mi GPu solo tien 4GB
+       reservations:
+           memory: 8G
+           devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    environment:
+      - OLLAMA_NUM_GPU_LAYERS=-1
+      - NVIDIA_VISIBLE_DEVICES=all
+      - OLLAMA_KEEP_ALIVE=-1               # Nunca descargar modelos automáticamente (clave para evitar recargas lentas)
+      - OLLAMA_NUM_THREADS=0               # Auto-detecta todos los cores/threads de tu i7-1360P (mejor que 12 fijo)
+      - OLLAMA_MAX_LOADED_MODELS=3         # Permite hasta 3 modelos cargados simultáneamente (tienes ~2-3 en uso: clasificador pequeño + math + physics/RAG)
+      - OLLAMA_NUM_PARALLEL=2              # Permite 2 requests paralelas por modelo (útil si en el futuro tienes colaboración both, o pruebas simultáneas)
+      - OLLAMA_DEBUG=0                     # Logs mínimos 
+
+  orchestrator_ollama:
+    build: ./orchestrator
+    container_name: orchestrator_ollama
+    ports:
+      - "5000:5000"
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+    depends_on:
+      - ollama
+    volumes:
+      - ./schemas:/app/schemas
+    networks:
+      - ofp_network
+
+  orchestrator_manifest:
+    build: ./orchestrator_manifest
+    container_name: orchestrator_manifest
+    ports:
+      - "5004:5000"
+    volumes:
+      - ./schemas:/app/schemas
+    depends_on:
+      - assistant_math
+      - assistant_physics
+      - rits-math
+    networks:
+      - ofp_network
+
+  assistant_math:
+    build: ./assistants/math-assistant
+    container_name: assistant_math
+    ports:
+      - "5001:5001"  # importante: expón el puerto interno
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+    depends_on:
+      - ollama
+    volumes:
+      - ./schemas:/app/schemas
+    networks:
+      - ofp_network
+
+  assistant_physics:
+    build: ./assistants/physics-assistant/Physics-Chatbot-using-Advanced-RAG/backend
+    container_name: assistant_physics
+    ports:
+      - "5002:5002"
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+    depends_on:
+      - ollama
+    volumes:
+      - ./assistants/physics-assistant/Physics-Chatbot-using-Advanced-RAG/Data:/app/Data
+      - ./assistants/physics-assistant/Physics-Chatbot-using-Advanced-RAG/Database:/app/Database
+      - ./schemas:/app/schemas
+    networks:
+      - ofp_network
+
+  rits-math:
+    build: ./assistants/rits
+    container_name: rits-math
+    ports:
+      - "5003:5003"
+    volumes:
+      - ./schemas:/app/schemas
+    networks:
+      - ofp_network
+
+networks:
+  ofp_network:
+    driver: bridge
+
+volumes:
+  ollama_models:

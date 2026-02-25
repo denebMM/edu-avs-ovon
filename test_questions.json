@@ -1,0 +1,44 @@
+{
+  "queries": {
+    "math": [
+      "Resuelve la ecuación 4x + 12 = 36",
+      "Resuelve 2x + 5 = 13",
+      "Factoriza el polinomio x² - 5x + 6",
+      "Calcula la derivada de f(x) = 2x³ - 4x² + 5x - 1",
+      "Simplifica la expresión (2x + 3)(x - 4) - (x + 1)²",
+      "Encuentra el valor de log₂(32) + log₂(8)"
+    ],
+    "physics": [
+      "Explica la segunda ley de Newton",
+      "Qué es la inercia?",
+      "Calcula la distancia recorrida por un objeto en caída libre durante 5 segundos y explica la física detrás",
+      "Un carro viaja a 20 m/s y frena con aceleración -5 m/s². ¿Cuánto tarda en detenerse?",
+      "Describe el principio de conservación de la energía mecánica y pon un ejemplo",
+      "Un satélite en órbita no cae a la Tierra, ¿por qué?"
+    ],
+    "both": [
+      "Calcula la trayectoria de un proyectil lanzado a 45° con velocidad inicial 20 m/s, considerando resistencia del aire proporcional a v². Explica por qué la trayectoria no es perfecta parábola.",
+       "Un bloque de 5 kg desliza por un plano inclinado de 30° con coeficiente de fricción 0.2. Calcula la velocidad al final si parte del reposo desde 10 m de altura, y explica la pérdida de energía.",
+       "Describe el movimiento de un resorte con masa 0.5 kg y constante k=100 N/m amortiguado por fricción. Calcula el período aproximado y explica por qué decae.",
+       "Un espejo plano refleja un rayo incidente a 30°. Calcula el ángulo de reflexión y explica la ley de reflexión usando trigonometría.",
+       "Diseña una rampa para que una bola ruede y caiga en un vaso a 2 m de distancia. Usa ecuaciones y explica factores físicos."
+      
+    ],
+    "rits": [
+      "What is 1/2 + 1/3?",
+      "Simplify the fraction 8/12",
+      "What is 3/4 - 1/5?",
+      "Simplifica 6/9",
+      "Calcula 3/4 + 2/5 y simplifica",
+      "Convierte 0.75 a fracción irreductible",
+      "Resta 7/10 - 2/5 y expresa el resultado como fracción mínima"
+    ]
+  },
+  "current": {
+    "math": 0,
+    "physics": 0,
+    "both": 0,
+    "rits": 0
+  },
+  "description": "Stack de preguntas agrupadas por asistente principal. Usa 'current' para llevar el índice por categoría y rotar preguntas."
+}
