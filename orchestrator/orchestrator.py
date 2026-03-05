@@ -15,8 +15,11 @@ ollama_client = ollama.Client(host=OLLAMA_HOST)
 
 AGENTS = {
     "math": "http://assistant_math:5001/receive",
-    "physics": "http://assistant_physics:5002/receive",
-    "rits": "http://rits_math:5003/receive"
+    "physics": "http://assistant_physics:5002/receive",    
+    "alice": "http://assistant_alice:5005/receive",
+    "history": "http://assistant_history:5003/receive",
+    "translator": "http://assistant_translator:5010/receive",
+    "mathbuddy": "http://assistant_mathbuddy:5011/receive"
 }
 
 ORCHESTRATOR_URL = "http://orchestrator:5000/receive"
@@ -182,21 +185,58 @@ def handle_query():
     # CLASIFICACIÓN SOLO LLM (LIMPIO)
     # ===============================
     prompt = f"""
-    Clasifica SOLO con UNA palabra exacta: math, physics, rits, other.
-    NUNCA uses 'both' a menos que la pregunta mencione explícitamente conceptos de física Y matemáticas avanzadas al mismo tiempo.
+        Clasifica SOLO con UNA palabra exacta: alice, math, physics,history, none.
 
-    Reglas estrictas:
-    - math: ecuaciones, álgebra, resolver variables, fracciones conceptuales, cálculo
-    - physics: movimiento, fuerzas, energía, leyes de Newton, gravedad, velocidad (incluso si usa ecuaciones simples)
-    - rits: operaciones aritméticas puras con fracciones (suma/resta/etc. sin variables)
-    - other: todo lo demás
+        Reglas muy estrictas (elige la PRIMERA que aplique):
 
-    Si es solo resolver ecuación simple → math (NO both).
+        - alice → CUALQUIER cosa que no sea matemáticas puras o física pura o historia. Incluye:
+        conversación general, saludos, chistes, opiniones, preguntas personales, filosofía, IA/chatbots/ALICE/AIML/robots/historia de IA,
+        tecnología conversacional, conocimiento general, política, ideologías,
+        comunismo, capitalismo, revoluciones, partidos políticos, geografía, literatura,
+        música, cine, arte, religión, mitología, mitos urbanos, economía básica, psicología,
+        comportamiento humano, ética, moral, sueños, futuro de la humanidad, etc.
 
-    Pregunta: {user_query}
+        - math → SOLO matemáticas puras: ecuaciones, álgebra, cálculo, resolver variables,
+        fracciones con letras/variables, matrices, derivadas, integrales, geometría analítica.
 
-    Respuesta (solo la palabra):
-    """
+        - physics → SOLO física: movimiento, fuerzas, energía, gravedad, leyes de Newton,
+        velocidad, aceleración, electricidad, óptica, termodinámica, incluso si usa ecuaciones simples.
+
+        - history → Preguntas sobre HISTORIA: eventos históricos, revoluciones, guerras, figuras históricas, historia de México, independencia, revolución mexicana, reyes, imperios, batallas, etc.
+
+        - translator → Preguntas explícitas de TRADUCCIÓN, gramática de idiomas, "traduce al ...", "cómo se dice ... en ...", corrección de frases en otro idioma, aprendizaje de vocabulario/expresiones.  
+        
+        - mathbuddy → Preguntas de matemáticas que necesiten tutor paso a paso detallado, explicaciones educativas, resolución de problemas con ejemplos, desde aritmética hasta cálculo. Incluye: "explica paso a paso", "cómo resolver", "tutor matemáticas", etc.
+        
+        - none → SOLO temas muy específicos que ninguno de los asistentes cubre:
+        química avanzada, biología molecular, idiomas (traducción/gramática), programación (no bots),
+        finanzas/bolsa, derecho/leyes específicas, medicina/enfermedades, noticias actuales,
+        deportes profesionales, cocina/recetas detalladas, astrología seria, religión profunda,
+        cualquier tema técnico o académico muy especializado fuera de math/physics/IA/conversación.
+
+        Ejemplos claros:
+        - "Hola, ¿cómo estás?" → alice
+        - "HAVE YOU READ THE COMMUNIST" → alice
+        - "Qué opinas del comunismo" → alice
+        - "Quién creó AIML" → alice
+        - "Resuelve x² + 5x + 6 = 0" → math
+        - "Qué es la ley de Newton" → physics
+        - "Qué es la fotosíntesis" → none
+        - "Traducción al inglés de hola" → none
+        - "Cuánto cuesta el dólar hoy" → none
+        - "Historia de la Revolución Mexicana" → alice
+        - "Traduce 'hola mundo' al japonés" → translator
+        - "Cómo se dice gracias en francés" → translator
+        - "Corrige esta frase en inglés: I goed to school" → translator
+        - "Traducción de este párrafo: ..." → translator
+        - "Resuelve 2x + 5 = 13 paso a paso" → mathbuddy
+        - "Explica qué es una derivada con ejemplos" → mathbuddy
+        - "Ayúdame con álgebra básica" → mathbuddy
+
+        Pregunta: {user_query}
+
+        Respuesta (SOLO una de estas palabras, nada más):
+        """
 
     intent_response = ollama_client.chat(
         model='gemma2:2b',
@@ -242,11 +282,11 @@ def handle_query():
     # ===============================
     # ROUTING SIMPLE
     # ===============================
-    final_reply = "No corresponde a matemáticas ni física."  # default fallback
+    final_reply = "No corresponde a matemáticas, a física, o historia, ni conocimiento de ALice ."  # default fallback
 
-    if intent == 'rits':
-        resp = send_ovon_event(AGENTS["rits"], utterance_event, conversation_id)
-        final_reply = extract_reply_from_ovon(resp)
+    if intent == 'alice':
+        resp = send_ovon_event(AGENTS["alice"], utterance_event, conversation_id)
+        final_reply = extract_reply_from_ovon(resp)    
 
     elif intent == 'math':
         resp = send_ovon_event(AGENTS["math"], utterance_event, conversation_id)
@@ -255,57 +295,25 @@ def handle_query():
     elif intent == 'physics':
         resp = send_ovon_event(AGENTS["physics"], utterance_event, conversation_id)
         final_reply = extract_reply_from_ovon(resp)
+    
+    elif intent == 'history':
+        resp = send_ovon_event(AGENTS["history"], utterance_event, conversation_id)
+        final_reply = extract_reply_from_ovon(resp)
 
-    elif intent == 'both':
-        try:
-            # Envía a ambos en paralelo
-            math_resp = send_ovon_event(AGENTS["math"], utterance_event, conversation_id)
-            physics_resp = send_ovon_event(AGENTS["physics"], utterance_event, conversation_id)
+    elif intent == 'translator':
+        resp = send_ovon_event(AGENTS["translator"], utterance_event, conversation_id)
+        final_reply = extract_reply_from_ovon(resp)    
 
-            math_text = extract_reply_from_ovon(math_resp)
-            physics_text = extract_reply_from_ovon(physics_resp)
+    elif intent == 'mathbuddy':
+        resp = send_ovon_event(AGENTS["mathbuddy"], utterance_event, conversation_id)
+        final_reply = extract_reply_from_ovon(resp)    
 
-            # Prompt de síntesis pedagógica
-            synthesis_prompt = f"""
-            Combina estas dos respuestas en una sola explicación coherente, clara y pedagógica para un estudiante de secundaria o bachillerato.
-            No repitas información innecesaria. Integra los aspectos matemáticos y físicos de forma natural y fluida.
-            Usa un lenguaje sencillo, evita tecnicismos excesivos y explica paso a paso cuando sea necesario.
-            La respuesta final debe ser una sola narración unificada, no separada en secciones.
+    elif intent == 'none':
+        final_reply = "Lo siento, ninguno de los asistentes actuales puede responder esta pregunta (química, economía, historia, idiomas, etc.). ¿Quieres intentar con otra pregunta?"
 
-            Respuesta del asistente de Matemáticas:
-            {math_text}
-
-            Respuesta del asistente de Física:
-            {physics_text}
-
-            Respuesta unificada final:
-            """
-
-            # Llama a Ollama para sintetizar (modelo pequeño y rápido)
-            synthesis_response = ollama_client.chat(
-                model='gemma2:2b',  # puedes cambiar a 'llama3.2:1b' si quieres más velocidad
-                messages=[{'role': 'user', 'content': synthesis_prompt}],
-                options={
-                    "temperature": 0.3,
-                    "num_predict": 600,
-                    "top_k": 20,
-                    "top_p": 0.85,
-                    "num_ctx": 2048,
-                    "num_gpu": -1
-                }
-            )
-
-            final_reply = synthesis_response['message']['content'].strip()
-
-            # Fallback si síntesis vacía o muy corta
-            if not final_reply or len(final_reply) < 50:
-                final_reply = f"**Respuesta combinada (síntesis incompleta):**\n\n**Matemáticas:**\n{math_text}\n\n**Física:**\n{physics_text}"
-
-        except Exception as e:
-            app.logger.error(f"Error en síntesis Ollama para 'both': {e}")
-            # Fallback seguro: concatenación simple
-            final_reply = f"**Matemáticas:**\n{math_text}\n\n**Física:**\n{physics_text}"
-
+    else:
+        final_reply = "No entendí intenta de nuevo."
+        
     return jsonify({
         "reply": final_reply,
         "classified_as": intent,

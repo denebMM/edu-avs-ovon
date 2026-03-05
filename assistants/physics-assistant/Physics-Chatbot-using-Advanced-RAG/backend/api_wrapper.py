@@ -8,7 +8,8 @@ import jsonschema
 import json
 
 from langchain_community.vectorstores import Chroma
-from langchain_community.embeddings import OllamaEmbeddings
+#from langchain_community.embeddings import OllamaEmbeddings
+from langchain_ollama import OllamaEmbeddings
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
@@ -25,8 +26,8 @@ PHYSICS_SPEAKER_URI = "tag:physics-assistant.local,2026:phys001"
 CHUNK_SIZE = 512
 CHUNK_OVERLAP_PERCENTAGE = 0.10
 EMBEDDING_MODEL = "bge-large:335m"
-PDF_PATH = "../Data/PhysicsBook.pdf"          # Asegúrate que existe en el contenedor
-VECTOR_DB_PATH = "../Data/vectorDB"
+PDF_PATH = "/app/Data/PhysicsBook.pdf"
+VECTOR_DB_PATH = "/app/Data/vectorDB"
 SECONDARY_MODEL = "llama3.2:3b"                 
 
 # ── Inicialización del vectorstore (se ejecuta una vez al inicio) ──
@@ -40,7 +41,10 @@ def init_vectorstore() -> Optional[Chroma]:
             chunk_overlap=int(CHUNK_SIZE * CHUNK_OVERLAP_PERCENTAGE)
         )
         chunks = text_splitter.split_documents(documents)
-        embeddings = OllamaEmbeddings(model=EMBEDDING_MODEL)
+        embeddings = OllamaEmbeddings(
+            model=EMBEDDING_MODEL,
+            base_url="http://ollama:11434"
+            )
         vectorstore = Chroma.from_documents(
             documents=chunks,
             embedding=embeddings,

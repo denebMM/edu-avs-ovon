@@ -54,7 +54,6 @@ services:
     depends_on:
       - assistant_math
       - assistant_physics
-      - rits-math
     networks:
       - ofp_network
 
@@ -87,16 +86,55 @@ services:
       - ./schemas:/app/schemas
     networks:
       - ofp_network
-
-  rits-math:
-    build: ./assistants/rits
-    container_name: rits-math
+          
+  assistant_alice:
+    build: ./assistants/alice-assistant
+    container_name: assistant_alice
+    ports:
+      - "5005:5005"
+    volumes:
+      - ./schemas:/app/schemas
+    networks:
+      - ofp_network
+      
+  assistant_history:
+    build: ./assistants/history-assistant
+    container_name: assistant_history
     ports:
       - "5003:5003"
     volumes:
       - ./schemas:/app/schemas
     networks:
       - ofp_network
+    restart: unless-stopped
+
+  assistant_translator:
+    build: ./assistants/translator-assistant
+    container_name: assistant_translator
+    ports:
+      - "5010:5010"         
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+    depends_on:
+      - ollama
+    volumes:
+      - ./schemas:/app/schemas
+    networks:
+      - ofp_network
+
+  assistant_mathbuddy:
+    build: ./assistants/mathbuddy-assistant/backend
+    container_name: assistant_mathbuddy
+    ports:
+      - "5011:5011"
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+    depends_on:
+      - ollama
+    volumes:
+      - ./schemas:/app/schemas
+    networks:
+      - ofp_network    
 
 networks:
   ofp_network:

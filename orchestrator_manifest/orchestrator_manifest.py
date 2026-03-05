@@ -13,8 +13,7 @@ app = Flask(__name__)
 
 AGENTS = {
     "math": "http://assistant_math:5001/receive",
-    "physics": "http://assistant_physics:5002/receive",
-    "rits": "http://rits-math:5003/receive"
+    "physics": "http://assistant_physics:5002/receive"
 }
 
 ORCHESTRATOR_URL = "http://orchestrator_manifest:5000/receive"
@@ -186,10 +185,6 @@ def classify_with_manifests(query: str):
         print("  → Fallback directo: physics")
         return ['physics']
 
-    if any(w in q for w in ['fraccion', 'fracciones', 'simplifica', 'suma', 'resta', 'multiplica', 'divide', 'irreductible', 'equivalentes', '1/2', '3/4', '4/5', '5/6']):
-        print("  → Fallback directo: rits")
-        return ['rits']
-
     # Si hay cálculo + física → both
     if any(w in q for w in ['calcula', 'tiempo', 'distancia', 'velocidad']) and any(w in q for w in ['aceleracion', 'caida', 'proyectil', 'frena']):
         print("  → Fallback: both por combinación cálculo + física")
@@ -215,10 +210,7 @@ def classify_with_manifests(query: str):
                 return ['math']
             elif 'physics' in role:
                 print("    Fallback physics por rol")
-                return ['physics']
-            elif 'rule-based' in info['capabilities']:
-                print("    Fallback rits por rol")
-                return ['rits']
+                return ['physics']          
         print("    Aún sin candidatos → other")
         return ["other"]
 
@@ -232,9 +224,6 @@ def classify_with_manifests(query: str):
             intents.append('math')
         elif 'physics' in role:
             intents.append('physics')
-        elif 'rule-based' in caps:
-            intents.append('rits')
-
     intents = list(set(intents))
 
     if len(intents) > 1:
@@ -273,13 +262,7 @@ def handle_query():
         }
     }]
 
-    # Prioridad RITS en fracciones
-    if 'rits' in intents or ('math' in intents and any(word in normalize_text(user_query) for word in ['fraccion', 'fracciones', '1/2', '3/4', 'simplifica'])):
-        rits_url = next((info['url'] for uri, info in manifests.items() if 'rule-based' in info['capabilities']), AGENTS["rits"])
-        resp = send_ovon_event(rits_url, utterance_event, conversation_id)
-        final_reply = extract_reply_from_ovon(resp)
-
-    elif 'both' in intents:
+    if 'both' in intents:
         invite = [{"eventType": "invite", "parameters": {"role": "collaborator"}}]
         math_url = next((info['url'] for uri, info in manifests.items() if 'math' in info['role'].lower()), AGENTS["math"])
         physics_url = next((info['url'] for uri, info in manifests.items() if 'physics' in info['role'].lower()), AGENTS["physics"])

@@ -121,9 +121,32 @@ Interactúa en la consola Prolog.
 Ideal si tu tesis toca dominios formales (matemáticas, lógica) o comparación con sistemas modernos.
 
 
+# ALICE + AIML (el más rápido y conversacional)
+
+Tipo: Patrones de reglas XML (coincidencia exacta + wildcards). 100% simbólico.
+Asignaturas: Historia, Cultura general, Idiomas, Geografía, Biología básica, Química introductoria, cualquier cosa que quieras (solo agregas reglas).
+Base de conocimiento: Trae el ALICE Foundation Set (miles de reglas pre-hechas: hechos históricos, definiciones, conversaciones básicas, preguntas comunes). Ya chatea decentemente desde el minuto 1 sin que tú hagas nada.
+Repo: https://github.com/drwallace/aiml-en-us-foundation-alice/tree/master
+
+Docker: Casi todos se dockerizan en 5 minutos (hay imágenes públicas de ProgramAB o pyAIML).
+Wrapper: Súper sencillo. El intérprete AIML expone una función getResponse(texto). Envuelves en FastAPI y listo para tu protocolo Open Floor.
+Ventaja para prototipo: En 1 hora tienes un asistente conversacional de historia funcionando con conocimiento base.
+
+# HistoryBot
+  HistoryBot is a virtual assistant specializing in historical inquiries. Trained on the intents.json dataset, it is adept at recognizing and responding to a variety of historical questions within its training data's scope. With regular updates, HistoryBot ensures an adaptable and enriching user experience.
+https://github.com/amiruzzaman1/History-Bot
+
+Enfoque: Historia general.
+Tecnología: Procesamiento de Lenguaje Natural (NLP) tradicional y concordancia de patrones.
 
 
-## Requisitos
+# MathBuddyBot
+https://github.com/parvanovkp/MathBuddyBot
+
+# LingoNaut
+https://github.com/FoamoftheSea/lingonaut-python
+
+## Requisitos  del prototipo del modelo de interoperabilidad de datos entre entre AVs usando OFP
 
 - Docker & Docker Compose
 - Ollama corriendo (modelos: qwen2:7b o phi3:mini)
@@ -217,3 +240,5 @@ Thu Feb 19 16:53:46 2026
 |=========================================================================================|
 |  No running processes found                                                             |
 +-----------------------------------------------------------------------------------------+
+
+

@@ -7,8 +7,7 @@ COPY requirements.txt .
 
 # Instala dependencias del repo original + extras para OVON/RabbitMQ
 RUN pip install --no-cache-dir -r requirements.txt \
-    && pip install --no-cache-dir jsonschema flask  # flask si usas endpoint HTTP fallback
-
+    && pip install --no-cache-dir jsonschema flask 
 # Copia todo el código (incluyendo api_wrapper.py con handler OVON)
 COPY . .
 

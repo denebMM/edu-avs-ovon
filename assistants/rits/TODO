@@ -1,9 +1,0 @@
-*) use same language for exam situations as well as drilling/explanation?
-
-    Options:
-
-         - LORITS markers for informational texts, subproblems, guidance, ...
-         - separate RITS actions for assessing correctness of an answer?
-
-      Currently, we are exploring the first option with the LORITS element
-      help(Module:Pred), which can be selectively ignored when necessary.
