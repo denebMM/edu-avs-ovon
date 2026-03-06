@@ -52,22 +52,7 @@ services:
     volumes:
       - ./schemas:/app/schemas
     depends_on:
-      - assistant_math
       - assistant_physics
-    networks:
-      - ofp_network
-
-  assistant_math:
-    build: ./assistants/math-assistant
-    container_name: assistant_math
-    ports:
-      - "5001:5001"  # importante: expón el puerto interno
-    environment:
-      - OLLAMA_HOST=http://ollama:11434
-    depends_on:
-      - ollama
-    volumes:
-      - ./schemas:/app/schemas
     networks:
       - ofp_network
 

@@ -12,7 +12,7 @@ from colorama import Fore, Style
 app = Flask(__name__)
 
 AGENTS = {
-    "math": "http://assistant_math:5001/receive",
+    
     "physics": "http://assistant_physics:5002/receive"
 }
 
@@ -177,18 +177,16 @@ def classify_with_manifests(query: str):
     scores = {uri: 0 for uri in manifests}
 
     # Fallback directo por palabras clave obvias (prioridad máxima)
-    if any(w in q for w in ['resolver', 'resuelve', 'soluciona', 'ecuacion', 'ecuaciones', 'factoriza', 'derivada', 'integral', 'logaritmo', 'simplificar', 'polinomio', 'expresion', '2x', 'x=', 'algebra']):
-        print("  → Fallback directo: math")
-        return ['math']
+  
 
     if any(w in q for w in ['fuerza', 'velocidad', 'aceleracion', 'movimiento', 'newton', 'inercia', 'energia', 'trayectoria', 'proyectil', 'caida', 'frena', 'detener', 'tiempo', 'distancia', 'altura', 'orbita', 'satelite', 'gravedad', 'conservacion', 'segunda ley', 'ley de', 'plano inclinado']):
         print("  → Fallback directo: physics")
         return ['physics']
 
     # Si hay cálculo + física → both
-    if any(w in q for w in ['calcula', 'tiempo', 'distancia', 'velocidad']) and any(w in q for w in ['aceleracion', 'caida', 'proyectil', 'frena']):
-        print("  → Fallback: both por combinación cálculo + física")
-        return ['both']
+    # if any(w in q for w in ['calcula', 'tiempo', 'distancia', 'velocidad']) and any(w in q for w in ['aceleracion', 'caida', 'proyectil', 'frena']):
+    #     print("  → Fallback: both por combinación cálculo + física")
+    #     return ['both']
 
     # Matching con keywords del manifest (si existen)
     for uri, info in manifests.items():
@@ -204,11 +202,8 @@ def classify_with_manifests(query: str):
     if best_score == 0:
         print("  → No hay matches → fallback por rol")
         for uri, info in manifests.items():
-            role = info['role'].lower()
-            if 'math' in role:
-                print("    Fallback math por rol")
-                return ['math']
-            elif 'physics' in role:
+            role = info['role'].lower()          
+            if 'physics' in role:
                 print("    Fallback physics por rol")
                 return ['physics']          
         print("    Aún sin candidatos → other")
@@ -220,9 +215,8 @@ def classify_with_manifests(query: str):
     for uri in winners:
         role = manifests[uri]['role'].lower()
         caps = manifests[uri]['capabilities']
-        if 'math' in role:
-            intents.append('math')
-        elif 'physics' in role:
+        
+        if 'physics' in role:
             intents.append('physics')
     intents = list(set(intents))
 
@@ -276,11 +270,6 @@ def handle_query():
         math_text = extract_reply_from_ovon(math_resp)
         physics_text = extract_reply_from_ovon(physics_resp)
         final_reply = f"**Matemáticas:**\n{math_text}\n\n**Física:**\n{physics_text}"
-
-    elif 'math' in intents:
-        math_url = next((info['url'] for uri, info in manifests.items() if 'math' in info['role'].lower()), AGENTS["math"])
-        resp = send_ovon_event(math_url, utterance_event, conversation_id)
-        final_reply = extract_reply_from_ovon(resp)
 
     elif 'physics' in intents:
         physics_url = next((info['url'] for uri, info in manifests.items() if 'physics' in info['role'].lower()), AGENTS["physics"])

@@ -14,7 +14,6 @@ OLLAMA_HOST = "http://host.docker.internal:11434"
 ollama_client = ollama.Client(host=OLLAMA_HOST)
 
 AGENTS = {
-    "math": "http://assistant_math:5001/receive",
     "physics": "http://assistant_physics:5002/receive",    
     "alice": "http://assistant_alice:5005/receive",
     "history": "http://assistant_history:5003/receive",
@@ -185,7 +184,7 @@ def handle_query():
     # CLASIFICACIÓN SOLO LLM (LIMPIO)
     # ===============================
     prompt = f"""
-        Clasifica SOLO con UNA palabra exacta: alice, math, physics,history, none.
+        Clasifica SOLO con UNA palabra exacta: alice, physics,history,translator,mathbuddy, none.
 
         Reglas muy estrictas (elige la PRIMERA que aplique):
 
@@ -195,9 +194,6 @@ def handle_query():
         comunismo, capitalismo, revoluciones, partidos políticos, geografía, literatura,
         música, cine, arte, religión, mitología, mitos urbanos, economía básica, psicología,
         comportamiento humano, ética, moral, sueños, futuro de la humanidad, etc.
-
-        - math → SOLO matemáticas puras: ecuaciones, álgebra, cálculo, resolver variables,
-        fracciones con letras/variables, matrices, derivadas, integrales, geometría analítica.
 
         - physics → SOLO física: movimiento, fuerzas, energía, gravedad, leyes de Newton,
         velocidad, aceleración, electricidad, óptica, termodinámica, incluso si usa ecuaciones simples.
@@ -218,8 +214,7 @@ def handle_query():
         - "Hola, ¿cómo estás?" → alice
         - "HAVE YOU READ THE COMMUNIST" → alice
         - "Qué opinas del comunismo" → alice
-        - "Quién creó AIML" → alice
-        - "Resuelve x² + 5x + 6 = 0" → math
+        - "Quién creó AIML" → alice       
         - "Qué es la ley de Newton" → physics
         - "Qué es la fotosíntesis" → none
         - "Traducción al inglés de hola" → none
@@ -287,10 +282,6 @@ def handle_query():
     if intent == 'alice':
         resp = send_ovon_event(AGENTS["alice"], utterance_event, conversation_id)
         final_reply = extract_reply_from_ovon(resp)    
-
-    elif intent == 'math':
-        resp = send_ovon_event(AGENTS["math"], utterance_event, conversation_id)
-        final_reply = extract_reply_from_ovon(resp)
 
     elif intent == 'physics':
         resp = send_ovon_event(AGENTS["physics"], utterance_event, conversation_id)
