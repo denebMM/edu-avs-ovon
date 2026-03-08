@@ -1,0 +1,7 @@
+Flask
+torch
+torchvision
+nltk
+gunicorn
+jsonschema
+numpy
