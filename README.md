@@ -106,21 +106,6 @@ https://github.com/QwenLM/Qwen2.5-Math
 • physics-assistant/ → Physics-Chatbot-using-Advanced-RAG  
 https://github.com/tan7vir/Physics-Chatbot-using-Advanced-RAG
 
-
-BASADO EN RULES:
-JanWielemak/rits → Rule-based Intelligent Tutoring System (el más puro y educativo de los encontrados)
-Materia: Fracciones (matemáticas básicas), pero el framework es genérico para crear otros dominios.
-Tecnología: Prolog (SWI-Prolog) → muy clásico en investigación de ITS rule-based.
-¿Por qué para tesis? Es un ejemplo real de RITS (Rule-based ITS), con un lenguaje específico para definir tareas, hints, pasos guiados y reglas pedagógicas.
-Link: https://github.com/JanWielemaker/rits
-Cómo probar rápido:
-Instala SWI-Prolog (gratis, ~5 min): https://www.swi-prolog.org/download/stable
-Clona: git clone https://github.com/JanWielemaker/rits
-Entra al folder y carga el ejemplo: swipl -s rits_fractions.pl
-Interactúa en la consola Prolog.
-Ideal si tu tesis toca dominios formales (matemáticas, lógica) o comparación con sistemas modernos.
-
-
 # ALICE + AIML (el más rápido y conversacional)
 
 Tipo: Patrones de reglas XML (coincidencia exacta + wildcards). 100% simbólico.

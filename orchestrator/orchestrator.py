@@ -150,7 +150,7 @@ def handle_receive():
                     "parameters": {"reason": "Control transferido aceptado"}
                 })
 
-            elif event_type == 'yield_floor':
+            elif event_type == 'yieldFloor':
                 # Ejemplo: confirma que el piso fue cedido
                 responses.append({
                     "eventType": "ack",
@@ -183,65 +183,38 @@ def handle_query():
     # ===============================
     # CLASIFICACIÓN SOLO LLM (LIMPIO)
     # ===============================
-    prompt = f"""
-        Clasifica SOLO con UNA palabra exacta: alice, physics,history,translator,mathbuddy, none.
+    prompt = f"""Clasifica la siguiente pregunta en EXACTAMENTE una o más de estas categorías (separadas por coma si son varias, máximo 3). 
+            Solo responde con las palabras exactas de la lista, sin nada más, sin explicaciones, sin puntuación extra.
 
-        Reglas muy estrictas (elige la PRIMERA que aplique):
+            Categorías válidas: alice, physics, history, translator, mathbuddy, none
 
-        - alice → CUALQUIER cosa que no sea matemáticas puras o física pura o historia. Incluye:
-        conversación general, saludos, chistes, opiniones, preguntas personales, filosofía, IA/chatbots/ALICE/AIML/robots/historia de IA,
-        tecnología conversacional, conocimiento general, política, ideologías,
-        comunismo, capitalismo, revoluciones, partidos políticos, geografía, literatura,
-        música, cine, arte, religión, mitología, mitos urbanos, economía básica, psicología,
-        comportamiento humano, ética, moral, sueños, futuro de la humanidad, etc.
+            Reglas (elige la primera que aplique):
 
-        - physics → SOLO física: movimiento, fuerzas, energía, gravedad, leyes de Newton,
-        velocidad, aceleración, electricidad, óptica, termodinámica, incluso si usa ecuaciones simples.
+            - mathbuddy → cualquier cálculo, ecuación, logaritmo, derivada, integral, álgebra, geometría, trigonometría, "resuelve", "calcula", "valor de", "explica paso a paso matemáticas"
 
-        - history → Preguntas sobre HISTORIA: eventos históricos, revoluciones, guerras, figuras históricas, historia de México, independencia, revolución mexicana, reyes, imperios, batallas, etc.
+            - physics → física, gravedad, órbita, movimiento, fuerzas, leyes de Newton, satélite, caída libre, energía, electricidad, óptica
 
-        - translator → Preguntas explícitas de TRADUCCIÓN, gramática de idiomas, "traduce al ...", "cómo se dice ... en ...", corrección de frases en otro idioma, aprendizaje de vocabulario/expresiones.  
-        
-        - mathbuddy → Preguntas de matemáticas que necesiten tutor paso a paso detallado, explicaciones educativas, resolución de problemas con ejemplos, desde aritmética hasta cálculo. Incluye: "explica paso a paso", "cómo resolver", "tutor matemáticas", etc.
-        
-        - none → SOLO temas muy específicos que ninguno de los asistentes cubre:
-        química avanzada, biología molecular, idiomas (traducción/gramática), programación (no bots),
-        finanzas/bolsa, derecho/leyes específicas, medicina/enfermedades, noticias actuales,
-        deportes profesionales, cocina/recetas detalladas, astrología seria, religión profunda,
-        cualquier tema técnico o académico muy especializado fuera de math/physics/IA/conversación.
+            - history → historia, guerras, revoluciones, figuras históricas, independencia, batallas
 
-        Ejemplos claros:
-        - "Hola, ¿cómo estás?" → alice
-        - "HAVE YOU READ THE COMMUNIST" → alice
-        - "Qué opinas del comunismo" → alice
-        - "Quién creó AIML" → alice       
-        - "Qué es la ley de Newton" → physics
-        - "Qué es la fotosíntesis" → none
-        - "Traducción al inglés de hola" → none
-        - "Cuánto cuesta el dólar hoy" → none
-        - "Historia de la Revolución Mexicana" → alice
-        - "Traduce 'hola mundo' al japonés" → translator
-        - "Cómo se dice gracias en francés" → translator
-        - "Corrige esta frase en inglés: I goed to school" → translator
-        - "Traducción de este párrafo: ..." → translator
-        - "Resuelve 2x + 5 = 13 paso a paso" → mathbuddy
-        - "Explica qué es una derivada con ejemplos" → mathbuddy
-        - "Ayúdame con álgebra básica" → mathbuddy
+            - translator → traduce, traducción, idioma, gramática, corrige frase, cómo se dice en, vocabulario
 
-        Pregunta: {user_query}
+            - alice → conversación general, saludos, opiniones, chistes, filosofía, preguntas personales, todo lo que no encaje en las anteriores
 
-        Respuesta (SOLO una de estas palabras, nada más):
-        """
+            - none → química, biología, programación, economía, deportes, noticias, temas avanzados fuera de scope
+
+            Pregunta: {user_query}
+
+            Respuesta (SOLO categorías separadas por coma, ejemplo: mathbuddy o physics,translator o none):"""
 
     intent_response = ollama_client.chat(
         model='gemma2:2b',
         messages=[{'role': 'user', 'content': prompt}],
         options={
             "temperature": 0.0,
-            "num_predict": 10,
+            "num_predict": 30,          # ← ¡Sube esto! 20-40 es mucho más seguro
             "top_k": 5,
             "top_p": 0.8,
-            "num_ctx": 512,
+            "num_ctx": 1024,            # ← Aumenta contexto para que vea todo el prompt
             "num_thread": 0,
             "num_gpu": -1
         }
@@ -249,6 +222,8 @@ def handle_query():
 
     intent = intent_response['message']['content'].strip().lower()
     print(f"{Fore.YELLOW}Clasificado como → {intent}{Style.RESET_ALL}")
+
+    intents = [i.strip() for i in intent.split(',')]  # Divide en lista para manejar multi-clasificación
 
     conversation_id = str(uuid.uuid4())
 
@@ -275,42 +250,66 @@ def handle_query():
     }]
 
     # ===============================
-    # ROUTING SIMPLE
+    # ROUTING AVANZADO CON SOPORTE PARA MULTI-AV
     # ===============================
-    final_reply = "No corresponde a matemáticas, a física, o historia, ni conocimiento de ALice ."  # default fallback
+    final_reply = "Lo siento, ninguno de los asistentes actuales puede responder esta pregunta."  # Default fallback
 
-    if intent == 'alice':
-        resp = send_ovon_event(AGENTS["alice"], utterance_event, conversation_id)
-        final_reply = extract_reply_from_ovon(resp)    
-
-    elif intent == 'physics':
-        resp = send_ovon_event(AGENTS["physics"], utterance_event, conversation_id)
-        final_reply = extract_reply_from_ovon(resp)
-    
-    elif intent == 'history':
-        resp = send_ovon_event(AGENTS["history"], utterance_event, conversation_id)
-        final_reply = extract_reply_from_ovon(resp)
-
-    elif intent == 'translator':
-        resp = send_ovon_event(AGENTS["translator"], utterance_event, conversation_id)
-        final_reply = extract_reply_from_ovon(resp)    
-
-    elif intent == 'mathbuddy':
-        resp = send_ovon_event(AGENTS["mathbuddy"], utterance_event, conversation_id)
-        final_reply = extract_reply_from_ovon(resp)    
-
-    elif intent == 'none':
-        final_reply = "Lo siento, ninguno de los asistentes actuales puede responder esta pregunta (química, economía, historia, idiomas, etc.). ¿Quieres intentar con otra pregunta?"
-
+    if 'none' in intents:
+        final_reply = "Lo siento, ninguno de los asistentes actuales puede responder esta pregunta (química, economía, historia profunda, etc.). ¿Quieres intentar con otra pregunta?"
+    elif len(intents) == 1:
+        # Caso single-AV: Envío directo al agente clasificado
+        agent_key = intents[0]
+        if agent_key in AGENTS:
+            resp = send_ovon_event(AGENTS[agent_key], utterance_event, conversation_id)
+            final_reply = extract_reply_from_ovon(resp)
+        else:
+            final_reply = "No entendí, intenta de nuevo."
     else:
-        final_reply = "No entendí intenta de nuevo."
+        # Caso multi-AV: Envío secuencial (principal primero, delega a secundarios)
+        responses = []
+        primary_agent = intents[0]  # Primero es principal
+        if primary_agent in AGENTS:
+            # Envía a principal
+            resp_primary = send_ovon_event(AGENTS[primary_agent], utterance_event, conversation_id)
+            responses.append(extract_reply_from_ovon(resp_primary))
+            
+            # Para cada secundario, simula delegación: Crea evento de delegation y envía
+            for secondary in intents[1:]:
+                if secondary in AGENTS:
+                    # Crea evento OFP para delegation (adaptado a tu schema)
+                    delegation_event = [{
+                        "eventType": "request_delegation",
+                        "parameters": {
+                            "delegateTo": AGENTS[secondary],  # O usa speakerUri si lo tienes
+                            "query": user_query  # Pasa la query o subparte
+                        }
+                    }]
+                    resp_sec = send_ovon_event(AGENTS[secondary], delegation_event + utterance_event, conversation_id)
+                    responses.append(extract_reply_from_ovon(resp_sec))
+      
+        # Sintetiza respuestas con Ollama (en lugar de concatenación simple)
+        if responses:
+            synth_prompt = f"Une estas respuestas individuales de asistentes en una respuesta coherente y unificada, manteniendo la información clave de cada una. Respuestas: {json.dumps(responses)}"
+            synth_response = ollama_client.chat(
+                model='gemma2:2b',
+                messages=[{'role': 'user', 'content': synth_prompt}],
+                options={
+                    "temperature": 0.2,  # Baja para coherencia
+                    "num_predict": 200,  # Ajusta según longitud esperada
+                    "top_k": 10,
+                    "top_p": 0.9,
+                    "num_ctx": 1024
+                }
+            )
+            final_reply = synth_response['message']['content'].strip()
+        else:
+            final_reply = "Error en colaboración multi-AV."
         
     return jsonify({
         "reply": final_reply,
-        "classified_as": intent,
+        "collaborators": intents,  # Lista de asistentes que colaboraron (clasificados)
         "conversation_id": conversation_id
     })
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=False)
-
