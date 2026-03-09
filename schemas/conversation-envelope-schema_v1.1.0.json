@@ -153,7 +153,9 @@
                   "requestFloor",
                   "grantFloor",
                   "revokeFloor",
-                  "yieldFloor"
+                  "yieldFloor",
+                  "request_delegation",
+                  "accept_delegation"
               ]
               },
               "to"  : {

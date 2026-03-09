@@ -68,9 +68,24 @@ def send_ovon_event(url, events, conversation_id=None):
         payload = create_openfloor_envelope(events, conversation_id)
         response = requests.post(url, json=payload, timeout=180, headers={"Content-Type": "application/json"})
         response.raise_for_status()
-        return response.json()
+        
+        agent_name = "unknown"
+        for name, agent_url in AGENTS.items():
+            if agent_url == url:
+                agent_name = name
+                break
+        
+        resp_json = response.json()
+        
+        # Logging para cuando recibe respuesta de cada agente
+        print(f"{Fore.GREEN}[ORCHESTRADOR] ← Respuesta de {agent_name}:{Style.RESET_ALL}")
+        print(json.dumps(resp_json, indent=2, ensure_ascii=False))
+        print(f"{Fore.GREEN}----------------------------------------{Style.RESET_ALL}")
+        
+        return resp_json
+    
     except Exception as e:
-        app.logger.error(f"Error enviando OFP a {url}: {e}")
+        print(f"{Fore.RED}[ERROR] enviando a {url}: {e}{Style.RESET_ALL}")
         return {"openFloor": {"events": [], "error": str(e)}}
 
 def extract_reply_from_ovon(response):
@@ -265,43 +280,81 @@ def handle_query():
         else:
             final_reply = "No entendí, intenta de nuevo."
     else:
-        # Caso multi-AV: Envío secuencial (principal primero, delega a secundarios)
+        # Caso multi-AV: Intentamos dividir la query en subtareas secuenciales
         responses = []
-        primary_agent = intents[0]  # Primero es principal
-        if primary_agent in AGENTS:
-            # Envía a principal
-            resp_primary = send_ovon_event(AGENTS[primary_agent], utterance_event, conversation_id)
-            responses.append(extract_reply_from_ovon(resp_primary))
-            
-            # Para cada secundario, simula delegación: Crea evento de delegation y envía
-            for secondary in intents[1:]:
-                if secondary in AGENTS:
-                    # Crea evento OFP para delegation (adaptado a tu schema)
-                    delegation_event = [{
-                        "eventType": "request_delegation",
-                        "parameters": {
-                            "delegateTo": AGENTS[secondary],  # O usa speakerUri si lo tienes
-                            "query": user_query  # Pasa la query o subparte
-                        }
-                    }]
-                    resp_sec = send_ovon_event(AGENTS[secondary], delegation_event + utterance_event, conversation_id)
-                    responses.append(extract_reply_from_ovon(resp_sec))
-      
-        # Sintetiza respuestas con Ollama (en lugar de concatenación simple)
+
+    # 1. Si hay "traduce" → siempre primero translator
+    if "translator" in intents:
+        # Enviamos SOLO la parte que necesita traducción
+        translate_prompt = f"Traduce SOLO la siguiente pregunta o texto al idioma indicado (sin explicaciones extras): {user_query}"
+        resp_trans = send_ovon_event(AGENTS["translator"], [{
+            "eventType": "utterance",
+            "parameters": {
+                "dialogEvent": {
+                    "speakerUri": "tag:user.local,2026:user001",
+                    "features": {"text": {"tokens": [{"value": translate_prompt}]}}
+                }
+            }
+        }], conversation_id)
+        translated_text = extract_reply_from_ovon(resp_trans)
+        responses.append(translated_text)
+        print(f"{Fore.GREEN}Traducción obtenida: {translated_text}{Style.RESET_ALL}")
+
+        # 2. Luego el resto (physics, mathbuddy, etc.)
+        remaining_intents = [i for i in intents if i != "translator"]
+        for agent_key in remaining_intents:
+            if agent_key in AGENTS:
+                # Enviamos la query original o la traducida si existe
+                query_to_send = translated_text if "translator" in intents else user_query
+                resp = send_ovon_event(AGENTS[agent_key], utterance_event, conversation_id)  # o con query_to_send
+                reply = extract_reply_from_ovon(resp)
+                responses.append(reply)
+
+    # Logging antes de sintetizar (ya lo tienes)
+    if responses:
+        print(f"{Fore.YELLOW}=== RESPUESTAS RECOLECTADAS ANTES DE SINTETIZAR ==={Style.RESET_ALL}")
+        print(f"Número de respuestas: {len(responses)}")
+        for i, resp in enumerate(responses, 1):
+            print(f"[{i}] {resp[:300]}{'...' if len(resp) > 300 else ''}")
+            print("-" * 80)
+
+                # Sintetiza respuestas con Ollama
         if responses:
-            synth_prompt = f"Une estas respuestas individuales de asistentes en una respuesta coherente y unificada, manteniendo la información clave de cada una. Respuestas: {json.dumps(responses)}"
+            synth_prompt = f"""Tienes respuestas de varios asistentes educativos. Tu tarea es combinarlas en UNA SOLA RESPUESTA coherente, completa y bien organizada.
+
+            REGLAS OBLIGATORIAS:
+            1. Respeta SIEMPRE el orden lógico de la pregunta original:
+            - Si la pregunta empieza con "Traduce al [idioma]" → pon PRIMERO la traducción literal.
+            - Luego pon la explicación o respuesta del otro agente.
+            2. Nunca omitas ninguna respuesta. Incluye TODA la información clave de cada una.
+            3. Usa el idioma que pida la pregunta:
+            - Si dice "traduce al inglés", la explicación también debe ir en inglés (no en español).
+            - Si no especifica idioma, responde en español.
+            4. Estructura clara: usa encabezados como "Traducción:" y "Explicación:" cuando corresponda.
+            5. Sé conciso pero completo. No agregues información inventada.
+
+            Respuestas recibidas (en orden de llegada, NO las ignores):
+            {json.dumps(responses, ensure_ascii=False, indent=2)}
+
+            Responde ahora siguiendo estas reglas estrictas:"""
+
             synth_response = ollama_client.chat(
                 model='gemma2:2b',
                 messages=[{'role': 'user', 'content': synth_prompt}],
                 options={
-                    "temperature": 0.2,  # Baja para coherencia
-                    "num_predict": 200,  # Ajusta según longitud esperada
+                    "temperature": 0.2,
+                    "num_predict": 800,  # ← Aumentado para respuestas largas
                     "top_k": 10,
                     "top_p": 0.9,
-                    "num_ctx": 1024
+                    "num_ctx": 2048      # ← Más contexto para ver todo el prompt
                 }
             )
             final_reply = synth_response['message']['content'].strip()
+
+            # Fallback si síntesis falla
+            if len(final_reply) < 50 or "no" in final_reply.lower()[:20]:
+                final_reply = "\n\n".join(responses)
+                print(f"{Fore.RED}Síntesis falló → usando concatenación simple{Style.RESET_ALL}")
         else:
             final_reply = "Error en colaboración multi-AV."
         
