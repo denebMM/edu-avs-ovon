@@ -63,7 +63,7 @@ def publish_manifest():
                         "name": "HistoryBot",
                         "description": "Asistente educativo especializado en Historia (basado en intents fijos). Soporta delegación.",
                         "keywords": ["historia", "guerras", "revoluciones", "figuras historicas"],
-                        "languages": ["es", "en"],
+                        "languages": ["en"],
                         "modalities": ["text"],
                         "capabilities": ["utterance", "knowledge", "delegation-accept"]
                     }

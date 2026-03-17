@@ -2,11 +2,15 @@ from flask import Flask, request, jsonify
 import requests
 import uuid
 from datetime import datetime
-import jsonschema  # pip install jsonschema
+import jsonschema
 import ollama
 import os
 import json
 from colorama import Fore, Style
+import logging
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 
@@ -14,7 +18,7 @@ OLLAMA_HOST = "http://host.docker.internal:11434"
 ollama_client = ollama.Client(host=OLLAMA_HOST)
 
 AGENTS = {
-    "physics": "http://assistant_physics:5002/receive",    
+    "physics": "http://assistant_physics:5002/receive",
     "alice": "http://assistant_alice:5005/receive",
     "history": "http://assistant_history:5003/receive",
     "translator": "http://assistant_translator:5010/receive",
@@ -24,24 +28,14 @@ AGENTS = {
 ORCHESTRATOR_URL = "http://orchestrator:5000/receive"
 ORCHESTRATOR_SPEAKER_URI = "tag:orchestrator.local,2026:orch001"
 
-# Schema OFP v1.1.0 oficial (copiado dehttps://github.com/open-voice-interoperability/openfloor-docs/blob/main/schemas/conversation-envelope/1.1.0/conversation-envelope-schema.json)
 SCHEMA_PATH = "/app/schemas/conversation-envelope-schema_v1.1.0.json"
-# Carga el schema oficial una sola vez al inicio del módulo
 try:
     with open(SCHEMA_PATH, 'r', encoding='utf-8') as f:
         OFP_SCHEMA = json.load(f)
 except FileNotFoundError:
-    raise FileNotFoundError(f"No se encontró el schema OFP en: {SCHEMA_PATH}. Descárgalo de GitHub.")
+    raise FileNotFoundError(f"No se encontró el schema OFP en: {SCHEMA_PATH}")
 except json.JSONDecodeError:
     raise ValueError("El archivo de schema OFP está corrupto o mal formado.")
-
-def validate_envelope(data):
-    """Valida un envelope contra el schema oficial OVON/OFP v1.1.0"""
-    try:
-        jsonschema.validate(instance=data, schema=OFP_SCHEMA)
-    except jsonschema.exceptions.ValidationError as validation_error:
-        raise ValueError(f"Envelope OFP inválido: {str(validation_error)}")
-    
 
 def validate_envelope(data):
     try:
@@ -56,12 +50,32 @@ def create_openfloor_envelope(events, conversation_id=None):
         "openFloor": {
             "schema": {"version": "1.1.0"},
             "conversation": {"id": conversation_id},
-            "sender": {
-                "speakerUri": ORCHESTRATOR_SPEAKER_URI
-            },
+            "sender": {"speakerUri": ORCHESTRATOR_SPEAKER_URI},
             "events": events
         }
     }
+
+def create_collaborative_response(responses_map, conversation_id):
+    events = []
+    for agent, content in responses_map.items():
+        speaker = f"tag:{agent}.local,2026:agent001"
+        events.append({
+            "eventType": "utterance",
+            "parameters": {
+                "dialogEvent": {
+                    "speakerUri": speaker,
+                    "features": {
+                        "text": {
+                            "mimeType": "text/plain",
+                            "tokens": [{"value": content}]
+                        }
+                    }
+                }
+            }
+        })
+
+    events.append({"eventType": "yieldFloor", "parameters": {}})
+    return create_openfloor_envelope(events, conversation_id)
 
 def send_ovon_event(url, events, conversation_id=None):
     try:
@@ -69,22 +83,15 @@ def send_ovon_event(url, events, conversation_id=None):
         response = requests.post(url, json=payload, timeout=180, headers={"Content-Type": "application/json"})
         response.raise_for_status()
         
-        agent_name = "unknown"
-        for name, agent_url in AGENTS.items():
-            if agent_url == url:
-                agent_name = name
-                break
-        
-        resp_json = response.json()
-        
-        # Logging para cuando recibe respuesta de cada agente
+        agent_name = next((name for name, u in AGENTS.items() if u == url), "unknown")
+        logger.info(f"[ORCHESTRADOR] ← Respuesta de {agent_name}")
         print(f"{Fore.GREEN}[ORCHESTRADOR] ← Respuesta de {agent_name}:{Style.RESET_ALL}")
-        print(json.dumps(resp_json, indent=2, ensure_ascii=False))
+        print(json.dumps(response.json(), indent=2, ensure_ascii=False))
         print(f"{Fore.GREEN}----------------------------------------{Style.RESET_ALL}")
         
-        return resp_json
-    
+        return response.json()
     except Exception as e:
+        logger.error(f"[ERROR] enviando a {url}: {e}")
         print(f"{Fore.RED}[ERROR] enviando a {url}: {e}{Style.RESET_ALL}")
         return {"openFloor": {"events": [], "error": str(e)}}
 
@@ -93,13 +100,30 @@ def extract_reply_from_ovon(response):
         events = response.get("openFloor", {}).get("events", [])
         for event in events:
             if event.get("eventType") == "utterance":
-                dialog = event.get("parameters", {}).get("dialogEvent", {})
-                tokens = dialog.get("features", {}).get("text", {}).get("tokens", [])
+                tokens = event.get("parameters", {}).get("dialogEvent", {}).get("features", {}).get("text", {}).get("tokens", [])
                 if tokens:
                     return tokens[0].get("value", "Sin respuesta")
         return "Sin respuesta"
     except Exception:
         return "Error procesando respuesta"
+
+def create_utterance_event(text):
+    now = datetime.utcnow().isoformat() + "Z"
+    return [{
+        "eventType": "utterance",
+        "parameters": {
+            "dialogEvent": {
+                "speakerUri": "tag:user.local,2026:user001",
+                "span": {"startTime": now, "endTime": now},
+                "features": {
+                    "text": {
+                        "mimeType": "text/plain",
+                        "tokens": [{"value": text}]
+                    }
+                }
+            }
+        }
+    }]
 
 def get_manifest():
     return {
@@ -145,31 +169,10 @@ def handle_receive():
                     manifest_response['openFloor']['conversation'] = {'id': conversation_id}
                 return jsonify(manifest_response)
 
-            elif event_type == 'utterance':
-                # Procesar respuesta de AV (guardar contexto si lo necesitas)
+            elif event_type in ['utterance', 'request_delegation', 'transfer_control', 'yieldFloor']:
                 responses.append({
                     "eventType": "ack",
-                    "parameters": {"message": "Respuesta recibida"}
-                })
-
-            elif event_type == 'request_delegation':
-                responses.append({
-                    "eventType": "accept_delegation",
-                    "parameters": {"reason": "Aceptado por orquestador"}
-                })
-
-            elif event_type == 'transfer_control':
-                # Ejemplo: acepta transferencia de control
-                responses.append({
-                    "eventType": "accept_transfer_control",
-                    "parameters": {"reason": "Control transferido aceptado"}
-                })
-
-            elif event_type == 'yieldFloor':
-                # Ejemplo: confirma que el piso fue cedido
-                responses.append({
-                    "eventType": "ack",
-                    "parameters": {"message": "Piso conversacional cedido recibido"}
+                    "parameters": {"message": f"Evento {event_type} recibido"}
                 })
             else:
                 responses.append({
@@ -184,185 +187,147 @@ def handle_receive():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-
 @app.route('/query', methods=['POST'])
 def handle_query():
+    logger.info("[ORCHESTRADOR] ← Pregunta recibida")
     print(f"{Fore.CYAN}[ORCHESTRADOR] ← Pregunta recibida{Style.RESET_ALL}")
-
     data = request.get_json()
     user_query = data.get('query')
 
     if not user_query or not isinstance(user_query, str):
         return jsonify({"error": "Falta 'query'"}), 400
 
-    # ===============================
-    # CLASIFICACIÓN SOLO LLM (LIMPIO)
-    # ===============================
-    prompt = f"""Clasifica la siguiente pregunta en EXACTAMENTE una o más de estas categorías (separadas por coma si son varias, máximo 3). 
-            Solo responde con las palabras exactas de la lista, sin nada más, sin explicaciones, sin puntuación extra.
+    # 1. Clasificación
+  
+    classification_prompt = f"""Clasifica esta pregunta en UNA O MÁS categorías (separadas por coma, máximo 3): 
+    alice, physics, history, translator, mathbuddy, none.
 
-            Categorías válidas: alice, physics, history, translator, mathbuddy, none
+    REGLAS JERÁRQUICAS OBLIGATORIAS (aplica en este orden):
+    1. SI contiene "traduce", "traducción", "translate", "al [idioma]", "to [language]", "explica en", "responde en" → INCLUYE SIEMPRE "translator" (incluso si hay otra categoría).
+    2. SI la pregunta es sobre matemáticas (números, ecuaciones, logaritmos, "calcula", "resuelve", "encuentra", álgebra, cálculo, geometría, teorema de Pitágoras, hipotenusa, vértice, función cuadrática) → "mathbuddy".
+    3. SI es física (gravedad, órbita, movimiento, fuerzas, energía, electricidad, óptica, termodinámica, Newton) → "physics".
+    4. SI es historia (guerras, revoluciones, imperios, personajes históricos, eventos del pasado, civil servant, ground-rents, colonial, British Empire) → "history".
+    5. SI es conversación general, chistes, opiniones → "alice".
+    6. SI no encaja en nada → "none".
 
-            Reglas (elige la primera que aplique):
+    IMPORTANTE:
+    - Prioriza SIEMPRE "translator" si hay instrucción de idioma.
+    - NO clasifiques como physics solo por "triángulo", "hipotenusa" o "Pitágoras" si es cálculo geométrico puro (eso es mathbuddy).
+   
+    Pregunta: {user_query}
 
-            - mathbuddy → cualquier cálculo, ecuación, logaritmo, derivada, integral, álgebra, geometría, trigonometría, "resuelve", "calcula", "valor de", "explica paso a paso matemáticas"
-
-            - physics → física, gravedad, órbita, movimiento, fuerzas, leyes de Newton, satélite, caída libre, energía, electricidad, óptica
-
-            - history → historia, guerras, revoluciones, figuras históricas, independencia, batallas
-
-            - translator → traduce, traducción, idioma, gramática, corrige frase, cómo se dice en, vocabulario
-
-            - alice → conversación general, saludos, opiniones, chistes, filosofía, preguntas personales, todo lo que no encaje en las anteriores
-
-            - none → química, biología, programación, economía, deportes, noticias, temas avanzados fuera de scope
-
-            Pregunta: {user_query}
-
-            Respuesta (SOLO categorías separadas por coma, ejemplo: mathbuddy o physics,translator o none):"""
-
+    Responde SOLO con las categorías (ej: mathbuddy, translator), sin explicación ni texto extra."""
+        
     intent_response = ollama_client.chat(
-        model='gemma2:2b',
-        messages=[{'role': 'user', 'content': prompt}],
-        options={
-            "temperature": 0.0,
-            "num_predict": 30,          # ← ¡Sube esto! 20-40 es mucho más seguro
-            "top_k": 5,
-            "top_p": 0.8,
-            "num_ctx": 1024,            # ← Aumenta contexto para que vea todo el prompt
-            "num_thread": 0,
-            "num_gpu": -1
-        }
+        model='llama3.1:8b',
+        messages=[{'role': 'user', 'content': classification_prompt}],
+        options={"temperature": 0.0, "num_predict": 60}
     )
-
-    intent = intent_response['message']['content'].strip().lower()
-    print(f"{Fore.YELLOW}Clasificado como → {intent}{Style.RESET_ALL}")
-
-    intents = [i.strip() for i in intent.split(',')]  # Divide en lista para manejar multi-clasificación
+    
+    intent_text = intent_response['message']['content'].strip().lower()
+    logger.info(f"Clasificado como → {intent_text}")
+    print(f"{Fore.YELLOW}Clasificado como → {intent_text}{Style.RESET_ALL}")
+    
+    intents = [i.strip() for i in intent_text.split(',') if i.strip() in AGENTS or i.strip() == 'none']
+    if not intents:
+        intents = ['alice']
 
     conversation_id = str(uuid.uuid4())
+    responses_map = {}
 
-    # ===============================
-    # EVENTO OFP (utterance común para todos)
-    # ===============================
-    utterance_event = [{
-        "eventType": "utterance",
-        "parameters": {
-            "dialogEvent": {
-                "speakerUri": "tag:user.local,2026:user001",
-                "span": {
-                    "startTime": datetime.utcnow().isoformat() + "Z",
-                    "endTime": datetime.utcnow().isoformat() + "Z"
-                },
-                "features": {
-                    "text": {
-                        "mimeType": "text/plain",
-                        "tokens": [{"value": user_query}]
-                    }
-                }
-            }
-        }
-    }]
+    # Detectar idioma objetivo
+    idioma_objetivo = "español"
+    for lang in ["inglés", "francés", "chino", "japonés", "alemán", "italiano", "portugués"]:
+        if f"traduce al {lang}" in user_query.lower() or f"explícala en {lang}" in user_query.lower():
+            idioma_objetivo = lang
+            break
+    logger.info(f"Idioma objetivo: {idioma_objetivo}")
+    print(f"{Fore.MAGENTA}Idioma objetivo: {idioma_objetivo}{Style.RESET_ALL}")
 
-    # ===============================
-    # ROUTING AVANZADO CON SOPORTE PARA MULTI-AV
-    # ===============================
-    final_reply = "Lo siento, ninguno de los asistentes actuales puede responder esta pregunta."  # Default fallback
+    # Extraer pregunta real y detectar si hay traducción
+    pregunta_real = user_query
+    pregunta_original_para_trad = user_query
+    hay_traduccion = False
 
-    if 'none' in intents:
-        final_reply = "Lo siento, ninguno de los asistentes actuales puede responder esta pregunta (química, economía, historia profunda, etc.). ¿Quieres intentar con otra pregunta?"
-    elif len(intents) == 1:
-        # Caso single-AV: Envío directo al agente clasificado
-        agent_key = intents[0]
+    if any(palabra in user_query.lower() for palabra in [
+        "traduce al",
+         "traducción al", 
+         "al inglés", 
+         "al francés"]):
+        hay_traduccion = True
+        separadores = [
+            ": ", 
+            "la siguiente: ", 
+            "la pregunta: ",
+            "esta pregunta: ",
+             "traduce ", 
+             "traducción ", 
+             "explica en ", 
+             "responde en "]
+        for sep in separadores:
+            if sep in user_query:
+                partes = user_query.split(sep, 1)
+                if len(partes) > 1:
+                    pregunta_real = partes[1].strip()
+                    break
+        pregunta_real = pregunta_real.strip(' "¿¡?').strip()
+        logger.info(f"Pregunta real extraída: {pregunta_real}")
+        print(f"{Fore.CYAN}Pregunta real extraída: {pregunta_real}{Style.RESET_ALL}")
+
+    current_text = pregunta_real
+
+    # 2. Ejecutar agentes expertos
+    expert_results = []
+    remaining_intents = [i for i in intents if i not in ["translator", "alice", "none"]]
+    previous_reply = ""
+
+    for idx, agent_key in enumerate(remaining_intents):
         if agent_key in AGENTS:
-            resp = send_ovon_event(AGENTS[agent_key], utterance_event, conversation_id)
-            final_reply = extract_reply_from_ovon(resp)
-        else:
-            final_reply = "No entendí, intenta de nuevo."
-    else:
-        # Caso multi-AV: Intentamos dividir la query en subtareas secuenciales
-        responses = []
+            text_to_expert = current_text
+            if previous_reply:
+                text_to_expert = f"Pregunta del usuario: {current_text}\n\nContexto adicional del asistente anterior ({remaining_intents[idx-1]}): {previous_reply}"
 
-    # 1. Si hay "traduce" → siempre primero translator
-    if "translator" in intents:
-        # Enviamos SOLO la parte que necesita traducción
-        translate_prompt = f"Traduce SOLO la siguiente pregunta o texto al idioma indicado (sin explicaciones extras): {user_query}"
-        resp_trans = send_ovon_event(AGENTS["translator"], [{
-            "eventType": "utterance",
-            "parameters": {
-                "dialogEvent": {
-                    "speakerUri": "tag:user.local,2026:user001",
-                    "features": {"text": {"tokens": [{"value": translate_prompt}]}}
-                }
-            }
-        }], conversation_id)
-        translated_text = extract_reply_from_ovon(resp_trans)
-        responses.append(translated_text)
-        print(f"{Fore.GREEN}Traducción obtenida: {translated_text}{Style.RESET_ALL}")
+            resp = send_ovon_event(AGENTS[agent_key], create_utterance_event(text_to_expert), conversation_id)
+            reply = extract_reply_from_ovon(resp)
 
-        # 2. Luego el resto (physics, mathbuddy, etc.)
-        remaining_intents = [i for i in intents if i != "translator"]
-        for agent_key in remaining_intents:
-            if agent_key in AGENTS:
-                # Enviamos la query original o la traducida si existe
-                query_to_send = translated_text if "translator" in intents else user_query
-                resp = send_ovon_event(AGENTS[agent_key], utterance_event, conversation_id)  # o con query_to_send
-                reply = extract_reply_from_ovon(resp)
-                responses.append(reply)
+            if "no es de mi área" in reply.lower() or "no es de mi área" in reply.lower():
+                logger.info(f"{agent_key.capitalize()} rechazó: {reply}")
+                print(f"{Fore.RED}{agent_key.capitalize()} rechazó: {reply}{Style.RESET_ALL}")
+                continue
 
-    # Logging antes de sintetizar (ya lo tienes)
-    if responses:
-        print(f"{Fore.YELLOW}=== RESPUESTAS RECOLECTADAS ANTES DE SINTETIZAR ==={Style.RESET_ALL}")
-        print(f"Número de respuestas: {len(responses)}")
-        for i, resp in enumerate(responses, 1):
-            print(f"[{i}] {resp[:300]}{'...' if len(resp) > 300 else ''}")
-            print("-" * 80)
+            responses_map[agent_key] = reply
+            expert_results.append(f"[{agent_key.upper()}]: {reply}")
+            previous_reply = reply
+            logger.info(f"{agent_key.capitalize()} respondió: {reply[:150]}...")
+            print(f"{Fore.GREEN}{agent_key.capitalize()} respondió: {reply[:150]}...{Style.RESET_ALL}")
 
-                # Sintetiza respuestas con Ollama
-        if responses:
-            synth_prompt = f"""Tienes respuestas de varios asistentes educativos. Tu tarea es combinarlas en UNA SOLA RESPUESTA coherente, completa y bien organizada.
+    # 3. Contexto completo para traductor
+    contexto_para_traductor = f"Pregunta original: {pregunta_original_para_trad}\n\nRespuestas de expertos:\n" + "\n\n".join(expert_results)
+    if not expert_results:
+        contexto_para_traductor += "\n(No se obtuvo respuesta de expertos)"
 
-            REGLAS OBLIGATORIAS:
-            1. Respeta SIEMPRE el orden lógico de la pregunta original:
-            - Si la pregunta empieza con "Traduce al [idioma]" → pon PRIMERO la traducción literal.
-            - Luego pon la explicación o respuesta del otro agente.
-            2. Nunca omitas ninguna respuesta. Incluye TODA la información clave de cada una.
-            3. Usa el idioma que pida la pregunta:
-            - Si dice "traduce al inglés", la explicación también debe ir en inglés (no en español).
-            - Si no especifica idioma, responde en español.
-            4. Estructura clara: usa encabezados como "Traducción:" y "Explicación:" cuando corresponda.
-            5. Sé conciso pero completo. No agregues información inventada.
-
-            Respuestas recibidas (en orden de llegada, NO las ignores):
-            {json.dumps(responses, ensure_ascii=False, indent=2)}
-
-            Responde ahora siguiendo estas reglas estrictas:"""
-
-            synth_response = ollama_client.chat(
-                model='gemma2:2b',
-                messages=[{'role': 'user', 'content': synth_prompt}],
-                options={
-                    "temperature": 0.2,
-                    "num_predict": 800,  # ← Aumentado para respuestas largas
-                    "top_k": 10,
-                    "top_p": 0.9,
-                    "num_ctx": 2048      # ← Más contexto para ver todo el prompt
-                }
-            )
-            final_reply = synth_response['message']['content'].strip()
-
-            # Fallback si síntesis falla
-            if len(final_reply) < 50 or "no" in final_reply.lower()[:20]:
-                final_reply = "\n\n".join(responses)
-                print(f"{Fore.RED}Síntesis falló → usando concatenación simple{Style.RESET_ALL}")
-        else:
-            final_reply = "Error en colaboración multi-AV."
+    # 4. Traducción final
+    final_reply = contexto_para_traductor if contexto_para_traductor else "No pude encontrar una respuesta específica."
+    if "translator" in intents and hay_traduccion and idioma_objetivo != "español":
+        contenido_a_traducir = contexto_para_traductor
+        trans_final_prompt = f"Traduce TODO este texto al {idioma_objetivo}:\n\n{contenido_a_traducir}"
         
-    return jsonify({
-        "reply": final_reply,
-        "collaborators": intents,  # Lista de asistentes que colaboraron (clasificados)
-        "conversation_id": conversation_id
-    })
+        resp_final = send_ovon_event(AGENTS["translator"], create_utterance_event(trans_final_prompt), conversation_id)
+        traduccion_final = extract_reply_from_ovon(resp_final)
+        responses_map["traductor"] = traduccion_final
+        final_reply = traduccion_final
+        logger.info(f"Traducción final al {idioma_objetivo}: {traduccion_final[:150]}...")
+        print(f"{Fore.GREEN}Traducción final al {idioma_objetivo}: {traduccion_final[:150]}...{Style.RESET_ALL}")
+
+    # 5. Respuesta final en OFP completo
+    response_payload = create_collaborative_response(responses_map, conversation_id)
+
+    if responses_map:
+        logger.info("=== RESPUESTAS FINALES (OFP) ===")
+        print(f"{Fore.YELLOW}=== RESPUESTAS FINALES (OFP) ==={Style.RESET_ALL}")
+        print(json.dumps(response_payload, indent=2, ensure_ascii=False))
+
+    return jsonify(response_payload)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=False)

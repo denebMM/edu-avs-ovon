@@ -51,7 +51,7 @@ def get_manifest():
                         "name": "MathBuddy",
                         "description": "Tutor IA para matemáticas desde aritmética básica hasta Cálculo 1.",
                         "keywords": ["matemáticas", "álgebra", "cálculo", "tutor"],
-                        "languages": ["es", "en"],
+                        "languages": ["es"],
                         "modalities": ["text"],
                         "capabilities": ["step-by-step", "problem-solving", "delegation-accept"]
                     }
@@ -125,14 +125,18 @@ def handle_receive():
                     "parameters": {"message": f"Evento no soportado: {event_type}"}
                 })
 
-        # Procesar query si existe
+           # Procesar query si existe
         if query_to_process:
-            prompt = f"""Eres MathBuddy, tutor experto en matemáticas. 
-Explica paso a paso, claro y educativo en español.
-Usa ejemplos si ayuda. No añadas texto innecesario.
-Si no es matemáticas, responde: "Esta pregunta no es de mi área (matemáticas hasta Cálculo 1)."
+            prompt = f"""REGLAS ESTRÍCTAS (lee primero y obedece siempre):
+                - SOLO respondes preguntas PURAS de matemáticas (3° secundaria a Cálculo 1).
+                - SI la pregunta incluye "traduce", "traducción", "al inglés", "al francés", "explícala en otro idioma" o CUALQUIER mención a idioma diferente del español → responde SOLO esta frase y nada más:
+                "Esta consulta no es de mi área (matemáticas de 3° de secundaria hasta Cálculo 1). Puedo ayudarte con resolución de problemas, demostraciones y explicaciones paso a paso."
+                - NO traduzcas NUNCA, ni siquiera partes de la pregunta.
+                - NO respondas nada extra si no es matemática pura.
 
-Pregunta: {query_to_process}"""
+                Pregunta: {query_to_process}
+
+                Responde SIEMPRE en español, claro, educativo y paso a paso. Usa ejemplos cotidianos si ayuda. Sin saludos ni texto innecesario."""
 
             try:
                 stream = ollama_client.chat(
@@ -178,11 +182,11 @@ Pregunta: {query_to_process}"""
             }
             responses.append(response_event)
 
-            # Solo agregar yieldFloor si realmente respondimos (y SIN parámetros)
+            # Solo agregar yieldFloor si realmente respondimos
             if reply and "no es de mi área" not in reply.lower():
                 responses.append({
                     "eventType": "yieldFloor",
-                    "parameters": {}   # ← CORREGIDO: vacío, sin "message"
+                    "parameters": {}   # vacío, sin "message"
                 })
 
         # Respuesta final

@@ -99,7 +99,7 @@ def get_manifest():
                         "name": "PhysicsExplainer",
                         "description": "Explica conceptos de física (grados 9-10). Usa RAG de libro NCTB. Soporta delegación.",
                         "keywords": ["física", "movimiento", "fuerzas", "gravedad", "energía", "electricidad", "óptica"],
-                        "languages": ["es", "en"],
+                        "languages": ["es"],
                         "modalities": ["text"],
                         "capabilities": ["explanation", "problem-solving", "rag-enhanced", "delegation-accept"]
                     }
@@ -195,18 +195,19 @@ def handle_receive():
                     logger.error(f"[PHYSICS] Error RAG: {rag_err}")
                     context = "(No se pudo recuperar contexto del libro)"
 
-            prompt = f"""Eres un experto en física escolar (grados 9-10). 
-Usa el siguiente contexto del libro cuando sea relevante.
-Si la pregunta NO es sobre física (movimiento, fuerzas, energía, gravedad, electricidad, óptica, termodinámica, etc.), responde SOLO:
-"Esta consulta no es de mi área (física escolar). Puedo ayudarte con conceptos de física, cálculos básicos y explicaciones."
+            prompt = f"""REGLAS ESTRÍCTAS (lee primero y obedece siempre):
+            - SOLO respondes preguntas PURAS de física escolar (grados 9-10).
+            - SI la pregunta incluye "traduce", "traducción", "al inglés", "al francés", "explícala en otro idioma" o CUALQUIER mención a idioma diferente del español → responde SOLO esta frase y nada más:
+            "Esta consulta no es de mi área (física escolar). Puedo ayudarte con conceptos de física, cálculos básicos y explicaciones."
+            - NO traduzcas NUNCA, ni siquiera partes de la pregunta.
+            - NO respondas nada extra si no es física pura.
 
-Contexto:
-{context}
+            Contexto del libro (úsalo solo si es relevante):
+            {context}
 
-Pregunta: {query_to_process}
+            Pregunta: {query_to_process}
 
-Responde en español, de forma clara, educativa y paso a paso si hay cálculos. Usa ejemplos cotidianos cuando sea útil. No añadas saludos ni texto innecesario."""
-
+            Responde SIEMPRE en español, claro, educativo y paso a paso si hay cálculos. Usa ejemplos cotidianos si ayuda. Sin saludos ni texto innecesario."""
             try:
                 stream = ollama_client.chat(
                     model=SECONDARY_MODEL,
@@ -261,7 +262,7 @@ Responde en español, de forma clara, educativa y paso a paso si hay cálculos. 
             if reply and "no es de mi área" not in reply.lower() and "error" not in reply.lower():
                 responses.append({
                     "eventType": "yieldFloor",
-                    "parameters": {}   # ← CORREGIDO: vacío, como exige el schema
+                    "parameters": {}   # vacío como exige el schema
                 })
 
         # Envelope final

@@ -130,17 +130,20 @@ def handle_receive():
                     "parameters": {"message": f"Evento no soportado: {event_type}"}
                 })
 
-        # Procesar query si existe
+        # Procesar query si existe (AHORA AL MISMO NIVEL DE INDENTACIÓN QUE EL FOR)
         if query_to_process:
-            prompt = f"""Eres LingoNaut, un asistente experto en idiomas.
-Detecta automáticamente el idioma de origen.
-Traduce, corrige gramática, explica expresiones idiomáticas o enseña vocabulario según la consulta.
-Si la pregunta NO es sobre traducción, gramática, corrección, vocabulario o aprendizaje de idiomas, responde SOLO:
-"Esta consulta no es de mi área (idiomas/traducción). Puedo ayudarte con traducciones, gramática o práctica de idiomas."
+            # Prompt limpio y sin variables no definidas
+            prompt = f"""Eres un traductor preciso y literal. Tu única tarea es traducir el texto exactamente al idioma solicitado.
 
-Instrucciones del usuario: {query_to_process}
+            Reglas estrictas:
+            - Traduce SOLO el texto proporcionado.
+            - Mantén el significado, estructura, pasos y detalles originales al 100 %.
+            - NO expliques, NO reformules, NO añadas comentarios educativos ni "pasos".
+            - NO detectes idioma ni hagas nada más que traducir.
+            - Si no es una instrucción clara de traducción, responde SOLO: "Solo traduzco texto."
 
-Responde de forma natural, precisa y educativa. Si es traducción, responde SOLO con el texto traducido (sin explicaciones extras a menos que se pida)."""
+            Texto completo a traducir:
+            {query_to_process}"""
 
             try:
                 stream = ollama_client.chat(
@@ -148,7 +151,7 @@ Responde de forma natural, precisa y educativa. Si es traducción, responde SOLO
                     messages=[{'role': 'user', 'content': prompt}],
                     stream=True,
                     options={
-                        "temperature": 0.1,
+                        "temperature": 0.0,
                         "num_predict": 1024,
                         "num_gpu": -1,
                         "num_thread": 0
@@ -160,12 +163,13 @@ Responde de forma natural, precisa y educativa. Si es traducción, responde SOLO
                     if 'message' in chunk and 'content' in chunk['message']:
                         reply += chunk['message']['content']
 
-                reply = reply.strip() or "No pude procesar la traducción o consulta lingüística."
+                reply = reply.strip() or "No pude procesar la traducción."
 
             except Exception as ollama_err:
                 logger.error(f"[TRANSLATOR] Error Ollama: {ollama_err}")
                 reply = "Error al procesar la consulta lingüística."
 
+            # Generación de eventos de respuesta
             now = datetime.utcnow()
             start_iso = now.isoformat() + "Z"
             end_iso = (now + timedelta(seconds=2)).isoformat() + "Z"
@@ -190,14 +194,14 @@ Responde de forma natural, precisa y educativa. Si es traducción, responde SOLO
             }
             responses.append(response_event)
 
-            # yieldFloor SOLO si hubo respuesta útil (y SIN parámetros)
+            # yieldFloor si respuesta válida
             if reply and "no es de mi área" not in reply.lower() and "error" not in reply.lower():
                 responses.append({
                     "eventType": "yieldFloor",
-                    "parameters": {}   # ← CORREGIDO: vacío, sin "message"
+                    "parameters": {}
                 })
 
-        # Respuesta final
+        # Respuesta final (SIEMPRE dentro del try principal)
         response_payload = {
             "openFloor": {
                 "schema": {"version": "1.1.0"},
