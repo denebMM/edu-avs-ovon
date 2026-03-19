@@ -226,4 +226,14 @@ Thu Feb 19 16:53:46 2026
 |  No running processes found                                                             |
 +-----------------------------------------------------------------------------------------+
 
+1. Verificar en qué carpeta estoy 
+git status  
 
+2. Agrega los archivos
+git add .
+
+3. Haz el commit
+git commit -m "Descripción de los cambios"
+
+4. Sube (push) al repositorio
+git push

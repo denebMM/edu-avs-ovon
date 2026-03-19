@@ -202,21 +202,22 @@ def handle_query():
     classification_prompt = f"""Clasifica esta pregunta en UNA O MÁS categorías (separadas por coma, máximo 3): 
     alice, physics, history, translator, mathbuddy, none.
 
-    REGLAS JERÁRQUICAS OBLIGATORIAS (aplica en este orden):
-    1. SI contiene "traduce", "traducción", "translate", "al [idioma]", "to [language]", "explica en", "responde en" → INCLUYE SIEMPRE "translator" (incluso si hay otra categoría).
-    2. SI la pregunta es sobre matemáticas (números, ecuaciones, logaritmos, "calcula", "resuelve", "encuentra", álgebra, cálculo, geometría, teorema de Pitágoras, hipotenusa, vértice, función cuadrática) → "mathbuddy".
-    3. SI es física (gravedad, órbita, movimiento, fuerzas, energía, electricidad, óptica, termodinámica, Newton) → "physics".
-    4. SI es historia (guerras, revoluciones, imperios, personajes históricos, eventos del pasado, civil servant, ground-rents, colonial, British Empire) → "history".
-    5. SI es conversación general, chistes, opiniones → "alice".
-    6. SI no encaja en nada → "none".
+    REGLAS OBLIGATORIAS (en este orden):
+    1. Si hay "traduce", "traducción", "translate", "al [idioma]", "to [language]", "explica en", "responde en" → INCLUYE SIEMPRE "translator".
+    2. Matemáticas puras (ecuaciones, funciones, derivadas, logaritmos, cálculo, geometría, vértice, hipotenusa, Pitágoras sin contexto físico) → mathbuddy.
+    3. Física aplicada (gravedad, movimiento, fuerzas, leyes de Newton, energía cinética en objetos reales, órbitas, colisiones, teoría de cuerdas, qué es la energía cinética, conceptos de energía) → physics.
+    - Solo fórmulas sin contexto real → mathbuddy, NO physics.
+    4. Historia, guerras, imperios, eventos pasados → history.
+    5. Conversación general, chistes, opiniones → alice.
+    6. Nada de lo anterior → none.
 
     IMPORTANTE:
-    - Prioriza SIEMPRE "translator" si hay instrucción de idioma.
-    - NO clasifiques como physics solo por "triángulo", "hipotenusa" o "Pitágoras" si es cálculo geométrico puro (eso es mathbuddy).
-   
+    - Prioriza translator si hay instrucción de idioma.
+    - NUNCA pongas physics solo por fórmulas o "energía cinética" sin aplicación real, pero SI es "qué es la energía cinética" → physics.
+
     Pregunta: {user_query}
 
-    Responde SOLO con las categorías (ej: mathbuddy, translator), sin explicación ni texto extra."""
+    Responde SOLO con las categorías, SEPARADAS por coma, sin explicación ni texto extra."""
         
     intent_response = ollama_client.chat(
         model='llama3.1:8b',
