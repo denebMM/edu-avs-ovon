@@ -8,6 +8,7 @@ import os
 import json
 from colorama import Fore, Style
 import logging
+import time
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -22,7 +23,8 @@ AGENTS = {
     "alice": "http://assistant_alice:5005/receive",
     "history": "http://assistant_history:5003/receive",
     "translator": "http://assistant_translator:5010/receive",
-    "mathbuddy": "http://assistant_mathbuddy:5011/receive"
+    "mathbuddy_avanzado": "http://assistant_mathbuddy_avanzado:5011/receive",
+    "mathbuddy_basico": "http://assistant_mathbuddy_basico:5012/receive"
 }
 
 ORCHESTRATOR_URL = "http://orchestrator:5000/receive"
@@ -197,28 +199,39 @@ def handle_query():
     if not user_query or not isinstance(user_query, str):
         return jsonify({"error": "Falta 'query'"}), 400
 
+    # === INICIO DE MEDICIÓN DE TIEMPO PARA MÉTRICAS ===
+    start_time = time.time()  # Marca el inicio del procesamiento completo    
+
     # 1. Clasificación
-  
     classification_prompt = f"""Clasifica esta pregunta en UNA O MÁS categorías (separadas por coma, máximo 3): 
-    alice, physics, history, translator, mathbuddy, none.
+    alice, physics, history, translator, mathbuddy_basico, mathbuddy_avanzado, none.
 
     REGLAS OBLIGATORIAS (en este orden):
-    1. Si hay "traduce", "traducción", "translate", "al [idioma]", "to [language]", "explica en", "responde en" → INCLUYE SIEMPRE "translator".
-    2. Matemáticas puras (ecuaciones, funciones, derivadas, logaritmos, cálculo, geometría, vértice, hipotenusa, Pitágoras sin contexto físico) → mathbuddy.
-    3. Física aplicada (gravedad, movimiento, fuerzas, leyes de Newton, energía cinética en objetos reales, órbitas, colisiones, teoría de cuerdas, qué es la energía cinética, conceptos de energía) → physics.
-    - Solo fórmulas sin contexto real → mathbuddy, NO physics.
-    4. Historia, guerras, imperios, eventos pasados → history.
-    5. Conversación general, chistes, opiniones → alice.
-    6. Nada de lo anterior → none.
+    1. TRADUCCIÓN: Si hay "traduce", "traducción", "translate", "al [idioma]", "to [language]", "explica en", "responde en" → INCLUYE SIEMPRE "translator".
+
+    2. MATEMÁTICAS BÁSICAS: primaria/secundaria baja (sumas, restas, fracciones simples, porcentajes, ecuaciones lineales básicas, geometría elemental) → mathbuddy_basico.
+
+    3. MATEMÁTICAS AVANZADAS: secundaria alta hasta Cálculo 1 (álgebra intermedia, trigonometría, funciones, límites, derivadas, integrales básicas, ecuaciones cuadráticas, logaritmos) → mathbuddy_avanzado.
+    - Mezcla básico y avanzado → incluye ambos.
+
+    4. FÍSICA: SI menciona conceptos físicos centrales (leyes de Newton, energía cinética, gravedad, movimiento de objetos, fuerzas, órbitas, colisiones, teoría de cuerdas, qué es la energía cinética, qué son las leyes de Newton) → physics.
+    - Derivadas, pendientes, funciones o fórmulas SOLAS sin contexto físico real → mathbuddy_avanzado, NO physics.
+
+    5. HISTORIA: guerras, revoluciones, imperios, eventos pasados → history.
+
+    6. GENERAL: conversación, chistes, opiniones → alice.
+
+    7. NADA → none.
 
     IMPORTANTE:
+    - NUNCA clasifiques como mathbuddy_basico o mathbuddy_avanzado si es "explica las leyes de Newton" o "qué es la energía cinética" → SIEMPRE physics.
     - Prioriza translator si hay instrucción de idioma.
     - NUNCA pongas physics solo por fórmulas o "energía cinética" sin aplicación real, pero SI es "qué es la energía cinética" → physics.
 
     Pregunta: {user_query}
 
     Responde SOLO con las categorías, SEPARADAS por coma, sin explicación ni texto extra."""
-        
+    
     intent_response = ollama_client.chat(
         model='llama3.1:8b',
         messages=[{'role': 'user', 'content': classification_prompt}],
@@ -236,42 +249,32 @@ def handle_query():
     conversation_id = str(uuid.uuid4())
     responses_map = {}
 
-    # Detectar idioma objetivo
+    # Detectar idioma objetivo (más idiomas)
     idioma_objetivo = "español"
-    for lang in ["inglés", "francés", "chino", "japonés", "alemán", "italiano", "portugués"]:
+    for lang in ["inglés", "francés", "chino", "japonés", "alemán", "italiano", "portugués", "ruso"]:
         if f"traduce al {lang}" in user_query.lower() or f"explícala en {lang}" in user_query.lower():
             idioma_objetivo = lang
             break
     logger.info(f"Idioma objetivo: {idioma_objetivo}")
     print(f"{Fore.MAGENTA}Idioma objetivo: {idioma_objetivo}{Style.RESET_ALL}")
 
-    # Extraer pregunta real y detectar si hay traducción
-    pregunta_real = user_query
+    # Extraer pregunta real (más robusto)
+    pregunta_real = user_query.strip()
     pregunta_original_para_trad = user_query
-    hay_traduccion = False
+    hay_traduccion = any(palabra in user_query.lower() for palabra in [
+        "traduce al", "traducción al", "translate to", "traduce a", "traducción a",
+        "al inglés", "al francés", "al italiano", "al portugués", "al alemán", "al chino"
+    ])
 
-    if any(palabra in user_query.lower() for palabra in [
-        "traduce al",
-         "traducción al", 
-         "al inglés", 
-         "al francés"]):
-        hay_traduccion = True
-        separadores = [
-            ": ", 
-            "la siguiente: ", 
-            "la pregunta: ",
-            "esta pregunta: ",
-             "traduce ", 
-             "traducción ", 
-             "explica en ", 
-             "responde en "]
+    if hay_traduccion:
+        separadores = [": ", " : ", "la siguiente: ", "la pregunta: ", "esta pregunta: ", "traduce ", "traducción ", "explica en ", "responde en "]
         for sep in separadores:
             if sep in user_query:
                 partes = user_query.split(sep, 1)
                 if len(partes) > 1:
                     pregunta_real = partes[1].strip()
                     break
-        pregunta_real = pregunta_real.strip(' "¿¡?').strip()
+        pregunta_real = pregunta_real.strip(' "¿¡?.,:;').strip()
         logger.info(f"Pregunta real extraída: {pregunta_real}")
         print(f"{Fore.CYAN}Pregunta real extraída: {pregunta_real}{Style.RESET_ALL}")
 
@@ -302,6 +305,18 @@ def handle_query():
             logger.info(f"{agent_key.capitalize()} respondió: {reply[:150]}...")
             print(f"{Fore.GREEN}{agent_key.capitalize()} respondió: {reply[:150]}...{Style.RESET_ALL}")
 
+    # Chaining simple entre mathbuddy_basico y mathbuddy_avanzado (opcional pero útil)
+    if "mathbuddy_basico" in intents and "mathbuddy_avanzado" in intents:
+        reply_basico = responses_map.get("mathbuddy_basico", "")
+        if reply_basico:
+            text_avanzado = f"Explicación básica recibida:\n{reply_basico}\n\nAhora responde la parte avanzada de la pregunta original: {user_query}"
+            resp_avanzado = send_ovon_event(AGENTS["mathbuddy_avanzado"], create_utterance_event(text_avanzado), conversation_id)
+            reply_avanzado = extract_reply_from_ovon(resp_avanzado)
+            if "no es de mi área" not in reply_avanzado.lower():
+                responses_map["mathbuddy_avanzado"] = reply_avanzado
+                expert_results.append(f"[MATHBUDDY-AVANZADO]: {reply_avanzado}")
+                logger.info("Chaining básico → avanzado completado")
+
     # 3. Contexto completo para traductor
     contexto_para_traductor = f"Pregunta original: {pregunta_original_para_trad}\n\nRespuestas de expertos:\n" + "\n\n".join(expert_results)
     if not expert_results:
@@ -315,7 +330,7 @@ def handle_query():
         
         resp_final = send_ovon_event(AGENTS["translator"], create_utterance_event(trans_final_prompt), conversation_id)
         traduccion_final = extract_reply_from_ovon(resp_final)
-        responses_map["traductor"] = traduccion_final
+        responses_map["translator"] = traduccion_final
         final_reply = traduccion_final
         logger.info(f"Traducción final al {idioma_objetivo}: {traduccion_final[:150]}...")
         print(f"{Fore.GREEN}Traducción final al {idioma_objetivo}: {traduccion_final[:150]}...{Style.RESET_ALL}")
@@ -327,6 +342,24 @@ def handle_query():
         logger.info("=== RESPUESTAS FINALES (OFP) ===")
         print(f"{Fore.YELLOW}=== RESPUESTAS FINALES (OFP) ==={Style.RESET_ALL}")
         print(json.dumps(response_payload, indent=2, ensure_ascii=False))
+    
+    # === NUEVO: REGISTRO DE MÉTRICAS ===
+    total_time = time.time() - start_time  # Calcula tiempo total
+
+    try:
+        from metrics.metrics_collector import MetricsCollector
+        collector = MetricsCollector(storage_path="metrics")
+        collector.record_query(
+            query=user_query,
+            intents=intents,
+            responses_map=responses_map,
+            final_envelope=response_payload,
+            total_time=total_time
+        )
+        logger.info("Métricas registradas correctamente")
+    except Exception as metrics_err:
+        logger.error(f"Error al registrar métricas: {metrics_err}")
+    # Fin del registro de métricas
 
     return jsonify(response_payload)
 

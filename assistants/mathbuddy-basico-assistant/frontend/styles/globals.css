@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --accent-light: 30, 144, 255; /* Accent color for light mode */
+  --accent-dark: 70, 130, 180; /* Accent color for dark mode */
+}
+
+/* Utility class for text balance */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* General chat message styling */
+.chat-message {
+  @apply mb-2 p-2 rounded-lg max-w-[80%];
+}
+
+/* Specific user message styling */
+.user-message {
+  @apply ml-auto;
+}
+
+/* Specific bot message styling */
+.bot-message {
+  @apply mb-2 p-2 rounded-lg;
+}

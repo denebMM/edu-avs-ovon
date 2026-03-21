@@ -237,3 +237,8 @@ git commit -m "Descripción de los cambios"
 
 4. Sube (push) al repositorio
 git push
+
+
+# PARA Abrir la carpeta directamente en el Explorador de Windows desde WSL
+cd ~/tesis/edu-avs-ovon
+explorer.exe .

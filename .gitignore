@@ -2,4 +2,7 @@
 vectorDB/
 *.bin
 *.sqlite3
+# Ignorar carpeta de métricas generadas automáticamente
+metrics/*.csv
+metrics/*.json
 

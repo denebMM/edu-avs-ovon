@@ -41,6 +41,7 @@ services:
       - ollama
     volumes:
       - ./schemas:/app/schemas
+      - ./orchestrator/metrics:/app/metrics
     networks:
       - ofp_network
 
@@ -107,9 +108,9 @@ services:
     networks:
       - ofp_network
 
-  assistant_mathbuddy:
-    build: ./assistants/mathbuddy-assistant/backend
-    container_name: assistant_mathbuddy
+  assistant_mathbuddy_avanzado:
+    build: ./assistants/mathbuddy-avanzado-assistant/backend
+    container_name: assistant_mathbuddy_avanzado
     ports:
       - "5011:5011"
     environment:
@@ -119,7 +120,21 @@ services:
     volumes:
       - ./schemas:/app/schemas
     networks:
-      - ofp_network    
+      - ofp_network
+
+  assistant_mathbuddy_basico:
+    build: ./assistants/mathbuddy-basico-assistant/backend                     # ← Crea esta carpeta con el wrapper básico
+    container_name: assistant_mathbuddy_basico
+    ports:
+      - "5012:5012"                                           # Puerto diferente
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+    depends_on:
+      - ollama
+    volumes:
+      - ./schemas:/app/schemas
+    networks:
+      - ofp_network        
 
 networks:
   ofp_network:
