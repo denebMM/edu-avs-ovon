@@ -1,2 +1,0 @@
-run_id,timestamp,query,classified_as,agents_used,total_latency_sec,envelope_valid,num_agents,has_chaining,raw_responses
-8776f421,2026-03-21T23:03:19.134593,Encuentra el valor de log₂(32) + log₂(8),"mathbuddy_avanzado, none",['mathbuddy_avanzado'],124.128,True,1,False,"{'mathbuddy_avanzado': 'Para resolver el problema, necesitamos usar la propiedad de los logaritmos que establece que la suma de dos logaritmos con la misma base es igual al logaritmo de la multiplicación de los números dentr...'}"
