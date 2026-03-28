@@ -1,41 +1,39 @@
+# api_wrapper.py  (en la carpeta wrapper/)
 from flask import Flask, request, jsonify
-import ollama
+import requests
 import json
+import os
 from datetime import datetime, timedelta
-import uuid
+import logging
 import jsonschema
 from pathlib import Path
-import logging
 
-# Logging para depurar
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 
-OLLAMA_HOST = "http://host.docker.internal:11434"
-ollama_client = ollama.Client(host=OLLAMA_HOST)
-
-MATHBUDDY_SERVICE_URL = "http://assistant_mathbuddy:5011/receive"
+# ==================== CONFIG ====================
+MATHBUDDY_INTERNAL_URL = "http://mathbuddy-avanzado-backend:8080"  # nombre del servicio FastAPI
 MATHBUDDY_SPEAKER_URI = "tag:mathbuddy.local,2026:mb001"
+MATHBUDDY_API_KEY = os.getenv("MATHBUDDY_API_KEY", "mathbuddy-secret-key-2026")
 
 SCHEMA_PATH = "/app/schemas/conversation-envelope-schema_v1.1.0.json"
 
 try:
     with open(SCHEMA_PATH, 'r', encoding='utf-8') as f:
         OFP_SCHEMA = json.load(f)
+    logger.info("Schema OFP cargado correctamente desde %s", SCHEMA_PATH)
 except Exception as e:
-    raise RuntimeError(f"Error cargando schema OFP: {e}")
+    logger.critical("No se pudo cargar el schema OFP: %s", e)
+    raise RuntimeError(f"Schema OFP no encontrado: {e}")
 
 def validate_envelope(data, context=""):
     try:
         jsonschema.validate(instance=data, schema=OFP_SCHEMA)
         logger.info(f"Envelope válido ({context})")
-    except jsonschema.exceptions.ValidationError as e:
-        logger.error(f"ERROR VALIDACIÓN OFP ({context}): {e.message}")
-        logger.error(f"Path: {list(e.path)}")
-        logger.error(f"Valor que falla: {e.instance}")
-        logger.error(f"Envelope que falló:\n{json.dumps(data, indent=2, ensure_ascii=False)}")
+    except Exception as e:
+        logger.error(f"ERROR VALIDACIÓN ({context}): {e}")
         raise ValueError(f"Invalid OFP envelope: {e}")
 
 def get_manifest():
@@ -46,11 +44,14 @@ def get_manifest():
                 "eventType": "publishManifest",
                 "parameters": {
                     "manifest": {
-                        "service": {"url": MATHBUDDY_SERVICE_URL, "speakerUri": MATHBUDDY_SPEAKER_URI},
+                        "service": {
+                            "url": "http://assistant_mathbuddy_avanzado:5011/receive",
+                            "speakerUri": MATHBUDDY_SPEAKER_URI
+                        },
                         "role": "Tutor de Matemáticas Avanzadas",
                         "name": "MathBuddy Avanzado",
-                        "description": "Tutor IA especializado en matemáticas desde 2° de secundaria hasta Cálculo 1 (álgebra intermedia, trigonometría, funciones, límites, derivadas, integrales básicas).",
-                        "keywords": ["matemáticas avanzadas", "secundaria alta", "cálculo", "tutor"],
+                        "description": "Tutor IA especializado en matemáticas desde 2° de secundaria hasta Cálculo 1 (álgebra intermedia, trigonometría, funciones, límites, derivadas, integrales).",
+                        "keywords": ["matemáticas avanzadas", "cálculo", "tutor"],
                         "languages": ["es"],
                         "modalities": ["text"],
                         "capabilities": ["step-by-step", "problem-solving", "delegation-accept"]
@@ -68,7 +69,7 @@ def publish_manifest():
 def handle_receive():
     try:
         data = request.get_json() or {}
-        validate_envelope(data, context="entrada recibida")
+        validate_envelope(data, "entrada recibida")
 
         openfloor = data.get('openFloor', {})
         events = openfloor.get('events', [])
@@ -88,91 +89,70 @@ def handle_receive():
 
             elif event_type == 'utterance':
                 try:
-                    dialog = event['parameters']['dialogEvent']
-                    tokens = dialog['features']['text']['tokens']
+                    tokens = event['parameters']['dialogEvent']['features']['text']['tokens']
                     query_to_process = tokens[0]['value'] if tokens else ""
-                    logger.info(f"Query recibida: {query_to_process}")
+                    logger.info(f"Query recibida: {query_to_process[:100]}...")
                 except Exception as ex:
                     logger.error(f"Error extrayendo utterance: {ex}")
-                    responses.append({"eventType": "error", "parameters": {"message": "Error en formato utterance"}})
-                    continue
 
             elif event_type == 'request_delegation':
                 responses.append({
                     "eventType": "accept_delegation",
-                    "parameters": {
-                        "reason": "Aceptado por MathBuddy Avanzado para subtarea matemática avanzada",
-                        "accepted": True
-                    }
-                })
-                logger.info("Delegación aceptada")
-
-            elif event_type == 'transfer_control':
-                responses.append({
-                    "eventType": "accept_transfer_control",
-                    "parameters": {"reason": "Control aceptado por MathBuddy Avanzado"}
+                    "parameters": {"accepted": True, "reason": "MathBuddy Avanzado acepta subtarea avanzada"}
                 })
 
-            elif event_type == 'yieldFloor':
-                responses.append({
-                    "eventType": "ack",
-                    "parameters": {"message": "Piso recibido por MathBuddy Avanzado"}
-                })
+            elif event_type in ['transfer_control', 'yieldFloor']:
+                responses.append({"eventType": "ack", "parameters": {}})
 
-            else:
-                responses.append({
-                    "eventType": "error",
-                    "parameters": {"message": f"Evento no soportado: {event_type}"}
-                })
-
-        # Procesar query si existe
         if query_to_process:
-            prompt = f"""REGLAS ESTRÍCTAS (lee primero y obedece siempre):
-- SOLO respondes preguntas PURAS de matemáticas de nivel avanzado (2° secundaria hasta Cálculo 1): álgebra intermedia, trigonometría, funciones, límites, derivadas, integrales básicas, ecuaciones cuadráticas y de grado superior simples, sistemas de ecuaciones, progresiones, probabilidad y estadística básica, geometría analítica.
-- SI la pregunta es demasiado básica (aritmética simple, sumas, restas, fracciones elementales, porcentajes sin contexto avanzado, ecuaciones lineales muy simples) → responde SOLO esta frase y nada más:
-  "Esta consulta es demasiado básica para mí (MathBuddy Avanzado). Puedo ayudarte con álgebra intermedia, trigonometría, cálculo y temas de secundaria alta. Intenta con MathBuddy Básico o reformula la pregunta."
-- SI la pregunta incluye "traduce", "traducción", "al inglés", "al francés", "explícala en otro idioma" o CUALQUIER mención a idioma diferente del español → responde SOLO esta frase y nada más:
-  "Esta consulta no es de mi área (matemáticas avanzadas). Puedo ayudarte con álgebra intermedia, trigonometría, derivadas, integrales y temas de secundaria alta."
-- NO traduzcas NUNCA, ni siquiera partes de la pregunta.
-- NO respondas nada extra si no es matemática avanzada.
+            # Inyectamos reglas de colaboración
+            
+            enriched_query = f"""Eres MathBuddy Avanzado. Tu objetivo es resolver la parte compleja de una cadena de colaboración educativa.
 
-Pregunta: {query_to_process}
+            REGLAS ESTRÍCTAS DE COLABORACIÓN:
+            1. FOCO TÉCNICO: Solo resuelves álgebra intermedia, trigonometría, cálculo (límites, derivadas, integrales) y geometría analítica.
+            2. INTEGRACIÓN DE CONTEXTO: 
+             - SI el mensaje contiene "[Aporte de physics]": Toma las fórmulas físicas planteadas como hechos absolutos. No expliques la física, solo ejecuta el cálculo avanzado resultante (ej. derivar la ecuación de posición).
+             - SI el mensaje contiene "[Aporte de mathbuddy_basico]": Utiliza los resultados aritméticos ya obtenidos. No vuelvas a sumar o restar lo que ya se resolvió; parte de esos valores para el siguiente paso complejo.
+            3. RECHAZO INTELIGENTE: 
+             - Si la consulta es 100% aritmética básica (ej. "cuánto es 5+5") y NO hay contexto de otros agentes → responde exactamente: "Esta consulta es demasiado básica para mí (MathBuddy Avanzado). Intenta con MathBuddy Básico."
+             - Si la consulta es mixta, IGNORA la parte básica (deja que el otro agente la haga) y responde SOLO la parte avanzada.
+            4. FORMATO:
+             - NO saludes, NO des la bienvenida y NO uses frases como "¡Hola!" o "Claro, te ayudo".
+             - Usa SIEMPRE español educativo y motivador.
+             - Usa KaTeX para fórmulas.
+             - Responde paso a paso, sin saludos ni introducciones.
 
-Responde SIEMPRE en español, claro, educativo y paso a paso. Usa ejemplos cotidianos o gráficos mentales cuando ayude. Sin saludos ni texto innecesario."""
+            Pregunta/Contexto del usuario: {query_to_process}"""
 
+            # Llamada al servicio MathBuddy real (FastAPI)
             try:
-                stream = ollama_client.chat(
-                    model='llama3.1:8b',  # o 'llama3.1:70b' si tienes GPU y quieres más precisión
-                    messages=[{'role': 'user', 'content': prompt}],
-                    stream=True,
-                    options={
-                        "temperature": 0.3,
-                        "num_predict": 1200,
-                        "num_gpu": -1
-                    }
+                resp = requests.post(
+                    f"{MATHBUDDY_INTERNAL_URL}/chat",
+                    json={
+                        "message": enriched_query,
+                        "session_id": conversation_id or "default-mathbuddy-session"
+                    },
+                    headers={"X-API-Key": MATHBUDDY_API_KEY},
+                    timeout=90
                 )
+                resp.raise_for_status()
+                reply = resp.json().get("response", "No pude generar respuesta.")
+            except Exception as e:
+                logger.error(f"Error llamando a MathBuddy backend: {e}")
+                reply = "Error interno del tutor avanzado. Inténtalo de nuevo."
 
-                reply = ""
-                for chunk in stream:
-                    if 'message' in chunk and 'content' in chunk['message']:
-                        reply += chunk['message']['content']
-
-                reply = reply.strip() or "No pude resolver."
-
-            except Exception as ollama_err:
-                logger.error(f"Error Ollama: {ollama_err}")
-                reply = "Error al procesar la pregunta matemática avanzada."
-
+            # Evento de respuesta
             now = datetime.utcnow()
-            start_iso = now.isoformat() + "Z"
-            end_iso = (now + timedelta(seconds=2)).isoformat() + "Z"
-
             response_event = {
                 "eventType": "utterance",
                 "parameters": {
                     "dialogEvent": {
                         "speakerUri": MATHBUDDY_SPEAKER_URI,
-                        "span": {"startTime": start_iso, "endTime": end_iso},
+                        "span": {
+                            "startTime": now.isoformat() + "Z",
+                            "endTime": (now + timedelta(seconds=4)).isoformat() + "Z"
+                        },
                         "features": {
                             "text": {
                                 "mimeType": "text/plain",
@@ -184,15 +164,11 @@ Responde SIEMPRE en español, claro, educativo y paso a paso. Usa ejemplos cotid
             }
             responses.append(response_event)
 
-            # Solo agregar yieldFloor si realmente respondimos
-            if reply and "no es de mi área" not in reply.lower() and "demasiado básica" not in reply.lower():
-                responses.append({
-                    "eventType": "yieldFloor",
-                    "parameters": {}   # vacío, sin "message"
-                })
+            if "demasiado básica" not in reply.lower():
+                responses.append({"eventType": "yieldFloor", "parameters": {}})
 
-        # Respuesta final
-        response_payload = {
+        # Payload final
+        payload = {
             "openFloor": {
                 "schema": {"version": "1.1.0"},
                 "conversation": {"id": conversation_id} if conversation_id else {},
@@ -201,25 +177,14 @@ Responde SIEMPRE en español, claro, educativo y paso a paso. Usa ejemplos cotid
             }
         }
 
-        validate_envelope(response_payload, context="respuesta que enviamos")
-        return jsonify(response_payload)
+        validate_envelope(payload, "respuesta enviada")
+        return jsonify(payload)
 
     except ValueError as ve:
-        logger.error(f"Error de validación: {ve}")
-        return jsonify({
-            "openFloor": {
-                "schema": {"version": "1.1.0"},
-                "events": [{"eventType": "error", "parameters": {"message": str(ve)}}]
-            }
-        }), 400
+        return jsonify({"openFloor": {"schema": {"version": "1.1.0"}, "events": [{"eventType": "error", "parameters": {"message": str(ve)}}]}}), 400
     except Exception as e:
-        logger.exception("Error general en MathBuddy Avanzado")
-        return jsonify({
-            "openFloor": {
-                "schema": {"version": "1.1.0"},
-                "events": [{"eventType": "error", "parameters": {"message": str(e)}}]
-            }
-        }), 500
+        logger.exception("Error general en wrapper MathBuddy Avanzado")
+        return jsonify({"openFloor": {"schema": {"version": "1.1.0"}, "events": [{"eventType": "error", "parameters": {"message": "Error interno"}}]}}), 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5011, debug=False)
+    app.run(host='0.0.0.0', port=5011)

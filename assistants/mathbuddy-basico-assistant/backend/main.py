@@ -3,36 +3,35 @@ from dotenv import load_dotenv
 import logging
 import uuid
 import json
+import re
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Dict, Any
-from openai import OpenAI
-import requests
-import re
 from fastapi.security import APIKeyHeader
 from starlette.status import HTTP_403_FORBIDDEN
 from datetime import datetime, timedelta
 
-# Load environment variables
+import sympy as sp
+from sympy import latex
+import ollama
+
 load_dotenv()
 
-# Check for required environment variables
-required_env_vars = ["OPENAI_API_KEY", "WOLFRAM_ALPHA_APP_ID", "API_KEY", "FRONTEND_URL"]
+# Validación de variables
+required_env_vars = ["API_KEY", "OLLAMA_MODEL"]
 for var in required_env_vars:
     if not os.getenv(var):
-        raise ValueError(f"{var} not found in environment variables")
+        raise ValueError(f"{var} no encontrada en el entorno")
 
-# Setup logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = FastAPI()
 
-# CORS middleware setup
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[os.getenv("FRONTEND_URL")],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -42,180 +41,115 @@ class Query(BaseModel):
     message: str
     session_id: str
 
-class SessionResponse(BaseModel):
-    session_id: str
-
-# In-memory session storage (replace with a database in production)
 sessions: Dict[str, Dict[str, Any]] = {}
 
-# Rate limiting
-RATE_LIMIT = 50  # requests per day
-rate_limit_data: Dict[str, Dict[str, Any]] = {}
-
-# API key security
 API_KEY_NAME = "X-API-Key"
 api_key_header = APIKeyHeader(name=API_KEY_NAME, auto_error=False)
 
 async def get_api_key(api_key_header: str = Depends(api_key_header)):
-    expected_api_key = os.getenv("API_KEY")
-    logger.info(f"Received API Key: {api_key_header}, Expected: {expected_api_key}")  # Debug print
-    if api_key_header == expected_api_key:
+    if api_key_header == os.getenv("API_KEY"):
         return api_key_header
-    raise HTTPException(
-        status_code=HTTP_403_FORBIDDEN, detail="Could not validate API KEY"
-    )
+    raise HTTPException(status_code=HTTP_403_FORBIDDEN, detail="API Key Inválida")
 
-# Initialize OpenAI
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+# ==================== OLLAMA CONFIG ====================
+OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "llama3.1:8b")
 
-SYSTEM_PROMPT = """
-You are MathBuddy, a concise AI math tutor for topics from 3rd grade to Calculus 1. Your primary goals are:
-
-1. Be extremely brief and to the point in all responses.
-2. Use only KaTeX syntax for formatting. Inline formulas use single dollar signs ($...$) and display formulas use double dollar signs ($$...$$).
-3. Do not use any Markdown formatting. Only plain text and KaTeX are allowed.
-4. Guide students with brief questions and hints, never solving problems directly.
-5. For calculations, use: "Wolfram Alpha query: [query]" format.
-6. After Wolfram Alpha results, briefly interpret and confirm correctness.
-7. Adapt complexity to the student's level without mentioning difficulty explicitly.
-8. Silently assess topic and difficulty (1-10) after each response to adjust your approach.
-
-Remember: Brevity is key. Use KaTeX only. No Markdown.
-"""
-
-def query_wolfram_alpha(query: str) -> str:
-    base_url = "https://www.wolframalpha.com/api/v1/llm-api"
-    
-    # Remove square brackets and strip whitespace
-    clean_query = query.strip("[]").strip()
-    
-    params = {
-        "input": clean_query,
-        "appid": os.getenv("WOLFRAM_ALPHA_APP_ID"),
-    }
+def ollama_chat(messages, temperature=0.6, max_tokens=1200):
     try:
-        response = requests.get(base_url, params=params)
-        
-        if response.status_code != 200:
-            return f"Error querying Wolfram Alpha: Status code {response.status_code}. Response: {response.text[:200]}"
-        
-        result = response.text.strip()
-        return result
-    except Exception as e:
-        return f"Error processing Wolfram Alpha response: {str(e)}"
-
-def extract_wolfram_result(wolfram_response: str) -> str:
-    extraction_prompt = f"""
-    Extract only the essential mathematical result from the following Wolfram Alpha response. 
-    Provide the result in LaTeX format, enclosed in double dollar signs ($$...$$), without any additional explanation or context.
-    If there are multiple forms of the result, choose the simplest or most relevant one.
-    Preface the result with "Correct answer:" (outside the LaTeX delimiters).
-
-    Wolfram Alpha response:
-    {wolfram_response}
-
-    Extracted result (in LaTeX):
-    """
-    
-    try:
-        response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": "You are a helpful assistant that extracts and formats mathematical results."},
-                {"role": "user", "content": extraction_prompt}
-            ],
-            temperature=0.3,
-            max_tokens=100
+        response = ollama.chat(
+            model=OLLAMA_MODEL,
+            messages=messages,
+            options={
+                "temperature": temperature,
+                "num_predict": max_tokens,
+                "num_gpu": -1
+            }
         )
-        return response.choices[0].message.content.strip()
+        return response['message']['content']
     except Exception as e:
-        return "Error extracting result from Wolfram Alpha response."
+        logger.error(f"Error en Ollama: {e}")
+        raise
 
-def check_rate_limit(session_id: str):
-    now = datetime.now()
-    if session_id not in rate_limit_data:
-        rate_limit_data[session_id] = {"count": 1, "reset_time": now + timedelta(days=1)}
-    elif rate_limit_data[session_id]["reset_time"] < now:
-        rate_limit_data[session_id] = {"count": 1, "reset_time": now + timedelta(days=1)}
-    elif rate_limit_data[session_id]["count"] >= RATE_LIMIT:
-        raise HTTPException(status_code=429, detail="Rate limit exceeded")
-    else:
-        rate_limit_data[session_id]["count"] += 1
+# ==================== LÓGICA SYMPY BÁSICA ====================
+def solve_basic_math_with_sympy(user_query: str):
+    """
+    Resuelve aritmética, fracciones y ecuaciones de 1er grado con SymPy.
+    """
+    try:
+        # 1. Limpieza para SymPy (potencias y minúsculas)
+        clean_expr = user_query.replace("^", "**").lower()
+        
+        # 2. Regex para detectar números, x, y operadores básicos
+        math_match = re.search(r"([0-9x\+\-\*\/\^\(\)\=\.\s]+)", clean_expr)
+        
+        if math_match:
+            target = math_match.group(1).strip()
+            if len(target) < 3: return None
 
-@app.get("/health")
-async def health_check():
-    return {"status": "OK", "timestamp": datetime.now().isoformat()}
+            # Si hay un "=" es una ecuación
+            if "=" in target:
+                parts = target.split("=")
+                lhs = sp.sympify(parts[0])
+                rhs = sp.sympify(parts[1])
+                # Resolvemos para x por defecto
+                result = sp.solve(sp.Eq(lhs, rhs), sp.Symbol('x'))
+                return f"**Resultado de la ecuación (SymPy):** $x = {sp.latex(result[0])}$" if result else None
+            
+            else:
+                # Es una expresión aritmética o simplificación de fracciones
+                expr = sp.sympify(target)
+                result = sp.simplify(expr)
+                # Si el resultado es igual al target, no aportó nada nuevo
+                if str(result) == target.replace(" ", ""): return None
+                return f"**Cálculo exacto (SymPy):** $${sp.latex(result)}$$"
+        
+        return None
+    except Exception:
+        return None
 
-@app.post("/start_session", response_model=SessionResponse)
-async def start_session(api_key: str = Depends(get_api_key)):
-    session_id = str(uuid.uuid4())
-    sessions[session_id] = {
-        "messages": [{"role": "system", "content": SYSTEM_PROMPT}],
-        "topic": "General Math",
-        "difficulty": 5  # Start at a middle difficulty
-    }
-    return {"session_id": session_id}
+# ==================== SYSTEM PROMPT (Personalidad) ====================
+SYSTEM_PROMPT = """Eres MathBuddy Básico, un tutor amigable de matemáticas (Primaria a 2° Secundaria).
+REGLAS:
+- Responde siempre en español, con un tono amable para niños.
+- Usa KaTeX ($...$ y $$...$$).
+- COLABORACIÓN: Si recibes contexto de 'physics', úsalo para hacer las cuentas básicas.
+- Si la pregunta es avanzada (derivadas, integrales), indica que debe ir con MathBuddy Avanzado."""
+
+# ==================== ENDPOINTS ====================
 
 @app.post("/chat")
 async def chat(query: Query, api_key: str = Depends(get_api_key)):
     if query.session_id not in sessions:
-        raise HTTPException(status_code=404, detail="Session not found")
-    
-    check_rate_limit(query.session_id)
+        sessions[query.session_id] = {
+            "messages": [{"role": "system", "content": SYSTEM_PROMPT}]
+        }
     
     session = sessions[query.session_id]
     session["messages"].append({"role": "user", "content": query.message})
     
     try:
-        response = client.chat.completions.create(
-            model="gpt-4o",
-            messages=session["messages"],
-            temperature=0.7,
-            max_tokens=2000
-        )
+        # 1. Respuesta pedagógica (Ollama)
+        bot_message = ollama_chat(session["messages"])
         
-        bot_message = response.choices[0].message.content
+        # 2. Validación matemática (SymPy)
+        sympy_validation = solve_basic_math_with_sympy(query.message)
         
-        # Check if Wolfram Alpha query is needed
-        if "Wolfram Alpha query:" in bot_message:
-            wolfram_queries = re.findall(r"Wolfram Alpha query: (.+?)(?=\n|$)", bot_message)
-            for wolfram_query in wolfram_queries:
-                wolfram_result = query_wolfram_alpha(wolfram_query.strip())
-                extracted_result = extract_wolfram_result(wolfram_result)
-                bot_message = bot_message.replace(f"Wolfram Alpha query: {wolfram_query}", extracted_result)
-        
+        # 3. Integración
+        if sympy_validation:
+            bot_message += f"\n\n---\n{sympy_validation}"
+
         session["messages"].append({"role": "assistant", "content": bot_message})
         
-        # Use AI to estimate difficulty and topic
-        estimation_prompt = f"""
-        Based on the conversation history and the last user query, estimate the current math topic and difficulty level (1-10).
-        Respond with a JSON object containing 'topic' and 'difficulty' keys.
-        Last user query: {query.message}
-        """
-        
-        estimation_response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": "You are an AI that estimates math topics and difficulty levels."},
-                {"role": "user", "content": estimation_prompt}
-            ],
-            temperature=0.3,
-            max_tokens=100
-        )
-        
-        try:
-            estimation = json.loads(estimation_response.choices[0].message.content)
-            session["topic"] = estimation.get("topic", session["topic"])
-            session["difficulty"] = estimation.get("difficulty", session["difficulty"])
-        except json.JSONDecodeError:
-            logger.error("Failed to parse AI estimation response")
-        
+        if len(session["messages"]) > 10:
+            session["messages"] = [session["messages"][0]] + session["messages"][-5:]
+
         return {"response": bot_message}
     
     except Exception as e:
-        logger.error(f"Error processing request: {str(e)}")
-        raise HTTPException(status_code=500, detail="Internal server error")
+        logger.error(f"Error en chat básico: {e}")
+        raise HTTPException(status_code=500, detail="Error interno")
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=int(os.getenv("PORT", 8080)))
+    # IMPORTANTE: host debe ser 0.0.0.0 para que Docker permita conexiones externas
+    uvicorn.run(app, host="0.0.0.0", port=8080)

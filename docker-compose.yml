@@ -57,22 +57,43 @@ services:
     networks:
       - ofp_network
 
+
+  # ====================== ASISTENTE DE FÍSICA ======================
+  physics-backend:
+    build:
+      context: ./assistants/physics-assistant/Physics-Chatbot-using-Advanced-RAG/backend
+      dockerfile: Dockerfile
+    container_name: physics-backend
+    command: python app.py                    
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+      - PORT=8080                    # Puerto interno donde corre app.py
+    volumes:
+      - ./schemas:/app/schemas:ro
+      - ./assistants/physics-assistant/Physics-Chatbot-using-Advanced-RAG/Data:/app/Data
+      - ./assistants/physics-assistant/Physics-Chatbot-using-Advanced-RAG/Database:/app/Database
+    networks:
+      - ofp_network
+    restart: unless-stopped
+
   assistant_physics:
-    build: ./assistants/physics-assistant/Physics-Chatbot-using-Advanced-RAG/backend
+    build:
+      context: ./assistants/physics-assistant/Physics-Chatbot-using-Advanced-RAG/backend
+      dockerfile: Dockerfile
     container_name: assistant_physics
     ports:
       - "5002:5002"
+    command: python api_wrapper.py            
     environment:
-      - OLLAMA_HOST=http://ollama:11434
+      - PHYSICS_INTERNAL_URL=http://physics-backend:8080/api/generate   # ← CORREGIDO: puerto 8080
     depends_on:
-      - ollama
+      - physics-backend
     volumes:
-      - ./assistants/physics-assistant/Physics-Chatbot-using-Advanced-RAG/Data:/app/Data
-      - ./assistants/physics-assistant/Physics-Chatbot-using-Advanced-RAG/Database:/app/Database
-      - ./schemas:/app/schemas
+      - ./schemas:/app/schemas:ro
     networks:
       - ofp_network
-          
+    restart: unless-stopped
+
   assistant_alice:
     build: ./assistants/alice-assistant
     container_name: assistant_alice
@@ -94,47 +115,111 @@ services:
       - ofp_network
     restart: unless-stopped
 
-  assistant_translator:
-    build: ./assistants/translator-assistant
-    container_name: assistant_translator
+    # ====================== TRADUCTOR (Backend + Wrapper) ======================
+  translator-backend:
+    build:
+      context: ./assistants/translator-assistant
+      dockerfile: Dockerfile
+    container_name: translator-backend
+    command: python api_lingonaut.py
     ports:
-      - "5010:5010"         
+      - "8081:8080"  # ← AÑADE ESTO (Mapeamos el 8080 interno al 8081 externo por si acaso)
     environment:
       - OLLAMA_HOST=http://ollama:11434
-    depends_on:
-      - ollama
     volumes:
-      - ./schemas:/app/schemas
+      - ./schemas:/app/schemas:ro
     networks:
       - ofp_network
+    restart: unless-stopped
 
-  assistant_mathbuddy_avanzado:
-    build: ./assistants/mathbuddy-avanzado-assistant/backend
-    container_name: assistant_mathbuddy_avanzado
+  assistant_translator:
+    build:
+      context: ./assistants/translator-assistant
+      dockerfile: Dockerfile
+    container_name: assistant_translator
+    ports:
+      - "5010:5010"
+    # CAMBIAMOS ESTA LÍNEA: Usamos gunicorn para saltar la validación de host
+    command: gunicorn --bind 0.0.0.0:5010 --timeout 180 api_wrapper:app
+    environment:
+      - LINGONAUT_BACKEND_URL=http://translator-backend:8080/chat
+    depends_on:
+      - translator-backend
+    volumes:
+      - ./schemas:/app/schemas:ro
+    networks:
+      - ofp_network
+    restart: unless-stopped
+
+# ====================== MATHBUDDY AVANZADO ======================
+  mathbuddy-avanzado-backend:
+    build:
+      context: ./assistants/mathbuddy-avanzado-assistant/backend
+      dockerfile: Dockerfile
+    container_name: mathbuddy-avanzado-backend
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+      - OLLAMA_MODEL=llama3.1:8b
+      - API_KEY=mathbuddy-secret-key-2026
+      - PORT=8080
+    volumes:
+      - ./schemas:/app/schemas:ro
+    networks:
+      - ofp_network
+    restart: unless-stopped
+
+  mathbuddy-avanzado-wrapper:
+    build:
+      context: ./assistants/mathbuddy-avanzado-assistant/backend
+      dockerfile: Dockerfile
+    container_name: mathbuddy-avanzado-wrapper
     ports:
       - "5011:5011"
     environment:
-      - OLLAMA_HOST=http://ollama:11434
+      - MATHBUDDY_API_KEY=mathbuddy-secret-key-2026
+      - MATHBUDDY_INTERNAL_URL=http://mathbuddy-avanzado-backend:8080
+    command: python api_wrapper.py          # ← Sobrescribimos el CMD
     depends_on:
-      - ollama
+      - mathbuddy-avanzado-backend
     volumes:
-      - ./schemas:/app/schemas
+      - ./schemas:/app/schemas:ro
     networks:
       - ofp_network
 
-  assistant_mathbuddy_basico:
-    build: ./assistants/mathbuddy-basico-assistant/backend                     # ← Crea esta carpeta con el wrapper básico
-    container_name: assistant_mathbuddy_basico
-    ports:
-      - "5012:5012"                                           # Puerto diferente
+# ====================== MATHBUDDY BÁSICO ======================
+  mathbuddy-basico-backend:
+    build:
+      context: ./assistants/mathbuddy-basico-assistant/backend
+      dockerfile: Dockerfile
+    container_name: mathbuddy-basico-backend
     environment:
       - OLLAMA_HOST=http://ollama:11434
-    depends_on:
-      - ollama
+      - OLLAMA_MODEL=llama3.2:3b
+      - API_KEY=mathbuddy-secret-key-2026
+      - PORT=8080
     volumes:
-      - ./schemas:/app/schemas
+      - ./schemas:/app/schemas:ro
     networks:
-      - ofp_network        
+      - ofp_network
+    restart: unless-stopped
+
+  mathbuddy-basico-wrapper:
+    build:
+      context: ./assistants/mathbuddy-basico-assistant/backend
+      dockerfile: Dockerfile
+    container_name: mathbuddy-basico-wrapper
+    ports:
+      - "5012:5012"
+    environment:
+      - MATHBUDDY_API_KEY=mathbuddy-secret-key-2026
+      - MATHBUDDY_INTERNAL_URL=http://mathbuddy-basico-backend:8080
+    command: python api_wrapper.py
+    depends_on:
+      - mathbuddy-basico-backend
+    volumes:
+      - ./schemas:/app/schemas:ro
+    networks:
+      - ofp_network
 
 networks:
   ofp_network:

@@ -9,11 +9,17 @@ import json
 from colorama import Fore, Style
 import logging
 import time
+from werkzeug.middleware.proxy_fix import ProxyFix # <--- ASEGÚRATE DE TENER ESTO
+
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
+
+# Esto le dice a Flask que confíe en los headers que vienen del orquestador
+app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_host=1)
+
 
 OLLAMA_HOST = "http://host.docker.internal:11434"
 ollama_client = ollama.Client(host=OLLAMA_HOST)
@@ -22,9 +28,10 @@ AGENTS = {
     "physics": "http://assistant_physics:5002/receive",
     "alice": "http://assistant_alice:5005/receive",
     "history": "http://assistant_history:5003/receive",
-    "translator": "http://assistant_translator:5010/receive",
-    "mathbuddy_avanzado": "http://assistant_mathbuddy_avanzado:5011/receive",
-    "mathbuddy_basico": "http://assistant_mathbuddy_basico:5012/receive"
+    #"translator": "http://assistant_translator:5010/receive",
+    "translator": "http://host.docker.internal:5010/receive",
+    "mathbuddy_avanzado": "http://mathbuddy-avanzado-wrapper:5011/receive",  
+    "mathbuddy_basico": "http://mathbuddy-basico-wrapper:5012/receive"
 }
 
 ORCHESTRATOR_URL = "http://orchestrator:5000/receive"
@@ -81,22 +88,53 @@ def create_collaborative_response(responses_map, conversation_id):
 
 def send_ovon_event(url, events, conversation_id=None):
     try:
-        payload = create_openfloor_envelope(events, conversation_id)
-        response = requests.post(url, json=payload, timeout=180, headers={"Content-Type": "application/json"})
-        response.raise_for_status()
+        if not conversation_id:
+            conversation_id = str(uuid.uuid4())
+
+        # Construimos el payload OFP estándar. 
+        # IMPORTANTE: 'events' debe ser una LISTA de objetos de evento.
+        payload = {
+            "openFloor": {
+                "schema": {"version": "1.1.0"},
+                "conversation": {"id": conversation_id},
+                "sender": {"speakerUri": ORCHESTRATOR_SPEAKER_URI},
+                "events": events
+            }
+        }
+
+        logger.info(f"[ORCHESTRADOR] → Enviando a {url} | Conv ID: {conversation_id[:8]}...")
         
+        response = requests.post(
+            url, 
+            json=payload, 
+            timeout=180, 
+            headers={"Content-Type": "application/json"}
+        )
+
+        # Si el servidor responde 400, imprimimos el detalle del error para debugging
+        if response.status_code == 400:
+            logger.error(f"Fallo de validación en {url}: {response.text}")
+        
+        response.raise_for_status()
+
         agent_name = next((name for name, u in AGENTS.items() if u == url), "unknown")
-        logger.info(f"[ORCHESTRADOR] ← Respuesta de {agent_name}")
-        print(f"{Fore.GREEN}[ORCHESTRADOR] ← Respuesta de {agent_name}:{Style.RESET_ALL}")
+        logger.info(f"[ORCHESTRADOR] ← Respuesta recibida de {agent_name}")
+        
+        # Opcional: Imprimir en consola con color para pruebas manuales
+        print(f"{Fore.GREEN}← Respuesta de {agent_name}:{Style.RESET_ALL}")
         print(json.dumps(response.json(), indent=2, ensure_ascii=False))
-        print(f"{Fore.GREEN}----------------------------------------{Style.RESET_ALL}")
         
         return response.json()
-    except Exception as e:
-        logger.error(f"[ERROR] enviando a {url}: {e}")
-        print(f"{Fore.RED}[ERROR] enviando a {url}: {e}{Style.RESET_ALL}")
-        return {"openFloor": {"events": [], "error": str(e)}}
 
+    except Exception as e:
+        logger.error(f"[ERROR] en comunicación con {url}: {e}")
+        return {
+            "openFloor": {
+                "schema": {"version": "1.1.0"},
+                "conversation": {"id": conversation_id},
+                "events": [{"eventType": "error", "parameters": {"message": str(e)}}]
+            }
+        }
 def extract_reply_from_ovon(response):
     try:
         events = response.get("openFloor", {}).get("events", [])
@@ -191,177 +229,128 @@ def handle_receive():
 
 @app.route('/query', methods=['POST'])
 def handle_query():
-    logger.info("[ORCHESTRADOR] ← Pregunta recibida")
-    print(f"{Fore.CYAN}[ORCHESTRADOR] ← Pregunta recibida{Style.RESET_ALL}")
+    logger.info("[ORCHESTRADOR] ← Nueva consulta recibida")
+    print(f"{Fore.CYAN}[ORCHESTRADOR] ← Procesando...{Style.RESET_ALL}")
+    
+    start_time = time.time()
     data = request.get_json()
     user_query = data.get('query')
 
     if not user_query or not isinstance(user_query, str):
-        return jsonify({"error": "Falta 'query'"}), 400
+        return jsonify({"error": "Falta el campo 'query' en el JSON"}), 400
 
-    # === INICIO DE MEDICIÓN DE TIEMPO PARA MÉTRICAS ===
-    start_time = time.time()  # Marca el inicio del procesamiento completo    
+    # ====================== CLASIFICACIÓN MEJORADA ======================
+    classification_prompt = f"""Analiza la consulta del usuario y responde **ÚNICAMENTE** con un objeto JSON válido.
 
-    # 1. Clasificación
-    classification_prompt = f"""Clasifica esta pregunta en UNA O MÁS categorías (separadas por coma, máximo 3): 
-    alice, physics, history, translator, mathbuddy_basico, mathbuddy_avanzado, none.
+{{
+  "intents": ["lista", "de", "agentes"],
+  "idioma_objetivo": "español | inglés | francés | otro",
+  "requiere_traduccion": true/false,
+  "orden_ejecucion": ["agente1", "agente2", ...]
+}}
 
-    REGLAS OBLIGATORIAS (en este orden):
-    1. TRADUCCIÓN: Si hay "traduce", "traducción", "translate", "al [idioma]", "to [language]", "explica en", "responde en" → INCLUYE SIEMPRE "translator".
+Agentes disponibles: physics, history, mathbuddy_basico, mathbuddy_avanzado, alice, translator.
 
-    2. MATEMÁTICAS BÁSICAS: primaria/secundaria baja (sumas, restas, fracciones simples, porcentajes, ecuaciones lineales básicas, geometría elemental) → mathbuddy_basico.
+REGLAS ESTRICTAS (prioridad alta a baja):
 
-    3. MATEMÁTICAS AVANZADAS: secundaria alta hasta Cálculo 1 (álgebra intermedia, trigonometría, funciones, límites, derivadas, integrales básicas, ecuaciones cuadráticas, logaritmos) → mathbuddy_avanzado.
-    - Mezcla básico y avanzado → incluye ambos.
+1. TRADUCCIÓN: Si la consulta contiene "traduce", "traducción", "translate", "al inglés", "to english", "al francés", "en inglés", etc. → 
+   - "requiere_traduccion": true
+   - "intents" debe incluir "translator"
+   - "orden_ejecucion" debe terminar con "translator"
 
-    4. FÍSICA: SI menciona conceptos físicos centrales (leyes de Newton, energía cinética, gravedad, movimiento de objetos, fuerzas, órbitas, colisiones, teoría de cuerdas, qué es la energía cinética, qué son las leyes de Newton) → physics.
-    - Derivadas, pendientes, funciones o fórmulas SOLAS sin contexto físico real → mathbuddy_avanzado, NO physics.
+2. FÍSICA: Solo si se pregunta explícitamente sobre conceptos físicos (fuerzas, movimiento, gravedad, energía, leyes de Newton, órbitas, etc.). 
+   NO clasifiques como physics solo por mencionar lugares (Ecatepec, México, etc.) o saludos.
 
-    5. HISTORIA: guerras, revoluciones, imperios, eventos pasados → history.
+3. MATEMÁTICAS: 
+   - Básico (sumas, fracciones simples, porcentajes) → mathbuddy_basico
+   - Avanzado (derivadas, funciones, límites) → mathbuddy_avanzado
+   - Mezcla → incluye ambos en orden lógico (básico primero)
+   - CRITERIO DE DISTINCIÓN: Clasifica como 'physics' ÚNICAMENTE si la consulta menciona explícitamente conceptos de la naturaleza o mecánica como: fuerza, masa, gravedad, velocidad, circuitos, energía o leyes de Newton. 
+   - PRIORIDAD: Ante cualquier fórmula matemática pura (sin contexto de leyes físicas), el sistema DEBE elegir un agente 'mathbuddy'.
+ 
+4. Si es saludo, conversación casual o pregunta general → ["alice"]
 
-    6. GENERAL: conversación, chistes, opiniones → alice.
+5. Si no encaja en nada → ["alice"]
 
-    7. NADA → none.
+Consulta: {user_query}
 
-    IMPORTANTE:
-    - NUNCA clasifiques como mathbuddy_basico o mathbuddy_avanzado si es "explica las leyes de Newton" o "qué es la energía cinética" → SIEMPRE physics.
-    - Prioriza translator si hay instrucción de idioma.
-    - NUNCA pongas physics solo por fórmulas o "energía cinética" sin aplicación real, pero SI es "qué es la energía cinética" → physics.
+Responde SOLO el JSON, sin ningún texto adicional antes o después."""
 
-    Pregunta: {user_query}
+    try:
+        intent_response = ollama_client.chat(
+            model='llama3.1:8b',
+            format='json',
+            messages=[{'role': 'user', 'content': classification_prompt}],
+            options={"temperature": 0.0, "num_predict": 300}
+        )
+        decision = json.loads(intent_response['message']['content'].strip())
+        intents = decision.get("intents", [])
+        orden_ejecucion = decision.get("orden_ejecucion", ["alice"])
+        requiere_traduccion = decision.get("requiere_traduccion", False)
+    except Exception as e:
+        logger.error(f"Error en clasificación: {e}")
+        decision = {"intents": ["alice"], "orden_ejecucion": ["alice"], "requiere_traduccion": False}
+        intents, orden_ejecucion, requiere_traduccion = ["alice"], ["alice"], False
 
-    Responde SOLO con las categorías, SEPARADAS por coma, sin explicación ni texto extra."""
-    
-    intent_response = ollama_client.chat(
-        model='llama3.1:8b',
-        messages=[{'role': 'user', 'content': classification_prompt}],
-        options={"temperature": 0.0, "num_predict": 60}
-    )
-    
-    intent_text = intent_response['message']['content'].strip().lower()
-    logger.info(f"Clasificado como → {intent_text}")
-    print(f"{Fore.YELLOW}Clasificado como → {intent_text}{Style.RESET_ALL}")
-    
-    intents = [i.strip() for i in intent_text.split(',') if i.strip() in AGENTS or i.strip() == 'none']
-    if not intents:
-        intents = ['alice']
-
+    # ====================== EJECUCIÓN ======================
     conversation_id = str(uuid.uuid4())
     responses_map = {}
+    expert_results_text = []
+    contexto_acumulado = f"PREGUNTA ORIGINAL: {user_query}"
 
-    # Detectar idioma objetivo (más idiomas)
-    idioma_objetivo = "español"
-    for lang in ["inglés", "francés", "chino", "japonés", "alemán", "italiano", "portugués", "ruso"]:
-        if f"traduce al {lang}" in user_query.lower() or f"explícala en {lang}" in user_query.lower():
-            idioma_objetivo = lang
-            break
-    logger.info(f"Idioma objetivo: {idioma_objetivo}")
-    print(f"{Fore.MAGENTA}Idioma objetivo: {idioma_objetivo}{Style.RESET_ALL}")
-
-    # Extraer pregunta real (más robusto)
-    pregunta_real = user_query.strip()
-    pregunta_original_para_trad = user_query
-    hay_traduccion = any(palabra in user_query.lower() for palabra in [
-        "traduce al", "traducción al", "translate to", "traduce a", "traducción a",
-        "al inglés", "al francés", "al italiano", "al portugués", "al alemán", "al chino"
-    ])
-
-    if hay_traduccion:
-        separadores = [": ", " : ", "la siguiente: ", "la pregunta: ", "esta pregunta: ", "traduce ", "traducción ", "explica en ", "responde en "]
-        for sep in separadores:
-            if sep in user_query:
-                partes = user_query.split(sep, 1)
-                if len(partes) > 1:
-                    pregunta_real = partes[1].strip()
-                    break
-        pregunta_real = pregunta_real.strip(' "¿¡?.,:;').strip()
-        logger.info(f"Pregunta real extraída: {pregunta_real}")
-        print(f"{Fore.CYAN}Pregunta real extraída: {pregunta_real}{Style.RESET_ALL}")
-
-    current_text = pregunta_real
-
-    # 2. Ejecutar agentes expertos
-    expert_results = []
-    remaining_intents = [i for i in intents if i not in ["translator", "alice", "none"]]
-    previous_reply = ""
-
-    for idx, agent_key in enumerate(remaining_intents):
-        if agent_key in AGENTS:
-            text_to_expert = current_text
-            if previous_reply:
-                text_to_expert = f"Pregunta del usuario: {current_text}\n\nContexto adicional del asistente anterior ({remaining_intents[idx-1]}): {previous_reply}"
-
-            resp = send_ovon_event(AGENTS[agent_key], create_utterance_event(text_to_expert), conversation_id)
-            reply = extract_reply_from_ovon(resp)
-
-            if "no es de mi área" in reply.lower() or "no es de mi área" in reply.lower():
-                logger.info(f"{agent_key.capitalize()} rechazó: {reply}")
-                print(f"{Fore.RED}{agent_key.capitalize()} rechazó: {reply}{Style.RESET_ALL}")
-                continue
-
-            responses_map[agent_key] = reply
-            expert_results.append(f"[{agent_key.upper()}]: {reply}")
-            previous_reply = reply
-            logger.info(f"{agent_key.capitalize()} respondió: {reply[:150]}...")
-            print(f"{Fore.GREEN}{agent_key.capitalize()} respondió: {reply[:150]}...{Style.RESET_ALL}")
-
-    # Chaining simple entre mathbuddy_basico y mathbuddy_avanzado (opcional pero útil)
-    if "mathbuddy_basico" in intents and "mathbuddy_avanzado" in intents:
-        reply_basico = responses_map.get("mathbuddy_basico", "")
-        if reply_basico:
-            text_avanzado = f"Explicación básica recibida:\n{reply_basico}\n\nAhora responde la parte avanzada de la pregunta original: {user_query}"
-            resp_avanzado = send_ovon_event(AGENTS["mathbuddy_avanzado"], create_utterance_event(text_avanzado), conversation_id)
-            reply_avanzado = extract_reply_from_ovon(resp_avanzado)
-            if "no es de mi área" not in reply_avanzado.lower():
-                responses_map["mathbuddy_avanzado"] = reply_avanzado
-                expert_results.append(f"[MATHBUDDY-AVANZADO]: {reply_avanzado}")
-                logger.info("Chaining básico → avanzado completado")
-
-    # 3. Contexto completo para traductor
-    contexto_para_traductor = f"Pregunta original: {pregunta_original_para_trad}\n\nRespuestas de expertos:\n" + "\n\n".join(expert_results)
-    if not expert_results:
-        contexto_para_traductor += "\n(No se obtuvo respuesta de expertos)"
-
-    # 4. Traducción final
-    final_reply = contexto_para_traductor if contexto_para_traductor else "No pude encontrar una respuesta específica."
-    if "translator" in intents and hay_traduccion and idioma_objetivo != "español":
-        contenido_a_traducir = contexto_para_traductor
-        trans_final_prompt = f"Traduce TODO este texto al {idioma_objetivo}:\n\n{contenido_a_traducir}"
+    # 1. BUCLE DE EXPERTOS
+    main_agents = [a for a in orden_ejecucion if a != "translator" and a in AGENTS]
+    for agente_key in main_agents:
+        prompt_para_experto = f"{contexto_acumulado}\n\nResponde como experto."
+        resp = send_ovon_event(AGENTS[agente_key], create_utterance_event(prompt_para_experto), conversation_id)
+        reply = extract_reply_from_ovon(resp)
         
-        resp_final = send_ovon_event(AGENTS["translator"], create_utterance_event(trans_final_prompt), conversation_id)
-        traduccion_final = extract_reply_from_ovon(resp_final)
-        responses_map["translator"] = traduccion_final
-        final_reply = traduccion_final
-        logger.info(f"Traducción final al {idioma_objetivo}: {traduccion_final[:150]}...")
-        print(f"{Fore.GREEN}Traducción final al {idioma_objetivo}: {traduccion_final[:150]}...{Style.RESET_ALL}")
+        if not any(phrase in reply.lower() for phrase in ["no es de mi área"]):
+            responses_map[agente_key] = reply
+            expert_results_text.append(f"[{agente_key.upper()}]: {reply}")
+            contexto_acumulado += f"\n\n[{agente_key.upper()}]: {reply}"
 
-    # 5. Respuesta final en OFP completo
+    # 2. TRADUCCIÓN FINAL (AHORA FUERA DEL BUCLE FOR)
+    if requiere_traduccion and "translator" in AGENTS:
+        idioma_objetivo = decision.get("idioma_objetivo", "inglés").lower()
+        texto_a_traducir = "\n\n".join(expert_results_text) if expert_results_text else user_query
+        prompt_trans = f"Traduce al {idioma_objetivo}: {texto_a_traducir}"
+
+        logger.info(f"[ORCHESTRADOR] -> Solicitando traducción al {idioma_objetivo}")
+
+        # Estructura simplificada que funciona con tu Wrapper
+        evento_traduccion = [{
+            "eventType": "utterance",
+            "parameters": {
+                "dialogEvent": {
+                    "features": {
+                        "text": {
+                            "tokens": [{"value": prompt_trans}]
+                        }
+                    }
+                }
+            }
+        }]
+
+        resp_trans = send_ovon_event(AGENTS["translator"], evento_traduccion, conversation_id)
+        traduccion_final = extract_reply_from_ovon(resp_trans)
+        
+        if traduccion_final and "Sin respuesta" not in traduccion_final:
+            responses_map["translator"] = traduccion_final
+            logger.info("✓ Traducción añadida al mapa de respuestas")
+
+    # 3. RESPUESTA FINAL (FUERA DEL BUCLE FOR)
     response_payload = create_collaborative_response(responses_map, conversation_id)
 
-    if responses_map:
-        logger.info("=== RESPUESTAS FINALES (OFP) ===")
-        print(f"{Fore.YELLOW}=== RESPUESTAS FINALES (OFP) ==={Style.RESET_ALL}")
-        print(json.dumps(response_payload, indent=2, ensure_ascii=False))
-    
-    # === NUEVO: REGISTRO DE MÉTRICAS ===
-    total_time = time.time() - start_time  # Calcula tiempo total
-
+    # 4. Métricas y Retorno
+    total_time = time.time() - start_time
     try:
         from metrics.metrics_collector import MetricsCollector
         collector = MetricsCollector(storage_path="metrics")
-        collector.record_query(
-            query=user_query,
-            intents=intents,
-            responses_map=responses_map,
-            final_envelope=response_payload,
-            total_time=total_time
-        )
-        logger.info("Métricas registradas correctamente")
-    except Exception as metrics_err:
-        logger.error(f"Error al registrar métricas: {metrics_err}")
-    # Fin del registro de métricas
+        collector.record_query(user_query, intents, responses_map, response_payload, total_time)
+    except: pass
 
     return jsonify(response_payload)
-
+    
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=False)

@@ -2,16 +2,19 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
-# Copia requirements primero → mejor cache
+# Instalamos dependencias de sistema necesarias para PDF y Base de Datos
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY requirements.txt .
 
-# Instala dependencias del repo original + extras para OVON/RabbitMQ
-RUN pip install --no-cache-dir -r requirements.txt \
-    && pip install --no-cache-dir jsonschema flask 
-# Copia todo el código (incluyendo api_wrapper.py con handler OVON)
+# Instalamos TODO: lo de RAG (app.py) y lo de OFP (api_wrapper.py)
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt && \
+    pip install --no-cache-dir flask flask-cors jsonschema requests
+
 COPY . .
 
-# Si el RAG necesita persistencia (vectorDB, mongo data, etc.)
-# VOLUME ["/app/Data/vectorDB"]   # opcional, mejor manejarlo en compose
-
-CMD ["python", "api_wrapper.py"]
+# Quitamos el CMD de aquí para decidirlo en el docker-compose

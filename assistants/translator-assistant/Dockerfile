@@ -1,23 +1,22 @@
-FROM python:3.11-slim
-
-RUN apt-get update && apt-get install -y \
-    ffmpeg \
-    && rm -rf /var/lib/apt/lists/*
+FROM python:3.10-slim
 
 WORKDIR /app
 
-# Copia lingonaut-python + wrapper
-COPY . .
+# Copiar archivos
+COPY . /app
 
-# Instala dependencias (ajusta si usas environment.yml)
+# Instalamos gunicorn dentro del contenedor (aquí no dará el error de "externally-managed")
 RUN pip install --no-cache-dir \
-    flask \
+    fastapi \
+    uvicorn \
     ollama \
+    pydantic \
+    requests \
     jsonschema \
-    # Dependencias de lingonaut-python (agrega las que necesites)
-    openai-whisper  
-# Si usas conda → puedes copiar environment.yml y activarlo, pero slim es más ligero
+    flask \
+    gunicorn
 
 EXPOSE 5010
 
+# Este CMD se usará si no se especifica otro en el docker-compose
 CMD ["python", "api_wrapper.py"]
