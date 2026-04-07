@@ -63,11 +63,11 @@ services:
     build:
       context: ./assistants/physics-assistant/Physics-Chatbot-using-Advanced-RAG/backend
       dockerfile: Dockerfile
-    container_name: physics-backend
+    container_name: physics-backend 
     command: python app.py                    
     environment:
       - OLLAMA_HOST=http://ollama:11434
-      - PORT=8080                    # Puerto interno donde corre app.py
+      - PORT=5000                    # Puerto interno donde corre app.py
     volumes:
       - ./schemas:/app/schemas:ro
       - ./assistants/physics-assistant/Physics-Chatbot-using-Advanced-RAG/Data:/app/Data
@@ -85,7 +85,7 @@ services:
       - "5002:5002"
     command: python api_wrapper.py            
     environment:
-      - PHYSICS_INTERNAL_URL=http://physics-backend:8080/api/generate   # ← CORREGIDO: puerto 8080
+      - PHYSICS_INTERNAL_URL=http://physics-backend:5000/api/generate   # ← CORREGIDO: puerto 8080
     depends_on:
       - physics-backend
     volumes:

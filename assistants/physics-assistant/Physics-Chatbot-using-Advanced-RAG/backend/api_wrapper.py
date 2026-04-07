@@ -3,7 +3,7 @@ import requests
 import json
 import logging
 import jsonschema
-from datetime import datetime
+from datetime import datetime, timedelta
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -89,7 +89,7 @@ Pregunta del usuario: {query_to_process}"""
                     "prompt": enriched_prompt,     
                     "session_id": conversation_id or "default"
                 },
-                timeout=90
+                timeout=120
             )
             resp.raise_for_status()
             
@@ -105,13 +105,22 @@ Pregunta del usuario: {query_to_process}"""
             reply = "Ocurrió un error interno al procesar la pregunta de física."
 
         # Construcción del envelope OFP
-        now = datetime.utcnow().isoformat() + "Z"
+        # --- CÁLCULO DE TIEMPO PARA EL SPAN ---
+        now = datetime.utcnow()
+        # Simulamos que el bot tardó 3 segundos en "decir" la respuesta
+        start_iso = now.isoformat() + "Z"
+        end_iso = (now + timedelta(seconds=3)).isoformat() + "Z"
+
+        # Construcción del envelope OFP
         responses = [{
             "eventType": "utterance",
             "parameters": {
                 "dialogEvent": {
                     "speakerUri": PHYSICS_SPEAKER_URI,
-                    "span": {"startTime": now, "endTime": now},
+                    "span": {
+                        "startTime": start_iso, 
+                        "endTime": end_iso  # <-- Ahora tiene una duración real
+                    },
                     "features": {
                         "text": {
                             "mimeType": "text/plain",

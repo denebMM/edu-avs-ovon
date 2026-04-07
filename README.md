@@ -242,3 +242,26 @@ git push
 # PARA Abrir la carpeta directamente en el Explorador de Windows desde WSL
 cd ~/tesis/edu-avs-ovon
 explorer.exe .
+
+
+
+¿Cómo correr la UI a partir de ahora?
+Cada vez que quieras ver tu modelo de interoperabilidad funcionando en la web:
+
+# 1- Asegúrate de que tus contenedores de Docker estén corriendo 
+docker compose up -d
+
+# 2- En la terminal, activa el entorno:
+ source venv/bin/activate
+
+# 3- Lanza la aplicación: 
+streamlit run ui.py
+
+#Logs en tiempo real, abre una segunda terminal (mantén la de Streamlit abierta en una y abre otra nueva) y ejecuta este comando en la carpeta de tu proyecto, -f (follow): Hace que la pantalla se actualice automáticamente cada vez que un agente escribe algo.
+
+
+docker compose logs -f
+
+
+#Si solo te interesan algunos agentes para no marearte con tanto texto, puedes filtrar:
+docker compose logs -f orchestrator_ollama assistant_translator mathbuddy-avanzado-backend

@@ -258,8 +258,9 @@ REGLAS ESTRICTAS (prioridad alta a baja):
    - "intents" debe incluir "translator"
    - "orden_ejecucion" debe terminar con "translator"
 
-2. FÍSICA: Solo si se pregunta explícitamente sobre conceptos físicos (fuerzas, movimiento, gravedad, energía, leyes de Newton, órbitas, etc.). 
-   NO clasifiques como physics solo por mencionar lugares (Ecatepec, México, etc.) o saludos.
+2. FÍSICA (physics): Úsalo para CUALQUIER consulta de ciencias físicas de nivel escolar (9º-10º grado). 
+   - Debe ser el PRIMERO en el orden si la pregunta es teórica o menciona científicos (ej. "Bose", "Newton", "Einstein").
+   - Es el encargado de extraer conceptos del libro (RAG). Si la pregunta es "¿Quién es Bose?", DEBE ir a physics, no a alice.
 
 3. MATEMÁTICAS: 
    - Básico (sumas, fracciones simples, porcentajes) → mathbuddy_basico
@@ -268,9 +269,9 @@ REGLAS ESTRICTAS (prioridad alta a baja):
    - CRITERIO DE DISTINCIÓN: Clasifica como 'physics' ÚNICAMENTE si la consulta menciona explícitamente conceptos de la naturaleza o mecánica como: fuerza, masa, gravedad, velocidad, circuitos, energía o leyes de Newton. 
    - PRIORIDAD: Ante cualquier fórmula matemática pura (sin contexto de leyes físicas), el sistema DEBE elegir un agente 'mathbuddy'.
  
-4. Si es saludo, conversación casual o pregunta general → ["alice"]
-
-5. Si no encaja en nada → ["alice"]
+4. ALICE:
+   - Úsala ÚNICAMENTE para: Saludos, presentaciones ("¿quién eres?"), preguntas existenciales, bromas, cultura pop general o cuando el tema NO encaje en los expertos técnicos.
+   - Alice es el "fallback": si la pregunta es de cocina o deportes, va a Alice.
 
 Consulta: {user_query}
 
@@ -287,35 +288,66 @@ Responde SOLO el JSON, sin ningún texto adicional antes o después."""
         intents = decision.get("intents", [])
         orden_ejecucion = decision.get("orden_ejecucion", ["alice"])
         requiere_traduccion = decision.get("requiere_traduccion", False)
+
+        print(f"{Fore.MAGENTA}--- DECISIÓN DEL ORQUESTADOR ---{Style.RESET_ALL}")
+        print(f"Intents detectados: {decision['intents']}")
+        print(f"Orden de ejecución: {decision['orden_ejecucion']}")
+        print(f"Traducción requerida: {decision['requiere_traduccion']}")
+        print(f"{Fore.MAGENTA}-------------------------------{Style.RESET_ALL}")
     except Exception as e:
         logger.error(f"Error en clasificación: {e}")
         decision = {"intents": ["alice"], "orden_ejecucion": ["alice"], "requiere_traduccion": False}
         intents, orden_ejecucion, requiere_traduccion = ["alice"], ["alice"], False
 
-    # ====================== EJECUCIÓN ======================
+   # ====================== EJECUCIÓN CON ENCADENAMIENTO ======================
     conversation_id = str(uuid.uuid4())
     responses_map = {}
-    expert_results_text = []
-    contexto_acumulado = f"PREGUNTA ORIGINAL: {user_query}"
-
-    # 1. BUCLE DE EXPERTOS
+    
+    # 1. BUCLE DE EXPERTOS CON PASO DE CONTEXTO
     main_agents = [a for a in orden_ejecucion if a != "translator" and a in AGENTS]
+    
     for agente_key in main_agents:
-        prompt_para_experto = f"{contexto_acumulado}\n\nResponde como experto."
-        resp = send_ovon_event(AGENTS[agente_key], create_utterance_event(prompt_para_experto), conversation_id)
-        reply = extract_reply_from_ovon(resp)
+        print(f"{Fore.YELLOW}>> EJECUTANDO AGENTE: {agente_key.upper()}{Style.RESET_ALL}")
+        # Preparamos el prompt base
+        prompt_para_experto = user_query
         
-        if not any(phrase in reply.lower() for phrase in ["no es de mi área"]):
+        # --- LÓGICA DE COLABORACIÓN ESPECÍFICA PARA MATHBUDDY ---
+        if agente_key == "mathbuddy_avanzado":
+            # Si el básico ya respondió, le pasamos su aporte al avanzado
+            if "mathbuddy_basico" in responses_map:
+                aporte_basico = responses_map["mathbuddy_basico"]
+                prompt_para_experto = f"[Aporte de mathbuddy_basico]: {aporte_basico}\n\nPregunta original: {user_query}"
+                logger.info("--> Inyectando aporte básico al MathBuddy Avanzado")
+        
+        # --- LÓGICA PARA PHYSICS (Opcional, pero recomendada) ---
+        if agente_key == "mathbuddy_avanzado" and "physics" in responses_map:
+             aporte_fisica = responses_map["physics"]
+             # Tu wrapper avanzado ya tiene una regla para "[Aporte de physics]"
+             prompt_para_experto = f"[Aporte de physics]: {aporte_fisica}\n\n{prompt_para_experto}"
+
+
+        # Enviamos el evento al wrapper correspondiente
+        resp = send_ovon_event(
+            AGENTS[agente_key], 
+            create_utterance_event(prompt_para_experto), 
+            conversation_id
+        )
+        
+        reply = extract_reply_from_ovon(resp)
+        # 
+        if reply and reply != "Sin respuesta" and reply != "Error procesando respuesta":
             responses_map[agente_key] = reply
-            expert_results_text.append(f"[{agente_key.upper()}]: {reply}")
-            contexto_acumulado += f"\n\n[{agente_key.upper()}]: {reply}"
+        # Guardamos la respuesta para mostrarla y para usarla como contexto del siguiente
+        if "Sin respuesta" not in reply:
+            responses_map[agente_key] = reply
+            logger.info(f"✓ Respuesta de {agente_key} guardada en el mapa de contexto.")
 
     # 2. TRADUCCIÓN FINAL (AHORA FUERA DEL BUCLE FOR)
     if requiere_traduccion and "translator" in AGENTS:
         idioma_objetivo = decision.get("idioma_objetivo", "inglés").lower()
-        texto_a_traducir = "\n\n".join(expert_results_text) if expert_results_text else user_query
-        prompt_trans = f"Traduce al {idioma_objetivo}: {texto_a_traducir}"
-
+        solo_texto_crudo = "\n\n".join(responses_map.values())
+        prompt_trans = f"Traduce fielmente al {idioma_objetivo}. NO añadas etiquetas ni nombres de asistentes, solo el contenido técnico: {solo_texto_crudo}"
+        
         logger.info(f"[ORCHESTRADOR] -> Solicitando traducción al {idioma_objetivo}")
 
         # Estructura simplificada que funciona con tu Wrapper

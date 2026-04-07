@@ -141,7 +141,7 @@ def handle_receive():
                         "session_id": conversation_id or "default-basico-session"
                     },
                     headers={"X-API-Key": MATHBUDDY_API_KEY},
-                    timeout=60
+                    timeout=120
                 )
                 resp.raise_for_status()
                 reply = resp.json().get("response", "No pude generar respuesta.")
