@@ -1,0 +1,2 @@
+﻿run_id,timestamp,query,strategy_used,classified_as,agents_used,total_latency_sec,envelope_valid,num_agents,has_chaining,responses_detail
+f1943344,2026-04-09T23:13:45.597698,¿Qué descubrimientos hizo Galileo Galilei y en qué año nació?,sequential,history,history,13.101,True,1,False,"{""history"": ""I do not understand...""}"

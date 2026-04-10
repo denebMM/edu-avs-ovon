@@ -35,7 +35,12 @@ def calculate_average_latency(csv_path):
         return avg_latency
     return None
 
-# añadir más evaluadores aquí en el futuro:
-# - % de chaining exitoso
-# - % de envelopes válidos
-# - etc.
+def analyze_strategy_efficiency(csv_path):
+    """Compara latencia promedio entre estrategias"""
+    df = pd.read_csv(csv_path)
+    if 'strategy_used' in df.columns:
+        stats = df.groupby('strategy_used')['total_latency_sec'].agg(['mean', 'count'])
+        print("\n--- Análisis por Estrategia ---")
+        print(stats)
+        return stats
+    return None

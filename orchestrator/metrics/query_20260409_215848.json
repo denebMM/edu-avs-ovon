@@ -1,0 +1,15 @@
+{
+  "run_id": "729d4814",
+  "timestamp": "2026-04-09T21:58:48.929371",
+  "query": "¿Cómo se resuelven las fracciones mixtas?",
+  "strategy_used": "parallel",
+  "classified_as": "mathbuddy_basico",
+  "agents_used": "mathbuddy_basico",
+  "total_latency_sec": 25.463,
+  "envelope_valid": true,
+  "num_agents": 1,
+  "has_chaining": false,
+  "responses_detail": {
+    "mathbuddy_basico": "Para resolver una fracción mixta, debemos separar el número entero del denominador y expresar la fracción como dos partes diferentes. Veamos un ejemplo:\n\nSupongamos que tenemos la fracción $3\\frac{2}{5}$.\n\n Primero, conviertamos la fracción en una suma de dos fracciones sencillas:\n\n$3\\frac{2}{5} = 3 + \\frac{2}{5}$\n\n Ahora, podemos encontrar el valor decimal del segundo término $\\frac{2}{5}$:\n\n$\\frac{2}{5} = 0.4$\n\n Entonces, la fracción mixta se puede expresar como:\n\n$3\\frac{2}{5} = 3 + 0.4$\n\n Ahora, podemos sumar los dos valores:\n\n$3 + 0.4 = 3.4$\n\n Por lo tanto, la solución a la fracción $3\\frac{2}{5}$ es $3.4$."
+  }
+}

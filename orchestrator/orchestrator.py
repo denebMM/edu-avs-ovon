@@ -9,8 +9,8 @@ import json
 from colorama import Fore, Style
 import logging
 import time
-from werkzeug.middleware.proxy_fix import ProxyFix # <--- ASEGÚRATE DE TENER ESTO
-
+from werkzeug.middleware.proxy_fix import ProxyFix 
+import threading
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -239,118 +239,198 @@ def handle_query():
     if not user_query or not isinstance(user_query, str):
         return jsonify({"error": "Falta el campo 'query' en el JSON"}), 400
 
-    # ====================== CLASIFICACIÓN MEJORADA ======================
-    classification_prompt = f"""Analiza la consulta del usuario y responde **ÚNICAMENTE** con un objeto JSON válido.
+    # ====================== CLASIFICACIÓN ORIENTADA A COLABORACIÓN ======================
+    classification_prompt = f"""Analiza la consulta y responde ÚNICAMENTE con JSON.
 
-{{
-  "intents": ["lista", "de", "agentes"],
-  "idioma_objetivo": "español | inglés | francés | otro",
-  "requiere_traduccion": true/false,
-  "orden_ejecucion": ["agente1", "agente2", ...]
-}}
+    {{
+      "intents": ["agente1", "agente2"],
+      "strategy": "sequential" | "parallel",
+      "segmentos": {{
+          "agente1": "sub-pregunta específica para el agente1",
+          "agente2": "sub-pregunta específica para el agente2"
+      }},
+      "requiere_traduccion": true | false,
+      "idioma_objetivo": "español" | "inglés" | "francés" | "alemán" | "portugués",
+      "orden_ejecucion": ["agente1", "agente2"]
+    }}
 
-Agentes disponibles: physics, history, mathbuddy_basico, mathbuddy_avanzado, alice, translator.
+    CAPACIDADES DE LOS AGENTES:
+    1. physics: Teoría física, leyes (Newton, etc.), conceptos del libro de texto (RAG).
+    2. mathbuddy_basico: Operaciones aritméticas, porcentajes, álgebra simple.
+    3. mathbuddy_avanzado: Cálculo, derivadas, integrales, límites.
+    4. history: Datos históricos, fechas y personajes.
+    5. alice: Saludos y presentaciones.
+    6. translator: ÚNICAMENTE si el usuario usa verbos como 'traducir', 'dime en inglés/portugués', 'translate' o si pide explícitamente un cambio de idioma. PROHIBIDO activarlo para consultas informativas en el mismo idioma.
+   
 
-REGLAS ESTRICTAS (prioridad alta a baja):
+   REGLA DE SEGMENTACIÓN (OBLIGATORIA):
+    - Si la estrategia es 'parallel': Divide la consulta en partes 100% independientes. 
+      Ejemplo: "Inercia y 2+2" -> {{"physics": "ley de la inercia", "mathbuddy_basico": "2+2"}}
+    - Si la estrategia es 'sequential': El segmento del primer agente debe ser la base, y el del segundo la instrucción de qué hacer con esa base.
+      Ejemplo: "Calcula la fuerza de f=m*a con m=10, a=2" -> {{"physics": "fórmula y planteamiento f=m*a con m=10, a=2", "mathbuddy_basico": "calcular resultado numérico de f=10*2"}}
 
-1. TRADUCCIÓN: Si la consulta contiene "traduce", "traducción", "translate", "al inglés", "to english", "al francés", "en inglés", etc. → 
-   - "requiere_traduccion": true
-   - "intents" debe incluir "translator"
-   - "orden_ejecucion" debe terminar con "translator"
+    REGLA DE DECISIÓN DE ESTRATEGIA (CRÍTICA):
+        - Compara las partes de la consulta:
+        * ¿El Agente 2 necesita un número o resultado que el Agente 1 va a generar? 
+            SI -> 'strategy': 'sequential'
+            NO -> 'strategy': 'parallel'
+        
+        - CASO DE PRUEBA: "Ley de inercia y cuánto es 450*12"
+        Análisis: La inercia es teoría. 450*12 es aritmética. No hay conexión.
+        Resultado: 'strategy': 'parallel' (OBLIGATORIO).
 
-2. FÍSICA (physics): Úsalo para CUALQUIER consulta de ciencias físicas de nivel escolar (9º-10º grado). 
-   - Debe ser el PRIMERO en el orden si la pregunta es teórica o menciona científicos (ej. "Bose", "Newton", "Einstein").
-   - Es el encargado de extraer conceptos del libro (RAG). Si la pregunta es "¿Quién es Bose?", DEBE ir a physics, no a alice.
+    MÁXIMA EFICIENCIA:
+       - El objetivo es reducir la latencia. 'parallel' es siempre preferible a menos que el Agente B no pueda trabajar sin la respuesta del Agente A.
+       - Si detectas a [physics] y [mathbuddy_basico] resolviendo cosas distintas (teoría vs aritmética), la estrategia SIEMPRE es 'parallel'.
 
-3. MATEMÁTICAS: 
-   - Básico (sumas, fracciones simples, porcentajes) → mathbuddy_basico
-   - Avanzado (derivadas, funciones, límites) → mathbuddy_avanzado
-   - Mezcla → incluye ambos en orden lógico (básico primero)
-   - CRITERIO DE DISTINCIÓN: Clasifica como 'physics' ÚNICAMENTE si la consulta menciona explícitamente conceptos de la naturaleza o mecánica como: fuerza, masa, gravedad, velocidad, circuitos, energía o leyes de Newton. 
-   - PRIORIDAD: Ante cualquier fórmula matemática pura (sin contexto de leyes físicas), el sistema DEBE elegir un agente 'mathbuddy'.
- 
-4. ALICE:
-   - Úsala ÚNICAMENTE para: Saludos, presentaciones ("¿quién eres?"), preguntas existenciales, bromas, cultura pop general o cuando el tema NO encaje en los expertos técnicos.
-   - Alice es el "fallback": si la pregunta es de cocina o deportes, va a Alice.
+    
+    REGLAS DE EXCLUSIÓN Y UNIÓN:
+        - Si el problema es de física y requiere cálculos, DEBES incluir 'physics' y el 'mathbuddy' correspondiente.
+        - Solo incluye ambos mathbuddies si la consulta mezcla aritmética simple con cálculo complejo.
+        - Si la consulta NO es educativa/técnica (cocina, chismes, etc.), responde: "intents": [], "orden_ejecucion": [].
+        - Si la query pide explícitamente TRADUCIR una frase corta o famosa, NO actives a Alice. Alice solo debe activarse si no hay intención técnica o de traducción clara.
+        - Si una pregunta pide 'Explica X y tradúcelo', DEBES asignar primero al experto (physics/history) y de ÚLTIMO al translator. El translator NUNCA debe ser el único si hay una consulta técnica involucrada.
+        - Si la consulta NO pide traducción, el campo 'requiere_traduccion' DEBE ser estrictamente false.
+        
+    MATEMÁTICAS vs FÍSICA (Regla de Exclusión):
+       - Si la consulta es una función matemática pura (ej. f(x)=..., sin(x), integrales, derivadas de funciones abstractas) sin mencionar objetos físicos (cohetes, pelotas, autos) ni leyes (Newton, Gravedad) -> USA ÚNICAMENTE 'mathbuddy'.
+       - PROHIBIDO llamar a 'physics' si la consulta solo contiene notación matemática abstracta.
 
-Consulta: {user_query}
-
-Responde SOLO el JSON, sin ningún texto adicional antes o después."""
+    Consulta: {user_query}
+    """
 
     try:
         intent_response = ollama_client.chat(
             model='llama3.1:8b',
             format='json',
             messages=[{'role': 'user', 'content': classification_prompt}],
-            options={"temperature": 0.0, "num_predict": 300}
+            options={"temperature": 0.0}
         )
-        decision = json.loads(intent_response['message']['content'].strip())
-        intents = decision.get("intents", [])
-        orden_ejecucion = decision.get("orden_ejecucion", ["alice"])
-        requiere_traduccion = decision.get("requiere_traduccion", False)
+        raw_content = intent_response['message']['content'].strip()
+        decision = json.loads(raw_content)
+        
+        # --- FUNCIÓN DE LIMPIEZA (Corregida indentación) ---
+        def sanitize_list(raw_list):
+            if not isinstance(raw_list, list):
+                return []
+            clean_list = []
+            for item in raw_list:
+                if isinstance(item, dict):
+                    # Extrae el primer valor si el LLM mandó un objeto
+                    val = list(item.values())[0]
+                    clean_list.append(str(val))
+                elif isinstance(item, str):
+                    clean_list.append(item)
+            return clean_list
+
+        # Aplicamos la limpieza
+        intents = sanitize_list(decision.get("intents", []))
+        orden_ejecucion = sanitize_list(decision.get("orden_ejecucion", []))
+        # --------------------------------------------------
+
+        intent_traduccion_real = decision.get("requiere_traduccion", False)
+        if intent_traduccion_real and "translator" in orden_ejecucion:
+            requiere_traduccion = True
+        else:
+            requiere_traduccion = False
+            # Limpiamos el orden de ejecución para que no contenga al traductor por error
+            orden_ejecucion = [a for a in orden_ejecucion if a != "translator"]
+
+        strategy = decision.get("strategy", "sequential")
+
+
+    # === CASO: SIN ASISTENTE DISPONIBLE ===
+        if not intents and not requiere_traduccion:
+            msg = "Ninguno de nuestros asistentes educacionales tiene la respuesta para esta consulta."
+            return jsonify(create_openfloor_envelope([{
+                "eventType": "utterance",
+                "parameters": {
+                    "dialogEvent": {
+                        "speakerUri": ORCHESTRATOR_SPEAKER_URI,
+                        "features": {"text": {"mimeType": "text/plain", "tokens": [{"value": msg}]}}
+                    }
+                }
+            }]))
 
         print(f"{Fore.MAGENTA}--- DECISIÓN DEL ORQUESTADOR ---{Style.RESET_ALL}")
-        print(f"Intents detectados: {decision['intents']}")
-        print(f"Orden de ejecución: {decision['orden_ejecucion']}")
-        print(f"Traducción requerida: {decision['requiere_traduccion']}")
+        print(f"Estrategia: {strategy.upper()}")
+        print(f"Orden: {orden_ejecucion}")
         print(f"{Fore.MAGENTA}-------------------------------{Style.RESET_ALL}")
+
     except Exception as e:
         logger.error(f"Error en clasificación: {e}")
-        decision = {"intents": ["alice"], "orden_ejecucion": ["alice"], "requiere_traduccion": False}
-        intents, orden_ejecucion, requiere_traduccion = ["alice"], ["alice"], False
+        # En caso de error crítico del LLM, usamos Alice por defecto
+        strategy = "sequential"
+        orden_ejecucion = ["alice"]
+        intents = ["alice"]
 
-   # ====================== EJECUCIÓN CON ENCADENAMIENTO ======================
     conversation_id = str(uuid.uuid4())
     responses_map = {}
-    
-    # 1. BUCLE DE EXPERTOS CON PASO DE CONTEXTO
     main_agents = [a for a in orden_ejecucion if a != "translator" and a in AGENTS]
     
-    for agente_key in main_agents:
-        print(f"{Fore.YELLOW}>> EJECUTANDO AGENTE: {agente_key.upper()}{Style.RESET_ALL}")
-        # Preparamos el prompt base
-        prompt_para_experto = user_query
-        
-        # --- LÓGICA DE COLABORACIÓN ESPECÍFICA PARA MATHBUDDY ---
-        if agente_key == "mathbuddy_avanzado":
-            # Si el básico ya respondió, le pasamos su aporte al avanzado
-            if "mathbuddy_basico" in responses_map:
-                aporte_basico = responses_map["mathbuddy_basico"]
-                prompt_para_experto = f"[Aporte de mathbuddy_basico]: {aporte_basico}\n\nPregunta original: {user_query}"
-                logger.info("--> Inyectando aporte básico al MathBuddy Avanzado")
-        
-        # --- LÓGICA PARA PHYSICS (Opcional, pero recomendada) ---
-        if agente_key == "mathbuddy_avanzado" and "physics" in responses_map:
-             aporte_fisica = responses_map["physics"]
-             # Tu wrapper avanzado ya tiene una regla para "[Aporte de physics]"
-             prompt_para_experto = f"[Aporte de physics]: {aporte_fisica}\n\n{prompt_para_experto}"
+ # === PREPARACIÓN DE SEGMENTOS ===
+    segmentos_dinamicos = decision.get("segmentos", {})
 
+    # SELECCIÓN DE PATRÓN DE EJECUCIÓN 
+    if strategy == "parallel":
+        print(f"{Fore.GREEN}>> INICIANDO EJECUCIÓN PARALELA{Style.RESET_ALL}")
+        threads = []
 
-        # Enviamos el evento al wrapper correspondiente
-        resp = send_ovon_event(
-            AGENTS[agente_key], 
-            create_utterance_event(prompt_para_experto), 
-            conversation_id
-        )
+        def call_agent_thread(agente_key):
+            # Usa el segmento específico si existe, si no, la query original
+            query_especifica = segmentos_dinamicos.get(agente_key, user_query)
+            logger.info(f"[PARALELO] Agente {agente_key} recibe: {query_especifica}")
+            
+            resp = send_ovon_event(AGENTS[agente_key], create_utterance_event(query_especifica), conversation_id)
+            reply = extract_reply_from_ovon(resp)
+            if reply and reply not in ["Sin respuesta", "Error"]:
+                responses_map[agente_key] = reply
+
+        for agente in main_agents:
+            t = threading.Thread(target=call_agent_thread, args=(agente,))
+            threads.append(t)
+            t.start()
+
+        for t in threads:
+            t.join() 
+    else:
+        # ================= PATRÓN SECUENCIAL =================
+        print(f"{Fore.YELLOW}>> INICIANDO EJECUCIÓN SECUENCIAL{Style.RESET_ALL}")
         
-        reply = extract_reply_from_ovon(resp)
-        # 
-        if reply and reply != "Sin respuesta" and reply != "Error procesando respuesta":
-            responses_map[agente_key] = reply
-        # Guardamos la respuesta para mostrarla y para usarla como contexto del siguiente
-        if "Sin respuesta" not in reply:
-            responses_map[agente_key] = reply
-            logger.info(f"✓ Respuesta de {agente_key} guardada en el mapa de contexto.")
+        contexto_acumulado = "" # Empezamos limpio para construir la cadena
 
-    # 2. TRADUCCIÓN FINAL (AHORA FUERA DEL BUCLE FOR)
+        for agente_key in main_agents:
+            print(f"{Fore.YELLOW}>> EJECUTANDO AGENTE: {agente_key.upper()}{Style.RESET_ALL}")
+            
+            # En secuencial, combinamos el SEGMENTO específico con lo que dijeron los anteriores
+            segmento_agente = segmentos_dinamicos.get(agente_key, user_query)
+            
+            # Si hay contexto previo, se lo pegamos al segmento para que sepa de qué viene
+            prompt_con_historia = f"{contexto_acumulado}\n\nTarea actual: {segmento_agente}" if contexto_acumulado else segmento_agente
+
+            resp = send_ovon_event(AGENTS[agente_key], create_utterance_event(prompt_con_historia), conversation_id)
+            reply = extract_reply_from_ovon(resp)
+            
+            if reply and reply not in ["Sin respuesta", "Error"]:
+                responses_map[agente_key] = reply
+                # Actualizamos el contexto acumulado para el SIGUIENTE agente
+                contexto_acumulado += f"\n\n[Aporte de {agente_key}]: {reply}"
+   
+   # TRADUCCIÓN FINAL (FUERA DE LOS IF/ELSE DE ESTRATEGIA)
     if requiere_traduccion and "translator" in AGENTS:
+        # Unimos las respuestas generadas o usamos la query original si no hay agentes previos
+        texto_para_traducir = "\n\n".join(responses_map.values()) if responses_map else user_query
+        
         idioma_objetivo = decision.get("idioma_objetivo", "inglés").lower()
-        solo_texto_crudo = "\n\n".join(responses_map.values())
-        prompt_trans = f"Traduce fielmente al {idioma_objetivo}. NO añadas etiquetas ni nombres de asistentes, solo el contenido técnico: {solo_texto_crudo}"
+        
+        prompt_trans = (
+            f"INSTRUCCIÓN: Traduce el siguiente contenido técnico al {idioma_objetivo}. "
+            f"RESPONDE ÚNICAMENTE CON LA TRADUCCIÓN. NO DIGAS 'AQUÍ ESTÁ LA TRADUCCIÓN'.\n\n"
+            f"Contenido: {texto_para_traducir}"
+        )
         
         logger.info(f"[ORCHESTRADOR] -> Solicitando traducción al {idioma_objetivo}")
 
-        # Estructura simplificada que funciona con tu Wrapper
         evento_traduccion = [{
             "eventType": "utterance",
             "parameters": {
@@ -369,18 +449,28 @@ Responde SOLO el JSON, sin ningún texto adicional antes o después."""
         
         if traduccion_final and "Sin respuesta" not in traduccion_final:
             responses_map["translator"] = traduccion_final
-            logger.info("✓ Traducción añadida al mapa de respuestas")
+            logger.info(" Traducción añadida al mapa de respuestas")
 
-    # 3. RESPUESTA FINAL (FUERA DEL BUCLE FOR)
+    # RESPUESTA FINAL
     response_payload = create_collaborative_response(responses_map, conversation_id)
 
-    # 4. Métricas y Retorno
+    # METRICAS Y RETORNO
     total_time = time.time() - start_time
     try:
         from metrics.metrics_collector import MetricsCollector
         collector = MetricsCollector(storage_path="metrics")
-        collector.record_query(user_query, intents, responses_map, response_payload, total_time)
-    except: pass
+        
+        collector.record_query(
+            user_query, 
+            intents, 
+            strategy,           # <-- PASAMOS LA ESTRATEGIA (parallel/sequential)
+            responses_map, 
+            response_payload, 
+            total_time
+        )
+        logger.info(f"Métricas guardadas exitosamente para la query: {user_query[:30]}...")
+    except Exception as e:
+        logger.error(f"Error al guardar métricas: {e}")
 
     return jsonify(response_payload)
     

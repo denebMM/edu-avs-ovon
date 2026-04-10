@@ -1,0 +1,16 @@
+{
+  "run_id": "7883a76f",
+  "timestamp": "2026-04-09T23:17:57.230931",
+  "query": "Traduce 'Libertad' al francés y dime quién escribió la Declaración de Independencia de EE.UU.",
+  "strategy_used": "sequential",
+  "classified_as": "translator, history",
+  "agents_used": "history, translator",
+  "total_latency_sec": 31.098,
+  "envelope_valid": true,
+  "num_agents": 2,
+  "has_chaining": true,
+  "responses_detail": {
+    "history": "I do not understand...",
+    "translator": "Je ne comprends pas..."
+  }
+}

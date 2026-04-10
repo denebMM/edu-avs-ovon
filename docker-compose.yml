@@ -14,7 +14,7 @@ services:
     deploy:                       # CUDA
       resources:
        limits:
-        memory: 12G   # No cumple uncion mi GPu solo tien 4GB
+        memory: 12G   
        reservations:
            memory: 8G
            devices:
