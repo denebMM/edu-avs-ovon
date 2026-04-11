@@ -22,14 +22,13 @@ services:
               count: 1
               capabilities: [gpu]
     environment:
-      - OLLAMA_NUM_GPU_LAYERS=-1
-      - NVIDIA_VISIBLE_DEVICES=all
-      - OLLAMA_KEEP_ALIVE=-1               # Nunca descargar modelos automáticamente (clave para evitar recargas lentas)
-      - OLLAMA_NUM_THREADS=0               # Auto-detecta todos los cores/threads de tu i7-1360P (mejor que 12 fijo)
-      - OLLAMA_MAX_LOADED_MODELS=3         # Permite hasta 3 modelos cargados simultáneamente (tienes ~2-3 en uso: clasificador pequeño + math + physics/RAG)
-      - OLLAMA_NUM_PARALLEL=2              # Permite 2 requests paralelas por modelo (útil si en el futuro tienes colaboración both, o pruebas simultáneas)
-      - OLLAMA_DEBUG=0                     # Logs mínimos 
-
+        - OLLAMA_NUM_GPU_LAYERS=-1
+        - NVIDIA_VISIBLE_DEVICES=all
+        - OLLAMA_KEEP_ALIVE=-1        
+        - OLLAMA_MAX_LOADED_MODELS=2
+        - OLLAMA_NUM_PARALLEL=2
+        - OLLAMA_MAX_QUEUE=6  
+        - OLLAMA_NUM_THREADS=0
   orchestrator_ollama:
     build: ./orchestrator
     container_name: orchestrator_ollama

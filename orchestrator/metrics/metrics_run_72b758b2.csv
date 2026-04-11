@@ -1,0 +1,2 @@
+﻿run_id,timestamp,query,strategy_used,classified_as,agents_used,total_latency_sec,envelope_valid,num_agents,has_chaining,responses_detail
+72b758b2,2026-04-10T21:28:09.651367,Explica la teoría de cuerdas y la supersimetría.,sequential,"history, mathbuddy_avanzado","history, mathbuddy_avanzado",4.514,True,2,True,"{""history"": ""I do not understand..."", ""mathbuddy_avanzado"": ""Lo siento, pero no puedo continuar con la tarea. ¿Puedo ayudarte con algo más?""}"

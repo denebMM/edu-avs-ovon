@@ -20,16 +20,18 @@ app = Flask(__name__)
 # Esto le dice a Flask que confíe en los headers que vienen del orquestador
 app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_host=1)
 
-
-OLLAMA_HOST = "http://host.docker.internal:11434"
+# esta linea de abajo es para la PC dela escuela
+OLLAMA_HOST = "http://ollama:11434"
+#Este linea de abajo es para la lapto
+#OLLAMA_HOST = "http://host.docker.internal:11434"
 ollama_client = ollama.Client(host=OLLAMA_HOST)
 
 AGENTS = {
     "physics": "http://assistant_physics:5002/receive",
     "alice": "http://assistant_alice:5005/receive",
     "history": "http://assistant_history:5003/receive",
-    #"translator": "http://assistant_translator:5010/receive",
-    "translator": "http://host.docker.internal:5010/receive",
+    "translator": "http://assistant_translator:5010/receive", # para linux
+    #"translator": "http://host.docker.internal:5010/receive", #para Windows mi lapto
     "mathbuddy_avanzado": "http://mathbuddy-avanzado-wrapper:5011/receive",  
     "mathbuddy_basico": "http://mathbuddy-basico-wrapper:5012/receive"
 }

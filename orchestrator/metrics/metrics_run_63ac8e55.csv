@@ -1,0 +1,2 @@
+﻿run_id,timestamp,query,strategy_used,classified_as,agents_used,total_latency_sec,envelope_valid,num_agents,has_chaining,responses_detail
+63ac8e55,2026-04-10T21:30:20.852560,Traduce al inglés: 'La educación es el arma más poderosa'.,sequential,translator,,3.462,True,0,False,{}

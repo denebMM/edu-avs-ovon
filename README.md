@@ -265,3 +265,27 @@ docker compose logs -f
 
 #Si solo te interesan algunos agentes para no marearte con tanto texto, puedes filtrar:
 docker compose logs -f orchestrator_ollama assistant_translator mathbuddy-avanzado-backend
+
+
+# CAMBIOS SEGUN SI estoy en PC de 11 GB de GPU o 4 GPU
+
+
+  - OLLAMA_NUM_GPU_LAYERS=-1
+  - NVIDIA_VISIBLE_DEVICES=all
+  - OLLAMA_KEEP_ALIVE=-1  
+  # JUSTADO A 11GB
+  - OLLAMA_MAX_LOADED_MODELS=2
+  - OLLAMA_NUM_PARALLEL=2
+  - OLLAMA_MAX_QUEUE=6  
+  - OLLAMA_NUM_THREADS=0
+
+
+
+   - OLLAMA_NUM_GPU_LAYERS=20     # no usar -1 (no cabe todo en GPU)
+  - NVIDIA_VISIBLE_DEVICES=all
+  - OLLAMA_KEEP_ALIVE=-1
+  #  PARA 4GB
+  - OLLAMA_MAX_LOADED_MODELS=1
+  - OLLAMA_NUM_PARALLEL=1
+  - OLLAMA_MAX_QUEUE=2
+  - OLLAMA_NUM_THREADS=0
