@@ -262,15 +262,24 @@ def handle_query():
     3. mathbuddy_avanzado: Cálculo, derivadas, integrales, límites.
     4. history: Datos históricos, fechas y personajes.
     5. alice: Saludos y presentaciones.
-    6. translator: ÚNICAMENTE si el usuario usa verbos como 'traducir', 'dime en inglés/portugués', 'translate' o si pide explícitamente un cambio de idioma. PROHIBIDO activarlo para consultas informativas en el mismo idioma.
+    6. translator: OBLIGATORIO si piden 'traducir' o cambiar de idioma.
+    PROHIBIDO activarlo para consultas informativas en el mismo idioma.
    
 
    REGLA DE SEGMENTACIÓN (OBLIGATORIA):
     - Si la estrategia es 'parallel': Divide la consulta en partes 100% independientes. 
       Ejemplo: "Inercia y 2+2" -> {{"physics": "ley de la inercia", "mathbuddy_basico": "2+2"}}
     - Si la estrategia es 'sequential': El segmento del primer agente debe ser la base, y el del segundo la instrucción de qué hacer con esa base.
-      Ejemplo: "Calcula la fuerza de f=m*a con m=10, a=2" -> {{"physics": "fórmula y planteamiento f=m*a con m=10, a=2", "mathbuddy_basico": "calcular resultado numérico de f=10*2"}}
-
+      Ejemplo: "Calcula la fuerza de f=m*a con m=10, a=2" -> 
+      {{
+        "physics": "fórmula y planteamiento f=m*a con m=10, a=2", 
+        "mathbuddy_basico": "calcular resultado numérico de f=10*2"
+        }}
+    
+    REGLA DE SEGMENTACIÓN PARA TRADUCTOR:
+    - El traductor NO necesita un segmento. Su entrada será el resultado de todos los demás agentes.
+    - Si la consulta requiere traducción, DEBES incluir "translator" en la lista de 'intents'.
+    
     REGLA DE DECISIÓN DE ESTRATEGIA (CRÍTICA):
         - Compara las partes de la consulta:
         * ¿El Agente 2 necesita un número o resultado que el Agente 1 va a generar? 
@@ -311,7 +320,7 @@ def handle_query():
         raw_content = intent_response['message']['content'].strip()
         decision = json.loads(raw_content)
         
-        # --- FUNCIÓN DE LIMPIEZA (Corregida indentación) ---
+        # --- FUNCIÓN DE LIMPIEZA ---
         def sanitize_list(raw_list):
             if not isinstance(raw_list, list):
                 return []
@@ -330,14 +339,32 @@ def handle_query():
         orden_ejecucion = sanitize_list(decision.get("orden_ejecucion", []))
         # --------------------------------------------------
 
-        intent_traduccion_real = decision.get("requiere_traduccion", False)
-        if intent_traduccion_real and "translator" in orden_ejecucion:
+        intent_traduccion_real = decision.get("requiere_traduccion", False) or ("translator" in intents)      
+          
+        #Escaneo de palabras clave en la consulta original
+        user_query_lower = user_query.lower()
+        palabras_traduccion = ["traduce", "traducir", "frances", "francés", "inglés", "ingles", "portugués", "portugues"]
+        
+        if any(p in user_query_lower for p in palabras_traduccion):
+            intent_traduccion_real = True
+            # Intentamos detectar el idioma si no viene en el JSON
+            if not decision.get("idioma_objetivo"):
+                if "frances" in user_query_lower or "francés" in user_query_lower:
+                    decision["idioma_objetivo"] = "francés"
+                elif "ingles" in user_query_lower or "inglés" in user_query_lower:
+                    decision["idioma_objetivo"] = "inglés"
+
+        # 3. ASIGNACIÓN FINAL DE VARIABLES DE CONTROL
+        if intent_traduccion_real:
             requiere_traduccion = True
+            # IMPORTANTE: Mantenemos 'translator' en 'intents' para las métricas,
+            # pero lo sacamos de 'orden_ejecucion' para que no choque con los hilos expertos.
+            orden_ejecucion = [a for a in orden_ejecucion if a != "translator"]
+            if "translator" not in intents:
+                intents.append("translator")
+            logger.info(f"Traducción confirmada al idioma: {decision.get('idioma_objetivo', 'inglés')}")
         else:
             requiere_traduccion = False
-            # Limpiamos el orden de ejecución para que no contenga al traductor por error
-            orden_ejecucion = [a for a in orden_ejecucion if a != "translator"]
-
         strategy = decision.get("strategy", "sequential")
 
 
