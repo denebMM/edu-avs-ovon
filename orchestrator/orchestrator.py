@@ -33,7 +33,13 @@ AGENTS = {
     "translator": "http://assistant_translator:5010/receive", # para linux
     #"translator": "http://host.docker.internal:5010/receive", #para Windows mi lapto
     "mathbuddy_avanzado": "http://mathbuddy-avanzado-wrapper:5011/receive",  
-    "mathbuddy_basico": "http://mathbuddy-basico-wrapper:5012/receive"
+    "mathbuddy_basico": "http://mathbuddy-basico-wrapper:5012/receive",
+    "algebra": "http://assistant_algebra:5013/receive",
+    "computacion": "http://assistant_computacion:5014/receive",
+    "espanol": "http://assistant_espanol:5015/receive",
+    "historia": "http://assistant_historia:5016/receive",
+    "programacion": "http://assistant_programacion:5017/receive",
+    "quimica": "http://assistant_quimica:5018/receive" 
 }
 
 ORCHESTRATOR_URL = "http://orchestrator:5000/receive"
@@ -260,9 +266,15 @@ def handle_query():
     1. physics: Teoría física, leyes (Newton, etc.), conceptos del libro de texto (RAG).
     2. mathbuddy_basico: Operaciones aritméticas, porcentajes, álgebra simple.
     3. mathbuddy_avanzado: Cálculo, derivadas, integrales, límites.
-    4. history: Datos históricos, fechas y personajes.
-    5. alice: Saludos y presentaciones.
-    6. translator: OBLIGATORIO si piden 'traducir' o cambiar de idioma.
+    4. algebra: Teoría de álgebra, polinomios, factorización y conceptos extraídos de libros especializados (RAG). Use este para consultas académicas profundas de álgebra.
+    5. history: Datos históricos, fechas y personajes.
+    6. alice: Saludos y presentaciones.
+    7. computacion: Conceptos de hardware, software, sistemas operativos, redes y arquitectura de computadoras (RAG).
+    8. espanol: Dudas sobre gramática, ortografía, análisis literario, sintaxis y reglas del idioma español (RAG).
+    9. historia: Consultas sobre procesos históricos, fechas exactas, biografía de personajes históricos y análisis de contextos sociales pasados (RAG).
+    10. programacion: Consultas sobre lógica de programación, sintaxis de lenguajes (especialmente C++), estructuras de datos y algoritmos (RAG).
+    11. quimica: Consultas sobre la tabla periódica, enlaces químicos, estequiometría, compuestos orgánicos e inorgánicos y leyes de la materia (RAG).
+    12. translator: OBLIGATORIO si piden 'traducir' o cambiar de idioma.
     PROHIBIDO activarlo para consultas informativas en el mismo idioma.
    
 

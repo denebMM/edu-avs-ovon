@@ -1,2 +1,0 @@
-﻿run_id,timestamp,query,strategy_used,classified_as,agents_used,total_latency_sec,envelope_valid,num_agents,has_chaining,responses_detail
-7883a76f,2026-04-09T23:17:57.230931,Traduce 'Libertad' al francés y dime quién escribió la Declaración de Independencia de EE.UU.,sequential,"translator, history","history, translator",31.098,True,2,True,"{""history"": ""I do not understand..."", ""translator"": ""Je ne comprends pas...""}"

@@ -220,6 +220,173 @@ services:
     networks:
       - ofp_network
 
+# ====================== ASISTENTE DE ÁLGEBRA ======================
+  # 1. El "Cerebro" (Backend) - Maneja los PDFs y Ollama
+  algebra-backend:
+    build: 
+      context: ./assistants/algebra
+    container_name: algebra-backend
+    command: python bot_algebra.py
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+    depends_on:
+      - ollama
+    networks:
+      - ofp_network
+    restart: unless-stopped
+
+  # 2. El "Traductor" (Wrapper) - Interfaz OFP para el Orquestador
+  assistant_algebra:
+    build: 
+      context: ./assistants/algebra
+    container_name: assistant_algebra
+    ports:
+      - "5013:5013"
+    command: python api_wrapper.py
+    environment:
+      - ALGEBRA_INTERNAL_URL=http://algebra-backend:5000/preguntar
+    depends_on:
+      - algebra-backend
+    volumes:
+      - ./schemas:/app/schemas:ro
+    networks:
+      - ofp_network
+    restart: unless-stopped
+
+# ====================== ASISTENTE DE COMPUTACIÓN ======================
+  computacion-backend:
+    build: ./assistants/computacion
+    container_name: computacion-backend
+    command: python bot_computacion.py
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+    depends_on:
+      - ollama
+    networks:
+      - ofp_network
+
+  assistant_computacion:
+    build: ./assistants/computacion
+    container_name: assistant_computacion
+    ports:
+      - "5014:5014"
+    command: python api_wrapper.py
+    environment:
+      - COMP_INTERNAL_URL=http://computacion-backend:5000/preguntar
+    depends_on:
+      - computacion-backend
+    volumes:
+      - ./schemas:/app/schemas:ro
+    networks:
+      - ofp_network
+
+# ====================== ASISTENTE DE ESPAÑOL ======================
+  espanol-backend:
+    build: ./assistants/espannol
+    container_name: espanol-backend
+    command: python bot_espannol.py
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+    depends_on:
+      - ollama
+    networks:
+      - ofp_network
+
+  assistant_espanol:
+    build: ./assistants/espannol
+    container_name: assistant_espanol
+    ports:
+      - "5015:5015"
+    command: python api_wrapper.py
+    environment:
+      - INTERNAL_URL=http://espanol-backend:5000/preguntar
+    depends_on:
+      - espanol-backend
+    volumes:
+      - ./schemas:/app/schemas:ro
+    networks:
+      - ofp_network
+# ====================== ASISTENTE DE HISTORIA ======================
+  historia-backend:
+    build: ./assistants/historia
+    container_name: historia-backend
+    command: python bot_historia.py
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+    depends_on:
+      - ollama
+    networks:
+      - ofp_network
+
+  assistant_historia:
+    build: ./assistants/historia
+    container_name: assistant_historia
+    ports:
+      - "5016:5016"
+    command: python api_wrapper.py
+    environment:
+      - HIST_INTERNAL_URL=http://historia-backend:5000/preguntar
+    depends_on:
+      - historia-backend
+    volumes:
+      - ./schemas:/app/schemas:ro
+    networks:
+      - ofp_network
+      
+# ====================== ASISTENTE DE PROGRAMACIÓN ======================
+  programacion-backend:
+    build: ./assistants/programacion
+    container_name: programacion-backend
+    command: python bot_programacion.py
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+    depends_on:
+      - ollama
+    networks:
+      - ofp_network
+
+  assistant_programacion:
+    build: ./assistants/programacion
+    container_name: assistant_programacion
+    ports:
+      - "5017:5017"
+    command: python api_wrapper.py
+    environment:
+      - PROG_INTERNAL_URL=http://programacion-backend:5000/preguntar
+    depends_on:
+      - programacion-backend
+    volumes:
+      - ./schemas:/app/schemas:ro
+    networks:
+      - ofp_network
+            
+# ====================== ASISTENTE DE QUÍMICA ======================
+  quimica-backend:
+    build: ./assistants/quimica
+    container_name: quimica-backend
+    command: python bot_quimica.py
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+    depends_on:
+      - ollama
+    networks:
+      - ofp_network
+
+  assistant_quimica:
+    build: ./assistants/quimica
+    container_name: assistant_quimica
+    ports:
+      - "5018:5018"
+    command: python api_wrapper.py
+    environment:
+      - QUI_INTERNAL_URL=http://quimica-backend:5000/preguntar
+    depends_on:
+      - quimica-backend
+    volumes:
+      - ./schemas:/app/schemas:ro
+    networks:
+      - ofp_network
+      
 networks:
   ofp_network:
     driver: bridge

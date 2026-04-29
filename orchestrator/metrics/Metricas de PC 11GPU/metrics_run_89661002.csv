@@ -1,2 +1,0 @@
-﻿run_id,timestamp,query,strategy_used,classified_as,agents_used,total_latency_sec,envelope_valid,num_agents,has_chaining,responses_detail
-89661002,2026-04-09T22:02:11.055728,¿Qué dice la segunda ley de Newton?,sequential,history,history,13.589,True,1,False,"{""history"": ""I do not understand...""}"

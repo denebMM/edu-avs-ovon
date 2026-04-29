@@ -1,2 +1,0 @@
-﻿run_id,timestamp,query,strategy_used,classified_as,agents_used,total_latency_sec,envelope_valid,num_agents,has_chaining,responses_detail
-b4a8e8a7,2026-04-09T22:03:08.031951,Segunda ley de Newton,sequential,history,history,8.123,True,1,False,"{""history"": ""I do not understand...""}"

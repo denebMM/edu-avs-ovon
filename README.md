@@ -186,46 +186,6 @@ docker system prune -a -f --volumes
 stemming al manifest significa normalizar las palabras clave (keywords/capabilities) a su raíz lingüística para que el orquestador pueda hacer matching semántico más flexible y no depender de coincidencias exactas.
 
 
-
-## Terminal Ubuntu 
-
-deneb@Deneb:~$ cd ~/tesis/edu-avs-ovon
-deneb@Deneb:~/tesis/edu-avs-ovon$ ls -la
-total 48
-drwxr-xr-x 7 deneb deneb  4096 Feb 19 12:59 .
-drwxr-xr-x 3 deneb deneb  4096 Feb 19 12:59 ..
--rwxr-xr-x 1 deneb deneb 11072 Feb 19 12:59 README.md
-drwxr-xr-x 5 deneb deneb  4096 Feb 19 12:59 assistants
-drwxr-xr-x 6 deneb deneb  4096 Feb 19 12:59 beaconforge
--rwxr-xr-x 1 deneb deneb  2521 Feb 19 12:59 docker-compose.yml
-drwxr-xr-x 2 deneb deneb  4096 Feb 19 12:59 orchestrator
-drwxr-xr-x 2 deneb deneb  4096 Feb 19 12:59 orchestrator_manifest
-drwxr-xr-x 2 deneb deneb  4096 Feb 19 12:59 schemas
--rwxr-xr-x 1 deneb deneb  2022 Feb 19 12:59 test_questions.json
-deneb@Deneb:~/tesis/edu-avs-ovon$ cd ~/tesis/edu-avs-ovon
-deneb@Deneb:~/tesis/edu-avs-ovon$ code .
-deneb@Deneb:~$ nvidia-smi
-Thu Feb 19 16:53:46 2026
-+-----------------------------------------------------------------------------------------+
-| NVIDIA-SMI 580.102                Driver Version: 581.60         CUDA Version: 13.0     |
-+-----------------------------------------+------------------------+----------------------+
-| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
-| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
-|                                         |                        |               MIG M. |
-|=========================================+========================+======================|
-|   0  NVIDIA RTX A500 Laptop GPU     On  |   00000000:03:00.0 Off |                  N/A |
-| N/A   56C    P8              6W /   30W |       0MiB /   4096MiB |      0%      Default |
-|                                         |                        |                  N/A |
-+-----------------------------------------+------------------------+----------------------+
-
-+-----------------------------------------------------------------------------------------+
-| Processes:                                                                              |
-|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
-|        ID   ID                                                               Usage      |
-|=========================================================================================|
-|  No running processes found                                                             |
-+-----------------------------------------------------------------------------------------+
-
 1. Verificar en qué carpeta estoy 
 git status  
 
