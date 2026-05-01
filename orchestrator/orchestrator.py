@@ -28,10 +28,9 @@ ollama_client = ollama.Client(host=OLLAMA_HOST)
 
 AGENTS = {
     "physics": "http://assistant_physics:5002/receive",
-    "alice": "http://assistant_alice:5005/receive",
-    "history": "http://assistant_history:5003/receive",
-    "translator": "http://assistant_translator:5010/receive", # para linux
-    #"translator": "http://host.docker.internal:5010/receive", #para Windows mi lapto
+   # "alice": "http://assistant_alice:5005/receive",
+    #"history": "http://assistant_history:5003/receive",
+    "translator": "http://assistant_translator:5010/receive", 
     "mathbuddy_avanzado": "http://mathbuddy-avanzado-wrapper:5011/receive",  
     "mathbuddy_basico": "http://mathbuddy-basico-wrapper:5012/receive",
     "algebra": "http://assistant_algebra:5013/receive",
@@ -251,7 +250,7 @@ def handle_query():
     classification_prompt = f"""Analiza la consulta y responde ÚNICAMENTE con JSON.
 
     {{
-      "intents": ["agente1", "agente2"],
+      "intents": ["agente1", "agente2", "..."],
       "strategy": "sequential" | "parallel",
       "segmentos": {{
           "agente1": "sub-pregunta específica para el agente1",
@@ -259,7 +258,7 @@ def handle_query():
       }},
       "requiere_traduccion": true | false,
       "idioma_objetivo": "español" | "inglés" | "francés" | "alemán" | "portugués",
-      "orden_ejecucion": ["agente1", "agente2"]
+      "orden_ejecucion": ["agente1", "agente2", "..."]
     }}
 
     CAPACIDADES DE LOS AGENTES:
@@ -267,14 +266,12 @@ def handle_query():
     2. mathbuddy_basico: Operaciones aritméticas, porcentajes, álgebra simple.
     3. mathbuddy_avanzado: Cálculo, derivadas, integrales, límites.
     4. algebra: Teoría de álgebra, polinomios, factorización y conceptos extraídos de libros especializados (RAG). Use este para consultas académicas profundas de álgebra.
-    5. history: Datos históricos, fechas y personajes.
-    6. alice: Saludos y presentaciones.
-    7. computacion: Conceptos de hardware, software, sistemas operativos, redes y arquitectura de computadoras (RAG).
-    8. espanol: Dudas sobre gramática, ortografía, análisis literario, sintaxis y reglas del idioma español (RAG).
-    9. historia: Consultas sobre procesos históricos, fechas exactas, biografía de personajes históricos y análisis de contextos sociales pasados (RAG).
-    10. programacion: Consultas sobre lógica de programación, sintaxis de lenguajes (especialmente C++), estructuras de datos y algoritmos (RAG).
-    11. quimica: Consultas sobre la tabla periódica, enlaces químicos, estequiometría, compuestos orgánicos e inorgánicos y leyes de la materia (RAG).
-    12. translator: OBLIGATORIO si piden 'traducir' o cambiar de idioma.
+    5. computacion: Conceptos de hardware, software, sistemas operativos, redes y arquitectura de computadoras (RAG).
+    6. espanol: Dudas sobre gramática, ortografía, análisis literario, sintaxis y reglas del idioma español (RAG).
+    7. historia: Consultas sobre procesos históricos, fechas exactas, biografía de personajes históricos y análisis de contextos sociales pasados (RAG).
+    8. programacion: Consultas sobre lógica de programación, sintaxis de lenguajes (especialmente C++), estructuras de datos y algoritmos (RAG).
+    9. quimica: Consultas sobre la tabla periódica, enlaces químicos, estequiometría, compuestos orgánicos e inorgánicos y leyes de la materia (RAG).
+    10. translator: OBLIGATORIO si piden 'traducir' o cambiar de idioma.
     PROHIBIDO activarlo para consultas informativas en el mismo idioma.
    
 
@@ -311,7 +308,6 @@ def handle_query():
         - Si el problema es de física y requiere cálculos, DEBES incluir 'physics' y el 'mathbuddy' correspondiente.
         - Solo incluye ambos mathbuddies si la consulta mezcla aritmética simple con cálculo complejo.
         - Si la consulta NO es educativa/técnica (cocina, chismes, etc.), responde: "intents": [], "orden_ejecucion": [].
-        - Si la query pide explícitamente TRADUCIR una frase corta o famosa, NO actives a Alice. Alice solo debe activarse si no hay intención técnica o de traducción clara.
         - Si una pregunta pide 'Explica X y tradúcelo', DEBES asignar primero al experto (physics/history) y de ÚLTIMO al translator. El translator NUNCA debe ser el único si hay una consulta técnica involucrada.
         - Si la consulta NO pide traducción, el campo 'requiere_traduccion' DEBE ser estrictamente false.
         
@@ -399,11 +395,19 @@ def handle_query():
         print(f"{Fore.MAGENTA}-------------------------------{Style.RESET_ALL}")
 
     except Exception as e:
-        logger.error(f"Error en clasificación: {e}")
-        # En caso de error crítico del LLM, usamos Alice por defecto
-        strategy = "sequential"
-        orden_ejecucion = ["alice"]
-        intents = ["alice"]
+        logger.error(f"Error crítico en clasificación del LLM: {e}")
+        
+        # Abortar la operación y avisamos al usuario
+        msg = "Hubo un error interno al intentar analizar tu pregunta. Por favor, intenta formularla de otra manera."
+        return jsonify(create_openfloor_envelope([{
+            "eventType": "utterance",
+            "parameters": {
+                "dialogEvent": {
+                    "speakerUri": ORCHESTRATOR_SPEAKER_URI,
+                    "features": {"text": {"mimeType": "text/plain", "tokens": [{"value": msg}]}}
+                }
+            }
+        }]))
 
     conversation_id = str(uuid.uuid4())
     responses_map = {}
@@ -497,21 +501,21 @@ def handle_query():
 
     # METRICAS Y RETORNO
     total_time = time.time() - start_time
-    try:
-        from metrics.metrics_collector import MetricsCollector
-        collector = MetricsCollector(storage_path="metrics")
+    # try:
+    #     from metrics.metrics_collector import MetricsCollector
+    #     collector = MetricsCollector(storage_path="metrics")
         
-        collector.record_query(
-            user_query, 
-            intents, 
-            strategy,           # <-- PASAMOS LA ESTRATEGIA (parallel/sequential)
-            responses_map, 
-            response_payload, 
-            total_time
-        )
-        logger.info(f"Métricas guardadas exitosamente para la query: {user_query[:30]}...")
-    except Exception as e:
-        logger.error(f"Error al guardar métricas: {e}")
+    #     collector.record_query(
+    #         user_query, 
+    #         intents, 
+    #         strategy,           # <-- PASAMOS LA ESTRATEGIA (parallel/sequential)
+    #         responses_map, 
+    #         response_payload, 
+    #         total_time
+    #     )
+    #     logger.info(f"Métricas guardadas exitosamente para la query: {user_query[:30]}...")
+    # except Exception as e:
+    #     logger.error(f"Error al guardar métricas: {e}")
 
     return jsonify(response_payload)
     

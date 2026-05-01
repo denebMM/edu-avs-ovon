@@ -182,10 +182,15 @@ docker network prune -f
 # Borrar todo lo no usado (cuidado: borra imágenes y volúmenes)
 docker system prune -a -f --volumes
 
+# lista los modelos que tengo en Ollama
+docker exec -it ollama_server ollama list
 
-stemming al manifest significa normalizar las palabras clave (keywords/capabilities) a su raíz lingüística para que el orquestador pueda hacer matching semántico más flexible y no depender de coincidencias exactas.
+# instalar el modelo
+docker exec -it ollama_server ollama pull qwen:4b
 
 
+
+# GitHub
 1. Verificar en qué carpeta estoy 
 git status  
 
@@ -227,25 +232,29 @@ docker compose logs -f
 docker compose logs -f orchestrator_ollama assistant_translator mathbuddy-avanzado-backend
 
 
-# CAMBIOS SEGUN SI estoy en PC de 11 GB de GPU o 4 GPU
+
+  assistant_alice:
+    build: ./assistants/alice-assistant
+    container_name: assistant_alice
+    ports:
+      - "5005:5005"
+    volumes:
+      - ./schemas:/app/schemas
+    networks:
+      - ofp_network
+      
+  assistant_history:
+    build: ./assistants/history-assistant
+    container_name: assistant_history
+    ports:
+      - "5003:5003"
+    volumes:
+      - ./schemas:/app/schemas
+    networks:
+      - ofp_network
+    restart: unless-stopped
 
 
-  - OLLAMA_NUM_GPU_LAYERS=-1
-  - NVIDIA_VISIBLE_DEVICES=all
-  - OLLAMA_KEEP_ALIVE=-1  
-  # JUSTADO A 11GB
-  - OLLAMA_MAX_LOADED_MODELS=2
-  - OLLAMA_NUM_PARALLEL=2
-  - OLLAMA_MAX_QUEUE=6  
-  - OLLAMA_NUM_THREADS=0
-
-
-
-   - OLLAMA_NUM_GPU_LAYERS=20     # no usar -1 (no cabe todo en GPU)
-  - NVIDIA_VISIBLE_DEVICES=all
-  - OLLAMA_KEEP_ALIVE=-1
-  #  PARA 4GB
-  - OLLAMA_MAX_LOADED_MODELS=1
-  - OLLAMA_NUM_PARALLEL=1
-  - OLLAMA_MAX_QUEUE=2
-  - OLLAMA_NUM_THREADS=0
+# METRICAS
+activate
+python orchestrator/metrics_fase1/evaluador_fase1.py

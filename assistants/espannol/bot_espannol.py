@@ -52,10 +52,10 @@ Responde de forma clara y educativa.
     except Exception as e:
         return f"Error de conexión con Ollama: {e}"
 
-# 🚀 INICIO
-print("📘 Cargando libro de Español...")
+#  INICIO
+print("Cargando libro de Español...")
 LIBRO_DATA = cargar_pdf("espannol.pdf")
-print("✅ Libro listo")
+print("Libro listo")
 
 @app.route('/preguntar', methods=['POST'])
 def preguntar():

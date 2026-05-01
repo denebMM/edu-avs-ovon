@@ -25,9 +25,9 @@ def recuperar_contexto(pregunta, texto):
     return "\n".join(fragmentos[:8])
 
 # --- CARGA INICIAL (SOLO UNA VEZ) ---
-print("📘 Cargando libros de álgebra...")
+print("Cargando libros de álgebra...")
 LIBRO_DATA = cargar_pdf(["algebra.pdf", "algebra1.pdf"])
-print("✅ Libros listos")
+print(" Libros listos")
 
 @app.route('/preguntar', methods=['POST'])
 def preguntar():
@@ -43,10 +43,11 @@ def preguntar():
         response = requests.post(
             "http://ollama:11434/api/generate",
             json={
-                "model": "qwen3-embedding:4b", # Asegúrate que este modelo sea de texto, no solo embeddings
+                "model": "llama3.1", # Asegúrate que este modelo sea de texto, no solo embeddings
                 "prompt": prompt,
                 "stream": False
-            }
+            },
+             timeout=120
         )
         respuesta_ia = response.json().get("response", "Error procesando respuesta")
     except Exception as e:

@@ -2,7 +2,10 @@
 vectorDB/
 *.bin
 *.sqlite3
-# Ignorar carpeta de métricas generadas automáticamente
-metrics/*.csv
-metrics/*.json
 
+# Ignorar carpeta de métricas generadas automáticamente
+git rm --cached metrics/*.csv
+git rm --cached metrics/*.json
+
+# Archivos pesados específicos
+assistants/algebra/algebra.pdf

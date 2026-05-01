@@ -93,28 +93,7 @@ services:
       - ofp_network
     restart: unless-stopped
 
-  assistant_alice:
-    build: ./assistants/alice-assistant
-    container_name: assistant_alice
-    ports:
-      - "5005:5005"
-    volumes:
-      - ./schemas:/app/schemas
-    networks:
-      - ofp_network
-      
-  assistant_history:
-    build: ./assistants/history-assistant
-    container_name: assistant_history
-    ports:
-      - "5003:5003"
-    volumes:
-      - ./schemas:/app/schemas
-    networks:
-      - ofp_network
-    restart: unless-stopped
 
-    # ====================== TRADUCTOR (Backend + Wrapper) ======================
   translator-backend:
     build:
       context: ./assistants/translator-assistant
