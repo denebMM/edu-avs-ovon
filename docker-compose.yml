@@ -200,7 +200,7 @@ services:
       - ofp_network
 
 # ====================== ASISTENTE DE ÁLGEBRA ======================
-  # 1. El "Cerebro" (Backend) - Maneja los PDFs y Ollama
+
   algebra-backend:
     build: 
       context: ./assistants/algebra

@@ -1,10 +1,15 @@
 from flask import Flask, request, jsonify
 import PyPDF2
 import requests
+import numpy as np
+from sentence_transformers import SentenceTransformer
 
 app = Flask(__name__)
 
-# --- TUS FUNCIONES DE PDF (IGUALES) ---
+# 1. Cargamos el modelo de Embeddings (se hace una sola vez al iniciar)
+print("_Cargando modelo de lenguaje (Embeddings)...")
+modelo_semantico = SentenceTransformer('all-MiniLM-L6-v2')
+
 def cargar_pdf(nombres):
     texto = ""
     for nombre in nombres:
@@ -18,36 +23,68 @@ def cargar_pdf(nombres):
             print(f"Error cargando {nombre}: {e}")
     return texto
 
-def recuperar_contexto(pregunta, texto):
-    palabras = pregunta.lower().split()
-    fragmentos = [linea.strip() for linea in texto.split("\n") 
-                  if any(p in linea.lower() for p in palabras)]
-    return "\n".join(fragmentos[:8])
+# 2. Nueva función para crear fragmentos (Chunks) con sentido
+def crear_fragmentos(texto, tamano=500):
+    lineas = [l.strip() for l in texto.split("\n") if l.strip()]
+    fragmentos, actual = [], ""
+    for linea in lineas:
+        if len(actual) + len(linea) < tamano:
+            actual += " " + linea
+        else:
+            fragmentos.append(actual.strip())
+            actual = linea
+    if actual: fragmentos.append(actual.strip())
+    return fragmentos
 
-# --- CARGA INICIAL (SOLO UNA VEZ) ---
-print("Cargando libros de álgebra...")
-LIBRO_DATA = cargar_pdf(["algebra.pdf", "algebra1.pdf"])
-print(" Libros listos")
+# 3. Nueva función de búsqueda semántica (Matemática vectorial)
+def recuperar_contexto_semantico(pregunta, fragmentos, embeddings_db):
+    # Convertimos la pregunta en un vector
+    emb_pregunta = modelo_semantico.encode(pregunta)
+    
+    # Calculamos la similitud de coseno entre la pregunta y todos los fragmentos
+    similitudes = np.dot(embeddings_db, emb_pregunta) / (
+        np.linalg.norm(embeddings_db, axis=1) * np.linalg.norm(emb_pregunta) + 1e-10
+    )
+    
+    # Tomamos los 5 fragmentos más parecidos
+    top_indices = np.argsort(similitudes)[::-1][:5]
+    return "\n".join([fragmentos[i] for i in top_indices])
+
+# --- PROCESAMIENTO INICIAL ---
+print(" Cargando libros de álgebra...")
+TEXTO_COMPLETO = cargar_pdf(["algebra.pdf", "algebra1.pdf"])
+FRAGMENTOS = crear_fragmentos(TEXTO_COMPLETO)
+
+print(f"Generando base de datos vectorial para {len(FRAGMENTOS)} fragmentos...")
+EMBEDDINGS_DB = modelo_semantico.encode(FRAGMENTOS)
+print("__Sistema listo.")
 
 @app.route('/preguntar', methods=['POST'])
 def preguntar():
     data = request.json
     pregunta = data.get("pregunta", "")
     
-    contexto = recuperar_contexto(pregunta, LIBRO_DATA)
+    # Búsqueda inteligente en lugar de búsqueda por palabras
+    contexto = recuperar_contexto_semantico(pregunta, FRAGMENTOS, EMBEDDINGS_DB)
     
-    # IMPORTANTE: Cambiamos localhost por 'ollama' para Docker
-    prompt = f"Eres un profesor experto en algebra.\nContexto:\n{contexto}\nPregunta: {pregunta}"
+    prompt = f"""Eres un profesor experto en álgebra.
+Usa exclusivamente el siguiente contexto para responder.
+
+Contexto:
+{contexto}
+
+Pregunta: {pregunta}
+Respuesta:"""
     
     try:
         response = requests.post(
             "http://ollama:11434/api/generate",
             json={
-                "model": "llama3.1", # Asegúrate que este modelo sea de texto, no solo embeddings
+                "model": "llama3.1",
                 "prompt": prompt,
                 "stream": False
             },
-             timeout=120
+            timeout=120
         )
         respuesta_ia = response.json().get("response", "Error procesando respuesta")
     except Exception as e:

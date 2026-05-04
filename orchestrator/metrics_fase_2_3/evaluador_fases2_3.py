@@ -83,11 +83,21 @@ def ejecutar_evaluacion_completa():
         
     df = df.dropna(subset=['pregunta'])
 
+    # Inicializar columnas para guardar en el CSV
+    df["agentes_reales"] = ""
+    df["texto_respuesta_global"] = ""
+    df["latencia_global_segundos"] = 0.0
+    df["precision_global"] = 0.0
+    df["recall_global"] = 0.0
+    df["f1_score_turno"] = 0.0
+    df["coseno_global_turno"] = 0.0
+
     # Diccionario maestro para guardar métricas individuales en memoria
-    # Estructura: {'computacion': {'VP': 0, 'FP': 0, 'FN': 0, 'cosenos': [], 'latencias': []}}
     metricas_agentes = {}
 
-    # Listas para métricas globales (del DataFrame)
+    # Listas para métricas globales
+    global_precision = []
+    global_recall = []
     global_f1 = []
     global_cosenos = []
     global_tiempos = []
@@ -100,7 +110,7 @@ def ejecutar_evaluacion_completa():
         esperados_str = str(row.get('agentes_esperados', ''))
         agentes_esperados = [a.strip() for a in esperados_str.split(',')] if esperados_str else []
         
-        # Diccionario opcional de respuestas ideales por agente (para máxima precisión)
+        # Diccionario opcional de respuestas ideales por agente
         ideales_individuales = {}
         if 'respuestas_ideales_json' in df.columns and not pd.isna(row['respuestas_ideales_json']):
             try:
@@ -126,7 +136,7 @@ def ejecutar_evaluacion_completa():
         agentes_reales_lista = list(agentes_reales_info.keys())
         print(f"  ↳ Esperados: {agentes_esperados} | Reales: {agentes_reales_lista} | Tiempo: {latencia_global}s")
 
-        # --- EVALUACIÓN FASE 2: RUTEO (Clasificación por Agente) ---
+        # --- EVALUACIÓN FASE 2: RUTEO ---
         vp_turno = len(set(agentes_esperados).intersection(set(agentes_reales_lista)))
         fp_turno = len(set(agentes_reales_lista) - set(agentes_esperados))
         fn_turno = len(set(agentes_esperados) - set(agentes_reales_lista))
@@ -134,9 +144,12 @@ def ejecutar_evaluacion_completa():
         prec_g = vp_turno / (vp_turno + fp_turno) if (vp_turno + fp_turno) > 0 else 0
         rec_g = vp_turno / (vp_turno + fn_turno) if (vp_turno + fn_turno) > 0 else 0
         f1_g = 2 * (prec_g * rec_g) / (prec_g + rec_g) if (prec_g + rec_g) > 0 else 0
+        
+        global_precision.append(prec_g)
+        global_recall.append(rec_g)
         global_f1.append(f1_g)
 
-        # Actualizar contadores individuales (Clasificación)
+        # Actualizar contadores individuales
         todos_los_involucrados = set(agentes_esperados + agentes_reales_lista)
         for ag in todos_los_involucrados:
             if ag not in metricas_agentes:
@@ -149,8 +162,8 @@ def ejecutar_evaluacion_completa():
             elif ag in agentes_esperados and ag not in agentes_reales_lista:
                 metricas_agentes[ag]['FN'] += 1
 
-        # --- EVALUACIÓN FASE 3: INTEROPERABILIDAD (Coseno y Latencia Individual) ---
-        # 1. Coseno Global
+        # --- EVALUACIÓN FASE 3: INTEROPERABILIDAD ---
+        cos_g = 0.0
         if "Error" not in texto_bot_global:
             v_ideal_g = obtener_embedding(respuesta_ideal_global)
             v_bot_g = obtener_embedding(texto_bot_global)
@@ -158,13 +171,9 @@ def ejecutar_evaluacion_completa():
                 cos_g = round(cosine_similarity(v_ideal_g, v_bot_g)[0][0], 4)
                 global_cosenos.append(cos_g)
 
-        # 2. Coseno y Latencia Individual por cada agente que habló
         for ag, info in agentes_reales_info.items():
             metricas_agentes[ag]['latencias'].append(info['latencia'])
-            
-            # Buscar su respuesta ideal específica, o usar la global de emergencia
             texto_ideal_agente = ideales_individuales.get(ag, respuesta_ideal_global)
-            
             v_ideal_ind = obtener_embedding(texto_ideal_agente)
             v_bot_ind = obtener_embedding(info['texto'])
             
@@ -172,12 +181,28 @@ def ejecutar_evaluacion_completa():
                 cos_ind = round(cosine_similarity(v_ideal_ind, v_bot_ind)[0][0], 4)
                 metricas_agentes[ag]['cosenos'].append(cos_ind)
 
+        # -> ASIGNAR AL DATAFRAME <-
+        df.at[index, "agentes_reales"] = ",".join(agentes_reales_lista)
+        df.at[index, "texto_respuesta_global"] = texto_bot_global
+        df.at[index, "latencia_global_segundos"] = latencia_global
+        df.at[index, "precision_global"] = round(prec_g, 4)
+        df.at[index, "recall_global"] = round(rec_g, 4)
+        df.at[index, "f1_score_turno"] = round(f1_g, 4)
+        df.at[index, "coseno_global_turno"] = cos_g
+
+    # -> GUARDAR EL CSV <-
+    try:
+        df.to_csv(ARCHIVO_RESULTADOS, index=False, encoding='utf-8')
+        print(f"\n Resultados guardados exitosamente en: {ARCHIVO_RESULTADOS}")
+    except Exception as e:
+        print(f"\n Error al guardar el archivo CSV: {e}")
+
     # === IMPRESIÓN DE RESULTADOS FINALES ===
     print("\n" + "="*60)
-    print(" __REPORTE DE AUDITORÍA: RENDIMIENTO INDIVIDUAL (FASE 2 Y 3)")
+    print("  REPORTE DE AUDITORÍA: RENDIMIENTO INDIVIDUAL (FASE 2 Y 3)")
     print("="*60)
-    print(f"{'AGENTE':<18} | {'F1-SCORE':<8} | {'COSENO':<8} | {'LATENCIA (s)'}")
-    print("-" * 60)
+    print(f"{'AGENTE':<18} | {'PRECISION':<9} | {'RECALL':<8} | {'F1-SCORE':<8} | {'COSENO':<8} | {'LATENCIA (s)'}")
+    print("-" * 75)
     
     for ag, m in sorted(metricas_agentes.items()):
         vp, fp, fn = m['VP'], m['FP'], m['FN']
@@ -188,11 +213,13 @@ def ejecutar_evaluacion_completa():
         cos_mean = np.mean(m['cosenos']) if m['cosenos'] else 0.0
         lat_mean = np.mean(m['latencias']) if m['latencias'] else 0.0
         
-        print(f"{ag.upper():<18} | {f1:<8.2f} | {cos_mean:<8.4f} | {lat_mean:.2f}s")
+        print(f"{ag.upper():<18} | {p:<9.2f} | {r:<8.2f} | {f1:<8.2f} | {cos_mean:<8.4f} | {lat_mean:.2f}s")
 
     print("\n" + "="*60)
-    print(" ____REPORTE DE AUDITORÍA: RENDIMIENTO GLOBAL (END-TO-END)")
+    print(" REPORTE DE AUDITORÍA: RENDIMIENTO GLOBAL (END-TO-END)")
     print("="*60)
+    print(f"Precisión Media (Ruteo Orquestador):     {np.mean(global_precision):.4f}")
+    print(f"Recall Medio (Ruteo Orquestador):        {np.mean(global_recall):.4f}")
     print(f"F1-Score Medio (Ruteo Orquestador):      {np.mean(global_f1):.4f}")
     print(f"Similitud Coseno Media (Composición):    {np.mean(global_cosenos):.4f}")
     print(f"Latencia Media Total (Experiencia User): {np.mean(global_tiempos):.2f} segundos")

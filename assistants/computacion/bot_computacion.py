@@ -1,10 +1,15 @@
 from flask import Flask, request, jsonify
 import PyPDF2
 import requests
+import numpy as np
+from sentence_transformers import SentenceTransformer
 
 app = Flask(__name__)
 
-# 📘 CARGAR PDF
+# 1. Carga del modelo de Embeddings (Solo una vez)
+print("Cargando modelo semántico...")
+modelo_emb = SentenceTransformer('all-MiniLM-L6-v2')
+
 def cargar_pdf(nombre):
     texto = ""
     try:
@@ -12,74 +17,60 @@ def cargar_pdf(nombre):
             lector = PyPDF2.PdfReader(f)
             for pagina in lector.pages:
                 contenido = pagina.extract_text()
-                if contenido:
-                    texto += contenido + "\n"
+                if contenido: texto += contenido + "\n"
     except Exception as e:
-        print(f"❌ Error al cargar el PDF: {e}")
+        print(f" Error al cargar el PDF: {e}")
     return texto
 
-# 🔎 RETRIEVAL (búsqueda simple)
-def recuperar_contexto(pregunta, texto):
-    palabras = pregunta.lower().split()
-    fragmentos = []
-    for linea in texto.split("\n"):
-        if any(p in linea.lower() for p in palabras):
-            fragmentos.append(linea.strip())
-    return "\n".join(fragmentos[:8])
+# 2. Fragmentación (Chunking) para que los embeddings tengan contexto
+def crear_fragmentos(texto, tamano=500):
+    lineas = [l.strip() for l in texto.split("\n") if l.strip()]
+    fragmentos, actual = [], ""
+    for linea in lineas:
+        if len(actual) + len(linea) < tamano:
+            actual += " " + linea
+        else:
+            fragmentos.append(actual.strip())
+            actual = linea
+    if actual: fragmentos.append(actual.strip())
+    return fragmentos
 
-# 🤖 GENERACIÓN CON OLLAMA
+# 3. Búsqueda Semántica Matemática
+def recuperar_contexto_semantico(pregunta, fragmentos, embeddings_db):
+    emb_pregunta = modelo_emb.encode(pregunta)
+    # Cálculo de similitud
+    similitudes = np.dot(embeddings_db, emb_pregunta) / (
+        np.linalg.norm(embeddings_db, axis=1) * np.linalg.norm(emb_pregunta) + 1e-10
+    )
+    top_indices = np.argsort(similitudes)[::-1][:5]
+    return "\n".join([fragmentos[i] for i in top_indices])
+
 def generar_con_ollama(pregunta, contexto):
-    prompt = f"""
-Eres un profesor experto en computacion.
-Usa este contexto del libro:
-{contexto}
-
-Pregunta:
-{pregunta}
-
-Responde de forma clara y educativa.
-"""
-    # CAMBIO: Se usa 'ollama' como host para la red de Docker
+    prompt = f"Eres un experto en computación.\nContexto: {contexto}\nPregunta: {pregunta}"
     try:
         response = requests.post(
             "http://ollama:11434/api/generate",
-            json={
-                "model": "llama3.1",
-                "prompt": prompt,
-                "stream": False
-            },
+            json={"model": "llama3.1", "prompt": prompt, "stream": False},
             timeout=120
         )
         return response.json()["response"]
     except Exception as e:
-        return f"Error conectando con Ollama: {str(e)}"
+        return f"Error en IA: {str(e)}"
 
-# 🚀 CARGA INICIAL DEL LIBRO
-print("📘 Cargando libro de computación...")
+# PROCESAMIENTO INICIAL
+print("Procesando libro de computación...")
 LIBRO_DATA = cargar_pdf("computacion.pdf")
-print("✅ Libro cargado correctamente")
+FRAGMENTOS = crear_fragmentos(LIBRO_DATA)
+EMBEDDINGS_DB = modelo_emb.encode(FRAGMENTOS)
+print(" Base de datos semántica lista")
 
-# 🌐 ENDPOINT PARA EL WRAPPER
 @app.route('/preguntar', methods=['POST'])
 def preguntar():
     datos = request.json
-    pregunta_usuario = datos.get("pregunta", "")
-    
-    if not pregunta_usuario:
-        return jsonify({"error": "No se recibió ninguna pregunta"}), 400
-
-    # 1. Buscar en el PDF
-    contexto = recuperar_contexto(pregunta_usuario, LIBRO_DATA)
-    
-    # 2. Generar respuesta con IA
-    respuesta_ia = generar_con_ollama(pregunta_usuario, contexto)
-    
-    # 3. Responder en formato JSON
-    return jsonify({
-        "respuesta": respuesta_ia,
-        "status": "success"
-    })
+    pregunta = datos.get("pregunta", "")
+    contexto = recuperar_contexto_semantico(pregunta, FRAGMENTOS, EMBEDDINGS_DB)
+    respuesta_ia = generar_con_ollama(pregunta, contexto)
+    return jsonify({"respuesta": respuesta_ia, "status": "success"})
 
 if __name__ == '__main__':
-    # El host '0.0.0.0' permite conexiones externas dentro de Docker
     app.run(host='0.0.0.0', port=5000)

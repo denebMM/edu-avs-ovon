@@ -9,3 +9,5 @@ git rm --cached metrics/*.json
 
 # Archivos pesados específicos
 assistants/algebra/algebra.pdf
+
+COMANDOS.md

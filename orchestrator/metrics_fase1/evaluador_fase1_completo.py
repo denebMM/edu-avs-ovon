@@ -56,7 +56,7 @@ def ejecutar_pruebas_fase1():
     df["respuesta_sistema"] = ""
     df["tiempo_segundos"] = 0.0
     df["similitud_coseno"] = 0.0
-    df["clasificacion"] = "" # VP, FN, etc.
+    df["clasificacion"] = "" # VP, FN, FP.
 
     for index, row in df.iterrows():
         asistente = str(row['asistente']).strip()

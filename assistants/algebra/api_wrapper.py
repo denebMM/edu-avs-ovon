@@ -4,6 +4,7 @@ import json
 import logging
 import jsonschema
 from datetime import datetime, timedelta
+import time
 
 # Configuración de Logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -83,13 +84,10 @@ def handle_receive():
 
         # Llamada al backend de Álgebra (el que lee los PDFs)
         try:
-            resp = requests.post(
-                ALGEBRA_INTERNAL_URL,
-                json={
-                    "pregunta": query_to_process, # Clave que espera tu backend de álgebra
-                },
-                timeout=120
-            )
+            start_time = time.time()
+            resp = requests.post(ALGEBRA_INTERNAL_URL, json={"pregunta": query_to_process}, timeout=120)
+            duration = time.time() - start_time
+            logger.info(f"Backend procesó búsqueda semántica en {duration:.2f} segundos")
             resp.raise_for_status()
             backend_data = resp.json()
             

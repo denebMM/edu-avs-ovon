@@ -1,10 +1,16 @@
 from flask import Flask, request, jsonify
 import PyPDF2
 import requests
+import numpy as np
+import time
+from sentence_transformers import SentenceTransformer
 
 app = Flask(__name__)
 
-# 📘 CARGAR PDF
+# 1. Carga del modelo semántico (Standard para RAG local)
+print("Cargando modelo semántico para Lengua Española...")
+modelo_emb = SentenceTransformer('all-MiniLM-L6-v2')
+
 def cargar_pdf(nombre):
     texto = ""
     try:
@@ -12,56 +18,63 @@ def cargar_pdf(nombre):
             lector = PyPDF2.PdfReader(f)
             for pagina in lector.pages:
                 contenido = pagina.extract_text()
-                if contenido:
-                    texto += contenido + "\n"
+                if contenido: texto += contenido + "\n"
     except Exception as e:
         print(f"Error al cargar PDF: {e}")
     return texto
 
-# 🔎 RETRIEVAL
-def recuperar_contexto(pregunta, texto):
-    palabras = pregunta.lower().split()
-    fragmentos = []
-    for linea in texto.split("\n"):
-        if any(p in linea.lower() for p in palabras):
-            fragmentos.append(linea.strip())
-    return "\n".join(fragmentos[:8])
+# 2. Fragmentación inteligente (Chunking)
+def crear_fragmentos(texto, tamano=500):
+    lineas = [l.strip() for l in texto.split("\n") if l.strip()]
+    fragmentos, actual = [], ""
+    for linea in lineas:
+        if len(actual) + len(linea) < tamano:
+            actual += " " + linea
+        else:
+            fragmentos.append(actual.strip())
+            actual = linea
+    if actual: fragmentos.append(actual.strip())
+    return fragmentos
 
-# 🤖 GENERACIÓN CON OLLAMA
+# 3. Búsqueda Vectorial (Similitud de Coseno)
+def recuperar_contexto_semantico(pregunta, fragmentos, embeddings_db):
+    emb_pregunta = modelo_emb.encode(pregunta)
+    similitudes = np.dot(embeddings_db, emb_pregunta) / (
+        np.linalg.norm(embeddings_db, axis=1) * np.linalg.norm(emb_pregunta) + 1e-10
+    )
+    top_indices = np.argsort(similitudes)[::-1][:5]
+    return "\n".join([fragmentos[i] for i in top_indices])
+
 def generar_con_ollama(pregunta, contexto):
-    prompt = f"""
-Eres un profesor experto en Lengua Española y Literatura.
-Usa este contexto del libro:
+    prompt = f"""Eres un profesor experto en Lengua Española y Literatura.
+Usa el contexto proporcionado para responder de forma educativa.
+
+Contexto:
 {contexto}
 
-Pregunta:
-{pregunta}
-Responde de forma clara y educativa.
-"""
+Pregunta: {pregunta}"""
     try:
         response = requests.post(
-            "http://ollama:11434/api/generate", # DNS de Docker
-            json={
-                "model": "llama3.1",
-                "prompt": prompt,
-                "stream": False
-            },
+            "http://ollama:11434/api/generate",
+            json={"model": "llama3.1", "prompt": prompt, "stream": False},
             timeout=120
         )
         return response.json()["response"]
     except Exception as e:
         return f"Error de conexión con Ollama: {e}"
 
-#  INICIO
-print("Cargando libro de Español...")
+# PROCESAMIENTO INICIAL (Una sola vez)
+print(" Procesando libro de Español...")
 LIBRO_DATA = cargar_pdf("espannol.pdf")
-print("Libro listo")
+FRAGMENTOS = crear_fragmentos(LIBRO_DATA)
+EMBEDDINGS_DB = modelo_emb.encode(FRAGMENTOS)
+print(f"Sistema listo: {len(FRAGMENTOS)} fragmentos analizados.")
 
 @app.route('/preguntar', methods=['POST'])
 def preguntar():
     data = request.json
     pregunta = data.get("pregunta", "")
-    contexto = recuperar_contexto(pregunta, LIBRO_DATA)
+    contexto = recuperar_contexto_semantico(pregunta, FRAGMENTOS, EMBEDDINGS_DB)
     respuesta = generar_con_ollama(pregunta, contexto)
     return jsonify({"respuesta": respuesta})
 
