@@ -1,0 +1,1021 @@
+id_pregunta,asistente,puerto,pregunta,respuesta_obtenida,Unnamed: 5,latencia_segundos
+1,algebra,5013,?Qu? es un t?rmino algebraico y cu?les son sus elementos?,"Un término algebraico es una expresión algebraica que consta de un solo símbolo o de varios símbolos no separados entre sí por el signo + o -. Así, a, 3b, 2xy, * son términos. 
+
+Su elementos son los símbolos.",,75.41
+2,algebra,5013,?Cu?l es la regla general para la suma de polinomios?,"Lo siento, no tengo esa información en mi base de datos. Sin embargo, según el texto proporcionado, se puede deducir que la regla general para sumar polinomios consiste en colocar los términos de los polinomios unos a continuación de otros con sus propios signos y luego reducir los términos semejantes.",,18.74
+3,algebra,5013,?Qu? regla de signos se aplica en la resta de polinomios?,"Lo siento, no tengo esa información en mi base de datos.",,15.57
+4,algebra,5013,?Cu?l es la ley de los exponentes para la multiplicaci?n de bases iguales?,"Lo siento, no tengo esa información en mi base de datos. El texto proporcionado solo menciona reglas y ejemplos relacionados con potencias, pero no explica explícitamente las leyes de los exponentes para la multiplicación de bases iguales. Sin embargo, hay un párrafo que habla sobre ""Potencia de una potencia"" y establece que se multiplica los exponentes, pero no hay nada sobre la multiplicación de dos potencias con base igual.",,21.38
+5,algebra,5013,?A qu? es igual el cuadrado de la suma de dos cantidades (producto notable)?,El cuadrado de la suma de dos cantidades (producto notable) es igual al cuadrado de la primera cantidad más el doble de la primera cantidad por la segunda más el cuadrado de la segunda.,,17.8
+6,algebra,5013,?Cu?l es la regla para desarrollar el producto de la suma por la diferencia de dos cantidades?,"La regla para desarrollar el producto de la suma por la diferencia de dos cantidades es la siguiente:
+
+Sea el producto (a + b)(a -b). a + b
+
+Efectuando esta multiplicación, tenemos:
+
+(a + b)(a -b) = a'-b'
+
+o sea, la suma de dos cantidades multiplicada por su diferencia es igual al cuadrado del minuendo menos el cuadrado del sustraendo.",,24.2
+7,algebra,5013,?En qu? consiste el caso de factorizaci?n por factor com?n?,"El caso de factorización por factor común se refiere a sacar un factor común que se repite en cada término de una expresión algebraica. En este sentido, el texto proporciona dos ejemplos:
+
+1. 5a' - 5: Se encuentra el factor común 5 y se saca para dejar: 5(a'-1).
+2. 3x' -18x'y + 27xy': Se encuentra el factor común 3x y se saca para dejar: 3x(x'-6y+9y').
+
+En ambos casos, la expresión queda descompuesta en tres factores después de sacar el factor común.",,34.61
+8,algebra,5013,?Cu?les son las condiciones para que un trinomio sea considerado un cuadrado perfecto?,"Los requisitos son los siguientes:
+
+1. El primer y tercer términos deben ser cuadrados perfectos (o tener raíz cuadrada exacta) y positivos.
+2. El segundo término debe ser el doble producto de las raíces cuadradas de los primeros y terceros términos.",,19.25
+9,algebra,5013,?Cu?l es la regla general para factorizar una diferencia de cuadrados perfectos?,"Lo siento, no tengo esa información en mi base de datos. 
+
+Sin embargo, puedo deducir que según el texto proporcionado, hay dos reglas generales:
+
+1. REGLA 1: La suma de dos cubos perfectos se descompone en dos factores:
+   - La suma de sus raíces cúbicas.
+   - El cuadrado de la primera raiz, más el producto de las dos raíces, más el cuadrado de la segunda raíz.
+
+2. REGLA 2: La diferencia de dos cubos perfectos se descompone en dos factores:
+   - La diferencia de sus raíces cúbicas.
+   - El cuadrado de la primera raiz, menos el producto de las dos raíces, más el cuadrado de la segunda raíz.
+
+La pregunta parece estar buscando una regla para factorizar una diferencia de cuadrados perfectos. Según los ejemplos proporcionados en el texto, se puede concluir que:
+
+* Si queremos factorizar una suma o una diferencia de cubos perfectos, usamos las Reglas 1 y 2.
+* Sin embargo, si queremos factorizar específicamente una diferencia de cuadrados perfectos (y no una suma o diferencia de cubos), la respuesta no es explícitamente proporcionada en el texto.
+
+Por lo tanto, mi respuesta sería: Lo siento, pero no puedo deducir con certeza la regla general para factorizar una diferencia de cuadrados perfectos únicamente a partir del contexto proporcionado.",,59.34
+10,algebra,5013,?C?mo se halla el m?nimo com?n m?ltiplo (m.c.m.) de expresiones algebraicas?,"Según el contexto del libro, para encontrar el mínimo común múltiplo (m.c.m.) de expresiones algebraicas se deben seguir los siguientes pasos:
+
+1. Se halla el m.c.m. de los coeficientes.
+2. A continuación de éste se escriben todas las letras distintas, sean o no comunes, dando a cada letra el mayor exponente que tenga en las expresiones dadas.
+
+Por ejemplo, si tenemos dos expresiones algebraicas: ax' y a'x, primero se halla el m.c.m. de los coeficientes (en este caso es a) y luego se escriben todas las letras distintas con su mayor exponente, obteniendo la expresión: a x'.",,29.92
+11,algebra,5013,?Qu? es la transposici?n de t?rminos al resolver una ecuaci?n de primer grado?,"Lo siento, no tengo esa información en mi base de datos.",,11.17
+12,algebra,5013,?En qu? consiste el m?todo de igualaci?n para resolver ecuaciones simult?neas?,"Lo siento, no tengo esa información en mi base de datos.",,15.61
+13,algebra,5013,?En qu? consiste el m?todo de sustituci?n para resolver sistemas de ecuaciones?,"Lo siento, no tengo esa información en mi base de datos.",,11.82
+14,algebra,5013,?Cu?l es la f?rmula general para resolver una ecuaci?n de segundo grado completa?,"Lo siento, no tengo esa información en mi base de datos. El texto proporcionado parece ser un extracto de un libro sobre álgebra, pero no incluye ninguna referencia a la resolución de ecuaciones de segundo grado. Sin embargo, se menciona que el capítulo IX ofrece una fórmula para resolver ecuaciones de segundo grado en otra parte del libro, pero ese contenido no está disponible en este extracto.",,21.97
+15,algebra,5013,?Qu? son las cantidades radicales semejantes?,"Lo siento, no tengo esa información en mi base de datos.",,12.62
+16,computacion,5014,?Cu?l es la diferencia principal entre el hardware y el software de una computadora?,"La respuesta es: ""El software le dice al hardware lo que hay que hacer."" (Según el contexto, en el párrafo donde se describe las partes físicas de la computadora como hardware y se menciona que las instrucciones del software les dicen al hardware qué hacer).",,20.85
+17,computacion,5014,?Qu? es la Unidad Central de Procesamiento (CPU) y cu?l es su funci?n principal?,"La Unidad Central de Procesamiento (CPU), también conocida como microprocesador, es el ""cerebro"" de la computadora. Su función principal es procesar información, realizar cálculos aritméticos y tomar decisiones básicas comparando valores de información.",,16.93
+18,computacion,5014,?Qu? funci?n cumple la memoria RAM en un sistema inform?tico?,"La memoria RAM (Random Access Memory) sirve como el área de trabajo de la CPU, donde se almacenan las instrucciones y los datos que están siendo procesados en ese momento. También es donde se realizan los cálculos y operaciones lógicas. La RAM tiene capacidad para acceder a cualquier ubicación de memoria de forma instantánea, lo que permite a la CPU obtener acceso rápido a la información necesaria para ejecutar las instrucciones del programa.",,23.7
+19,computacion,5014,?En qu? se diferencia la memoria ROM de la memoria RAM?,"La memoria flash no es mencionada en el contexto del libro para describir la diferencia entre la memoria ROM y la memoria RAM. No obstante, la memoria ROM (Read Only Memory) se puede diferenciar de la memoria RAM (Random Access Memory) por el hecho de que los datos en la ROM son permanentes y no pueden cambiarse, mientras que los datos en la RAM pueden cambiarse.",,21.16
+20,computacion,5014,?Qu? son los perif?ricos de entrada y menciona tres ejemplos comunes?,"Lo siento, no tengo esa información en mi base de datos. El texto parece hablar sobre formas de comunicación entre personas, pero no se refiere a periféricos de entrada.",,13.52
+21,computacion,5014,?Cu?l es la funci?n principal de los dispositivos de salida?,"Los dispositivos de salida se encargan de reunir la entrada con la salida. Según el texto, ""La entrada se reúne con la salida"".",,17.97
+22,computacion,5014,?Qu? es un sistema operativo y cu?l es su objetivo fundamental?,"Un sistema operativo es ""un conjunto de partes interrelacionadas que trabajan conjuntamente para trasladar las instrucciones de software a mensajes que el hardware pueda comprender"". Su objetivo fundamental es actuar como ""el director de la computadora, prestando atención a cientos de detalles que precisos cuidar para que el funcionamiento de la computadora no se vea afectado"", incluyendo tareas como monitorizar los recursos de la máquina, controlar la cuenta de cada usuario y proteger la seguridad del sistema y de los datos de cada usuario.",,27.04
+23,computacion,5014,?Cu?l es el prop?sito del disco duro o la unidad de estado s?lido (SSD)?,"Lo siento, no tengo esa información en mi base de datos.",,12.0
+24,computacion,5014,?Qu? es la placa base o tarjeta madre en la arquitectura de una computadora?,"En el contexto del libro, la ""placa base"" se refiere a un componente clave en la arquitectura de una computadora. Según el texto, la placa base es donde están integrados los componentes importantes como la CPU y los chips de memoria. También menciona que en una computadora portátil, la placa madre está diseñada para tener todos estos componentes agrupados en ella.",,22.5
+25,computacion,5014,?Qu? es la Unidad Aritm?tico L?gica (ALU) dentro de un procesador?,"Lo siento, no tengo esa información en mi base de datos. El texto solo menciona el microprocesador o unidad central de procesamiento (CPU), pero no hace referencia a la Unidad Aritmética Lógica (ALU) específicamente.",,16.71
+26,computacion,5014,?A qu? se le llama software de aplicaci?n?,"Lo siento, no tengo esa información en mi base de datos.",,19.11
+27,computacion,5014,?Por qu? las computadoras utilizan el sistema binario para procesar informaci?n?,"Las computadoras están hechas de dispositivos de conmutación que reducen toda la información a ceros y unos, por lo que representan números utilizando el sistema numérico binario.",,15.21
+28,computacion,5014,?Qu? es una red de computadoras?,Una red de computadoras es cualquier sistema de dos o más computadoras enlazadas.,,16.54
+29,computacion,5014,?Cu?l es la diferencia entre Internet y una Intranet?,"Una intranet está compuesta de tecnología física y de contenido informativo. La comunicación software de una intranet incluye middleware y TCP/IP, aunque la misma tecnología que Internet. 
+
+La respuesta a esta pregunta se puede deducir del contexto proporcionado. Una Intranet es más segura y privada que Internet ya que tiene un firewall para proteger los datos internos sensibles.",,18.88
+30,computacion,5014,?Qu? es un malware o software malicioso?,"Lo siento, no tengo esa información en mi base de datos. Sin embargo, según la descripción del Capítulo 10 sobre ""Seguridad y riesgos de la computadora"" del libro, el texto menciona que algunos virus pueden reproducirse, mostrar mensajes inesperados en pantalla, llenar memoria, destruir ficheros de datos o provocar errores importantes en los sistemas, pero no define explícitamente qué es un malware o software malicioso.",,26.6
+31,espanol,5015,"?Cu?l es la diferencia entre palabras agudas, graves y esdr?julas?","Según el texto proporcionado, las diferencias entre las palabras agudas, graves y esdrújulas se refieren a la posición de los acentos en la sílaba tónica. 
+
+- Las palabras **agudas** (vocales /á/, /é/, /í/ etc.) terminan en vocal, ya sea abierta o cerrada. El ejemplo más claro es el caso de las voces verbales (§ b) como: a-l/cohl (no al-cohl), c-o-hibr (no co-hibr), proh-i-bén (no pro-híben).
+
+- Las palabras **graves** (vocales /ó/, /ô/ etc.) terminan en consonante. El ejemplo de este caso es el siguiente: a-ta-risajé (del francés atterrissage) y otros como brebaje, cantaje.
+
+- Las palabras **esdrújulas** (vocales /e/, /i/ en sílabas anteriores al final de la palabra) terminan en vocal. El ejemplo más claro es el caso de las voces verbales (§ b): pirsin (del inglés piercing), etc.
+
+En el contexto del texto proporcionado, se menciona que el acento gráfico es un mero signo gráfico sin valor fonético independiente.",,57.38
+32,espanol,5015,?Qu? es un hiato ortogr?fico y cu?ndo lleva tilde?,"Lo siento, no tengo esa información en mi base de datos.",,14.7
+33,espanol,5015,?Cu?ndo se debe utilizar el punto y coma (;)?,"Lo siento, no tengo esa información en mi base de datos. Sin embargo, según el contexto proporcionado, parece que se menciona el uso del guion separando palabras (p. ej., ""a-lá-pa-la-brá-o-cífr-a-que-lo-pre-ce-de"") o fracciones (p. ej., ""2 · ( x + y ) = 30""). No se menciona específicamente el punto y coma (;) en el contexto dado.",,28.46
+34,espanol,5015,?Cu?les son los tres modos verbales principales en espa?ol y qu? expresan?,"Los tres modos verbales principales en español son el indicativo, el subjuntivo y el imperativo. 
+
+- El **indicativo** expresa una acción real o factual, es decir, lo que sucede de hecho. 
+- El **subjuntivo** expresa duda, posibilidad, hipótesis, voluntad o orden. 
+- El **imperativo** da órdenes, consejos, indicaciones o ruegos para que alguien haga algo.",,27.15
+35,espanol,5015,?Qu? funci?n principal cumple el adjetivo calificativo?,"Lo siento, no tengo esa información en mi base de datos.",,14.46
+36,espanol,5015,"?Cu?l es la regla definitiva que establece la Ortograf?a de 2010 sobre el uso de la tilde en la palabra ""solo"" (adjetivo y adverbio) y en los pronombres demostrativos (este, ese, aquel)?","Lo siento, no tengo esa información en mi base de datos.",,17.63
+37,espanol,5015,"?cu?les son las reglas para escribir los prefijos (unidos, con guion o separados) y c?mo se escribir?a correctamente el prefijo ""ex"" junto a ""primer ministro""?","Según el contexto, las reglas para escribir los prefijos son:
+
+- Los prefijos que provienen de palabras griegas (como crisis o xenismo) deben escribirse con mayúscula inicial.
+- No hay normas específicas sobre la unión o separación de los prefijos, pero es común encontrarlos escritos tanto con guion como sin él.
+- En la pronunciación relacionada, especialmente en España, se frecuencia que la ""x"" se escriba como ""s"" (por ejemplo, ""excombatiente"" en lugar de ""excmbatiente"").
+
+Para el prefijo ""ex"" junto a ""primer ministro"", según la norma citada, se recomienda escribirlo con guion: ""ex-primer ministro"". Sin embargo, si solo se considera la forma como se escriben las palabras relacionadas en la pronunciación relacionada, especialmente en España, sería correcto escribirlo como ""ex-primer ministro"" pero también es frecuente encontrar escrito sin guion: ""exprimerministro"".",,42.98
+38,espanol,5015,?Qu? son las preposiciones y para qu? sirven?,"Las preposiciones en español son palabras que indican la relación entre el sujeto o el objeto de una oración con respecto al resto del texto. Algunas de las funciones principales de las preposiciones son:
+
+* Indicar la ubicación: Por ejemplo, ""en"", ""dentro de"", ""fuera de"" (ejemplo: ""La biblioteca está dentro de la ciudad"").
+* Indicar el movimiento o acción hacia una dirección: Por ejemplo, ""a"", ""hacia"", ""desde"" (ejemplo: ""Voy a la playa"").
+* Indicar la relación entre dos cosas: Por ejemplo, ""con"", ""sin"", ""entre"" (ejemplo: ""Estoy con mi amigo"").
+* Indicar el tiempo o duración: Por ejemplo, ""en"", ""durante"" (ejemplo: ""La fiesta fue en junio"").
+
+Las preposiciones sirven para clarificar la relación entre los elementos de una oración y proporcionan información adicional sobre la acción o situación descrita. Algunas de las funciones específicas de cada preposición pueden variar dependiendo del contexto en el que se utilice.
+
+En el texto que has proporcionado, se menciona que las secuencias vocálicas dentro de una sílaba (por ejemplo, [e.?m.bi.a]) y las secuencias vocálicas entre sílabas distintas (por ejemplo, [e.m.b.i.?a.r]) también pueden influir en la pronunciación de una palabra.",,61.96
+39,espanol,5015,"?En qu? casos espec?ficos la Ortograf?a permite o hace obligatorio el uso de la coma (,) inmediatamente antes de la conjunci?n ""y""?","Según el contexto proporcionado, la Ortografía permite o hace obligatorio el uso de la coma (,) inmediatamente antes de la conjunción ""y"" en los siguientes casos específicos:
+
+* Cuando se utiliza un pronombre tónico, como en ""y a quién entre no"" (Véanse ejemplos en el texto).
+* Cuando se agrupa las vocales dentro de la sílaba, como en ""[pi.á.no], [em.bi.ár], [gi.ón], [je.su.í.ta]"" y ""[di.o]"".
+
+En estos casos, la Ortografía permite o hace obligatorio utilizar una coma para separar la sílaba anterior de la conjunción ""y"".",,38.45
+40,espanol,5015,?Cu?ndo se debe utilizar el punto y coma?,"Lo siento, no tengo esa información en mi base de datos. El contexto proporcionado parece referirse a la ortografía y la expresión numérica en textos escritos, pero no hay ninguna mención específica sobre el uso del punto y coma.",,21.89
+41,espanol,5015,"se debe colocar tilde en la conjunci?n ""o"" cuando se escribe entre cifras num?ricas (por ejemplo, ""5 ? 6"") para evitar que se confunda con un cero?","Lo siento, no tengo esa información en mi base de datos.",,15.17
+42,espanol,5015,?Qu? funci?n tiene el adverbio dentro de una oraci?n?,"La función del adverbio dentro de una oración es modificar los verbos, adjetivos y otros adverbios expresando la manera, tiempo, lugar, frecuencia u otra relación entre el verbo principal y su contenido. En el contexto que se nos proporciona, no hay información específica sobre la función del adverbio, pero sí se menciona cómo se articulan las palabras con vocales contiguas en sílabas distintas y cómo se agrupan las vocales dentro de la misma sílaba.",,29.52
+43,espanol,5015,"?se consideran la ""ch"" y la ""ll"" como letras del abecedario espa?ol, y cu?les son los nombres recomendados oficialmente por la RAE para las letras ""v"", ""w"" e ""y""?","Lo siento, no tengo esa información en mi base de datos. El contexto proporcionado parece ser un fragmento de un libro o texto sobre la lengua española, pero no se menciona explícitamente los nombres recomendados oficialmente por la RAE para las letras ""v"", ""w"" e ""y"".",,22.43
+44,espanol,5015,?Qu? son los pronombres personales?,"Lo siento, no tengo esa información en mi base de datos. El contexto proporcionado parece ser un texto poético o literario que utiliza palabras y expresiones coloquiales para describir la forma en que se usan las palabras en la lengua española. Sin embargo, no menciona explícitamente los pronombres personales ni proporciona una definición de ellos.",,24.93
+45,espanol,5015,"?c?mo se explica el uso impersonal del verbo ""haber"" y por qu? se considera un error gramatical decir ""hubieron muchos problemas""?","Lo siento, no tengo esa información en mi base de datos.",,15.05
+46,historia,5016,?Cu?l fue el impacto de la invenci?n del lenguaje en la evoluci?n humana en comparaci?n con la evoluci?n del resto de los animales?,"Lo siento, no tengo esa información en mi base de datos.",,16.76
+47,historia,5016,?C?mo la presi?n geogr?fica y la gesti?n del r?o Nilo propiciaron la creaci?n del primer Estado y de la escritura en el Antiguo Egipto?,"Lo siento, pero el contexto proporcionado no menciona nada relacionado con Egipto o el Antiguo Egipto. La información presentada se refiere a eventos históricos en diferentes partes del mundo, como la industrialización británica, la Revolución Rusa, la crisis económica de 1929, y la Segunda Guerra Mundial, pero no hay conexión con Egipto. Por lo tanto, no puedo proporcionar una respuesta basada estrictamente en los documentos dados en el contexto.",,29.5
+48,historia,5016,"Seg?n el discurso de Pericles, ?qu? principios y valores fundamentales defin?an la grandeza de la democracia ateniense?","Lo siento, no tengo esa información en mi base de datos. El contexto proporcionado solo menciona al Imperio otomano y la Revolución Rusa, pero no hace referencia a Pericles ni a su discurso sobre la democracia ateniense.",,18.13
+49,historia,5016,?Qu? innovaciones ideol?gicas y metaf?sicas aport? el juda?smo que transformaron la visi?n del mundo en la Antig?edad?,"Lo siento, no tengo esa información en mi base de datos. El contexto proporcionado parece estar centrado en temas históricos y económicos relacionados con el siglo XX y principios del XXI, incluyendo la Revolución Rusa y las tendencias económicas globales en ese período, pero no se refiere a innovaciones ideológicas o metafísicas del judaísmo que transformaran la visión del mundo en la Antigüedad. La pregunta parece pertenecer a un tema más amplio de estudios religiosos o filosóficos.",,28.4
+50,historia,5016,?Qu? estrategias institucionales y pol?ticas permitieron al Imperio Romano mantener su vasta hegemon?a durante tantos siglos? ,"Lo siento, no tengo esa información en mi base de datos. El contexto proporcionado se refiere a la expansión del imperialismo y sus consecuencias en el siglo XX, pero no trata específicamente sobre el Imperio Romano.",,19.8
+51,historia,5016,?Qu? papel fundamental desempe?? la Iglesia Cat?lica durante la Edad Media tras la ca?da y declive del Imperio Romano de Occidente?,"Lo siento, no tengo esa información en mi base de datos. El contexto proporcionado habla sobre la expansión del imperialismo y sus consecuencias a principios del siglo XX, pero no menciona la caída y declive del Imperio Romano de Occidente ni el papel de la Iglesia Católica durante la Edad Media.",,18.67
+52,historia,5016,"A pesar de su notable desarrollo, ?por qu? los grandes imperios precolombinos fueron derrotados r?pidamente por los conquistadores espa?oles?","Lo siento, no tengo esa información en mi base de datos. El contexto proporcionado se enfoca principalmente en la expansión del imperialismo europeo a principios del siglo XX y no menciona explícitamente el desarrollo o derrota de los grandes imperios precolombinos por parte de los conquistadores españoles. Si necesitas información sobre un tema específico relacionado con la Historia Universal, en particular sobre la expansión europea en América, estaré encantado de ayudarte con las fechas y personajes clave que mencionaste en el contexto.",,26.71
+53,historia,5016,?De qu? manera contribuy? decisivamente Francia en el ?xito de la Guerra de Independencia de los Estados Unidos contra Inglaterra? ,"Lo siento, no tengo esa información en mi base de datos. El contexto proporcionado se centra principalmente en la expansión territorial y las guerras mundiales del siglo XX, pero no menciona el apoyo francés a los estadounidenses durante su Guerra de Independencia contra Inglaterra (1775-1783).",,21.44
+54,historia,5016,?Qu? innovaci?n t?ctica implement? la Convenci?n francesa en 1793 para derrotar a los ej?rcitos de los reyes europeos que la invad?an?,"Lo siento, no tengo esa información en mi base de datos. El contexto proporcionado habla sobre eventos históricos como la Primera Guerra Mundial y el imperialismo a principios del siglo XX, pero no menciona específicamente una ""Convención francesa"" relacionada con innovaciones tácticas en 1793 para derrotar a los ejércitos de los reyes europeos.",,20.27
+55,historia,5016,"Seg?n la perspectiva de Vladimir Lenin, ?por qu? el Imperio Ruso no era el pa?s donde deber?a haberse llevado a cabo la aut?ntica revoluci?n socialista?","Lo siento, no tengo esa información en mi base de datos. El contexto proporcionado trata sobre la Revolución Rusa y la toma del poder por parte de Stalin, pero no menciona la perspectiva de Lenin sobre el Imperio Ruso como lugar para llevar a cabo una auténtica revolución socialista.",,22.48
+56,historia,5016,?C?mo logr? Benito Mussolini establecer el r?gimen fascista en Italia y acabar con el estado liberal?,"Lo siento, no tengo esa información en mi base de datos. El contexto solo menciona que Mussolini se convirtió en Primer Ministro después de la renuncia del Primer Ministro Luigi Facta y la instauración de un régimen fascista, pero no proporciona detalles sobre cómo logró establecer el régimen fascista.",,21.96
+57,historia,5016,?Cu?les fueron las principales herramientas ideol?gicas y religiosas utilizadas para justificar el totalitarismo y el expansionismo del Imperio Japon?s?,"Lo siento, no tengo esa información en mi base de datos. El contexto proporcionado se enfoca principalmente en la expansión del imperialismo en Europa y las consecuencias a principios del siglo XX, así como la Revolución Rusa y la formación de imperios en Asia y África. No hay menciones específicas sobre el Imperio Japonés o sus herramientas ideológicas y religiosas para justificar su expansionismo totalitario.",,22.02
+58,historia,5016,?Cu?l es la estructura interna de la ONU y c?mo opera el pol?mico mecanismo de toma de decisiones de su Consejo de Seguridad? ,"Lo siento, pero no tengo información específica sobre la estructura interna de la Organización de las Naciones Unidas (ONU) ni sobre el mecanismo de toma de decisiones del Consejo de Seguridad en relación con el contexto proporcionado. La pregunta parece surgir del Bloque II de la unidad didáctica, que se enfoca en la Revolución Rusa y los gobiernos mundiales, pero no hay información directa sobre la estructura interna de la ONU o su Consejo de Seguridad en el contexto dado. Si necesitas información sobre estos temas, te recomendaría consultar fuentes históricas u oficiales de la ONU para obtener detalles precisos.",,33.41
+59,historia,5016,?Cu?les fueron las fases del prolongado conflicto b?lico en Vietnam que llevaron a la divisi?n temporal de la pen?nsula indochina?,"Lo siento, no tengo esa información en mi base de datos. El texto proporcionado parece referirse a la Segunda Guerra Mundial y la participación de Japón en ella, pero no menciona específicamente el conflicto en Vietnam o la división temporal de la península indochina. Si deseas saber sobre la historia de Vietnam durante la guerra, puedo proporcionarte información general sobre la Segunda Guerra Mundial y su impacto en Asia. Sin embargo, si necesitas detalles específicos sobre las fases del conflicto en Vietnam, lo siento, pero no tengo esa información disponible en mi base de datos.",,28.72
+60,historia,5016,"?Qu? papel jug? el cristianismo en la ca?da de Roma?
+","Lo siento, no tengo esa información en mi base de datos. El texto proporcionado parece estar relacionado con el contexto histórico del período entre las dos guerras mundiales y los movimientos fascistas y comunistas, pero no menciona específicamente el papel del cristianismo en la caída de Roma. La información sobre la caída de Roma se puede encontrar en fuentes históricas como Tácito o Suetonio, pero no está presente en este texto proporcionado.",,33.99
+61,programacion,5017,Escriba un segmento de c?digo que d? como resultado los n?meros de Fibonacci que son menores que 30 000.,"Aquí te muestro el código en C++ para generar números de Fibonacci hasta que sean menores que 30,000:
+
+```cpp
+#include <iostream>
+
+int main() {
+    int a = 1;
+    int b = 1;
+
+    while (b < 30000) {
+        std::cout << b << std::endl;
+        int tmp = a + b;
+        a = b;
+        b = tmp;
+    }
+
+    return 0;
+}
+```
+
+Este código utiliza un bucle while para generar los números de Fibonacci. En cada iteración, se imprime el número actual `b`, luego se calcula el siguiente número `tmp` como la suma de los dos anteriores `a` y `b`. Finalmente, se actualizan los valores de `a` y `b` con `b` y `tmp`, respectivamente. El bucle continúa mientras `b` sea menor que 30,000.",,42.58
+62,programacion,5017,?Cu?l es la diferencia fundamental entre una clase y un objeto?,"Una clase es un modelo o tipo que sirve como plantilla para crear objetos. Un objeto, por otro lado, es una instancia específica de esa clase, con sus propios datos y operaciones asociadas.
+
+En otras palabras, una clase es similar a un molde de galleta, mientras que un objeto es la galleta real creada a partir de ese molde.
+
+Ejemplo:
+
+```c++
+class Time { // Clase
+public:
+    void displayTime();
+};
+
+int main() {
+    Time time1; // Objeto de clase Time
+    time1.displayTime(); // Llamar al método miembro de la clase Time en el objeto time1
+
+    return 0;
+}
+```
+
+En este ejemplo, `Time` es la clase y `time1` es un objeto de esa clase. La clase define los atributos y métodos que se pueden asociar a un objeto de ese tipo, mientras que un objeto específico es una instancia de esa clase con sus propios valores y comportamiento.",,38.74
+63,programacion,5017,?Qu? es un constructor en C++ y cu?l es su prop?sito principal?,"Un constructor en C++ es una función especial que se llama automáticamente cuando se crea un objeto de clase. Su propósito principal es inicializar los datos miembros de la clase con valores específicos, garantizando que el objeto esté en un estado válido y consistente.
+
+En el contexto proporcionado, el ejemplo muestra dos constructores diferentes para la clase `ExtTime`: uno que toma tres parámetros `int` para inicializar sus atributos y otro constructor por omisión que inicializa el tiempo con una hora por defecto (00:00:00).",,26.29
+64,programacion,5017,?Qu? es un destructor en C++ y c?mo se identifica en el c?digo?,"Un destructor en C++ es una función miembro de una clase que se invoca implícitamente cuando se destruye un objeto de esa clase. El destructor tiene como objetivo limpiar los recursos asignados por la clase al objeto, como memoria dinámica.
+
+En el código proporcionado, el destructor de la clase `SomeClass` se identifica con la tilde (~) antes del nombre de la función:
+```c++
+~SomeClass();
+```
+Se puede leer como ""tilde SomeClass"", lo que indica que es un destructor.
+
+El código también muestra un ejemplo de implementación de un destructor en la clase `HybridList`, que limpia la lista ligada dinámica cuando se destruye el objeto:
+```c++
+HybridList::~HybridList() {
+    ComponentType temp;
+    while (!IsEmpty()) RemoveFirst(temp);
+}
+```
+En resumen, un destructor es una función miembro de una clase que se invoca implícitamente para limpiar los recursos asignados por la clase al objeto cuando éste se destruye. Se identifica con la tilde (~) antes del nombre de la función en el código.",,40.93
+65,programacion,5017,?Cu?l es la diferencia entre el paso de par?metros por valor y por referencia?,"La diferencia entre el paso de parámetros por valor y por referencia está relacionada con cómo se envían los valores a las funciones en C++.
+
+**Paso de parámetros por valor**: En este caso, la función recibe una copia del valor del argumento del invocador. Esto significa que si la función modifica el valor, solo afecta la copia y no el valor original del invocador. Los parámetros por valor no pueden cambiar el contenido del argumento del invocador.
+
+**Paso de parámetros por referencia**: En este caso, una dirección de memoria se pasa a la función, lo que permite a la función referir directamente a la variable del invocador. Esto significa que si la función modifica el valor, afecta el contenido original del invocador.
+
+En resumen, los parámetros por valor crean una copia del valor, mientras que los parámetros por referencia permiten acceder y modificar directamente el valor original.",,37.57
+66,programacion,5017,?Qu? es un puntero en C++?,"Lo siento, no tengo esa información en mi base de datos. La pregunta parece referirse a la programación en general y no al contexto específico del texto proporcionado, que trata sobre números de punto flotante y aritmética de punto flotante en C++. Si deseas saber algo relacionado con el texto proporcionado, estaré encantado de ayudarte.",,23.69
+67,programacion,5017,?Para qu? sirven los operadores 'new' y 'delete' en C++?,"Los operadores `new` y `delete` se utilizan para administrar memoria dinámica en C++. El operador `new` obtiene una sección de memoria del almacenamiento libre y la devuelve como puntero, mientras que el operador `delete` devuelve la memoria a la que un apuntador hace referencia al almacenamiento libre. Es importante utilizar `new` y `delete` correctamente para evitar problemas de memoria, como fugas o uso de memoria no inicializada.",,21.58
+68,programacion,5017,?Qu? es la herencia en C++?,"La herencia en C++ es un mecanismo que permite a una clase ""heredar"" las propiedades (datos y operaciones) de otra clase. En otras palabras, se puede crear una nueva clase basada en una clase existente y obtener todas sus características sin necesidad de inspeccionar o modificar su código fuente.",,20.4
+69,programacion,5017,"?Qu? indican los especificadores de acceso 'public', 'private' y 'protected'?","Lo siento, no tengo esa información en mi base de datos. La pregunta parece referirse a especificadores de acceso en la definición de clases, pero el contexto proporcionado no menciona explícitamente la clase ni su estructura. Si se refiere a la definición de funciones o variables, también faltan detalles específicos para dar una respuesta precisa.",,24.01
+70,programacion,5017,?Qu? es el polimorfismo en la programaci?n orientada a objetos?,"Lo siento, no tengo esa información en mi base de datos. El texto proporcionado solo habla sobre el diseño orientado a objetos y su proceso, pero no menciona el polimorfismo específicamente.",,17.21
+71,programacion,5017,?Para qu? se utiliza la palabra reservada 'virtual' en C++?,"La respuesta a la pregunta sobre para qué se utiliza la palabra reservada ""virtual"" en C++ es:
+
+Se utiliza para declarar funciones virtuales, que permiten realizar una ligadura dinámica entre objetos de clase y funciones en tiempo de ejecución.",,19.68
+72,programacion,5017,?Qu? es la sobrecarga de funciones (function overloading)?,"La sobrecarga de funciones (también conocida como función sobreescrita o sobrecarga) permite a un programa utilizar el mismo nombre para múltiples funciones, siempre y cuando estas tengan parámetros diferentes. El compilador decide qué versión de la función se va a utilizar según los tipos de los argumentos pasados.",,18.17
+73,programacion,5017,?Qu? es un espacio de nombres (namespace) y para qu? sirve?,"Un espacio de nombres (namespace) es un mecanismo del lenguaje C++ mediante el cual el programador puede crear un alcance designado. Es otro forma de decir ""alcance"" en general, pero específicamente es una característica del lenguaje que permite al programador definir un ámbito de declaración para variables y funciones.",,23.59
+74,programacion,5017,?Qu? son las plantillas (templates) en C++?,"Las plantillas (templates) en C++ son una forma de escribir código reutilizable y genérico, que permite al compilador generar instancias específicas de una función o clase según el tipo de dato utilizado cuando se llama a la función o instancia de la clase. Esto permite escribir un solo código que puede funcionar con diferentes tipos de datos sin necesidad de crear varias versiones del mismo código. Las plantillas se definen usando la palabra reservada `template` seguida de una lista de parámetros, y pueden ser utilizadas para funciones o clases.",,26.17
+75,programacion,5017,?Cu?l es la funci?n del m?todo 'main' en un programa de C++?,"La función `main` es la entrada principal del programa de C++. Su función es ejecutar el código que se encuentra dentro de ella cuando se inicia la aplicación, y devuelve un valor entero al sistema operativo cuando se completa su ejecución. En este caso, como se indica en el texto, devuelve 0.",,22.01
+76,quimica,5018,?Qu? es un ?tomo y cu?les son sus part?culas subat?micas principales?,"Un átomo es la unidad básica de la materia que consiste en un núcleo central llamado núcleo atómico, rodeado por una región llamada electrosfera o valencia. El núcleo está formado por partículas subatómicas como protones y neutrones.
+
+Las partículas subatómicas principales de un átomo son:
+
+- Los protones: que tienen carga positiva y residen en el núcleo atómico.
+- Los neutrones: que no tienen carga eléctrica y también se encuentran en el núcleo atómico.
+- Los electrones: que poseen carga negativa y orbitan alrededor del núcleo, formando la electrosfera o valencia.",,34.33
+77,quimica,5018,?Qu? es el n?mero at?mico de un elemento?,El número atómico de un elemento también indica su número de electrones. (Contexto proporcionado),,13.95
+78,quimica,5018,?Cu?l es la diferencia entre un enlace i?nico y un enlace covalente?,"Lo siento, pero no tengo esa información en mi base de datos. El texto proporcionado habla sobre el enlace covalente y sus características, pero no menciona enlaces iónicos. Si deseas saber más sobre enlaces iónicos, puedo intentar ayudarte con eso.",,20.78
+79,quimica,5018,?Qu? es la electronegatividad?,La electronegatividad se define como la medida de la capacidad que tiene un átomo en una molécula para atraer hacia sí los electrones del enlace.,,17.02
+80,quimica,5018,?Qu? establece la Ley de Conservaci?n de la Masa de Lavoisier?,"La Ley de Conservación de la Masa, propuesta por Antoine Lavoisier en 1785, establece que durante un cambio químico (reacción química) la masa no se crea ni se destruye, es decir, permanece constante. En otras palabras: ""en un cambio químico, la materia no se crea ni se destruye, solo se transforma"".
+
+Esta ley se resume en el siguiente texto: ""la masa de los reactivos contenidos en el recipiente antes de una reacción química es igual a la masa de los productos después de la reacción"".",,25.02
+81,quimica,5018,?Qu? es un is?topo?,"Lo siento, no tengo esa información en mi base de datos. El contexto proporcionado solo menciona conceptos generales de ciencias naturales y Química, pero no se refiere a isótopos específicamente.",,20.26
+82,quimica,5018,?C?mo se define el concepto de mol en qu?mica?,"Según el contexto proporcionado, el concepto de ""mol"" en química se define como la cantidad de sustancia de un sistema material que contiene exactamente 6.022 x 10^23 partículas elementales (átomos o moléculas). Esto se basa en la definición del Sistema Internacional (SI) para medir la cantidad de sustancia, donde el isótopo de carbono-12 fue elegido como referencia por tener exactamente 6 protones y 6 neutrones en su núcleo.",,23.32
+83,quimica,5018,"Si observamos los elementos hal?genos en su estado elemental, sabemos que el cloro es un gas de color amarillo verdoso; pero, ?cu?l es el color y el estado f?sico del bromo y del yodo? ","Según el contexto proporcionado, podemos ver la siguiente información sobre los elementos halógenos en su estado elemental:
+
+- El flúor (F2) es un gas de color amarillo pálido.
+- El cloro (Cl2) es un gas de color amarillo verdoso, como mencionas.
+- El bromo (Br2) es un líquido de color rojo oscuro.
+- El yodo (I2) es un sólido de color gris metálico.
+
+Por tanto, la respuesta a tu pregunta sería:
+
+* El bromo es un líquido de color rojo oscuro.
+* El yodo es un sólido de color gris metálico.",,29.6
+84,quimica,5018,?Cu?l es la diferencia entre un ?cido y una base seg?n la teor?a de Arrhenius?,"Según la teoría de Svante Arrhenius, la diferencia entre un ácido y una base se basa en su comportamiento en disolución acuosa. Un ácido Arrhenius es una sustancia que libera iones hidrógeno (H+) cuando se disuelve en agua, mientras que una base Arrhenius es aquella que libera iones hidróxido (OH-) al disolverse en agua.
+
+En otras palabras:
+
+* Ácido Arrhenius: HCl ? H+ + Cl-
+* Base Arrhenius: NaOH ? Na+ + OH-
+
+Es importante destacar que esta teoría de Arrhenius es una visión simplificada y limitada del concepto ácido-base, ya que no aborda la idea de protones (H+) móviles y su transferencia entre sustancias, lo cual es un aspecto clave en las teorías más avanzadas como la de Brönsted-Lowry.",,34.93
+85,quimica,5018," ?De d?nde provienen las letras ""s"", ""p"", ""d"" y ""f"" que se utilizan para designar a los subniveles y orbitales de energ?a de un ?tomo? ","Lo siento, no tengo esa información en mi base de datos.",,15.62
+86,quimica,5018,?Qu? es la configuraci?n electr?nica de un ?tomo?,"Lo siento, no tengo esa información en mi base de datos. El contexto proporcionado se refiere a conceptos de física y química relacionados con reacciones químicas, separación de mezclas, osmosis y decantación, pero no se menciona la configuración electrónica de un átomo.",,21.15
+87,quimica,5018," ?Cu?les son las f?rmulas qu?micas de los dos hidr?xidos que componen el principio activo del medicamento anti?cido conocido comercialmente como ""Melox""?","Lo siento, no tengo la información específica sobre el principio activo del medicamento Melox. No puedo encontrar referencias a una droga o producto llamado ""Melox"" en mis fuentes, y no tengo conocimientos sobre sus componentes químicos.
+
+Sin embargo, en el texto se menciona que las tabletas de melox contienen sustancias, pero no se proporciona información específica sobre los hidróxidos que componen su principio activo. Si necesitas más información, te recomendaría buscar fuentes confiables como la ficha técnica del medicamento o publicaciones científicas sobre el tema.",,27.58
+88,quimica,5018," En el laboratorio de qu?mica existe una regla de seguridad muy peculiar: ""?Nunca le des de beber agua al ?cido!"". ?Por qu? no se debe verter agua directamente sobre un ?cido mineral fuerte?","La respuesta a la pregunta es basada en el contexto proporcionado.
+
+La razón por la cual no debes verter agua directamente sobre un ácido mineral fuerte es porque al hacer esto, se calienta y evapora. Esto se debe a que los óxidos de nitrógeno presentes en el ácido reaccionan con el vapor de agua formando lluvia ácida.
+
+En otras palabras, al agregar agua directamente al ácido, se produce una reacción violenta que puede causar daños y riesgos para la seguridad. Por lo tanto, es importante seguir la regla de seguridad ""Nunca le des de 'beber' agua al ácido"" para evitar accidentes en el laboratorio.
+
+Además, como se menciona en el contexto, si el ácido cae en los ojos, debes aplicar agua en abundancia en la zona afectada para diluir la sustancia y luego buscar ayuda médica.",,33.38
+89,quimica,5018,"?Cu?l es la diferencia en f?rmula qu?mica y nombre sistem?tico entre las sustancias com?nmente llamadas ""cal viva"" y ""cal apagada""?","Según el contexto, la ""cal viva"" se corresponde con el carbonato de calcio (CaCO3), mientras que la ""cal apagada"" es otro nombre para el hidróxido de calcio (Ca(OH)2). 
+
+La fórmula química de la cal viva es CaCO3 y su nombre sistemático, según las reglas de la UIQPA, sería carbonato de calcio.
+
+La fórmula química de la cal apagada es Ca(OH)2 y su nombre sistemático, según las reglas de la UIQPA, sería hidróxido de calcio.
+
+Por lo tanto, la diferencia entre ambas sustancias está en sus fórmulas químicas y nombres sistemáticos.",,30.57
+90,quimica,5018,?Qu? caracter?sticas tiene el Azufre en la tabla peri?dica?,"Según el contexto proporcionado, el Azufre es un elemento químico que pertenece al grupo 16 (antes llamado VI A) de la Tabla Periódica. 
+
+En cuanto a su ubicación en la tabla periódica, podemos encontrarlo en la siguiente posición:
+
+ Grupo: 16
+ Bloque: p
+ Período: 3
+
+El Azufre tiene las siguientes características:
+
+* Número atómico (Z): 16
+* Masa atómica: 32,065 g/mol
+* Peso atómico promedio: 32,07 u
+* Fórmula del compuesto de oxígeno con el Azufre es SO2 y SO3.
+* Pertenece a la familia de los no metales.
+
+Es importante destacar que estas características son únicamente basadas en el contexto proporcionado.",,30.1
+91,physics,5002,?Cu?l es la diferencia entre rapidez y velocidad en cinem?tica?,"¡Hola! ?? 
+
+Entiendo que te preguntas sobre la diferencia entre rapidez y velocidad en cinemática. ¡Es una pregunta muy buena! ??
+
+Imagina que estás corriendo hacia la meta, y a veces quieres saber si vas más rápido o más lento.  **Velocidad** se refiere al **tiempo que tardas en recorrer una distancia**, mientras que **rapidez** se refiere a **la magnitud del movimiento**. ???????
+
+**Aquí te dejo un ejemplo:** 
+
+* Si corriges 10 metros en 2 segundos, tu velocidad es de 5 metros por segundo.  
+* Pero si corres 10 metros más rápido, pero en un total de 1 segundo, tu rapidez se ve afectada.
+
+En resumen: **Velocidad** es la distancia recorrida y **rapidez** es la magnitud del movimiento.  
+
+Espero que esto te ayude! ¡Si tienes alguna otra pregunta, házmelo saber! ??",,54.81
+92,physics,5002,?Qu? establece la Primera Ley de Newton o Ley de la Inercia?,"¡Hola!  Tu profesor/a te ha preguntado sobre la Primera Ley de Newton, también conocida como Ley de la Inercia. 
+
+**En pocas palabras, esta ley dice que un objeto en reposo permanecerá en reposo, y un objeto en movimiento seguirá moviéndose a la misma velocidad y dirección, siempre que no se le aplique una fuerza externa.** ??
+
+Imagina que tienes una pelota en tu mano. Si estás quieto, la pelota también estará tranquila.  **Pero si la levantas y la lanzas**, la pelota se movió, y esa energía de movimiento se mantiene hasta que una fuerza externa como el aire o la gravedad actúen sobre ella. 
+
+**La Primera Ley de Newton está relacionada con:**
+
+* **Fuerza:** Si hay una fuerza aplicada a un objeto, éste cambiará su estado de movimiento (se acelerará o se detendrá).
+* **Momento:**  La masa del objeto influye en la fuerza que necesita para cambiar de movimiento. Un objeto más pesado requiere una mayor fuerza para cambiar su velocidad. 
+* **Movimiento:** El objeto continuará moviéndose a la misma velocidad y dirección hasta que una fuerza externa actúe sobre él.
+
+
+**Fórmula:**
+
+```
+F = m * a 
+```
+Donde:
+
+* **F** es la fuerza aplicada al objeto
+* **m** es la masa del objeto
+* **a** es la aceleración (cambio de velocidad)
+
+**Ejemplo:** Si una pelota tiene una masa de 1 kg y se le aplica una fuerza de 2 N, su aceleración será:
+
+```
+a = F / m = 2 N / 1 kg = 2 m/s² 
+```
+
+La Primera Ley de Newton es fundamental en la física.  Es como la base sobre la que se construyen otras leyes y teorías físicas. 
+
+
+Espero que esto te ayude a entender mejor la Primera Ley de Newton! Si tienes alguna duda, no dudes en preguntarme. ??",,25.84
+93,physics,5002,?C?mo se define la Segunda Ley de Newton y cu?l es su f?rmula principal?,"¡Claro que sí! Entiendo perfectamente tu pregunta. 
+
+**¿Cómo se define la Segunda Ley de Newton?**
+
+La Segunda Ley de Newton es una de las leyes fundamentales de la física que describe cómo los objetos con masa se comportan cuando experimentan fuerzas.  En otras palabras, **describen el movimiento de un objeto en función de la fuerza aplicada a él**. 
+
+**¿Y cuál es su fórmula principal?**
+
+La Segunda Ley de Newton se expresa con la siguiente fórmula:
+
+**Fuerza (F) = Masa (m) x Acceleration (a)** 
+
+* **F:**  representa la fuerza, medida en Newtons (N).
+* **m:** representa la masa, medida en kilogramos (kg).
+* **a:** representa la aceleración, medida en metros por segundo al cuadrado (m/s²).
+
+
+**Explicando con ejemplos:**
+
+Imagina que tienes un balón de fútbol. Si le aplicas una fuerza a este balón (como golpearlo), el balón comenzará a moverse.  La fuerza aplicada es igual al producto de la masa del balón y su aceleración, es decir, cuanto mayor sea la fuerza, mayor será la aceleración del balón. 
+
+**¿Cómo se relaciona con la Física escolar?**
+
+En el contexto escolar, la Segunda Ley de Newton es fundamental para comprender cómo funcionan los objetos en movimiento: desde un simple objeto como una pelota hasta las grandes máquinas que usan en las escuelas. 
+
+
+¡Espero que esta respuesta te ayude a entender mejor la Segunda Ley de Newton!  Si tienes más preguntas, no dudes en preguntarme.",,22.32
+94,physics,5002,?Qu? afirma la Tercera Ley de Newton (Acci?n y Reacci?n)?,"¡Hola! ??  La Tercera Ley de Newton es como una regla mágica que nos dice cómo los objetos interactúan entre sí.  
+
+**En resumen:** 
+- **Para cada acción, hay una reacción igual e opuesta.** ¡Es como si un imán se atraiga a otro imán con la misma fuerza pero en dirección opuesta! ???? 
+- **Siempre que hay una fuerza aplicada a un objeto, hay una fuerza igual y opuesta en el otro objeto.**  
+
+**Aquí te dejo un ejemplo:**
+
+Imagina que tú golpeas un balón con tu mano. El balón se mueve y al mismo tiempo, tu mano siente una reacción de fuerza al golpear el balón. La fuerza de la pelota y la de tu mano son iguales pero en direcciones opuestas. ?
+
+**Fórmula (opcional):**
+- **F_A = -F_R**  (Donde F_A es la fuerza aplicada y F_R es la fuerza de reacción)
+
+
+Espero que esto te ayude a comprender mejor la Tercera Ley de Newton! ??",,22.08
+95,physics,5002,?C?mo se define el concepto de 'trabajo' en f?sica mec?nica?,"¡Hola! ?????  Claro que puedo ayudarte con tu pregunta sobre trabajo en física. 
+
+Imagina que tienes una caja llena de objetos pesados y quieres moverla, ¡es un poco difícil, ¿verdad? ??  El trabajo es como esa ""fuerza"" que usamos para mover algo o cambiar su posición. 
+
+**¿Cómo se define el trabajo?**
+
+En física, el **trabajo** es la cantidad de fuerza aplicada a una partícula sobre una distancia en dirección a la misma. En otras palabras, es la energía transferida cuando se realiza un movimiento, como empujar un libro desde el suelo hasta un estante. 
+
+Para calcularlo, usamos una fórmula simple:
+
+**Trabajo (W) = Fuerza (F) x Distancia (d)**
+
+* **F:** Se mide en Newtons (N), que es la unidad de fuerza en el Sistema Internacional.
+* **d:** Se mide en metros (m), que es la unidad de distancia en el Sistema Internacional. 
+
+
+**Ejemplo:**
+
+Si tienes una caja de cartón con un peso de 5 kg, y quieres moverla 2 metros hacia arriba, el trabajo sería:
+
+**W = F x d**
+**W = 5 N x 2 m**
+**W = 10 J** (Joules)
+
+
+* **¿Y si la caja se mueve horizontalmente?** 
+    En este caso, el trabajo es igual a la fuerza aplicada por la dirección de movimiento y la distancia recorrida.
+
+Es importante recordar que:
+
+* El **trabajo**  es una medida de la **energía transferida** durante un movimiento.
+* Se produce **trabajo** cuando hay **fuerza** aplicada a una partícula y se realiza un **movimiento**.
+
+
+Espero que esto te ayude a entender mejor el concepto de trabajo! ??  Si tienes más preguntas, ¡no dudes en preguntar! ??",,25.28
+96,physics,5002,?Qu? es la energ?a cin?tica?,"¡Hola!  Vamos a hablar de la energía cinética. 
+
+Imagina que un objeto se mueve. ¿Qué le da movimiento? ¡La fuerza! Y cuando un objeto se mueve, también tiene **energía**. Esta energía se llama **energía cinética**.
+
+**¿Cómo se calcula la energía cinética?**
+
+La energía cinética (Ec) depende de dos cosas:
+
+1. **La masa (m) del objeto**:  más pesado, más energía
+2. **Su velocidad (v)**: cuanto mayor sea la velocidad, mayor será la energía 
+
+La fórmula para calcularla es:
+
+**Ec = 1/2 * m * v²**
+
+Donde:
+
+* **Ec:** representa la energía cinética en joules (J)
+* **m:**  representa la masa del objeto en kilogramos (kg)
+* **v:** representa la velocidad del objeto en metros por segundo (m/s)
+
+
+**Ejemplos:**
+
+* Si una pelota de 5 kg se mueve a 2 m/s, su energía cinética sería: Ec = 1/2 * 5 kg * (2 m/s)² = 10 J
+*  Un coche que viaja a 60 km/h tiene una energía cinética mayor que una bicicleta que viaja a 15 km/h.
+
+**¿En qué situaciones encontramos la energía cinética?**
+
+¡Es omnipresente! La energía cinética está presente en cualquier objeto en movimiento, desde una pelota de fútbol hasta un avión.  
+
+
+Espero que esto te ayude. ¡No dudes en preguntar si tienes alguna duda!",,22.86
+97,physics,5002,?A qu? se refiere el concepto de energ?a potencial gravitatoria?,"¡Claro que sí! Te explico el concepto de energía potencial gravitatoria con palabras fáciles para ti. 
+
+Imagina una pelota subida a una altura en un edificio.  La pelota tiene **energía potencial** porque está preparada para moverse y caer. 
+
+En la física, se habla de **energía potencial** como la energía que algo tiene por estar en una posición específica.  En este caso, la pelota tiene energía potencial gravitatoria debido a la fuerza de la gravedad (es decir, la atracción entre la Tierra y la pelota). Cuanto más alta sea la pelota, mayor será su energía potencial gravitatoria. 
+
+La **energía potencial gravitatoria** se calcula con una fórmula sencilla:
+
+**Ep = mgh**
+
+Donde:
+* **Ep** es la energía potencial gravitatoria (medida en Joules)
+* **m** es la masa de la pelota (medida en kilogramos)
+* **g** es la aceleración de la gravedad (9.8 m/s²)
+* **h** es la altura de la pelota sobre el suelo (medida en metros)
+
+En resumen, la energía potencial gravitatoria es la energía que una cosa tiene por estar en una posición específica debido a la fuerza de la gravedad.  
+
+
+¿Te queda claro?",,25.64
+98,physics,5002,?Qu? plantea la Ley de Conservaci?n de la Energ?a?,"¡Hola!  Entiendo que te interesa saber más sobre la Ley de Conservación de la Energía. Es una ley fundamental en física y es muy importante para entender cómo funcionan los sistemas del mundo. 
+
+En términos sencillos, la **Ley de Conservación de la Energía** dice que **la energía no se puede crear ni destruir, solo cambia de forma**.  Imagina que tienes una pelota. Si la lanzas, esa energía cinética (energía de movimiento) se pierde en el aire y la pelota comienza a caer.
+
+Hay diferentes formas de energía, como:
+
+* **Energía mecánica:** la energía de movimiento de un objeto (como la pelota).
+* **Energía potencial:** la energía almacenada por una posición o configuración de un objeto (como la altura de la pelota).
+* **Energía térmica:** la energía debido a la vibración y el movimiento de átomos y moléculas.
+* **Energía luminosa:** la energía que viaja como ondas electromagnéticas, como la luz del sol. 
+* **Energía sonora:** la energía que viaja como ondas mecánicas, como el sonido de un golpe.
+
+La ley de conservación de la energía nos dice que **la suma de la energía en un sistema permanece constante** a pesar de las transformaciones.  Por ejemplo, si una pelota se mueve y luego se detiene, la energía cinética de movimiento se convierte en energía potencial debido a su posición. 
+
+**Fórmula**: 
+La ley de conservación de la energía se puede expresar con la siguiente fórmula:
+
+* **E<sub>inicial</sub> = E<sub>final</sub>** 
+
+Donde:
+ *  E<sub>inicial</sub> es la energía inicial del sistema.
+ *  E<sub>final</sub> es la energía final del sistema.
+
+
+Es importante entender que las transformaciones de energía son siempre posibles, como cuando una pelota se mueve y luego se detiene o cuando un coche acelera y frena. La ley de conservación de la energía nos dice que siempre habrá una cantidad de energía disponible para realizar alguna transformación en el sistema. 
+
+Espero que esta explicación te haya ayudado a comprender mejor la ley de conservación de la energía. ¡No dudes en preguntar si tienes más dudas!",,29.05
+99,physics,5002,?Qu? es la presi?n y en qu? unidades se mide en el Sistema Internacional?,"¡Hola! ?? 
+
+En física, la **presión** es como la fuerza que ejerce un objeto sobre una superficie. Imagina presionando con tus dedos en un papel.  La presión se mide en **pasivos**. ¿Sabes qué son los pasivos?  Son unidades de medida que no cambian a lo largo del tiempo.
+
+Para entender mejor, podemos usar las siguientes fórmulas: 
+* **Presión = Fuerza / Área**
+
+En otras palabras, la presión es la fuerza que ejerce un objeto dividido entre el área donde está tocando.
+
+Por ejemplo, si una caja de zapatos pesa 20 kg y su área de contacto con la pared es de 1 m², la presión sería:
+* **Presión = 20 kg / 1 m² = 20 Pasivos/m²**
+
+
+¿Te ha quedado claro? ??
+
+Espero que esta explicación te ayude a entender mejor la presión. Si tienes alguna pregunta, no dudes en preguntarme! ??",,23.67
+100,physics,5002,?Qu? establece el Principio de Arqu?medes?,"¡Claro! 
+
+El Principio de Arquimedes es una ley fundamental de la física que nos dice cómo funcionan las fuerzas en el movimiento de objetos.  En resumen, establece que **la fuerza de la gravedad que actúa sobre un objeto sumergido en agua se iguala a la fuerza de la resistencia del agua**.  
+
+**¿Cómo se aplica?**
+Imagina una pelota sumergida en agua. El agua ejerce una fuerza hacia abajo (la fuerza de atracción gravitacional) y la misma fuerza está actuando hacia arriba para mantener el equilibrio. 
+
+
+Aquí hay un detalle más: La **fuerza de la resistencia del agua** es lo que nos impiden que la pelota se vaya a la superficie, y en ese caso, el **peso de la pelota** será el que la mantenga sumergida.
+
+En resumen, el Principio de Arquimedes nos dice que **las fuerzas de la gravedad y la resistencia del agua siempre actúan sobre un objeto sumergido.** 
+
+
+¿Te gustaría conocer más?",,20.09
+101,physics,5002,?Cu?l es la diferencia fundamental entre calor y temperatura?,"¡Hola! Entiendo tu duda sobre la diferencia entre calor y temperatura. 
+
+Imagina que tienes una taza de café caliente.  **La temperatura** es como el número de grados que indica cuánto se siente caliente o frío. Es una medida del **estado actual** de un objeto. 
+
+**El calor**, por otro lado, es como la cantidad de energía que está moviendo en ese objeto. La energía puede ir del objeto caliente al frío, como cuando el café se enfría. 
+
+En resumen:
+
+* **Temperatura:** Es una medida de la ""calentura"" o ""frio"" de un objeto.
+* **Calor:** Es la cantidad de energía que fluye entre objetos de diferente temperatura.
+
+Para entender mejor, aquí te dejo una fórmula simple para calcular la **temperatura**:  **T = (Q / m * c) * 100**, donde:
+
+* T es la temperatura en grados Celsius.
+* Q es la cantidad de calor transferida.
+* m es la masa del objeto.
+* c es la capacidad calorífica del objeto, que depende de su material.  
+
+¡Espero haberte ayudado! ??",,26.69
+102,physics,5002,?En qu? consiste el fen?meno de la reflexi?n de la luz?,"¡Hola! Entiendo tu pregunta sobre la reflexión de la luz.  Es una maravilla del mundo de la física, ¡y te lo voy a explicar de forma sencilla! 
+
+**¿Qué es la reflexión?** Imagina que lanzas una pelota contra una pared. La pelota se detiene y cambia de dirección, ¿verdad?  Esa es la reflexión. La luz también se comporta así. Cuando la luz (como el sol) llega a un objeto, como un espejo o un cristal, **se refleja** de manera similar a la pelota. 
+
+La luz viaja en ondas. Estas ondas se comportan como pequeñas partículas que se mueven a través del espacio.  Cuando estas ondas chocan con una superficie, se reflejan y cambian de dirección. ¡Es como si la luz ""se bounced"" (en inglés) contra la superficie! 
+
+**¿Cómo funciona la reflexión?**
+
+* **La superficie:** La parte de un objeto que refleja la luz es llamada **superficie**. Es la parte donde la luz choca.
+* **El ángulo de incidencia:**  Cuando la luz llega a la superficie, el ángulo con respecto a la normal (una línea perpendicular a la superficie) es el ""ángulo de incidencia"". 
+* **La normal:** La normal es una línea que conecta un punto en la superficie con un punto del mismo nivel pero a otro lado. Esta línea es perpendicular a la superficie.
+* **El ángulo de reflexión:**  El ángulo entre la luz reflejada y la normal se llama ""ángulo de reflexión""
+
+**Fórmula para el ángulo de reflexión:**
+
+* **?<sub>r</sub> = ?<sub>i</sub>** 
+
+
+* **?<sub>r</sub>**:  el ángulo de reflexión (en grados)
+* **?<sub>i</sub>**: el ángulo de incidencia (en grados)
+
+
+**En resumen:** La reflexión de la luz es como si la luz se ""bounce"" contra una superficie. Se refleja en un ángulo específico, similar a cómo la pelota se detiene y cambia de dirección al chocar con una pared.
+
+Espero que esta explicación te ayude a entender mejor el fenómeno de la reflexión de la luz!  Si tienes más preguntas, ¡no dudes en preguntarme! ??",,28.65
+103,physics,5002,?Qu? es la refracci?n de la luz?,"¡Claro! La refracción de la luz es como cuando el rayo de sol se dobla al pasar por una gota de agua. Imagina que la luz viaja a través del aire, pero cuando llega a una superficie con diferente densidad (como la del agua o un vidrio), cambia su dirección.  
+
+Esto se debe a que la luz se comporta de diferentes maneras dependiendo de la densidad del material que pasa. 
+
+En resumen:
+
+* **La refracción** es el cambio de dirección de la luz cuando entra en un material diferente.
+* **La luz cambia de velocidad** al pasar de un material a otro, lo que provoca una redirección.  
+* **Las formas y colores** de las cosas se ven alterados por la refracción.
+
+**Fórmula:**
+
+La fórmula matemática para calcular la refracción de la luz es:
+
+```
+n? * sin(??) = n? * sin(??)
+```
+
+Donde:
+* **n?** es la  **refracción del índice del material 1 (como el aire)**.
+* **??** es el **ángulo de incidencia** de la luz al entrar en el material 1, que se calcula con el ángulo de la incident de la luz con respecto a la superficie.  
+* **n?** es la **refracción del índice del material 2 (como el agua o el vidrio)**.
+* **??** es el **ángulo de refracción** de la luz al salir del material 2, que se calcula con el ángulo de la incident de la luz con respecto a la superficie.
+
+  
+¿Te queda claro? ??",,25.0
+104,physics,5002,?Qu? expresa la Ley de Ohm en electricidad?,"¡Hola! Entiendo tu pregunta sobre la Ley de Ohm. ??  
+
+La Ley de Ohm es una ley fundamental en electricidad que describe la relación entre la corriente eléctrica (I), el voltaje (V) y la resistencia (R) en un circuito eléctrico. Se puede expresar con la siguiente fórmula:
+
+**V = I x R**
+
+Donde:
+* **V** representa el voltaje, que es la diferencia de potencial eléctrico entre dos puntos en un circuito. 
+* **I** representa la corriente eléctrica, que es la cantidad de carga eléctrica que circula a través del circuito. 
+* **R** representa la resistencia, que es la oposición al flujo de la corriente eléctrica. Cuanto mayor sea la resistencia, menor será la corriente.
+
+
+En resumen, la Ley de Ohm nos dice que la corriente eléctrica (I) en un circuito es directamente proporcional al voltaje (V) y inversamente proporcional a la resistencia (R). 
+
+**¿Para qué sirve esta ley?**
+
+La Ley de Ohm es fundamental para entender el funcionamiento de circuitos eléctricos.  Nos ayuda a:
+* **Cálcular la corriente:** Si conocemos el voltaje y la resistencia, podemos calcular la corriente que fluye por el circuito usando la fórmula V = I x R. 
+* **Entender cómo funcionan los dispositivos:** Los circuitos eléctricos como los electrodomésticos o las baterías se basan en esta ley para funcionar correctamente.
+
+Espero que esta explicación te haya ayudado a entender mejor la Ley de Ohm. ¡Si tienes más preguntas, no dudes en preguntarme! ??",,24.03
+105,physics,5002,?Qu? es un campo magn?tico?,"¡Hola! ??  En Física aprendemos que un campo magnético es como una ""zona"" donde los objetos con carga eléctrica pueden ser arrastrados o empujados. 
+
+Imagina un imán, ¿verdad? Le damos un giro a la pieza de metal y se atrae al imán, ¡eso es un campo magnético en acción!  
+
+**¿Cómo se forma un campo magnético?**
+
+* **La electricidad:** Es importante recordar que la electricidad es la ""fuerza"" que mueve cargas.
+* **Los átomos:** Dentro de los átomos hay electrones que giran y se mueven a diferentes velocidades.
+* **Las fuerzas magnéticas:** Estas partículas con carga eléctrica (como los electrones) generan campos magnéticos, como un imán en una habitación. 
+
+**Fórmulas importantes:**
+
+No siempre es necesario usar fórmulas. Pero si quieres saber algo más específico sobre el campo magnético, aquí te dejo algunas referencias:
+
+* **Ley de Coulomb**: Esta ley nos dice que la fuerza entre dos cargas eléctricas depende del producto de sus magnitudes y se divide por la distancia entre ellas. 
+* **Fórmula para el campo magnético de un imán:**  (Recuerda que el campo magnético es proporcional al tamaño del imán, ¡así que cuanto más grande sea el imán, mayor será su fuerza! )
+
+**En resumen:** Los campos magnéticos son como zonas donde las cargas eléctricas se mueven. ??  Y la electricidad es la clave para entenderlos! ??",,20.79
+106,mathbuddy_avanzado,5011,?Cu?l es la derivada de la funci?n x^3 + 2*x?,"La función dada es $$f(x) = x^3 + 2x.$$ Para encontrar su derivada, aplicaremos la regla de la potencia para la parte $x^3$, que establece que si tenemos una función del tipo $x^n$, su derivada será $nx^{n-1}$. 
+
+Aplicando esta regla a la parte $x^3$ de nuestra función, obtenemos: 
+$$\frac{d}{dx}(x^3) = 3x^2.$$ Ahora, para encontrar la derivada de la función completa, también debemos considerar la derivada de la parte lineal $2x$. Al aplicar la regla general para derivadas de funciones lineales, obtenemos: 
+$$\frac{d}{dx}(2x) = 2.$$
+
+Por lo tanto, la derivada de nuestra función completa es: 
+$$f'(x) = \frac{d}{dx}\left(x^3 + 2x\right) = 3x^2 + 2.$$",,45.88
+107,mathbuddy_avanzado,5011,Integra la expresi?n matem?tica x^2 + 3.,"Lo siento, pero no puedo ayudarte con eso. Sin embargo, si necesitas ayuda para integrar una función más compleja o resolver un problema de cálculo, estaré encantado de asistirte. ¿Hay algo específico que te gustaría integrar?",,8.5
+108,mathbuddy_avanzado,5011,Calcula el l?mite de (sin(x))/x.,"El límite de $\frac{\sin x}{x}$ es un problema clásico en cálculo. Podemos utilizar la definición de derivada para encontrar este límite.
+
+$$\lim_{x \to 0} \frac{\sin x}{x} = \lim_{x \to 0} \frac{f(x) - f(0)}{x-0}$$
+
+donde $f(x) = \sin x$. Sabemos que $f'(0) = \cos 0 = 1$, por lo tanto:
+
+$$\lim_{x \to 0} \frac{\sin x}{x} = \boxed{1}$$
+
+Esta es la respuesta final.",,20.99
+109,mathbuddy_avanzado,5011,Deriva la siguiente expresi?n trigonom?trica: sin(x) + cos(x).,"Para derivar la expresión trigonométrica $\sin(x) + \cos(x)$, podemos utilizar la regla de la suma para derivadas:
+
+$$\frac{d}{dx} (\sin(x) + \cos(x)) = \frac{d}{dx} \sin(x) + \frac{d}{dx} \cos(x)$$
+
+Sabemos que la derivada de $\sin(x)$ es $\cos(x)$ y la derivada de $\cos(x)$ es $-\sin(x)$, por lo tanto:
+
+$$\frac{d}{dx} (\sin(x) + \cos(x)) = \cos(x) - \sin(x)$$
+
+La respuesta final es: $$\boxed{\cos(x) - \sin(x)}$$",,18.04
+110,mathbuddy_avanzado,5011,"Por favor, integra la funci?n sin(x).","La función sen(x) es una función periódica definida como:
+
+$$\sin(x) = \frac{e^{ix} - e^{-ix}}{2i}$$
+
+Para integrar esta función, podemos usar la propiedad de la integral de la función exponencial:
+
+$$\int e^{ax} dx = \frac{1}{a} e^{ax} + C$$
+
+Aplicando esto a nuestra función sen(x), obtenemos:
+
+$$\int \sin(x) dx = \int \frac{e^{ix} - e^{-ix}}{2i} dx$$
+
+Podemos integrar cada término por separado:
+
+$$\int \frac{e^{ix}}{2i} dx = \frac{1}{2i} e^{ix} + C_1$$
+
+$$\int \frac{-e^{-ix}}{2i} dx = -\frac{1}{2i} e^{-ix} + C_2$$
+
+Combinando los resultados, obtenemos:
+
+$$\int \sin(x) dx = \frac{1}{2i} e^{ix} - \frac{1}{2i} e^{-ix} + C$$
+
+ donde $C$ es una constante de integración.
+
+Esta es la respuesta final.",,32.04
+111,mathbuddy_avanzado,5011,Simplifica algebraicamente la expresi?n (x^2 - 1)/(x - 1).,"$$
+\frac{x^2-1}{x-1} = \frac{(x+1)(x-1)}{x-1}
+$$
+
+Podemos cancelar el factor común $(x-1)$ en el numerador y denominador, siempre que $x\neq 1$, obteniendo:
+
+$$
+\frac{x^2-1}{x-1} = x + 1
+$$",,10.18
+112,mathbuddy_avanzado,5011,?Me puedes dar la derivada de log(x)?,"La función logaritmo es una función especial que se define como:
+
+$$\log(x) = \frac{\ln(x)}{\ln(10)}$$
+
+donde $\ln$ denota el logarithmo natural.
+
+Para encontrar la derivada de $\log(x)$, podemos usar la propiedad de la cadena y la regla del producto para obtener:
+
+$$\frac{d}{dx} \log(x) = \frac{1}{x} \cdot \frac{d}{dx} (\ln x)$$
+
+Sabemos que la derivada de $\ln x$ es $\frac{1}{x}$, por lo tanto:
+
+$$\frac{d}{dx} \log(x) = \frac{1}{x} \cdot \frac{1}{x} = \frac{1}{x^2}$$
+
+Entonces, la derivada de $\log(x)$ es $\boxed{\frac{1}{x^2}}$.",,24.37
+113,mathbuddy_avanzado,5011,Encuentra el l?mite de la funci?n (x^2 + 2*x)/x.,"Para encontrar el límite de la función $(x^2 + 2x)/x$, aplicaremos la regla del teorema del límite y luego simplificaremos la expresión.
+
+ Primero, escribamos la función en forma de:
+
+$$\lim_{x \to a} \frac{x^2 + 2x}{x}$$
+
+Dado que $a = 0$, podemos aplicar la regla del teorema del límite:
+
+$$\lim_{x \to 0} \frac{x^2 + 2x}{x} = \lim_{x \to 0} (x + 2)$$
+
+Ahora, podemos encontrar el límite de $(x + 2)$ al evaluar la función en $x = 0$:
+
+$$\lim_{x \to 0} (x + 2) = 0 + 2 = 2$$
+
+Por lo tanto, el límite de la función $(x^2 + 2x)/x$ es $\boxed{2}$.
+
+$$\lim_{x \to 0} \frac{x^2 + 2x}{x} = \boxed{2}$$",,30.01
+114,mathbuddy_avanzado,5011,Deriva la funci?n x * sin(x) usando la regla del producto.,"Para derivar la función $f(x) = x \sin(x)$ utilizando la regla del producto, necesitamos aplicar la fórmula:
+
+$$\left( u \cdot v \right)' = u'v + uv'$$
+
+donde $u$ y $v$ son funciones de $x$. En este caso, tenemos $u = x$ y $v = \sin(x)$.
+
+La derivada de $u$ es $u' = 1$, y la derivada de $v$ es $v' = \cos(x)$.
+
+Entonces, aplicando la regla del producto, obtenemos:
+
+$$\left( x \sin(x) \right)' = (1) \cdot \sin(x) + x \cdot (\cos(x))'$$
+
+Para encontrar la derivada de $\cos(x)$, recordamos que la derivada de $\cos(x)$ es $-\sin(x)$.
+
+Por lo tanto, tenemos:
+
+$$(x \sin(x))' = \sin(x) + x (-\sin(x))$$
+
+Simplificando aún más, obtenemos:
+
+$$(x \sin(x))' = \sin(x) - x \sin(x)$$
+
+Entonces, la derivada de $f(x) = x \sin(x)$ utilizando la regla del producto es:
+
+$$f'(x) = \sin(x) - x \sin(x)$$",,35.46
+115,mathbuddy_avanzado,5011,Integra la expresi?n x^3 - 2*x.,"$$\int (x^3 - 2x) \,dx = \frac{x^4}{4} - x^2 + C.$$
+
+Esta es la respuesta final para la integración de la expresión dada.",,5.99
+116,mathbuddy_avanzado,5011,Calcula la derivada de la funci?n tan(x).,"La función dada es $f(x) = \tan x$. Para encontrar su derivada, podemos usar la regla de la derivada de la función tangente:
+
+$$\frac{d}{dx} \tan x = \sec^2 x$$
+
+Entonces, la derivada de $\tan x$ es simplemente $\sec^2 x$.
+
+$$f'(x) = \boxed{\sec^2 x}$$",,13.07
+117,mathbuddy_avanzado,5011,Calcula el l?mite de x^3 - 4*x.,"El límite de una función se define como:
+
+$$\lim_{x \to a} f(x) = L \quad \text{si y sólo si} \quad \forall \epsilon > 0, \quad \exists \delta > 0 \text{ tal que } |f(x) - L| < \epsilon \text{ para todo } x \in (a-\delta,a+\delta).$$
+
+Para calcular el límite de $x^3-4x$ en $x=0$, podemos usar la propiedad del límite de una función polinómica:
+
+$$\lim_{x \to 0} (x^3 - 4x) = \lim_{x \to 0} x^3 - \lim_{x \to 0} 4x.$$
+
+Usando la propiedad que $\lim_{x \to a} x^n = a^n$ para $n$ entero, tenemos:
+
+$$\lim_{x \to 0} x^3 = 0^3 = 0.$$
+
+Y también,
+
+$$\lim_{x \to 0} 4x = 4(0) = 0.$$
+
+Por lo tanto,
+
+$$\lim_{x \to 0} (x^3 - 4x) = 0 - 0 = 0.$$",,34.82
+118,mathbuddy_avanzado,5011,Integra la expresi?n cos(x) - x.,"Para integrar la expresión $\cos(x) - x$, podemos utilizar la notación de integral definida:
+
+$$\int \cos(x) dx = \sin(x) + C$$
+
+donde $C$ es una constante de integración.
+
+Ahora, necesitamos integrar la parte $-x$. Podemos hacerlo directamente:
+
+$$\int -x dx = -\frac{x^2}{2} + D$$
+
+donde $D$ es otra constante de integración.
+
+Combinando las dos partes, obtenemos:
+
+$$\int \cos(x) - x dx = \sin(x) - \frac{x^2}{2} + C + D$$
+
+Como las constantes de integración se pueden combinar en una sola, podemos simplificar la expresión a:
+
+$$\int \cos(x) - x dx = \sin(x) - \frac{x^2}{2} + E$$
+
+donde $E$ es una constante de integración.
+
+La respuesta final es $\boxed{\sin(x) - \frac{x^2}{2}}$.",,28.39
+119,mathbuddy_avanzado,5011,Simplifica la expresi?n matem?tica (x^3)/x^2.,$$\frac{x^3}{x^2} = x^{3-2} = x^1 = \boxed{x}.$$,,4.08
+120,mathbuddy_avanzado,5011,Deriva la funci?n x^2 + tan(x).,"Para derivar la función $x^2 + \tan(x)$, podemos utilizar la regla de la suma y la regla de la derivada de la tangente:
+
+$$\frac{d}{dx} (f(x) + g(x)) = f'(x) + g'(x)$$
+
+Y sabemos que la derivada de $x^2$ es $2x$, y la derivada de $\tan(x)$ es $\sec^2(x)$.
+
+Entonces, aplicando la regla de la suma, obtenemos:
+
+$$\frac{d}{dx} (x^2 + \tan(x)) = 2x + \sec^2(x)$$
+
+La respuesta final es: $2x + \sec^2(x)$.",,20.75
+121,mathbuddy_basico,5012,?Cu?nto es 15 + 27?,"Para encontrar la suma de 15 y 27, primero debemos agregarlos entre sí. 
+
+$15 + 27 = 42$
+
+Entonces, 15 más 27 es igual a 42. ¡Eso no es tan difícil de calcular, ¿verdad?",,27.77
+122,mathbuddy_basico,5012,Resuelve la siguiente ecuaci?n: x + 5 = 12,"Para resolver la ecuación $x + 5 = 12$, necesitamos aislar el valor de $x$. 
+
+Primero, podemos restar 5 de ambos lados para comenzar a aislar $x$:
+
+$$
+\begin{aligned}
+    x + 5 &= 12 \\
+    -5 + x &= 12-5 \\
+    x &= 7
+\end{aligned}
+$$
+
+Por lo tanto, el valor de $x$ es $7$.",,12.31
+123,mathbuddy_basico,5012,?Cu?nto es 1/2 + 1/4?,"Para resolver este problema, necesitamos encontrar un denominador común. Podemos elegir 4 como el denominador común. Entonces, podemos reescribir las fracciones como:
+
+$$\frac{2}{4} + \frac{1}{4} = \frac{3}{4}$$
+
+Esto se debe a que los numeradores son 2 y 1 respectivamente y el denominador es 4.
+
+La respuesta final es $\boxed{\frac{3}{4}}$.",,2.75
+124,mathbuddy_basico,5012,Calcula la multiplicaci?n de 8 * 7,"Para calcular la multiplicación de 8 y 7, primero debemos entender qué significa multiplicar dos números. 
+
+La multiplicación es igual a sumar el mismo número una cierta cantidad de veces. En este caso, queremos saber cuánto es 7 veces 8.
+
+Podemos empezar contando con 8 barras: $$\underline{\underline{ \phantom{} }}$$
+
+Y si le sumamos 7 barras más a esa imagen:
+
+$$\underline{\underline{ \phantom{} }}\,\underline{\underline{ \phantom{} }}$$
+
+Vemos que tenemos un total de 56 barras. En la multiplicación, esto significa que 8 multiplicado por 7 es igual a 56.
+
+Por tanto, $8\times 7=56$.",,4.2
+125,mathbuddy_basico,5012,Encuentra el valor de x en la ecuaci?n 3*x = 15,"Para encontrar el valor de $x$ en la ecuación $3x = 15$, debemos dividir ambos lados de la ecuación entre $3$. Esto nos da:
+
+$$\frac{3x}{3} = \frac{15}{3}$$
+
+Simplificando obtenemos:
+
+$$x = 5$$
+
+Por ejemplo, si tienes $5$ dulces y quieres saber cuántos grupos de $3$ dulces tienes, la respuesta es $1$. ¡Espero que esto te haya ayudado a entender cómo resolver ecuaciones simples!",,3.18
+126,mathbuddy_basico,5012,"Si tengo la ecuaci?n x - 4 = 10, ?cu?nto vale x?","Para resolver la ecuación $x - 4 = 10$, debemos seguir estos pasos:
+
+$$
+\begin{aligned}
+x - 4 &= 10 \\
+x - 4 + 4 &= 10 + 4 \\
+x &= 14 
+\end{aligned}
+$$
+
+Por lo tanto, el valor de $x$ es $14$.",,2.07
+127,mathbuddy_basico,5012,?Cu?l es el resultado de 5 + 3 * 2?,"Para encontrar el resultado de la expresión $5 + 3 \times 2$, debemos seguir el orden de operaciones. 
+
+Primero, realizamos la multiplicación: $3 \times 2 = 6$.
+
+Luego, sumamos el resultado a 5: $5 + 6 = 11$.
+
+Por lo tanto, el resultado final es: $11$.",,2.16
+128,mathbuddy_basico,5012,?Cu?nto es 2^3?,"Para resolver este problema, necesitamos entender qué significa la expresión $2^3$. La parte superior ($3$) indica que debemos multiplicar por sí mismo el número en la parte inferior ($2$).
+
+En otras palabras, queremos encontrar el resultado de $2 \times 2 \times 2$.
+
+Primero, multipliquemos $2$ por $2$: $2 \times 2 = 4$
+
+Luego, multipliquemos ese resultado por $2$ nuevamente: $4 \times 2 = 8$
+
+Entonces, la respuesta es $\boxed{8}$.",,3.34
+129,mathbuddy_basico,5012,Simplifica la fracci?n 4/8,"Para simplificar la fracción 4/8, necesitamos encontrar el máximo común divisor (MCD) entre los dos números del numerador y el denominador. 
+
+Primero, identifiquemos las factorizaciones de 4 y 8:
+
+*   $4 = 2 \times 2$
+*   $8 = 2 \times 2 \times 2$
+
+El MCD de 4 y 8 es $2 \times 2 = 4$. 
+
+Ahora, dividimos el numerador (4) y el denominador (8) entre este valor:
+
+$\frac{4}{8} = \frac{4/4}{8/4} = \frac{1}{2}$
+
+Entonces la fracción simplificada es $\boxed{\frac{1}{2}}$.",,4.35
+130,mathbuddy_basico,5012,Resuelve esta peque?a ecuaci?n: x / 2 = 10,"Para resolver la ecuación $x/2=10$, necesitamos encontrar el valor de $x$ que hace que la ecuación sea verdadera.
+
+Primero, multiplicamos ambos lados de la ecuación entre $2$. Esto nos da:
+
+$$\frac{x}{2}\cdot 2 = 10 \cdot 2$$
+
+Lo que se simplifica a:
+
+$$x=20$$
+
+Entonces el valor de $x$ que hace que la ecuación sea verdadera es $20$.
+
+**Respuesta final:** La solución de la ecuación es $x=20$.",,3.32
+131,mathbuddy_basico,5012,Calcula paso a paso: (10 - 2) / 4,"Para resolver la expresión $(10 - 2) / 4$, necesitamos seguir los pasos adecuados:
+
+ Primero, resolvemos la operación dentro del paréntesis: $10 - 2 = 8$.
+
+ Luego, ahora tenemos la expresión como $\frac{8}{4}$.
+
+ Para dividir entre un número entero, podemos usar división larga o simplemente realizar la división. 
+
+La respuesta es: $$\frac{8}{4} = 2$$",,5.57
+132,mathbuddy_basico,5012,?Me puedes ayudar a derivar la funci?n x^2?,Esta consulta es demasiado avanzada para mí (MathBuddy Básico). Intenta con MathBuddy Avanzado.,,0.86
+133,mathbuddy_basico,5012,Resuelve 2*x + x = 9,"Para resolver la ecuación $2x + x = 9$, necesitamos combinar los términos con la variable $x$ en un lado de la ecuación. 
+
+Primero, unemos las dos variables $2x$ y $x$: $$2x+x=3x.$$
+
+Ahora tenemos la ecuación $$3x=9.$$ Para resolver $x$, necesitamos dividir ambos lados por 3: $$\frac{3x}{3}=\frac{9}{3}\Rightarrow x=3$$
+
+Por lo tanto, la solución de la ecuación es $x = 3$.",,3.49
+134,mathbuddy_basico,5012,?Cu?nto es la multiplicaci?n de 2/3 * 3/4?,"Para encontrar el resultado de la multiplicación de $\frac{2}{3} \times \frac{3}{4}$, primero debemos multiplicar los numeradores y los denominadores por separado.
+
+$$
+\begin{aligned}
+\frac{2}{3} \times \frac{3}{4} &= \frac{(2)(3)}{(3)(4)} \\
+&= \frac{6}{12}\\
+&= \boxed{\frac{1}{2}}\\
+\end{aligned}
+$$
+
+Esta consulta es demasiado avanzada para mí (MathBuddy Básico). Intenta con MathBuddy Avanzado.",,3.55
+135,mathbuddy_basico,5012,Encuentra x en la ecuaci?n: x + 10 = 3,"Para encontrar el valor de $x$ en la ecuación $x + 10 = 3$, necesitamos resolver la ecuación para aislar la variable $x$. 
+
+Primero, podemos restar 10 de ambos lados de la ecuación:
+
+$x + 10 - 10 = 3 - 10$
+
+Esto se simplifica a:
+
+$x = -7$",,2.22
+136,translator,5010,?C?mo se dice '?D?nde est? la estaci?n de tren?' en franc?s?,"La pregunta en español es: ""¿Dónde está la estación de tren?""
+
+La respuesta en francés es: ""Où se trouve la gare de train ?""",,10.18
+137,translator,5010,?Me puedes decir c?mo se dice 'Muchas gracias' en japon?s y c?mo es su pronunciaci?n?,"En japonés, ""Muchas gracias"" se traduce como ""??????????"" (arigat?gozaimasu). Esta frase se utiliza en situaciones formales o informales. La pronunciación es: ah-ree-gah-toh goh-zahy-mahs.",,7.32
+138,translator,5010,"Quiero practicar c?mo pedir comida en un restaurante en espa?ol. Yo ser?a el cliente, t? empieza.","Cliente: Hola, ¿podrías decirme el menú, por favor?
+
+Espero que me puedas entender. A continuación, te proporciono algunos ejemplos de cómo pedir comida en un restaurante en español:
+
+* ¿Qué platos recomiendan ustedes? (What dishes do you recommend?)
+* ¿Tienen algún plato tradicional local que pueda probar? (Do you have any traditional local dishes I can try?)
+* ¿Podría ver el menú del día, por favor? (May I see the menu of the day, please?)
+* ¿Qué carne tiene este plato? (What kind of meat does this dish have?)
+* ¿Tiene algún plato vegetariano en el menú? (Do you have any vegetarian dishes on the menu?)
+* ¿Podría tener dos tacos de carne asada, por favor? (May I have two grilled beef tacos, please?)
+* ¿Qué bebidas tiene ustedes? (What drinks do you have?)
+* ¿Tiene alguna cerveza local que pueda probar? (Do you have any local beer I can try?)
+* ¿Cuánto cuesta este plato? (How much does this dish cost?)
+* ¿Podría ver la cuenta, por favor? (May I see the bill, please?)",,30.12
+139,translator,5010,?Cu?l es la diferencia entre el verbo 'ser' y 'estar' en espa?ol?,"En español, los verbos 'ser' y 'estar' tienen significados ligeramente distintos y se utilizan en contextos diferentes.
+
+1. El verbo 'ser' se utiliza para definir la identidad o calidad de una persona, animal o cosa. También se usa para expresar relaciones como parentesco, profesión o nacionalidad. Por ejemplo: ""Yo soy estudiante"" (Me defino como estudiante).
+
+2. El verbo 'estar' se utiliza para indicar estado o situación temporal, física o emocional. También se usa para hablar de la ubicación de alguien o algo. Por ejemplo: ""Estoy en la biblioteca"" (Me encuentro en la biblioteca).
+
+Ambos verbos pueden utilizarse para describir aspectos físicos, pero 'estar' tiende a ser más dinámico y temporal, mientras que 'ser' es más estático y permanente. Por ejemplo: ""Tengo frío"" (Estoy en un estado de frío) vs. ""Soy frío"" (Me defino como alguien que siempre tiene frío).
+
+Es importante tener en cuenta que hay algunas excepciones y reglas específicas para el uso de ambos verbos, por lo que es recomendable estudiar la gramática española en detalle.",,31.38
+140,translator,5010,Traduce al alem?n: 'Me encanta aprender nuevos idiomas'.,"""Ich liebe es, neue Sprachen zu lernen."" (Literally: I love it, new languages to learn)",,3.67
+141,translator,5010,?Es de buena educaci?n usar el primer nombre de alguien en una reuni?n de negocios en Corea del Sur?,"Sí, es correcto. En Corea del Sur, se considera más formal y cortés usar el título y apellido completo de la persona en una reunión de negocios o en cualquier contexto formal. Si no tienes información sobre su título o si eres amigo cercano, puedes usar su primer nombre después de haber sido introducido por alguien que lo conozca bien. Sin embargo, es mejor esperar a que te lo indiquen antes de hacerlo.",,13.22
+142,translator,5010,Intento decir 'Tengo hambre' en franc?s diciendo 'Je suis faim'. ?Es correcto?,"Sí, ""Je suis faim"" es la traducción correcta de ""I am hungry"" del inglés al francés.",,3.26
+143,translator,5010,Dame 3 frases ?tiles para hacer el check-in en un hotel en italiano.,"1. ""Benvenuto/a! Come stai? Sono il/la receptionista. Per favore, forniscemi il vostro nome e la prenotazione per completare il check-in."" (Welcome! How are you? I am the receptionist. Please provide me with your name and reservation to complete the check-in.)
+
+2. ""Il tuo numero di camera ? ________. Le chiavi sono pronti per te al ristorante."" (Your room number is _______. The keys are ready for you at the restaurant.)
+
+3. ""Grazie mille per la sua visita! Se avesse bisogno di qualcosa, non esitare a chiamarmi o a contattarmi attraverso la reception."" (Thank you very much for your visit! If you need anything, don't hesitate to call me or contact me through the reception.)",,21.44
+144,translator,5010,?C?mo pronuncio correctamente la palabra 'Croissant' en franc?s?,"La palabra 'Croissant' se pronuncia /k?wa.son/ en francés. El sonido ""r"" se pronuncia como un suave ruido de garganta, y el sonido ""ss"" se pronuncia como una sibilante fuerte.",,8.03
+145,translator,5010,Traduce al portugu?s: 'El clima est? hermoso hoy'.,"O clima está lindo hoje.
+
+A tradução do inglês ""El clima está hermoso hoy"" para o português é ""O clima está lindo hoje"".",,10.22
+146,translator,5010,Let's role-play a conversation at a coffee shop in English. You start as the barista.,"Of course! Here we go:
+
+Barista (me): Good morning! Welcome to our cozy little café. How can I help you today?
+
+Customer: Hi there! It's a beautiful day, isn't it? I'll have my usual - a medium latte with an extra shot please. And could you warm up a croissant for me as well?
+
+Barista (me): Absolutely! Your latte with an extra shot is on its way, and I'll get that croissant warmed up right away. Would you like anything else while you wait?
+
+Customer: No, thank you. I appreciate it. I'll find a spot to sit down. Enjoy the rest of your day!
+
+Barista (me): You too! Have a great one! (After preparing the order) Here you go, enjoy your coffee and warm croissant! Don't hesitate to come back again soon.
+
+Customer: Thank you so much! I will definitely be back. Have a wonderful day!
+
+Barista (me): You too! Take care!",,20.23
+147,translator,5010,?Qu? significa la expresi?n 'It's raining cats and dogs' en ingl?s?,"La frase ""It's raining cats and dogs"" en español significa ""Está lloviendo a cántaros"". Esta expresión se utiliza para indicar que está lloviendo muy fuerte.",,4.31
+148,translator,5010,?C?mo digo 'Buenos d?as' en chino mandar?n? Ay?dame con la pronunciaci?n.,"El saludo ""Buenos días"" en chino mandarín se dice ""???"" (Z?o shàng h?o). Para la pronunciación, el tono es importante:
+
+1. ? (Z?o) - Primer tono, suena como ""dzzaoww""
+2. ? (Shàng) - Segundo tono, suena como ""shahng""
+3. ? (H?o) - Cuarto tono, suena como ""howw""
+
+Por lo tanto, la pronunciación completa es ""dzzaoww-shahng-howw"".",,11.21
+149,translator,5010,?Cu?ndo se debe usar el modo subjuntivo en franc?s?,"El modo subjuntivo se utiliza en francés cuando hay una relación de dependencia o sugerencia entre dos acciones, o cuando se expresa una acción hipotética, deseo, posibilidad, necesidad, obligación, recomendación, desacuerdo, incertidumbre, temor, sorpresa, irrealidad, etc.
+
+Por ejemplo:
+- J'aimerais que tu viennes demain (I would like you to come tomorrow)
+- Il faut que tu travaille plus (You must work more)
+- Si je gagnais le loto, je partirais en voyage (If I won the lottery, I would go on a trip)
+
+Es importante tener en cuenta que el uso del modo subjuntivo varía según la región y el contexto. Además, hay muchas excepciones y reglas específicas que se deben conocer para dominar este aspecto del idioma francés.",,20.09
+150,translator,5010,Traduce la frase '?Me puedes ayudar?' al ruso.,"The phrase ""Me puedes ayudar?"" translates to Russian as ""?????? ?? ?? ??? ???????"" (Mozhesh' li ty menya pomoch'?) This means, ""Can you help me?"" in Russian.",,4.61

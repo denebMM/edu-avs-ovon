@@ -1,14 +1,20 @@
 from flask import Flask, request, jsonify
+from qdrant_client import QdrantClient
+from qdrant_client.models import Distance, VectorParams
 import PyPDF2
 import requests
-import numpy as np
-from sentence_transformers import SentenceTransformer
+import os
 
 app = Flask(__name__)
 
-# 1. Cargamos el modelo de Embeddings (se hace una sola vez al iniciar)
-print("_Cargando modelo de lenguaje (Embeddings)...")
-modelo_semantico = SentenceTransformer('all-MiniLM-L6-v2')
+# --- CONFIGURACIÓN ---
+OLLAMA_URL = os.getenv("OLLAMA_HOST", "http://ollama:11434")
+EMBED_MODEL = "mxbai-embed-large"
+QDRANT_HOST = "qdrant" 
+COLLECTION_NAME = "asistente_algebra"
+
+# Conexión local a Qdrant
+client = QdrantClient(host=QDRANT_HOST, port=6333)
 
 def cargar_pdf(nombres):
     texto = ""
@@ -23,8 +29,7 @@ def cargar_pdf(nombres):
             print(f"Error cargando {nombre}: {e}")
     return texto
 
-# 2. Nueva función para crear fragmentos (Chunks) con sentido
-def crear_fragmentos(texto, tamano=500):
+def crear_fragmentos(texto, tamano=600):
     lineas = [l.strip() for l in texto.split("\n") if l.strip()]
     fragmentos, actual = [], ""
     for linea in lineas:
@@ -36,41 +41,79 @@ def crear_fragmentos(texto, tamano=500):
     if actual: fragmentos.append(actual.strip())
     return fragmentos
 
-# 3. Nueva función de búsqueda semántica (Matemática vectorial)
-def recuperar_contexto_semantico(pregunta, fragmentos, embeddings_db):
-    # Convertimos la pregunta en un vector
-    emb_pregunta = modelo_semantico.encode(pregunta)
-    
-    # Calculamos la similitud de coseno entre la pregunta y todos los fragmentos
-    similitudes = np.dot(embeddings_db, emb_pregunta) / (
-        np.linalg.norm(embeddings_db, axis=1) * np.linalg.norm(emb_pregunta) + 1e-10
-    )
-    
-    # Tomamos los 5 fragmentos más parecidos
-    top_indices = np.argsort(similitudes)[::-1][:5]
-    return "\n".join([fragmentos[i] for i in top_indices])
+def obtener_embedding_ollama(texto):
+    try:
+        response = requests.post(
+            f"{OLLAMA_URL}/api/embeddings", 
+            json={"model": EMBED_MODEL, "prompt": texto}, 
+            timeout=60
+        )
+        return response.json()["embedding"]
+    except Exception:
+        return []
 
-# --- PROCESAMIENTO INICIAL ---
-print(" Cargando libros de álgebra...")
-TEXTO_COMPLETO = cargar_pdf(["algebra.pdf", "algebra1.pdf"])
-FRAGMENTOS = crear_fragmentos(TEXTO_COMPLETO)
+# --- FUNCIÓN DE AUTO-INDEXACIÓN PERSISTENTE ---
+def inicializar_base_datos():
+    try:
+        # Verificar si la colección ya existe para no repetir el trabajo
+        colecciones = client.get_collections().collections
+        if any(c.name == COLLECTION_NAME for c in colecciones):
+            print(f"--- [INFO] Colección '{COLLECTION_NAME}' detectada. Saltando indexación. ---")
+            return
 
-print(f"Generando base de datos vectorial para {len(FRAGMENTOS)} fragmentos...")
-EMBEDDINGS_DB = modelo_semantico.encode(FRAGMENTOS)
-print("__Sistema listo.")
+        print(f"--- [SISTEMA] Indexando '{COLLECTION_NAME}' por primera vez... ---")
+        client.recreate_collection(
+            collection_name=COLLECTION_NAME,
+            vectors_config=VectorParams(size=1024, distance=Distance.COSINE),
+        )
 
+        pdf_texto = cargar_pdf(["algebra.pdf"])
+        fragmentos = crear_fragmentos(pdf_texto)
+        
+        print(f"--- [PROCESO] Generando embeddings para {len(fragmentos)} fragmentos... ---")
+        for i, texto in enumerate(fragmentos):
+            vector = obtener_embedding_ollama(texto)
+            if vector:
+                client.upsert(
+                    collection_name=COLLECTION_NAME,
+                    points=[{
+                        "id": i, 
+                        "vector": vector, 
+                        "payload": {"texto": texto}
+                    }]
+                )
+        print("--- [ÉXITO] Indexación completada y persistida en disco. ---")
+    except Exception as e:
+        print(f"--- [ERROR] Falló la inicialización: {e} ---")
+
+# --- RUTA DE PREGUNTAS ---
 @app.route('/preguntar', methods=['POST'])
 def preguntar():
     data = request.json
     pregunta = data.get("pregunta", "")
     
-    # Búsqueda inteligente en lugar de búsqueda por palabras
-    contexto = recuperar_contexto_semantico(pregunta, FRAGMENTOS, EMBEDDINGS_DB)
+    # 1. Recuperación en Qdrant
+    emb_pregunta = obtener_embedding_ollama(pregunta)
+    search_result = client.search(
+        collection_name=COLLECTION_NAME,
+        query_vector=emb_pregunta,
+        limit=5
+    )
     
-    prompt = f"""Eres un profesor experto en álgebra.
-Usa exclusivamente el siguiente contexto para responder.
+    # Extraer el texto de los resultados
+    contexto = "\n".join([hit.payload["texto"] for hit in search_result])
+    
+    # [CORRECCIÓN CLAVE]: Validar si el contexto llegó vacío
+    if not contexto.strip():
+        return jsonify({"respuesta": "Lo siento, la información para responder a esta pregunta no se encuentra en el documento proporcionado."})
 
-Contexto:
+    # [CORRECCIÓN CLAVE]: Prompt altamente restrictivo para tesis
+    prompt = f"""Eres un profesor experto en álgebra basado estrictamente en documentos. 
+Usa ÚNICAMENTE el siguiente 'Contexto del libro' para responder a la pregunta. 
+Si la respuesta no se puede deducir del contexto, di exactamente: 'Lo siento, no tengo esa información en mi base de datos.'
+No inventes información ni utilices conocimientos externos.
+
+Contexto del libro:
 {contexto}
 
 Pregunta: {pregunta}
@@ -78,19 +121,18 @@ Respuesta:"""
     
     try:
         response = requests.post(
-            "http://ollama:11434/api/generate",
-            json={
-                "model": "llama3.1",
-                "prompt": prompt,
-                "stream": False
-            },
+            f"{OLLAMA_URL}/api/generate", 
+            json={"model": "llama3.1", "prompt": prompt, "stream": False},
             timeout=120
         )
-        respuesta_ia = response.json().get("response", "Error procesando respuesta")
+        response.raise_for_status()
+        respuesta_final = response.json().get("response", "Error al procesar la respuesta.")
     except Exception as e:
-        respuesta_ia = f"Error conectando con Ollama: {str(e)}"
-
-    return jsonify({"respuesta": respuesta_ia})
+        respuesta_final = f"Error conectando con el motor de IA: {str(e)}"
+    
+    return jsonify({"respuesta": respuesta_final})
 
 if __name__ == '__main__':
+    # Asegurar que los datos estén listos antes de aceptar peticiones
+    inicializar_base_datos()
     app.run(host='0.0.0.0', port=5000)
