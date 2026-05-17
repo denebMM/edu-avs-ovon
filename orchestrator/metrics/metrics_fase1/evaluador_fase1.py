@@ -9,30 +9,37 @@ import os
 
 # ================= CONFIGURACIÓN =================
 directorio_actual = os.path.dirname(os.path.abspath(__file__))
-ARCHIVO_DATASET = os.path.join(directorio_actual, "dataset_fase1.csv")
+ARCHIVO_DATASET = os.path.join(directorio_actual, "dataset_individual.csv") # Asegúrate de que este archivo exista
 ARCHIVO_RESULTADOS = os.path.join(directorio_actual, "resultados_fase1_completo.csv")
-ARCHIVO_METRICAS_AGENTE = os.path.join(directorio_actual, "metricas_agentes_fase1.csv") # NUEVO ARCHIVO
+ARCHIVO_METRICAS_AGENTE = os.path.join(directorio_actual, "metricas_agentes_fase1.csv")
 
 OLLAMA_URL = "http://localhost:11434/api/embeddings"
-MODELO_EMBEDDING = "mxbai-embed-large" #"qwen:4b" 
+MODELO_EMBEDDING = "mxbai-embed-large"
 UMBRAL_COSENO_POSITIVO = 0.50 
 
 # ================= FUNCIONES =================
-def obtener_embedding(texto):
-    # Validación para evitar que textos nulos rompan el código
+def obtener_embedding(texto, max_reintentos=3):
+    """Obtiene el embedding de Ollama, con reintentos si el servidor local se satura."""
     if not isinstance(texto, str) or not texto.strip() or str(texto).lower() == 'nan':
         return None
         
-    texto_seguro = texto[:1500] # Evita que Ollama se trabe con textos infinitos
+    texto_seguro = texto[:1500] 
     
-    try:
-        # Se agregó TIMEOUT para que no se quede congelado por horas
-        resp = requests.post(OLLAMA_URL, json={"model": MODELO_EMBEDDING, "prompt": texto_seguro}, timeout=30)
-        resp.raise_for_status()
-        return np.array(resp.json()["embedding"]).reshape(1, -1)
-    except Exception as e:
-        print(f"Error embedding: {e}")
-        return None
+    for intento in range(max_reintentos):
+        try:
+            resp = requests.post(
+                OLLAMA_URL, 
+                json={"model": MODELO_EMBEDDING, "prompt": texto_seguro}, 
+                timeout=30
+            )
+            resp.raise_for_status()
+            return np.array(resp.json()["embedding"]).reshape(1, -1)
+        except requests.exceptions.RequestException as e:
+            print(f"   [⚠️] Ollama saturado. Reintentando en 3 seg... (Intento {intento+1}/{max_reintentos})")
+            time.sleep(3) # Pausa táctica para que Ollama libere RAM
+            
+    print(f"   [❌] Fallo definitivo al obtener embedding tras {max_reintentos} intentos.")
+    return None
 
 def armar_payload_ofp(pregunta):
     conversation_id = str(uuid.uuid4())
@@ -54,44 +61,66 @@ def armar_payload_ofp(pregunta):
     }
 
 def ejecutar_pruebas_fase1():
-    print("Iniciando Evaluación Completa de Fase 1 (A prueba de fallos)...")
+    print("Iniciando Evaluación Completa de Fase 1 (Blindada con Reintentos y Varianzas)...")
     
-    try:
-        df = pd.read_csv(ARCHIVO_DATASET, encoding='utf-8')
-    except UnicodeDecodeError:
-        df = pd.read_csv(ARCHIVO_DATASET, encoding='latin1')
+    # --- 1. LECTURA ROBUSTA DEL CSV ---
+    df = None
+    codificaciones = ['utf-8-sig', 'utf-8', 'latin1', 'cp1252', 'iso-8859-1']
     
+    for cod in codificaciones:
+        try:
+            df = pd.read_csv(ARCHIVO_DATASET, encoding=cod, sep=None, engine='python')
+            print(f"Archivo leído exitosamente usando codificación: {cod}")
+            break
+        except Exception:
+            continue
+            
+    if df is None:
+        raise ValueError(" No se pudo leer el archivo CSV.")
+
+    df.columns = df.columns.str.strip().str.lower().str.replace('"', '').str.replace("'", "")
+    
+    if 'asistente' not in df.columns:
+        raise ValueError("Error: No se encontró la columna 'asistente'.")
+
     df = df.dropna(subset=['asistente']) 
     
-    # Nuevas columnas preparadas
+    # --- 2. PREPARACIÓN DE NUEVAS COLUMNAS (MÉTRICAS POR PREGUNTA) ---
     df["respuesta_sistema"] = ""
     df["tiempo_segundos"] = 0.0
-    df["similitud_ideal"] = 0.0  # Antes se llamaba similitud_coseno
-    df["fidelidad_rag"] = 0.0    # Nueva métrica RAG
+    df["similitud_ideal"] = 0.0 
+    df["fidelidad_rag"] = 0.0 
     df["clasificacion"] = "" 
+    df["precision_individual"] = 0.0  
+    df["recall_individual"] = 0.0     
+    df["f1_score_individual"] = 0.0   
 
-    # Búsqueda segura del nombre de la columna del libro
     columna_libro = None
     for col in df.columns:
-        if 'libro' in col.lower():
+        if 'libro' in col:
             columna_libro = col
             break
 
+    # --- 3. CICLO DE EVALUACIÓN ---
     for index, row in df.iterrows():
         asistente = str(row['asistente']).strip()
-        puerto = int(row['puerto'])
+        
+        try:
+            puerto = int(float(row['puerto']))
+        except (ValueError, TypeError):
+            continue
+            
         pregunta = str(row['pregunta'])
         
-        # Extracción segura de datos
-        respuesta_ideal = str(row.get('respuesta_ideal', ''))
         respuesta_libro = str(row[columna_libro]) if columna_libro else ""
+        respuesta_ideal = respuesta_libro 
         
-        print(f"[{index+1}/{len(df)}] {asistente.upper()}: {pregunta[:30]}...")
+        print(f"[{index+1}/{len(df)}] {asistente.upper()}: Evaluando...")
 
         url = f"http://localhost:{puerto}/receive"
         payload = armar_payload_ofp(pregunta)
 
-        # 1. Medir Latencia
+        # Medir Latencia
         inicio = time.time()
         try:
             resp = requests.post(url, json=payload, timeout=180)
@@ -102,7 +131,7 @@ def ejecutar_pruebas_fase1():
             respuesta_bot = f"Error: {e}"
         tiempo_total = round(time.time() - inicio, 2)
 
-        # 2. Medir Similitudes
+        # Medir Similitudes Vectoriales
         sim_ideal = 0.0
         sim_rag = 0.0
         
@@ -110,36 +139,43 @@ def ejecutar_pruebas_fase1():
             vec_bot = obtener_embedding(respuesta_bot)
             vec_ideal = obtener_embedding(respuesta_ideal)
             
-            # Coseno Ideal
             if vec_ideal is not None and vec_bot is not None:
                 sim_ideal = round(cosine_similarity(vec_ideal, vec_bot)[0][0], 4)
             
-            # Coseno RAG (Fidelidad)
             if columna_libro and respuesta_libro.strip():
                 vec_libro = obtener_embedding(respuesta_libro)
                 if vec_libro is not None and vec_bot is not None:
                     sim_rag = round(cosine_similarity(vec_libro, vec_bot)[0][0], 4)
 
-        # 3. Clasificación
+        # Clasificación y Métricas Individuales
         if respuesta_bot.startswith("Error") or sim_ideal < UMBRAL_COSENO_POSITIVO:
             clasificacion = "FN" 
+            prec_ind = 0.0
+            rec_ind = 0.0
+            f1_ind = 0.0
         else:
             clasificacion = "VP" 
+            prec_ind = 1.0
+            rec_ind = 1.0
+            f1_ind = 1.0
 
-        # Guardado en DataFrame
+        # Guardar en DataFrame
         df.at[index, "respuesta_sistema"] = respuesta_bot
         df.at[index, "tiempo_segundos"] = tiempo_total
         df.at[index, "similitud_ideal"] = sim_ideal
         df.at[index, "fidelidad_rag"] = sim_rag
         df.at[index, "clasificacion"] = clasificacion
+        df.at[index, "precision_individual"] = prec_ind
+        df.at[index, "recall_individual"] = rec_ind
+        df.at[index, "f1_score_individual"] = f1_ind
 
-    # Guardar resultados brutos (por pregunta)
-    df.to_csv(ARCHIVO_RESULTADOS, index=False, encoding='utf-8')
+    # Guardar resultados detallados (UNA FILA POR PREGUNTA con sus métricas)
+    df.to_csv(ARCHIVO_RESULTADOS, index=False, encoding='utf-8-sig')
     
-    # === CÁLCULO DE MÉTRICAS Y VARIANZA GLOBAL ===
-    print("\n" + "="*50)
+    # --- 4. CÁLCULO DE MÉTRICAS ESTADÍSTICAS POR ASISTENTE (CON VARIANZAS) ---
+    print("\n" + "="*60)
     print("MÉTRICAS UNIFICADAS Y VARIANZA POR ASISTENTE")
-    print("="*50)
+    print("="*60)
     
     agentes = df['asistente'].unique()
     resultados_estadisticos = []
@@ -148,7 +184,7 @@ def ejecutar_pruebas_fase1():
         df_agente = df[df['asistente'] == agente]
         n_preguntas = len(df_agente)
         
-        # Calcular VP y FN
+        # Métrica global del agente (Promedios)
         vp = len(df_agente[df_agente['clasificacion'] == 'VP'])
         fn = len(df_agente[df_agente['clasificacion'] == 'FN'])
         fp = 0 
@@ -157,7 +193,7 @@ def ejecutar_pruebas_fase1():
         recall = vp / (vp + fn) if (vp + fn) > 0 else 0.0
         f1_score = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0.0
         
-        # VARIANZAS SEGUROS (Si hay error matemático, pone 0.0)
+        # --- CÁLCULO DE VARIANZAS INDIVIDUALES (AÑADIDO PARA LA TESIS) ---
         try: var_sim = round(df_agente['similitud_ideal'].var(ddof=1), 4)
         except: var_sim = 0.0
         
@@ -166,33 +202,43 @@ def ejecutar_pruebas_fase1():
             
         try: var_lat = round(df_agente['tiempo_segundos'].var(ddof=1), 4)
         except: var_lat = 0.0
-        
-        # Promedios clásicos de tu script
+
+        try: var_prec = round(df_agente['precision_individual'].var(ddof=1), 4)
+        except: var_prec = 0.0
+
+        try: var_f1 = round(df_agente['f1_score_individual'].var(ddof=1), 4)
+        except: var_f1 = 0.0
+        # -----------------------------------------------------------------
+
         coseno_promedio = df_agente['similitud_ideal'].mean()
         tiempo_promedio = df_agente['tiempo_segundos'].mean()
         
         print(f"\n[{agente.upper()}]")
-        print(f"  - Precisión: {precision:.2f} | Recall: {recall:.2f} | F1-Score: {f1_score:.2f}")
+        print(f"  - Precisión: {precision:.2f} (Var: {var_prec:.4f}) | Recall: {recall:.2f} | F1-Score: {f1_score:.2f} (Var: {var_f1:.4f})")
         print(f"  - Similitud (Media): {coseno_promedio:.4f} | Varianza: {var_sim}")
-        print(f"  - Fidelidad RAG (Varianza): {var_rag}")
         print(f"  - Latencia (Media): {tiempo_promedio:.2f} s | Varianza: {var_lat}")
         
-        # Almacenar para el reporte final
+        # Añadimos las nuevas varianzas al diccionario para que se guarden en el CSV
         resultados_estadisticos.append({
             "Asistente": agente,
             "Total_Preguntas": n_preguntas,
-            "Precision": precision,
-            "Recall": recall,
-            "F1_Score": f1_score,
+            "Precision_Global": precision,
+            "Varianza_Precision": var_prec,
+            "Recall_Global": recall,
+            "F1_Score_Global": f1_score,
+            "Varianza_F1_Score": var_f1,
+            "Similitud_Media": coseno_promedio,
             "Varianza_Similitud": var_sim,
+            "Fidelidad_RAG_Media": df_agente['fidelidad_rag'].mean(),
             "Varianza_Fidelidad_RAG": var_rag,
+            "Latencia_Media": tiempo_promedio,
             "Varianza_Latencia": var_lat
         })
 
-    # Guardar métricas agrupadas en el nuevo CSV
+    # Guardar métricas agrupadas
     df_metricas = pd.DataFrame(resultados_estadisticos)
-    df_metricas.to_csv(ARCHIVO_METRICAS_AGENTE, index=False, encoding='utf-8')
-    print(f"\n¡Proceso finalizado! Varianzas y métricas guardadas en {ARCHIVO_METRICAS_AGENTE}")
+    df_metricas.to_csv(ARCHIVO_METRICAS_AGENTE, index=False, encoding='utf-8-sig')
+    print(f"\n¡Proceso finalizado! Revisa el archivo '{os.path.basename(ARCHIVO_METRICAS_AGENTE)}' para ver el resumen estadístico con varianzas.")
 
 if __name__ == "__main__":
     ejecutar_pruebas_fase1()
