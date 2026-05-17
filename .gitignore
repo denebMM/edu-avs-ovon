@@ -1,14 +1,17 @@
+# Entornos virtuales
 venv/
-# Vector databases
-vectorDB/
-*.bin
-*.sqlite3
+.venv/
+env/
 
-# Ignorar carpeta de métricas generadas automáticamente
-git rm --cached metrics/*.csv
-git rm --cached metrics/*.json
-
-# Archivos pesados específicos
-assistants/algebra/algebra.pdf
+# Bases de datos y almacenamiento
 qdrant_storage/
-COMANDOS.md
+vectorDB/
+*.sqlite3
+*.bin
+*.db
+
+# Otros que no quieres subir
+__pycache__/
+*.pyc
+.DS_Store
+*.log
