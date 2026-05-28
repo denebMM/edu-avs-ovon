@@ -13,7 +13,6 @@ logger = logging.getLogger(__name__)
 app = Flask(__name__)
 
 # --- CONFIGURACIÓN DE IDENTIDAD ---
-# Cambiamos las URLs y URIs para Álgebra
 ALGEBRA_INTERNAL_URL = "http://algebra-backend:5000/preguntar"
 ALGEBRA_SPEAKER_URI = "tag:algebra.local,2026:agent001"
 SCHEMA_PATH = "/app/schemas/conversation-envelope-schema_v1.1.0.json"
@@ -24,11 +23,13 @@ try:
         OFP_SCHEMA = json.load(f)
 except Exception as e:
     logger.error(f"No se pudo cargar el esquema en {SCHEMA_PATH}: {e}")
+    OFP_SCHEMA = None
 
 def validate_envelope(data, context=""):
     try:
-        jsonschema.validate(instance=data, schema=OFP_SCHEMA)
-        logger.info(f"Envelope válido ({context})")
+        if OFP_SCHEMA:
+            jsonschema.validate(instance=data, schema=OFP_SCHEMA)
+            logger.info(f"Envelope válido ({context})")
     except Exception as e:
         logger.error(f"ERROR VALIDACIÓN ({context}): {e}")
         raise ValueError(f"Invalid OFP envelope: {e}")
@@ -41,8 +42,10 @@ def get_manifest():
                 "eventType": "publishManifest",
                 "parameters": {
                     "manifest": {
-                        "service": {"url": "http://assistant_algebra:5013/receive", 
-                        "speakerUri": ALGEBRA_SPEAKER_URI},
+                        "service": {
+                            "url": "http://assistant_algebra:5013/receive", 
+                            "speakerUri": ALGEBRA_SPEAKER_URI
+                        },
                         "role": "Especialista en Álgebra",
                         "name": "AlgebraBot",
                         "description": "Asistente experto en álgebra con soporte RAG (Libros de texto).",
@@ -67,43 +70,49 @@ def handle_receive():
         openfloor = data.get('openFloor', {})
         events = openfloor.get('events', [])
         conversation_id = openfloor.get('conversation', {}).get('id')
-
-        query_to_process = None
-
-        # Extraer la pregunta del usuario desde el evento 'utterance'
+       
+        query_to_process = ""
         for event in events:
             if event.get('eventType') == 'utterance':
                 try:
                     tokens = event['parameters']['dialogEvent']['features']['text']['tokens']
                     query_to_process = tokens[0]['value'] if tokens else ""
-                except Exception as ex:
-                    logger.error(f"Error extrayendo query: {ex}")
+                except (KeyError, IndexError): continue
 
         if not query_to_process:
             return jsonify({"error": "No se recibió query"}), 400
 
-        # Llamada al backend de Álgebra (el que lee los PDFs)
+        # --- DETECTAR EL TOKEN DE AUTORIDAD ---
+        forzar_respuesta = False
+        if "[FORZAR_RESPUESTA]" in query_to_process:
+            forzar_respuesta = True
+            query_to_process = query_to_process.replace("[FORZAR_RESPUESTA]", "").strip()
+        # --------------------------------------
+
+        # LLAMADA AL BACKEND
         try:
-            start_time = time.time()
-            resp = requests.post(ALGEBRA_INTERNAL_URL, json={"pregunta": query_to_process}, timeout=120)
-            duration = time.time() - start_time
-            logger.info(f"Backend procesó búsqueda semántica en {duration:.2f} segundos")
+            # Corregido: Uso de ALGEBRA_INTERNAL_URL
+            resp = requests.post(ALGEBRA_INTERNAL_URL, json={"pregunta": query_to_process}, timeout=300)
             resp.raise_for_status()
             backend_data = resp.json()
-            
-            # Extraemos la respuesta del JSON que definimos antes
-            reply = backend_data.get("respuesta") or "No tengo una respuesta clara en este momento."
+            reply = backend_data.get("respuesta", "").strip()
 
+            # --- LÓGICA DE ERROR_DOMINIO IGNORADA SI HAY ORDEN ---
+            if not forzar_respuesta and (not reply or "no está relacionad" in reply.lower()):
+                logger.warning(f"Agente detectó fuera de dominio.")
+                reply = "ERROR_DOMINIO"
+            # -----------------------------------------------------
+            
+        # Corregido: Se agregó el except correspondiente para evitar crasheos si el backend cae
         except Exception as e:
             logger.error(f"Error conectando con backend de álgebra: {e}")
-            reply = "Lo siento, mi motor de álgebra no está disponible."
+            reply = "ERROR_DOMINIO" 
 
-        # Construcción del tiempo de respuesta
+        # Empaquetado OFP
         now = datetime.utcnow()
         start_iso = now.isoformat() + "Z"
         end_iso = (now + timedelta(seconds=2)).isoformat() + "Z"
 
-        # Empaquetado de vuelta al Orquestador (Formato OFP)
         responses = [{
             "eventType": "utterance",
             "parameters": {
@@ -111,17 +120,11 @@ def handle_receive():
                     "speakerUri": ALGEBRA_SPEAKER_URI,
                     "span": {"startTime": start_iso, "endTime": end_iso},
                     "features": {
-                        "text": {
-                            "mimeType": "text/plain",
-                            "tokens": [{"value": reply}]
-                        }
+                        "text": {"mimeType": "text/plain", "tokens": [{"value": reply}]}
                     }
                 }
             }
-        }, {
-            "eventType": "yieldFloor",
-            "parameters": {}
-        }]
+        }, {"eventType": "yieldFloor", "parameters": {}}]
 
         payload = {
             "openFloor": {
@@ -138,5 +141,4 @@ def handle_receive():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    # Puerto 5013 según tu esquema de puertos del docker-compose
     app.run(host='0.0.0.0', port=5013, debug=False)

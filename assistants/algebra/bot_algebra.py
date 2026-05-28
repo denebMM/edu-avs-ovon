@@ -46,7 +46,7 @@ def obtener_embedding_ollama(texto):
         response = requests.post(
             f"{OLLAMA_URL}/api/embeddings", 
             json={"model": EMBED_MODEL, "prompt": texto}, 
-            timeout=60
+            timeout=400
         )
         return response.json()["embedding"]
     except Exception:
@@ -92,7 +92,6 @@ def preguntar():
     data = request.json
     pregunta = data.get("pregunta", "")
     
-    # 1. Recuperación en Qdrant
     emb_pregunta = obtener_embedding_ollama(pregunta)
     search_result = client.search(
         collection_name=COLLECTION_NAME,
@@ -100,30 +99,39 @@ def preguntar():
         limit=5
     )
     
-    # Extraer el texto de los resultados
     contexto = "\n".join([hit.payload["texto"] for hit in search_result])
     
-    # [CORRECCIÓN CLAVE]: Validar si el contexto llegó vacío
+    # --- CORRECCIÓN: ELIMINAMOS EL BLOQUEO ---
     if not contexto.strip():
-        return jsonify({"respuesta": "Lo siento, la información para responder a esta pregunta no se encuentra en el documento proporcionado."})
+        print("--- [AVISO] Contexto vacío. La IA usará su conocimiento general. ---")
+        contexto = "No hay información en los libros para esto."
+    # ----------------------------------------
 
-    # [CORRECCIÓN CLAVE]: Prompt altamente restrictivo para tesis
-    prompt = f"""Eres un profesor experto en álgebra basado estrictamente en documentos. 
-Usa ÚNICAMENTE el siguiente 'Contexto del libro' para responder a la pregunta. 
-Si la respuesta no se puede deducir del contexto, di exactamente: 'Lo siento, no tengo esa información en mi base de datos.'
-No inventes información ni utilices conocimientos externos.
+    prompt = f"""Eres un profesor experto y con autoridad absoluta en ÁLGEBRA Y MATEMÁTICAS.
+Tu único propósito es responder a la pregunta del usuario.
 
-Contexto del libro:
+REGLAS ESTRICTAS DE RESPUESTA:
+1. ANÁLISIS DE DOMINIO Y APORTES: Lee la 'Pregunta'. Es posible que incluya texto etiquetado como "[Aporte de...]". IGNORA la temática de esos aportes. Analiza ÚNICAMENTE lo que se te pide resolver a ti. ¿La tarea que debes hacer es de Álgebra/Matemáticas? 
+   - SI ES SÍ: Continúa al paso 2.
+   - SI ES NO: Responde exactamente "no está relacionado" y termina.
+
+2. USO DEL CONTEXTO (OPCIONAL): Revisa el 'Contexto' proporcionado por los libros. 
+   - Si el contexto te sirve para responder, úsalo.
+   - Si el contexto está vacío, no tiene sentido o habla de otra materia, IGNÓRALO COMPLETAMENTE.
+
+3. RESPUESTA EXPERTA (OBLIGATORIA): Si llegaste a este paso, TIENES QUE RESPONDER la pregunta usando tu propio conocimiento interno sobre Álgebra. Bajo ninguna circunstancia puedes negarte a responder si la pregunta es sobre tu materia. Nunca digas "El contexto no menciona...", simplemente responde de forma directa y clara.
+
+Contexto proporcionado por la base de datos:
 {contexto}
 
-Pregunta: {pregunta}
-Respuesta:"""
+Pregunta del usuario: {pregunta}
+Tu Respuesta Experta en Álgebra:"""
     
     try:
         response = requests.post(
             f"{OLLAMA_URL}/api/generate", 
-            json={"model": "llama3.1", "prompt": prompt, "stream": False},
-            timeout=120
+            json={"model": "qwen2.5:3b", "prompt": prompt, "stream": False},
+            timeout=400
         )
         response.raise_for_status()
         respuesta_final = response.json().get("response", "Error al procesar la respuesta.")
@@ -132,6 +140,7 @@ Respuesta:"""
     
     return jsonify({"respuesta": respuesta_final})
 
+    
 if __name__ == '__main__':
     # Asegurar que los datos estén listos antes de aceptar peticiones
     inicializar_base_datos()

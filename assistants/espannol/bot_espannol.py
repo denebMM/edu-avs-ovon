@@ -45,7 +45,7 @@ def obtener_embedding(texto):
         response = requests.post(
             f"{OLLAMA_URL}/api/embeddings",
             json={"model": EMBED_MODEL, "prompt": texto},
-            timeout=60
+            timeout=400
         )
         return response.json()["embedding"] 
     except Exception:
@@ -89,35 +89,47 @@ def preguntar():
         collection_name=COLLECTION_NAME,
         query_vector=emb_pregunta,
         limit=5,
-        score_threshold=0.40 # Umbral de similitud del 40%
+        score_threshold=0.40
     )
     
     contexto = "\n".join([hit.payload["texto"] for hit in search_result])
     
+    # --- CORRECCIÓN: ELIMINAMOS EL BLOQUEO ---
     if not contexto.strip():
-        return jsonify({"respuesta": "Lo siento, la información para responder a esta pregunta no se encuentra en mis documentos de referencia."})
+        print("--- [AVISO] Contexto vacío. La IA usará su conocimiento general. ---")
+        contexto = "No hay información en los libros para esto."
+    # ----------------------------------------
 
-    prompt = f"""Eres un profesor experto en Lengua Española y Literatura, basado estrictamente en documentos.
-Usa ÚNICAMENTE el siguiente 'Contexto' para responder a la pregunta de forma educativa.
-Si la respuesta no se puede deducir del contexto, di exactamente: 'Lo siento, no tengo esa información en mi base de datos.'
-No inventes información ni utilices conocimientos externos.
+    prompt = f"""Eres un profesor experto y con autoridad absoluta en LENGUA ESPAÑOLA Y LITERATURA.
+Tu único propósito es responder a la pregunta del usuario.
 
-Contexto:
+REGLAS ESTRICTAS DE RESPUESTA:
+1. ANÁLISIS DE DOMINIO Y APORTES: Lee la 'Pregunta'. Es posible que incluya texto etiquetado como "[Aporte de...]". IGNORA esos aportes. Analiza ÚNICAMENTE lo que se te pide resolver a ti. ¿La tarea trata de Lengua Española, gramática, ORTOGRAFÍA (como el uso de tildes o acentos), sintaxis o literatura? 
+   - SI ES SÍ: Continúa al paso 2.
+   - SI ES NO: Responde exactamente "no está relacionado" y termina.
+
+2. USO DEL CONTEXTO (OPCIONAL): Revisa el 'Contexto' proporcionado por los libros. 
+   - Si el contexto te sirve para responder, úsalo.
+   - Si el contexto está vacío, no tiene sentido o habla de otra materia, IGNÓRALO COMPLETAMENTE.
+
+3. RESPUESTA EXPERTA (OBLIGATORIA): Si llegaste a este paso, TIENES QUE RESPONDER la pregunta usando tu propio conocimiento interno sobre Español. Bajo ninguna circunstancia puedes negarte a responder si la pregunta es sobre tu materia. Nunca digas "El contexto no menciona...", simplemente responde de forma directa y clara.
+
+Contexto proporcionado por la base de datos:
 {contexto}
 
-Pregunta: {pregunta}
-Respuesta:"""
+Pregunta del usuario: {pregunta}
+Tu Respuesta Experta en Español:"""
 
     try:
         response = requests.post(
             f"{OLLAMA_URL}/api/generate",
-            json={"model": "llama3.1", "prompt": prompt, "stream": False},
-            timeout=120
+            json={"model": "gemma2:2b", "prompt": prompt, "stream": False},
+            timeout=400
         )
         return jsonify({"respuesta": response.json()["response"]})
     except Exception as e:
         return jsonify({"respuesta": f"Error de conexion con Ollama: {e}"})
-
+        
 if __name__ == '__main__':
     inicializar_base_datos()
     app.run(host='0.0.0.0', port=5000)

@@ -11,19 +11,19 @@ services:
     restart: unless-stopped
     networks:
       - ofp_network
-    deploy:                       # CUDA
-      resources:
-       limits:
-        memory: 12G   
-       reservations:
-           memory: 8G
-           devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
+    #deploy:                       # CUDA
+      #resources:
+       #limits:
+        #memory: 12G   
+       #reservations:
+           #memory: 8G
+           #devices:
+            #- driver: nvidia
+              #count: 1
+              #capabilities: [gpu]
     environment:
       - OLLAMA_NUM_GPU_LAYERS=20     # no usar -1 (no cabe todo en GPU)
-      - NVIDIA_VISIBLE_DEVICES=all
+      #- NVIDIA_VISIBLE_DEVICES=all
       - OLLAMA_KEEP_ALIVE=-1
       - OLLAMA_MAX_LOADED_MODELS=1
       - OLLAMA_NUM_PARALLEL=1

@@ -15,7 +15,9 @@ ARCHIVO_METRICAS_AGENTE = os.path.join(directorio_actual, "metricas_agentes_fase
 
 OLLAMA_URL = "http://localhost:11434/api/embeddings"
 MODELO_EMBEDDING = "mxbai-embed-large"
-UMBRAL_COSENO_POSITIVO = 0.50 
+
+# Ajuste 3: Umbral incrementado a 0.75 para mayor rigor en la evaluación de VP/FN
+UMBRAL_COSENO_POSITIVO = 0.75 
 
 # ================= FUNCIONES =================
 def obtener_embedding(texto, max_reintentos=3):
@@ -61,7 +63,7 @@ def armar_payload_ofp(pregunta):
     }
 
 def ejecutar_pruebas_fase1():
-    print("Iniciando Evaluación Completa de Fase 1 (Blindada con Reintentos y Varianzas)...")
+    print("Iniciando Evaluación Completa de Fase 1 (Entorno Heterogéneo)...")
     
     # --- 1. LECTURA ROBUSTA DEL CSV ---
     df = None
@@ -89,7 +91,9 @@ def ejecutar_pruebas_fase1():
     df["respuesta_sistema"] = ""
     df["tiempo_segundos"] = 0.0
     df["similitud_ideal"] = 0.0 
-    df["fidelidad_rag"] = 0.0 
+    
+    # Ajuste 1: Renombre de fidelidad_rag a fidelidad_fuente para ser agnóstico a la arquitectura
+    df["fidelidad_fuente"] = 0.0 
     df["clasificacion"] = "" 
     df["precision_individual"] = 0.0  
     df["recall_individual"] = 0.0     
@@ -133,7 +137,7 @@ def ejecutar_pruebas_fase1():
 
         # Medir Similitudes Vectoriales
         sim_ideal = 0.0
-        sim_rag = 0.0
+        sim_fuente = 0.0 # Ajuste 1
         
         if not respuesta_bot.startswith("Error"):
             vec_bot = obtener_embedding(respuesta_bot)
@@ -145,9 +149,9 @@ def ejecutar_pruebas_fase1():
             if columna_libro and respuesta_libro.strip():
                 vec_libro = obtener_embedding(respuesta_libro)
                 if vec_libro is not None and vec_bot is not None:
-                    sim_rag = round(cosine_similarity(vec_libro, vec_bot)[0][0], 4)
+                    sim_fuente = round(cosine_similarity(vec_libro, vec_bot)[0][0], 4) # Ajuste 1
 
-        # Clasificación y Métricas Individuales
+        # Clasificación y Métricas Individuales (utiliza el nuevo umbral estricto)
         if respuesta_bot.startswith("Error") or sim_ideal < UMBRAL_COSENO_POSITIVO:
             clasificacion = "FN" 
             prec_ind = 0.0
@@ -163,16 +167,16 @@ def ejecutar_pruebas_fase1():
         df.at[index, "respuesta_sistema"] = respuesta_bot
         df.at[index, "tiempo_segundos"] = tiempo_total
         df.at[index, "similitud_ideal"] = sim_ideal
-        df.at[index, "fidelidad_rag"] = sim_rag
+        df.at[index, "fidelidad_fuente"] = sim_fuente # Ajuste 1
         df.at[index, "clasificacion"] = clasificacion
         df.at[index, "precision_individual"] = prec_ind
         df.at[index, "recall_individual"] = rec_ind
         df.at[index, "f1_score_individual"] = f1_ind
 
-    # Guardar resultados detallados (UNA FILA POR PREGUNTA con sus métricas)
+    # Guardar resultados detallados
     df.to_csv(ARCHIVO_RESULTADOS, index=False, encoding='utf-8-sig')
     
-    # --- 4. CÁLCULO DE MÉTRICAS ESTADÍSTICAS POR ASISTENTE (CON VARIANZAS) ---
+    # --- 4. CÁLCULO DE MÉTRICAS ESTADÍSTICAS POR ASISTENTE ---
     print("\n" + "="*60)
     print("MÉTRICAS UNIFICADAS Y VARIANZA POR ASISTENTE")
     print("="*60)
@@ -184,7 +188,10 @@ def ejecutar_pruebas_fase1():
         df_agente = df[df['asistente'] == agente]
         n_preguntas = len(df_agente)
         
-        # Métrica global del agente (Promedios)
+        # Ajuste 2: Identificar el tipo de arquitectura (RAG, Ollama, etc.) si la columna existe
+        tipo_arq = df_agente['tipo_arquitectura'].iloc[0] if 'tipo_arquitectura' in df_agente.columns else "No especificada"
+
+        # Métrica global del agente
         vp = len(df_agente[df_agente['clasificacion'] == 'VP'])
         fn = len(df_agente[df_agente['clasificacion'] == 'FN'])
         fp = 0 
@@ -193,12 +200,12 @@ def ejecutar_pruebas_fase1():
         recall = vp / (vp + fn) if (vp + fn) > 0 else 0.0
         f1_score = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0.0
         
-        # --- CÁLCULO DE VARIANZAS INDIVIDUALES (AÑADIDO PARA LA TESIS) ---
+        # Cálculo de Varianzas
         try: var_sim = round(df_agente['similitud_ideal'].var(ddof=1), 4)
         except: var_sim = 0.0
         
-        try: var_rag = round(df_agente['fidelidad_rag'].var(ddof=1), 4)
-        except: var_rag = 0.0
+        try: var_fuente = round(df_agente['fidelidad_fuente'].var(ddof=1), 4) # Ajuste 1
+        except: var_fuente = 0.0
             
         try: var_lat = round(df_agente['tiempo_segundos'].var(ddof=1), 4)
         except: var_lat = 0.0
@@ -208,19 +215,19 @@ def ejecutar_pruebas_fase1():
 
         try: var_f1 = round(df_agente['f1_score_individual'].var(ddof=1), 4)
         except: var_f1 = 0.0
-        # -----------------------------------------------------------------
 
         coseno_promedio = df_agente['similitud_ideal'].mean()
         tiempo_promedio = df_agente['tiempo_segundos'].mean()
         
-        print(f"\n[{agente.upper()}]")
+        print(f"\n[{agente.upper()}] - {tipo_arq}")
         print(f"  - Precisión: {precision:.2f} (Var: {var_prec:.4f}) | Recall: {recall:.2f} | F1-Score: {f1_score:.2f} (Var: {var_f1:.4f})")
         print(f"  - Similitud (Media): {coseno_promedio:.4f} | Varianza: {var_sim}")
         print(f"  - Latencia (Media): {tiempo_promedio:.2f} s | Varianza: {var_lat}")
         
-        # Añadimos las nuevas varianzas al diccionario para que se guarden en el CSV
+        # Diccionario con el mapeo correcto
         resultados_estadisticos.append({
             "Asistente": agente,
+            "Arquitectura": tipo_arq, # Ajuste 2 integrado
             "Total_Preguntas": n_preguntas,
             "Precision_Global": precision,
             "Varianza_Precision": var_prec,
@@ -229,8 +236,8 @@ def ejecutar_pruebas_fase1():
             "Varianza_F1_Score": var_f1,
             "Similitud_Media": coseno_promedio,
             "Varianza_Similitud": var_sim,
-            "Fidelidad_RAG_Media": df_agente['fidelidad_rag'].mean(),
-            "Varianza_Fidelidad_RAG": var_rag,
+            "Fidelidad_Fuente_Media": df_agente['fidelidad_fuente'].mean(), # Ajuste 1
+            "Varianza_Fidelidad_Fuente": var_fuente, # Ajuste 1
             "Latencia_Media": tiempo_promedio,
             "Varianza_Latencia": var_lat
         })
@@ -238,7 +245,7 @@ def ejecutar_pruebas_fase1():
     # Guardar métricas agrupadas
     df_metricas = pd.DataFrame(resultados_estadisticos)
     df_metricas.to_csv(ARCHIVO_METRICAS_AGENTE, index=False, encoding='utf-8-sig')
-    print(f"\n¡Proceso finalizado! Revisa el archivo '{os.path.basename(ARCHIVO_METRICAS_AGENTE)}' para ver el resumen estadístico con varianzas.")
+    print(f"\n¡Proceso finalizado! Revisa el archivo '{os.path.basename(ARCHIVO_METRICAS_AGENTE)}'.")
 
 if __name__ == "__main__":
     ejecutar_pruebas_fase1()

@@ -6,22 +6,34 @@ from sklearn.metrics.pairwise import cosine_similarity
 import json
 from datetime import datetime
 import os
+import gc
 
 # ================= CONFIGURACIÓN =================
 directorio_actual = os.path.dirname(os.path.abspath(__file__))
-ARCHIVO_DATASET = os.path.join(directorio_actual, "dataset_hibrido.csv") 
+# 1. Define el identificador dinámico de tu prueba actual
+SUFIJO_PRUEBA = "_3_5"
 
-ARCHIVO_RESULTADOS_PREGUNTAS = os.path.join(directorio_actual, "resultados_fase2_detalle_preguntas.csv")
-ARCHIVO_RESULTADOS_AGENTES = os.path.join(directorio_actual, "resultados_fase2_metricas_agentes.csv")
-ARCHIVO_RESULTADOS_GLOBALES = os.path.join(directorio_actual, "resultados_fase2_metricas_globales.csv")
+
+# 2. Inyecta el sufijo dinámicamente usando f-strings (la letra 'f' antes de las comillas)
+#ARCHIVO_DATASET = os.path.join(directorio_actual, f"dataset{SUFIJO_PRUEBA}.csv") 
+
+
+ARCHIVO_DATASET = os.path.join(directorio_actual,"dataset_hibrido.csv") 
+
+ARCHIVO_RESULTADOS_PREGUNTAS = os.path.join(directorio_actual, f"resultados_fase2_detalle_preguntas{SUFIJO_PRUEBA}.csv")
+ARCHIVO_RESULTADOS_AGENTES = os.path.join(directorio_actual, f"resultados_fase2_metricas_agentes{SUFIJO_PRUEBA}.csv")
+ARCHIVO_RESULTADOS_GLOBALES = os.path.join(directorio_actual, f"resultados_fase2_metricas_globales{SUFIJO_PRUEBA}.csv")
 
 ORCHESTRATOR_URL = "http://localhost:5000/query"
 OLLAMA_URL = "http://localhost:11434/api/embeddings"
 OLLAMA_GENERATE_URL = "http://localhost:11434/api/generate"
 
 MODELO_EMBEDDING = "mxbai-embed-large" 
-# Agregamos TODOS los modelos del  ecosistema  para purgar la RAM completa
-MODELOS_A_LIMPIAR = ["mxbai-embed-large", "llama3.2:3b", "llama3.1:8b", "qwen2.5:3b"]
+# Agregamos TODOS los modelos del ecosistema para purgar la RAM completa
+MODELOS_A_LIMPIAR = [
+    "llama3.2:3b", "llama3.1:8b", "qwen2.5:3b", "gemma2:2b",
+    "qwen2.5:14b", "mxbai-embed-large"  
+]
 
 # ================= FUNCIONES DE LIMPIEZA DE RAM =================
 def limpiar_memoria_ollama():
@@ -35,7 +47,6 @@ def limpiar_memoria_ollama():
     time.sleep(5) # Dar tiempo al sistema operativo para reclamar la RAM
     print("......... Memoria liberada exitosamente. Continuando...\n")
 
-# ================= FUNCIONES CORE =================
 def obtener_embedding(texto, max_reintentos=4):
     if not isinstance(texto, str) or not texto.strip() or str(texto).lower() == 'nan':
         return None
@@ -48,21 +59,19 @@ def obtener_embedding(texto, max_reintentos=4):
             resp = requests.post(
                 OLLAMA_URL, 
                 json={"model": MODELO_EMBEDDING, "prompt": texto_seguro}, 
-                timeout=60 # Aumentado a 60s
+                timeout=500
             )
             resp.raise_for_status()
             return np.array(resp.json()["embedding"]).reshape(1, -1)
             
         except requests.exceptions.RequestException as e:
-            print(f"___Ollama saturado. (Intento {intento+1}/{max_reintentos})")
-            limpiar_memoria_ollama() # Purga total de RAM
-            print(f"____Esperando {tiempo_espera} segundos antes de reintentar...")
+            print(f"___Ollama saturado en embedding. (Intento {intento+1}/{max_reintentos})")
             time.sleep(tiempo_espera) 
             tiempo_espera *= 2 
             
     print(f".. Fallo definitivo al obtener embedding tras {max_reintentos} intentos.")
     return None
-    
+        
 def parsear_tiempo_iso(iso_str):
     if not iso_str: return None
     try:
@@ -71,8 +80,9 @@ def parsear_tiempo_iso(iso_str):
         return None
 
 def procesar_respuesta_ofp_detallado(data):
-    agentes_info = {}
+    agents_info = {}
     texto_combinado = ""
+    fragmentos_log = [] 
     
     eventos = data.get('openFloor', {}).get('events', [])
     for evento in eventos:
@@ -84,8 +94,14 @@ def procesar_respuesta_ofp_detallado(data):
             if "tag:" in speaker_uri and ".local" in speaker_uri:
                 agente = speaker_uri.split("tag:")[1].split(".local")[0]
             
-            tokens = dialog_event.get('features', {}).get('text', {}).get('tokens', [])
+            features = dialog_event.get('features', {})
+            tokens = features.get('text', {}).get('tokens', [])
             texto = tokens[0].get('value', '') if tokens else ""
+            
+            # --- EXTRAER EL FRAGMENTO ENVIADO ---
+            tokens_fragmento = features.get('context', {}).get('tokens', [])
+            fragmento = tokens_fragmento[0].get('value', 'No enviado/No fraccionado') if tokens_fragmento else "No enviado"
+            fragmentos_log.append(f"[{agente.upper()}]: {fragmento}")
             
             span = dialog_event.get('span', {})
             start = parsear_tiempo_iso(span.get('startTime'))
@@ -95,16 +111,18 @@ def procesar_respuesta_ofp_detallado(data):
             if start and end:
                 latencia_individual = (end - start).total_seconds()
             
-            if agente not in agentes_info:
-                agentes_info[agente] = {"texto": texto, "latencia": latencia_individual}
+            if agente not in agents_info:
+                agents_info[agente] = {"texto": texto, "latencia": latencia_individual}
             else:
-                agentes_info[agente]["texto"] += " " + texto
-                agentes_info[agente]["latencia"] += latencia_individual
+                agents_info[agente]["texto"] += " " + texto
+                agents_info[agente]["latencia"] += latencia_individual
             
             texto_combinado += f"[{agente.upper()}]: {texto}\n\n"
-                
-    return agentes_info, texto_combinado.strip()
-
+            
+    # Retornamos solo las 3 variables originales
+    string_fragmentos = " | ".join(fragmentos_log)
+    return agents_info, texto_combinado.strip(), string_fragmentos
+    
 # ================= FUNCIÓN PRINCIPAL DE EVALUACIÓN =================
 def ejecutar_evaluacion_completa():
     print(" === Iniciando Evaluación End-to-End (Fase 2) con Gestión Extrema de Memoria ===")
@@ -117,47 +135,44 @@ def ejecutar_evaluacion_completa():
     df.columns = df.columns.str.strip().str.lower().str.replace('"', '').str.replace("'", "")
     df = df.dropna(subset=['pregunta'])
 
+    # Inicialización de las columnas del DataFrame de resultados   
+    df["fragmentos_enviados_por_agente"] = ""
     df["agentes_reales"] = ""
     df["texto_respuesta_global"] = ""
     df["latencia_global_segundos"] = 0.0
     df["precision_ruteo"] = 0.0
     df["recall_ruteo"] = 0.0
     df["f1_score_ruteo"] = 0.0
-    df["coseno_global"] = 0.0
+    df["coseno_global"] = None
 
     metricas_agentes = {}
     global_precision, global_recall, global_f1 = [], [], []
     global_cosenos, global_tiempos = [], []
 
     for index, row in df.iterrows():
-        # Limpieza preventiva cada 5 preguntas en lugar de 8
-        if index > 0 and index % 5 == 0:
-            print(f"\n=== LOTE DE 5 PREGUNTAS COMPLETADO ===")
-            limpiar_memoria_ollama()
-
         pregunta = str(row['pregunta'])
         respuesta_ideal_global = str(row['respuesta_ideal'])
         
         esperados_str = str(row.get('agentes_esperados', ''))
         agentes_esperados = [a.strip().lower() for a in esperados_str.split(',')] if esperados_str else []
 
-        print(f"-> Evaluando [{index+1}/{len(df)}]: {pregunta[:50]}...")
+        print(f"\n-> Evaluando [{index+1}/{len(df)}]: {pregunta[:50]}...")
         
         inicio_global = time.time()
         try:
-            resp = requests.post(ORCHESTRATOR_URL, json={"query": pregunta}, timeout=300)
+            resp = requests.post(ORCHESTRATOR_URL, json={"query": pregunta}, timeout=500)
             resp.raise_for_status()
             data = resp.json()
-            agentes_reales_info, texto_bot_global = procesar_respuesta_ofp_detallado(data)
+            # Desempaquetamos 3 variables
+            agentes_reales_info, texto_bot_global, string_fragmentos = procesar_respuesta_ofp_detallado(data)
         except Exception as e:
             print(f"   X Error: {e}")
-            agentes_reales_info, texto_bot_global = {}, "Error"
+            agentes_reales_info, texto_bot_global, string_fragmentos = {}, "Error", "Error al procesar"
             
         latencia_global = round(time.time() - inicio_global, 2)
         global_tiempos.append(latencia_global)
         
         # --- EL RESPIRO TÁCTICO ---
-        # Darle a la PC 3 segundos para calmar la CPU/RAM antes de hacer matemáticas pesadas
         print("...Dando un respiro de 3s al hardware...")
         time.sleep(3) 
 
@@ -189,14 +204,25 @@ def ejecutar_evaluacion_completa():
             elif ag in agentes_esperados and ag not in agentes_reales_lista:
                 metricas_agentes[ag]['FN'] += 1
 
+        # ========================================================
+        # NUEVO: PURGA VITAL ANTES DE LOS EMBEDDINGS
+        # ========================================================
+        print("... Purgando modelos de los agentes para hacer espacio al modelo de Embeddings ...")
+        limpiar_memoria_ollama()
+        time.sleep(3) 
+
+        # ========================================================
         # MÉTRICAS COSENO 
-        cos_g = 0.0
+        # ========================================================
+        cos_g = None  # Inicializamos en None en lugar de 0.0 para no afectar promedios
         if "Error" not in texto_bot_global:
             v_ideal_g = obtener_embedding(respuesta_ideal_global)
             v_bot_g = obtener_embedding(texto_bot_global)
             if v_ideal_g is not None and v_bot_g is not None:
                 cos_g = round(cosine_similarity(v_ideal_g, v_bot_g)[0][0], 4)
                 global_cosenos.append(cos_g)
+            else:
+                print(" -> Aviso: Embedding falló (RAM llena), saltando coseno...")
 
         for ag, info in agentes_reales_info.items():
             metricas_agentes[ag]['latencias'].append(info['latencia'])
@@ -206,13 +232,22 @@ def ejecutar_evaluacion_completa():
                 cos_ind = round(cosine_similarity(v_ideal_ind, v_bot_ind)[0][0], 4)
                 metricas_agentes[ag]['cosenos'].append(cos_ind)
 
+        # --- GUARDADO EN EL DATAFRAME ---
+        df.at[index, "fragmentos_enviados_por_agente"] = string_fragmentos
         df.at[index, "agentes_reales"] = ", ".join(agentes_reales_lista)
         df.at[index, "texto_respuesta_global"] = texto_bot_global
         df.at[index, "latencia_global_segundos"] = latencia_global
         df.at[index, "precision_ruteo"] = round(prec_g, 4)
         df.at[index, "recall_ruteo"] = round(rec_g, 4)
         df.at[index, "f1_score_ruteo"] = round(f1_g, 4)
-        df.at[index, "coseno_global"] = cos_g
+        
+        # Si falló el embedding, escribimos un texto claro en el CSV
+        df.at[index, "coseno_global"] = cos_g if cos_g is not None else "ERROR_EMBEDDING"
+
+        # --- LIMPIEZA POST-PREGUNTA EXTREMA ---
+        print(" === LIMPIEZA POST-PREGUNTA ===")
+        limpiar_memoria_ollama() 
+        gc.collect()             
 
     # ================= GUARDADO DE REPORTES EN CSV =================
     print("\n === Procesamiento completado. Generando reportes CSV... ===")

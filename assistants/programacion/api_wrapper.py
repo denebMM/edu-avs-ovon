@@ -49,8 +49,7 @@ def publish_manifest():
 def handle_receive():
     try:
         data = request.get_json() or {}
-        
-        # Validar entrada
+        # Validar entrada OFP
         if OFP_SCHEMA:
             jsonschema.validate(instance=data, schema=OFP_SCHEMA)
 
@@ -61,17 +60,43 @@ def handle_receive():
         query = ""
         for event in events:
             if event.get('eventType') == 'utterance':
-                query = event['parameters']['dialogEvent']['features']['text']['tokens'][0]['value']
+                try:
+                    tokens = event['parameters']['dialogEvent']['features']['text']['tokens']
+                    query = tokens[0]['value'] if tokens else ""
+                except (KeyError, IndexError): continue
 
-        # Llamada al backend midiendo tiempo de procesamiento semántico
-        logger.info(f"Procesando consulta técnica: {query[:50]}...")
-        start_t = time.time()
-        resp = requests.post(PROG_INTERNAL_URL, json={"pregunta": query}, timeout=120)
-        resp.raise_for_status()
-        duration = time.time() - start_t
-        logger.info(f"Análisis y respuesta generados en {duration:.2f}s")
+        if not query:
+            return jsonify({"error": "No se recibió query"}), 400
+
+        # --- DETECTAR EL TOKEN DE AUTORIDAD ---
+        forzar_respuesta = False
+        if "[FORZAR_RESPUESTA]" in query:
+            forzar_respuesta = True
+            query = query.replace("[FORZAR_RESPUESTA]", "").strip()
+        # --------------------------------------
+
+        # LLAMADA AL BACKEND CON VALIDACIÓN DE DOMINIO
+        try:
+            logger.info(f"Procesando consulta técnica: {query[:50]}...")
+            start_t = time.time()
+            resp = requests.post(PROG_INTERNAL_URL, json={"pregunta": query}, timeout=300)
+            resp.raise_for_status()
+            duration = time.time() - start_t
+            logger.info(f"Análisis generado en {duration:.2f}s")
+            
+            backend_data = resp.json()
+            reply = backend_data.get("respuesta", "").strip()
+            
+            # --- LÓGICA DE ERROR_DOMINIO IGNORADA SI HAY ORDEN ---
+            # Cambiamos "relacionado" por "relacionad" para atrapar ambos géneros
+            if not forzar_respuesta and (not reply or "no está relacionad" in reply.lower() or "error_dominio" in reply.lower()):
+                logger.warning(f"Agente detectó fuera de dominio para: {query[:30]}...")
+                reply = "ERROR_DOMINIO"
+            # -----------------------------------------------------
         
-        reply = resp.json().get("respuesta", "Error en el asistente de programación.")
+        except Exception as e:
+            logger.error(f"Error en backend de programación: {e}")
+            reply = "ERROR_DOMINIO"
 
         # Empaquetado de respuesta OFP
         now = datetime.utcnow()
@@ -108,6 +133,6 @@ def handle_receive():
     except Exception as e:
         logger.error(f"Error en wrapper Programación: {e}")
         return jsonify({"error": str(e)}), 500
-
+        
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5017)

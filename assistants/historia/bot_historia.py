@@ -45,7 +45,8 @@ def obtener_embedding(texto):
         response = requests.post(
             f"{OLLAMA_URL}/api/embeddings",
             json={"model": EMBED_MODEL, "prompt": texto},
-            timeout=60
+            timeout=400
+        
         )
         return response.json()["embedding"] 
     except Exception:
@@ -95,29 +96,42 @@ def preguntar():
     
     contexto = "\n".join([hit.payload["texto"] for hit in search_result])
     
+    # --- CORRECCIÓN: ELIMINAMOS EL BLOQUEO ---
     if not contexto.strip():
-        return jsonify({"respuesta": "Lo siento, la información para responder a esta pregunta no se encuentra en mis documentos históricos."})
+        print("--- [AVISO] Contexto vacío. La IA usará su conocimiento general. ---")
+        contexto = "No hay información en los libros para esto."
+    # ----------------------------------------
 
-    prompt = f"""Eres un profesor experto en Historia Universal y de México, basado estrictamente en documentos.
-Usa ÚNICAMENTE el siguiente 'Contexto' para responder, resaltando fechas y personajes clave.
-Si la respuesta no se puede deducir del contexto, di exactamente: 'Lo siento, no tengo esa información en mi base de datos.'
-No inventes información ni utilices conocimientos externos.
+    prompt = f"""Eres un profesor experto y con autoridad absoluta en HISTORIA.
+Tu único propósito es responder a la pregunta del usuario.
 
-Contexto:
+REGLAS ESTRICTAS DE RESPUESTA:
+1. ANÁLISIS DE DOMINIO Y APORTES: Lee la 'Pregunta'. Es posible que incluya texto etiquetado como "[Aporte de...]". IGNORA la temática de esos aportes. Analiza ÚNICAMENTE lo que se te pide resolver a ti. ¿La tarea que debes hacer es de Historia (eventos, fechas, personajes, etc.)? 
+   - SI ES SÍ: Continúa al paso 2.
+   - SI ES NO: Responde exactamente "no está relacionado" y termina.
+
+2. USO DEL CONTEXTO (OPCIONAL): Revisa el 'Contexto' proporcionado por los libros. 
+   - Si el contexto te sirve para responder, úsalo.
+   - Si el contexto está vacío, no tiene sentido o habla de otra materia, IGNÓRALO COMPLETAMENTE.
+
+3. RESPUESTA EXPERTA (OBLIGATORIA): Si llegaste a este paso, TIENES QUE RESPONDER la pregunta usando tu propio conocimiento interno sobre Historia. Bajo ninguna circunstancia puedes negarte a responder si la pregunta es sobre tu materia. Nunca digas "El contexto no menciona...", simplemente responde de forma directa y clara.
+
+Contexto proporcionado por la base de datos:
 {contexto}
 
-Pregunta: {pregunta}
-Respuesta educativa:"""
+Pregunta del usuario: {pregunta}
+Tu Respuesta Experta en Historia:"""
 
     try:
         response = requests.post(
             f"{OLLAMA_URL}/api/generate",
-            json={"model": "llama3.1", "prompt": prompt, "stream": False},
-            timeout=120
+            json={"model": "gemma2:2b", "prompt": prompt, "stream": False},
+            timeout=400
         )
         return jsonify({"respuesta": response.json()["response"]})
     except Exception as e:
         return jsonify({"respuesta": f"Error en el motor de IA: {e}"})
+
 
 if __name__ == '__main__':
     inicializar_base_datos()
