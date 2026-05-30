@@ -2,5 +2,5 @@
 Precision de Ruteo,0.9333,0.0222
 Recall de Ruteo,0.9333,0.0222
 F1-Score de Ruteo,0.9333,0.0222
-Similitud Coseno End-to-End,0.6912,0.0111
-Latencia Global Total,304.0,11063.2886
+Similitud Coseno End-to-End,0.6631,0.0059
+Latencia Global Total,297.31,5650.8003

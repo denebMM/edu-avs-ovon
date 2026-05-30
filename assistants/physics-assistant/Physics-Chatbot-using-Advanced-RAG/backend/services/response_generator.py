@@ -21,26 +21,29 @@ logger = setup_logger("response_generator")
 
 summary = ""
 
-# Prompt principal para respuestas de física
+# =====================================================================
+# NUEVO PROMPT MAESTRO DE FÍSICA (BLINDADO CONTRA RAG VACÍO)
+# =====================================================================
 PROMPT_TEMPLATE = """
-Eres un asistente de física para estudiantes de 9º y 10º grado. 
-Tu objetivo es proporcionar explicaciones claras, concisas y adecuadas para su edad.
+Eres un asistente experto en Física para estudiantes de secundaria (9º y 10º grado).
+Tu único propósito es responder a la pregunta de física del estudiante.
 
-**Contexto extraído del libro:**
+REGLAS CRÍTICAS DE RESPUESTA:
+1. FOCO EN LA PREGUNTA: Tu tarea es responder a la pregunta de física planteada. IGNORA aportes de otros agentes o texto que no sea de tu materia.
+2. USO DEL CONTEXTO (OPCIONAL): Revisa el 'Contexto extraído del libro'. Si te sirve, úsalo y tradúcelo al español si es necesario.
+3. PREVALENCIA DEL CONOCIMIENTO: Si el contexto está vacío, no tiene sentido o no menciona el tema de la pregunta, IGNÓRALO COMPLETAMENTE.
+4. RESPUESTA OBLIGATORIA: Nunca te niegues a responder ni digas "El libro no lo menciona". Usa tus conocimientos internos de física para responder de forma sencilla y muestra los cálculos detalladamente si es necesario.
+5. IDIOMA Y TONO: Responde ÚNICAMENTE en español, manteniendo un tono educativo y motivador.
+
+Contexto extraído del libro:
 {context}
 
-**Pregunta del estudiante:**
+Pregunta del estudiante:
 {question}
 
-**REGLAS CRÍTICAS DE RESPUESTA:**
-1. Responde ÚNICAMENTE en español. Está prohibido responder en inglés.
-2. Explica los conceptos de forma sencilla.
-3. Si la pregunta requiere cálculos, muestra los pasos detalladamente.
-4. Si el contexto del libro está en inglés, tradúcelo y explícalo en español.
-5. Mantén un tono educativo y motivador.
-
-Respuesta en español:
+Respuesta de Física en español:
 """
+# =====================================================================
 
 def load_books():
     """Load and chunk the PDF (optional - call only when needed)."""
@@ -60,31 +63,51 @@ def get_response(data: dict) -> dict:
             return {"response": "No recibí ninguna pregunta válida."}
 
         # === Embeddings y Vector DB ===
-        emb_fn = OllamaEmbeddings(
-            model=EMBEDDING_MODEL,
-            base_url="http://ollama:11434"
-        )
-
-        collection = Chroma(
-            collection_name="PhysicsBook",
-            embedding_function=emb_fn,
-            persist_directory=VECTOR_DB_PATH,
-        )
-
-        # Búsqueda inicial de contexto
-        results = collection.similarity_search_with_score(prompt, k=4)
-        context_texts = [doc.page_content for doc, _ in results]
-
-        # Intentar mejorar la pregunta (con protección)
+        context_texts = []
+        results = []
+        
         try:
-            enhanced = query_enhncement(prompt, context_texts)
-            if enhanced and isinstance(enhanced, list):
-                for q in enhanced:
-                    if q and isinstance(q, str):
-                        res = collection.similarity_search_with_score(q, k=2)
-                        context_texts.extend([doc.page_content for doc, _ in res])
-        except Exception as e:
-            logger.warning(f"query_enhncement falló: {e}. Usando solo búsqueda inicial.")
+            try:
+                # Intento para versiones recientes de langchain_ollama / langchain_community
+                emb_fn = OllamaEmbeddings(
+                    model=EMBEDDING_MODEL,
+                    base_url="http://ollama:11434",
+                    client_kwargs={"timeout": 450.0} 
+                )
+            except TypeError:
+                # Respaldo de seguridad si rechaza client_kwargs
+                emb_fn = OllamaEmbeddings(
+                    model=EMBEDDING_MODEL,
+                    base_url="http://ollama:11434",
+                    timeout=450.0
+                )
+
+            collection = Chroma(
+                collection_name="PhysicsBook",
+                embedding_function=emb_fn,
+                persist_directory=VECTOR_DB_PATH,
+            )
+
+            # Búsqueda inicial de contexto
+            results = collection.similarity_search_with_score(prompt, k=4)
+            context_texts = [doc.page_content for doc, _ in results]
+
+            # Intentar mejorar la pregunta (con protección)
+            try:
+                enhanced = query_enhncement(prompt, context_texts)
+                if enhanced and isinstance(enhanced, list):
+                    for q in enhanced:
+                        if q and isinstance(q, str):
+                            res = collection.similarity_search_with_score(q, k=2)
+                            context_texts.extend([doc.page_content for doc, _ in res])
+            except Exception as e:
+                logger.warning(f"query_enhncement falló: {e}. Usando solo búsqueda inicial.")
+
+        except Exception as e_chroma:
+            # ¡EL BLINDAJE FINAL!
+            # Si Chroma o los embeddings fallan, atrapamos el error y dejamos el contexto vacío.
+            logger.error(f"Fallo en Vector DB (Ignorando RAG): {e_chroma}")
+            context_texts = []
 
         # Contexto final
         full_context = "\n\n---\n\n".join(list(set(context_texts)))  # eliminar duplicados
@@ -104,9 +127,9 @@ def get_response(data: dict) -> dict:
         }
 
         response = requests.post(
-            GENERATE_API_URL,          # Debe ser "http://ollama:11434/api/generate"
+            GENERATE_API_URL,          
             json=payload,
-            timeout=400
+            timeout=450                
         )
         response.raise_for_status()
 
@@ -117,7 +140,7 @@ def get_response(data: dict) -> dict:
 
         return {
             "response": response_text,
-            "sources": [doc.metadata.get("id") for doc, _ in results]
+            "sources": [doc.metadata.get("id") for doc, _ in results] if results else []
         }
 
     except requests.exceptions.RequestException as e:
@@ -126,7 +149,6 @@ def get_response(data: dict) -> dict:
     except Exception as e:
         logger.error(f"Error grave en get_response: {e}", exc_info=True)
         return {"response": "Lo siento, ocurrió un error interno en el motor de física. Inténtalo de nuevo."}
-
 
 if __name__ == "__main__":
     data = {

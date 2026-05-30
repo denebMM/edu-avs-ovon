@@ -1,0 +1,288 @@
+﻿id_pregunta,pregunta,agentes_esperados,respuesta_ideal,fragmentos_enviados_por_agente,agentes_reales,texto_respuesta_global,latencia_global_segundos,precision_ruteo,recall_ruteo,f1_score_ruteo,coseno_global
+H26,"¿Cómo logró Mussolini el régimen fascista, de dónde provienen las letras s, p, d, f, cuál es el propósito del disco duro o SSD y traduce todo a inglés?","historia, quimica, computacion, translator_global","Mussolini used the armed 'blackshirts' to spread fear. Letters come from sharp, principal, diffuse, fundamental. The HDD/SSD serves as long-term secondary storage.","[HISTORIA]: ¿Cómo logró Mussolini el régimen fascista? | [QUIMICA]: De dónde provienen las letras s, p, d, f en la configuración electrónica | [COMPUTACION]: Cuál es el propósito del disco duro o SSD | [TRANSLATOR_GLOBAL]: Traducción Global al inglés","historia, quimica, computacion, translator_global","[HISTORIA]: Mussolini logró el régimen fascista mediante una combinación de estrategias:
+
+1. **Nacionalismo exacerbado:**  Propuso una fuerte ideología nacionalista y un ideal de restauración de la gloria pasada para Italia, utilizando símbolos como los fasces que representaban unidad y autoridad.
+2. **Propaganda efectiva:** Utilizó la propaganda y la prensa para difundir sus ideas y crear un sentimiento de patriotismo y confianza en su liderazgo.
+3. **Polarización política:** Se enfrentó a grupos opositorios con firmeza y se centró en la creación de una atmósfera de tensión y conflicto.
+4. **Control del estado:** Consolidó el poder de forma gradual, utilizando mecanismos como la censura, la eliminación de la oposición y el control de medios de comunicación para asegurar su permanencia en el gobierno. 
+
+
+ 
+Es importante destacar que  el fascismo no fue solo un conjunto de ideas, sino una estrategia política que se implementó con diferentes acciones a lo largo del tiempo.
+
+[QUIMICA]: Las letras s, p, d y f en la configuración electrónica de los átomos provienen directamente del modelo de shell que utiliza la teoría cuántica de shells (TCH). Este modelo divide la energía orbital de cada elemento en diferentes ""cámaras"" o ""shells"", según su número. 
+
+En este sistema, el primer shell es denominado como el ""shell s"". Se compone de una sola órbita l=0 que puede albergar hasta dos electrones (uno con estado spin +1/2 y otro con -1/2). Por lo tanto, un elemento en el primer nivel sólido tendrá su configuración electrónica como 1s².
+
+El segundo nivel o ""shell p"" tiene dos órbitas l=1 que pueden albergar hasta seis electrones (tres estados spin +1/2 y tres -1/2). Por lo tanto, un elemento en el segundo nivel sólido tendrá su configuración electrónica como 1s² 2p⁶.
+
+El tercer nivel o ""shell d"" tiene cinco órbitas l=2 que pueden albergar hasta 10 electrones (cinco estados spin +1/2 y cinco -1/2). Por lo tanto, un elemento en el tercer nivel sólido tendrá su configuración electrónica como 1s² 2p⁶ 3d¹⁰.
+
+Por último, el quinto nivel o ""shell f"" tiene seven órbitas l=3 que pueden albergar hasta 14 electrones (cinco estados spin +1/2 y cinco -1/2). Por lo tanto, un elemento en el quinto nivel sólido tendrá su configuración electrónica como 1s² 2p⁶ 3d¹⁰ 4s² 4p⁵.
+
+[COMPUTACION]: El propósito principal del disco duro (o SSD, Dispositivo de Estado Solido) es almacenar y recuperar datos de la computadora. El disco duro actúa como una unidad de almacenamiento masivo que permite a la computadora guardar información, programas y archivos en un medio permanente, lo que facilita el acceso a esta información en el futuro.
+
+En el pasado, los discos duros eran los únicos dispositivos de almacenamiento de datos en las computadoras, pero con el desarrollo de tecnologías como SSD, la velocidad y eficiencia de almacenamiento se han mejorado significativamente.
+
+El disco duro (o SSD) funciona mediante la lectura y escritura de información en unidades magnéticas o en memoria flash, dependiendo del tipo específico. Estas unidades están diseñadas para permitir una alta velocidad de acceso a los datos, lo que permite que las computadoras carguen programas, archivos y otros datos rápidamente.
+
+En resumen, el propósito principal del disco duro (o SSD) es proporcionar un medio eficiente y rápido para almacenar y recuperar datos en las computadoras.
+
+[TRANSLATOR_GLOBAL]: Mussolini achieved the fascist regime through a combination of strategies:
+
+1. **Exacerbated nationalism:** Proposed a strong nationalist ideology and an ideal of restoring past glory for Italy, using symbols such as the fasces which represented unity and authority.
+2. **Effective propaganda:** Used propaganda and press to spread his ideas and create a sense of patriotism and confidence in his leadership.
+3. **Political polarization:** Faced opposing groups with firmness and focused on creating an atmosphere of tension and conflict.
+4. **State control:** Gradually consolidated power using mechanisms such as censorship, elimination of opposition, and control of media to ensure his continued presence in government.
+
+It's important to note that fascism was not just a set of ideas, but a political strategy that was implemented with different actions over time.
+The letters s, p, d, and f in the electronic configuration of atoms come directly from the shell model used by quantum shell theory (QST). This model divides the orbital energy of each element into different ""shells"" or ""orbitals"", according to their number.
+
+In this system, the first shell is called the ""s-shell"". It consists of a single orbit l=0 that can accommodate up to two electrons (one with spin +1/2 and another with -1/2). Therefore, an element in the first solid state will have its electronic configuration as 1s².
+
+The second level or ""p-shell"" has two orbits l=1 that can accommodate up to six electrons (three states with spin +1/2 and three -1/2). Therefore, an element in the second solid state will have its electronic configuration as 1s² 2p⁶.
+
+The third level or ""d-shell"" has five orbits l=2 that can accommodate up to 10 electrons (five states with spin +1/2 and five -1/2). Therefore, an element in the third solid state will have its electronic configuration as 1s² 2p⁶ 3d¹⁰.
+
+Finally, the fifth level or ""f-shell"" has seven orbits l=3 that can accommodate up to 14 electrons (five states with spin +1/2 and five -1/2). Therefore, an element in the fifth solid state will have its electronic configuration as 1s² 2p⁶ 3d¹⁰ 4s² 4p⁵.
+The main purpose of a hard drive (or SSD, Solid State Drive) is to store and retrieve data from the computer. The hard drive acts as a large storage unit that allows the computer to store information, programs, and files on a permanent medium, facilitating future access to this information.
+
+In the past, hard drives were the only storage devices for computers, but with the development of technologies such as SSD, storage speed and efficiency have significantly improved.
+The hard drive (or SSD) operates by reading and writing information in magnetic units or flash memory, depending on the specific type. These units are designed to allow high-speed access to data, enabling computers to load programs, files, and other data quickly.
+
+In summary, the main purpose of a hard drive (or SSD) is to provide an efficient and fast medium for storing and retrieving data in computers.",379.98,1.0,1.0,1.0,0.6543
+H27,"Explica el concepto de velocidad instantánea, qué es la configuración electrónica de un átomo y resuelve la ecuación 3*x = 15.","fisica, quimica, mathbuddy_basico","La velocidad instantánea divide la distancia en intervalos de tiempo muy pequeños. La configuración distribuye electrones buscando la menor energía. En la ecuación, x vale 5.",[FISICA]: Explica el concepto de velocidad instantánea | [QUIMICA]: Qué es la configuración electrónica de un átomo | [MATHBUDDY_BASICO]: Resuelve la ecuación 3*x = 15,"fisica, quimica, mathbuddy_basico","[FISICA]: ¡Claro que sí! Vamos a hablar de la velocidad instantánea. 
+
+**¿Qué es la velocidad instantánea?**
+
+La velocidad instantánea, también llamada **velocidad puntual**, es una medida física que representa la tasa de cambio instantánea de posición. En otras palabras, nos da la rapidez con la que un objeto se mueve en un momento específico del tiempo.
+
+**En la práctica:**
+
+Imagina que estás siguiendo a un coche. La velocidad instantánea del coche te indicaría la velocidad del coche **en ese mismo instante**, no su promedio durante el viaje. 
+
+
+**¿Cómo calcular la velocidad instantánea?**
+
+Para calcularla, necesitamos la siguiente información:
+
+* **Posición inicial (x1):**  La posición del objeto al inicio de un periodo de tiempo.
+* **Posición final (x2):** La posición del objeto al final de un periodo de tiempo.
+* **Tiempo (t):** El tiempo que transcurre entre la posición inicial y la final.
+
+La fórmula para calcular la velocidad instantánea es:
+
+```
+v = (x2 - x1) / t 
+```
+
+Donde:
+  - **v** representa la velocidad instantánea, en m/s.
+  - **(x2 - x1)** representa la distancia recorrida, en metros.
+  - **t** representa el tiempo transcurrido, en segundos.
+
+
+**Importante:**
+
+* La velocidad instantánea es una medida de cambio instantáneo de posición, y no la velocidad promedio a lo largo del tiempo. 
+* En física, la velocidad instantánea se utiliza para analizar el movimiento de objetos con precisión. 
+
+
+
+Espero que esto te ayude a entender mejor el concepto de la velocidad instantánea.  ¿Tienes alguna otra pregunta?
+
+[QUIMICA]: La configuración electrónica de un átomo se refiere a cómo los electrones están distribuidos en diferentes n niveles o energías, y en particular, en diferentes órbitas o subórbitas dentro de estos niveles. Este proceso se conoce como la ""modelización del estado fundamental del átomo"". 
+
+Cada nivel, también llamado energía de shell, puede contener una cierta cantidad máxima de electrones. El primer nivel (n=1) contiene sólo un máximo de 2 electrones, el segundo (n=2) hasta 8 y así sucesivamente.
+
+Los subórbitas están numeradas con los símbolos s, p, d y f, correspondientes a niveles n = 1, n = 2, n = 3 y n = 4 respectivamente. Estos subórbitas tienen capacidades específicas de albergar electrones:
+- Un subórbita ""s"" puede contener hasta 2 electrones.
+- Una subórbita ""p"" puede contener hasta 6 electrones.
+- Una subórbita ""d"" puede contener hasta 10 electrones.
+- Y una subórbita ""f"" puede contener hasta 14 electrones.
+
+Por lo tanto, la configuración electrónica de un átomo se expresa como un conjunto de niveles y subórbitas ordenados según su número. Ejemplo: para el átomo de hidrógeno (H), con solo un eléctron en su corteza esférica, la configuración sería 1s¹. Para el átomo de oxígeno (O) que tiene 8 electrones en total (4 en su nivel 2 y 4 en su subórbita ""p""), la configuración electrónica sería 1s² 2s² 2p⁴.
+
+[MATHBUDDY_BASICO]: Para resolver la ecuación $3x = 15$, necesitamos dividir ambos lados de la ecuación entre 3.
+
+$$
+\begin{aligned}
+3x &= 15 \\
+\frac{3x}{3} &= \frac{15}{3}\\
+x &= 5
+\end{aligned}
+$$
+
+La solución es $x = 5$.",206.9,1.0,1.0,1.0,0.8538
+H28,"¿Qué establece la Primera Ley de Newton, cuáles son las excepciones para omitir los signos de interrogación, qué es la herencia en C++ y traduce todo a alemán?","fisica, espanol, programacion, translator_global","Das erste Newtonsche Gesetz besagt, dass ein Körper in Ruhe bleibt, wenn keine Kraft einwirkt. Fragezeichen entfallen bei Titeln oder rhetorischen Fragen. Vererbung erlaubt die Übernahme von Klasseneigenschaften.",[FISICA]: ¿Qué establece la Primera Ley de Newton? | [PROGRAMACION]: ¿Qué es la herencia en C++? | [ESPANOL]: Cuáles son las excepciones para omitir los signos de interrogación | [TRANSLATOR_GLOBAL]: Traducción Global al alemán,"fisica, programacion, espanol, translator_global","[FISICA]: La Primera Ley de Newton, también conocida como la ley de inercia, establece que **un cuerpo permanece en reposo o movimiento constante a menos que una fuerza externa actúe sobre él.** 
+
+En otras palabras, un objeto seguirá moviéndose con la misma velocidad y dirección a lo largo del tiempo, **a menos que se le aplique una fuerza**.  
+
+**Fórmula:**
+La ley de Newton se puede expresar matemáticamente con la siguiente fórmula:
+ 
+   **F = m * a**
+
+Donde:
+
+* **F** representa la fuerza aplicada al objeto.
+* **m** representa la masa del objeto.
+* **a** representa el aceleración del objeto.
+
+**Ejemplos:**
+
+* Un balón en reposo se moverá hacia adelante cuando se le aplique una fuerza de impacto. 
+* Una pelota se moverá a velocidad constante hasta que se impacte con otro objeto, lo que causará un cambio de movimiento.
+
+La Primera Ley de Newton es fundamental en la física y tiene aplicaciones en una amplia variedad de campos, desde la mecánica clásica hasta la astrofísica.
+
+[PROGRAMACION]: Excelente oportunidad para explicar uno de los conceptos más importantes en programación orientada a objetos (POO).
+
+La herencia en C++ es una característica que permite a una clase ""heredar"" las propiedades y comportamientos de otra clase ya existente. La clase que se está creando se llama clase derivada o subclase, mientras que la clase original se conoce como clase base o superclase.
+
+Cuando una clase hereda de otra, obtiene automáticamente todos los atributos (datos) y métodos (funciones) de la clase base. Esto permite reutilizar código ya existente y crear nuevas clases que se ajusten a las necesidades específicas del problema que se está resolviendo.
+
+Por ejemplo, si tenemos una clase llamada ""Vehículo"" con atributos como ""marca"", ""modelo"" y ""color"", y métodos como ""conducir()"" y ""estacionar()"", podemos crear una nueva clase llamada ""Coche"" que herede de la clase Vehículo. La clase Coche obtendrá automáticamente todos los atributos y métodos de la clase Vehículo, más algunos nuevos que se ajusten a las características específicas del coche.
+
+La sintaxis para declarar una clase derivada es la siguiente:
+```cpp
+class ClaseDerivada : pública/privada/protégida ClaseBase {
+  // Atributos y métodos adicionales de la clase derivada
+};
+```
+Donde ""pública"", ""privada"" o ""protégida"" indica el acceso a los atributos y métodos heredados.
+
+La herencia es una herramienta poderosa en POO que permite crear estructuras de clases jerárquicas, facilitando la reutilización de código y la creación de sistemas más complejos y flexibles.
+
+[ESPANOL]: Las excepciones para omitir los signos de interrogación en textos escritos en español se encuentran principalmente en la **lectura de títulos de obras**, especialmente en aquellos escritos por autores clásicos. En estos casos, el título se lee con un tono más formal y directo, donde se puede omitir el signo de interrogación para mayor fluidez en el texto. 
+
+
+Es importante destacar que, si bien se pueden omitir los signos de interrogación en algunos títulos de obras, es fundamental que la forma de escritura sea siempre coherente con las normas gramaticales y literarias del lenguaje español.
+
+[TRANSLATOR_GLOBAL]: Error en traducción global",476.14,1.0,1.0,1.0,ERROR_EMBEDDING
+H29,"¿Cómo se define el trabajo en física mecánica, cómo se halla el mínimo común múltiplo de monomios y qué es la ALU?","fisica, algebra, computacion",El trabajo es el producto de la fuerza por el desplazamiento. El mcm se halla con coeficientes y letras distintas al mayor exponente. La ALU realiza cálculos aritméticos y lógicos en la CPU.,[FISICA]: ¿Cómo se define el trabajo en física mecánica? | [ALGEBRA]: Cómo se halla el mínimo común múltiplo de monomios | [COMPUTACION]: ¿Qué es la ALU?,"fisica, algebra, computacion","[FISICA]: El trabajo en física mecánica es una medida del **cómo se mueve una partícula o un objeto al realizar una fuerza sobre él**.  En otras palabras, se refiere a la cantidad de energía transferida a una partícula cuando se desplaza bajo la acción de una fuerza.
+
+**La fórmula para calcular el trabajo (W) es:**
+
+ **W = F * d * cos(θ)** 
+
+Donde:
+
+* **F** es la magnitud de la fuerza aplicada al objeto
+* **d** es la distancia recorrida por el objeto en la dirección de la fuerza
+* **θ** es el ángulo entre la fuerza y el desplazamiento
+
+**En resumen:**
+
+* El trabajo se realiza cuando una fuerza aplicada a un objeto provoca un cambio en su posición. 
+* La magnitud del trabajo depende de la fuerza aplicada, la distancia recorrida y el ángulo entre la fuerza y el movimiento.
+
+
+Espero que esto te ayude. Si tienes alguna otra pregunta sobre física, no dudes en preguntar!
+
+[ALGEBRA]: En álgebra, el mínimo común múltiplo (mcm) de polinomios o monomios se encuentra mediante el análisis de sus factores primos. Para hallar el mcm de dos o más monomios, debes considerar cada uno de ellos y determinar sus factores primos. Luego, para cada factor primo que aparezca en alguna de las expresiones, seleccionas el que tiene la mayor potencia entre todas ellas.
+
+Por ejemplo, si queremos encontrar el mcm del polinomio \(6x^2y\) y \(9xy^3\), dividiríamos ambos polinomios por sus factores primos hasta obtener cada uno en una forma de producto de exponentes:
+
+- \(6x^2y = 2 \cdot 3 \cdot x^2 \cdot y^1\)
+- \(9xy^3 = 3 \cdot 3 \cdot x^1 \cdot y^3\)
+
+Ahora, para cada factor primo que aparece en al menos un monomio, tomamos el exponente más alto entre ellos:
+
+- Para el factor constante (2 y 3), tomando el mayor valor: \(3\).
+- Para el factor \(x\), tomar el mayor exponente: \(x^2\).
+- Para el factor \(y\), tomar el mayor exponente: \(y^3\).
+
+Por lo tanto, el mcm de \(6x^2y\) y \(9xy^3\) es:
+
+\[ 3 \cdot x^2 \cdot y^3 = 3x^2y^3 \]
+
+Es importante notar que si los polinomios no están expresados como productos de factores primos inmediatamente, debemos simplificar o factorizar primero.
+
+[COMPUTACION]: La ALU (Acumulador Lógico Unidad) es una unidad lógica fundamental en los procesadores digitales. Su función principal es realizar operaciones aritméticas y lógicas básicas, como sumas, restas, multiplicaciones, divisiones, comparaciones y asignaciones.
+
+La ALU es responsable de recibir instrucciones del procesoador, interpretar su significado y realizar la tarea correspondiente. También se encarga de gestionar las operaciones en paralelo, lo que permite al procesador realizar tareas complejas de manera más eficiente.
+
+En resumen, la ALU es un componente crucial en el funcionamiento de los procesadores, ya que permite al procesoador realizar una amplia gama de operaciones y realizar cálculos matemáticos con precisión.",218.37,1.0,1.0,1.0,ERROR_EMBEDDING
+H30,"¿Qué afirma la Tercera Ley de Newton, a qué se le llama software de aplicación, cuál es la derivada de x^3 - 4*x y traduce todo a italiano?","fisica, computacion, mathbuddy_avanzado, translator_global",La terza legge di Newton afferma che ad ogni azione corrisponde una reazione. Il software applicativo aiuta a risolvere compiti specifici. La derivata è 3x^2 - 4.,[FISICA]: ¿Qué afirma la Tercera Ley de Newton? | [COMPUTACION]: A qué se le llama software de aplicación | [MATHBUDDY_AVANZADO]: Cuál es la derivada de x^3 - 4*x | [TRANSLATOR_GLOBAL]: Traducción Global al italiano,"fisica, computacion, mathbuddy_avanzado, translator_global","[FISICA]: La Tercera Ley de Newton, también conocida como ley de acción y reacción, establece que **""para cada acción hay una reacción igual y opuesta.""** 
+
+En otras palabras, si un objeto ejerce una fuerza sobre otro, el segundo objeto ejercerá una fuerza igual y opuesta a la primera. Estas fuerzas siempre se aplican en pares, por lo que no se puede separar la acción de la reacción. 
+
+Es importante recordar que:
+
+* **Las fuerzas siempre actúan en pares:**  La acción es igual y opuesta a la reacción.
+* **Estas fuerzas se aplican en cualquier dirección:** Pueden ser iguales en magnitud, pero con direcciones opuestas (por ejemplo, una fuerza de 10 N hacia arriba, y una fuerza de 10 N hacia abajo).
+* **Pueden ser iguales o diferentes:**  La fuerza de la reacción no siempre es igual a la fuerza aplicada.
+
+**Algunos ejemplos:**
+
+* Si golpeas un muro con un puño, el muro ejerce una fuerza igual y opuesta al mismo tiempo que tú.
+* Cuando una pelota está en el suelo,  aplicamos una fuerza hacia arriba y la pelota ejerce una fuerza de reacción hacia abajo. 
+
+
+Espero que esta respuesta te ayude a comprender la Tercera Ley de Newton!
+
+[COMPUTACION]: Según mi conocimiento, el software de aplicación se refiere a un programa diseñado para realizar una tarea específica o conjunto de tareas en una computadora. Este tipo de software es programado por un desarrollador de software y está compuesto por instrucciones que la computadora sigue para llevar a cabo la tarea designada. El software de aplicación puede variar desde programas simples, como un editor de texto, hasta aplicaciones complejas, como juegos o programas de productividad.
+
+[MATHBUDDY_AVANZADO]: La derivada de x^3 - 4*x se puede calcular utilizando la regla del producto y la suma para derivadas.
+
+Primero, apliquemos la regla del producto a la primera parte: 
+$$\frac{d}{dx}(x^3) = \frac{d}{dx}((x)(x)(x))$$
+Según la regla del producto, tenemos que:
+$$\frac{d}{dx}((x)(x)(x)) = (1)(x)(x) + (x)(1)(x) + (x)(x)(1)$$
+
+Ahora simplificamos la expresión anterior:
+$$(x^2) + (x^2) + (x^2) = 3(x^2)$$
+
+La derivada de x es simplemente 1, así que ahora aplicaremos la regla del producto a la segunda parte:
+$$\frac{d}{dx}(-4*x) = -4 \cdot \frac{d}{dx}(x)$$
+Según la definición de derivada, tenemos que:
+$$-4 \cdot \frac{d}{dx}(x) = -4(1)$$
+
+Ahora simplificamos la expresión anterior:
+$$-4$$
+
+La derivada final es la suma de las dos partes anteriores:
+$$\frac{d}{dx}(x^3 - 4*x) = 3(x^2) + (-4)$$
+Simplificando aún más, obtenemos:
+$$3x^2 - 4$$
+
+[TRANSLATOR_GLOBAL]: La Terza Legge di Newton, nota anche come legge dell'azione e della reazione, afferma che **""per ogni azione ci è una reazione uguale e opposta.""**
+
+In altre parole, se un oggetto esercita una forza su un altro, il secondo oggetto eserciterà una forza uguale e opposta alla prima. Le forze si sempre applicano in coppie, quindi non è possibile separare l'azione dalla reazione.
+
+È importante ricordare che:
+
+* **Le forze si sempre agiscono in coppia:**  L'azione è uguale e opposta alla reazione.
+* **Queste forze si applicano in qualsiasi direzione:** Possono essere uguali nella grandezza, ma con direzioni opposte (ad esempio, una forza di 10 N verso l'alto e una forza di 10 N verso il basso).
+* **Possono essere uguali o diverse:** La forza della reazione non sempre è uguale alla forza applicata.
+
+**Alcuni esempi:**
+
+* Se colpisci un muro con il pugno, il muro eserciterà una forza uguale e opposta al medesimo tempo che tu.
+* Quando una palla è in terra, si applica una forza verso l'alto e la palla esercita una forza di reazione verso il basso.
+
+Spero che questa risposta ti aiuti a comprendere la Terza Legge di Newton!
+Secondo la mia conoscenza, lo software di applicazione si riferisce ad un programma progettato per eseguire una specifica o una serie di compiti in un computer. Questo tipo di software è progettato da un sviluppatore di software e composto da istruzioni che il computer segue per portare a termine la compito designato. Lo software di applicazione può variare da programmi semplici, come un editor di testo, fino ad applicazioni complesse, come giochi o programmi di produttività.
+La derivata di x^3 - 4*x si può calcolare utilizzando la regola del prodotto e la somma per le derivate.
+
+Prima, applichiamo la regola del prodotto alla prima parte:
+$$\frac{d}{dx}(x^3) = \frac{d}{dx}((x)(x)(x))$$
+Secondo la regola del prodotto, abbiamo che:
+$$\frac{d}{dx}((x)(x)(x)) = (1)(x)(x) + (x)(1)(x) + (x)(x)(1)$$
+
+Ora simplifichiamo l'espressione precedente:
+$$(x^2) + (x^2) + (x^2) = 3(x^2)$$
+
+La derivata di x è semplicemente 1, quindi ora applichiamo la regola del prodotto alla seconda parte:
+$$\frac{d}{dx}(-4*x) = -4 \cdot \frac{d}{dx}(x)$$
+Secondo la definizione di derivata, abbiamo che:
+$$-4 \cdot \frac{d}{dx}(x) = -4(1)$$
+
+Ora simplifichiamo l'espressione precedente:
+$$-4$$
+
+La derivata finale è la somma delle due parti precedenti:
+$$\frac{d}{dx}(x^3 - 4*x) = 3(x^2) + (-4)$$
+Simplificando ancora, otteniamo:
+$$3x^2 - 4$$",422.21,1.0,1.0,1.0,0.7765

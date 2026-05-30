@@ -38,16 +38,17 @@ Consulta del usuario:
 "{user_query}"
 
 Agentes disponibles:
-- fisica: leyes de la física, cinemática, dinámica, energía, fórmulas físicas.
-- mathbuddy_basico: aritmética simple (suma, resta, multiplicación, división, fracciones), ecuaciones de primer grado.
-- mathbuddy_avanzado: cálculo (derivadas, integrales, límites), funciones complejas, análisis matemático.
+Agentes disponibles:
+- fisica: leyes de la física, cinemática, dinámica, energía, fórmulas físicas (ej. W = F * d).
+- mathbuddy_basico: aritmética (suma, resta, multiplicación, división, fracciones), jerarquía de operaciones (PEMDAS), ecuaciones de primer grado.
+- mathbuddy_avanzado: cálculo (derivadas, integrales, límites), factorización de límites indeterminados.
 - algebra: polinomios, factorización, diferencia de cuadrados, signos de agrupación, ecuaciones algebraicas.
-- computacion: hardware (RAM, ROM, CPU), software, sistemas operativos, arquitectura de computadoras.
-- espanol: ortografía, gramática, sintaxis, tildes, uso correcto del idioma.
-- historia: eventos históricos, Revolución Mexicana, guerras, biografías, imperios.
-- programacion: C++, punteros, memoria dinámica, clases, modificadores (public/private).
-- quimica: átomos, isótopos, enlaces (iónico/covalente), configuración electrónica, moles.
-- translator: solicitudes de traducción a cualquier otro idioma o preguntas sobre cómo se dice una frase en otro idioma.
+- computacion: ESTRICTAMENTE hardware, componentes físicos (RAM, ROM, CPU, discos duros), redes y sistemas operativos. PROHIBIDO enviar conceptos de código o estructuras de datos aquí.
+- programacion: ESTRICTAMENTE desarrollo de software, código, lenguajes (C++), memoria dinámica, estructuras de datos (arreglos bidimensionales), paso por valor/referencia, y paradigmas (herencia, polimorfismo, public/private).
+- espanol: ESTRICTAMENTE ortografía, gramática, sintaxis, tildes, y signos de puntuación. PROHIBIDO enviar definiciones de palabras técnicas de otras materias (ej. no envíes "arreglo bidimensional" ni "enlace covalente" a español).
+- historia: eventos históricos, guerras, imperios, biografías, modelos de gobierno (colonialismo, imperialismo, fascismo).
+- quimica: átomos, isótopos, enlaces (iónico/covalente), configuración electrónica, moles, Ley de Conservación de la Masa.
+- translator: solicitudes de traducción a cualquier otro idioma.
 
 REGLAS VITALES DE RUTEO:
 1. Divide la consulta en segmentos y asigna un agente. ¡PROHIBIDO OMITIR INFORMACIÓN! Cada acción, pregunta o tema solicitado por el usuario DEBE estar asignado a un agente en los segmentos. No dejes ninguna parte de la consulta original sin atender.

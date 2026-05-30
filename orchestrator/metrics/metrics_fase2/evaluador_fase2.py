@@ -11,19 +11,20 @@ import gc
 # ================= CONFIGURACIÓN =================
 directorio_actual = os.path.dirname(os.path.abspath(__file__))
 # 1. Define el identificador dinámico de tu prueba actual
-SUFIJO_PRUEBA = "_5_5"
+SUFIJO_PRUEBA = "_7_5"
 
 # 2. Inyecta el sufijo dinámicamente usando f-strings
-ARCHIVO_DATASET = os.path.join(directorio_actual, f"dataset{SUFIJO_PRUEBA}.csv") 
-ARCHIVO_RESULTADOS_PREGUNTAS = os.path.join(directorio_actual, f"resultados_fase2_detalle_preguntas{SUFIJO_PRUEBA}.csv")
-ARCHIVO_RESULTADOS_AGENTES = os.path.join(directorio_actual, f"resultados_fase2_metricas_agentes{SUFIJO_PRUEBA}.csv")
-ARCHIVO_RESULTADOS_GLOBALES = os.path.join(directorio_actual, f"resultados_fase2_metricas_globales{SUFIJO_PRUEBA}.csv")
+#ARCHIVO_DATASET = os.path.join(directorio_actual, f"dataset{SUFIJO_PRUEBA}.csv") 
+ARCHIVO_DATASET = os.path.join(directorio_actual, f"dataset_errores.csv") 
+ARCHIVO_RESULTADOS_PREGUNTAS = os.path.join(directorio_actual, f"resultados_fase2_detalle_preguntasERR.csv")
+ARCHIVO_RESULTADOS_AGENTES = os.path.join(directorio_actual, f"resultados_fase2_metricas_agentesERR.csv")
+ARCHIVO_RESULTADOS_GLOBALES = os.path.join(directorio_actual, f"resultados_fase2_metricas_globalesERR.csv")
 
 ORCHESTRATOR_URL = "http://localhost:5000/query"
 OLLAMA_URL = "http://localhost:11434/api/embeddings"
 OLLAMA_GENERATE_URL = "http://localhost:11434/api/generate"
 
-MODELO_EMBEDDING = "mxbai-embed-large" 
+MODELO_EMBEDDING = "nomic-embed-text" #"mxbai-embed-large" 
 # EXCLUIMOS el modelo de embeddings de la purga masiva para no forzar recargas
 MODELOS_A_LIMPIAR = [
     "llama3.2:3b", "llama3.1:8b", "qwen2.5:3b", "gemma2:2b",

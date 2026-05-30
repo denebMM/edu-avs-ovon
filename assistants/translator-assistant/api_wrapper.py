@@ -61,7 +61,7 @@ def handle_receive():
             r = requests.post(
                 LINGONAUT_BACKEND_URL, 
                 json={"message": query_to_process, "session_id": "none"}, 
-                timeout=300
+                timeout=450
             )
             r.raise_for_status()
             reply = r.json().get("response", "Error: Respuesta vacía del backend")

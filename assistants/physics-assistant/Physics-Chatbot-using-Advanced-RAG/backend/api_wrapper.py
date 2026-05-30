@@ -89,7 +89,7 @@ Pregunta del usuario: {query_to_process}"""
                     "prompt": enriched_prompt,     
                     "session_id": conversation_id or "default"
                 },
-                timeout=300
+                timeout=450
             )
             resp.raise_for_status()
             
