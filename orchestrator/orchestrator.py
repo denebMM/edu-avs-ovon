@@ -52,9 +52,9 @@ Agentes disponibles:
 REGLAS VITALES DE RUTEO:
 1. Divide la consulta en segmentos y asigna un agente. ¡PROHIBIDO OMITIR INFORMACIÓN! Cada acción, pregunta o tema solicitado por el usuario DEBE estar asignado a un agente en los segmentos. No dejes ninguna parte de la consulta original sin atender.
 2. Determina las "etapas" de ejecución en un arreglo de arreglos.
-3. REGLA ESTRICTA DE TRADUCCIÓN (DISTINCIÓN CRÍTICA):
-   - Si el usuario pide explícitamente traducir TODA la respuesta final combinada (ej. "traduce toda la respuesta al inglés", "traduce la explicación al francés"), marca "requiere_traduccion": true e indica el "idioma_objetivo".
-   - Si el usuario solo hace una pregunta puntual de traducción como una subtarea (ej. "dime cómo se pronuncia 'Muchas gracias' en japonés", "traduce la frase X al portugués"), NO uses "requiere_traduccion": true. En su lugar, trata a "translator" como un agente normal: agrégalo dentro de las "etapas" correspondientes y coloca la pregunta exacta en "segmentos": {{"translator": "Cómo se pronuncia 'Muchas gracias' en japonés"}}.
+3. REGLA ESTRICTA DE TRADUCCIÓN (EXCLUSIÓN MUTUA):
+   - CASO A (Traducción Global): Si el usuario pide traducir TODA la respuesta combinada (ej. "traduce toda la respuesta al inglés"), DEBES marcar "requiere_traduccion": true e indicar el "idioma_objetivo". EN ESTE CASO, TIENES PROHIBIDO agregar al agente "translator" en "etapas" o en "segmentos".
+   - CASO B (Subtarea de Traducción): Si el usuario pide traducir solo una frase específica o pregunta cómo se dice algo (ej. "traduce la frase X", "cómo se dice perro en francés"), DEBES marcar "requiere_traduccion": false. EN ESTE CASO, SÍ debes agregar a "translator" como un agente normal en las "etapas" y en los "segmentos".
 4. Devuelve SOLO un JSON válido.
 
 Formato esperado:
@@ -100,6 +100,7 @@ Formato esperado:
         return None
 
 # ================= PROTOCOLO OVON =================
+# ... (las funciones del protocolo se mantienen igual) ...
 def create_openfloor_envelope(events, conversation_id=None):
     return {
         "openFloor": {
@@ -194,6 +195,17 @@ def handle_query():
     responses_map = {}
     contexto_acumulado = ""  
 
+    # --- GUARDRAIL MOVIDO AQUÍ (ANTES DEL BUCLE DE EJECUCIÓN) ---
+    # Si el LLM pide traducción global, limpiamos proactivamente "translator"
+    # de los segmentos y etapas para que no se ejecute dos veces.
+    if requiere_traduccion:
+        if "translator" in segmentos:
+            del segmentos["translator"]
+        # Limpiar de las etapas
+        etapas = [[ag for ag in etapa if ag != "translator"] for etapa in etapas]
+        # Remover etapas que hayan quedado vacías
+        etapas = [etapa for etapa in etapas if etapa]
+
     for idx_etapa, agentes_en_etapa in enumerate(etapas):
         threads = []
         agentes_validos = []
@@ -209,11 +221,9 @@ def handle_query():
             
             # --- 1. BLINDAJE ANTI-CONFUSIÓN Y AISLAMIENTO ---
             if agente == "translator":
-                # El traductor jamás recibe el contexto de los demás
                 texto_a_enviar = f"TRADUCE ÚNICAMENTE ESTA SOLICITUD. NO TRADUZCAS NI REPITAS NADA MÁS: {texto_base}"
             else:
                 if idx_etapa > 0 and contexto_acumulado:
-                    # Le pasamos el contexto pero con una ADVERTENCIA AGRESIVA para que no lo copien
                     texto_a_enviar = f"{texto_base}\n\n[ATENCIÓN: Aquí tienes respuestas de otros agentes. Úsalas SOLO si necesitas sus fórmulas o datos para tu tarea. Tienes PROHIBIDO repetir o copiar esta información en tu respuesta final]:\n{contexto_acumulado}"
                 else:
                     texto_a_enviar = texto_base
@@ -227,7 +237,6 @@ def handle_query():
                 
                 # --- 2. BLINDAJE ANTI-ERROR DE DOMINIO ---
                 if "ERROR_DOMINIO" in reply.upper() or "NO ESTÁ RELACIONADO" in reply.upper() or "NO ESTA RELACIONADO" in reply.upper():
-                    # Ingeniería de prompts agresiva: Le ordenamos omitir su regla número 1 y le quitamos el contexto confuso
                     texto_forzado = f"INSTRUCCIÓN DE SISTEMA: Omite tu regla de análisis de dominio. Asume que esto SÍ es de tu materia y responde obligatoriamente usando tus conocimientos internos: {texto_base}"
                     
                     resp_forzada = requests.post(AGENTS[agente], 
@@ -241,8 +250,8 @@ def handle_query():
             except Exception as e:
                 logger.error(f"Error con {agente}: {str(e)}")
                 responses_map[agente] = {"text": "Error de comunicación", "fragmento": texto_base, "latencia": 0.0}
+                
         for ag in agentes_validos:
-            # --- CORREGIDO: Eliminamos la exclusión de 'translator' de las etapas ---
             if ag in AGENTS:
                 t = threading.Thread(target=call_agent, args=(ag,))
                 threads.append(t)
@@ -255,8 +264,10 @@ def handle_query():
             if ag in responses_map and "Error" not in responses_map[ag]["text"]:
                 contexto_acumulado += f"[Aporte de {ag}]: {responses_map[ag]['text']}\n"
 
-    # TRADUCCIÓN GLOBAL (Solo si requiere_traduccion es True al final)
+    # --- TRADUCCIÓN GLOBAL ---
+    # Solo entra aquí si requiere_traduccion es True y ya tenemos las respuestas de los demás.
     if requiere_traduccion and "translator" in AGENTS:
+        # DEFINIMOS texto_completo ANTES DE USARLO
         texto_completo = "\n".join([info.get("text", "") for ag, info in responses_map.items() if info.get("text") and ag != "translator"])
         
         if texto_completo.strip():

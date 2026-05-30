@@ -106,7 +106,7 @@ def get_response(data: dict) -> dict:
         response = requests.post(
             GENERATE_API_URL,          # Debe ser "http://ollama:11434/api/generate"
             json=payload,
-            timeout=90
+            timeout=400
         )
         response.raise_for_status()
 

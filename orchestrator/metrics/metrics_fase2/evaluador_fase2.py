@@ -11,15 +11,10 @@ import gc
 # ================= CONFIGURACIÓN =================
 directorio_actual = os.path.dirname(os.path.abspath(__file__))
 # 1. Define el identificador dinámico de tu prueba actual
-SUFIJO_PRUEBA = "_3_5"
+SUFIJO_PRUEBA = "_5_5"
 
-
-# 2. Inyecta el sufijo dinámicamente usando f-strings (la letra 'f' antes de las comillas)
-#ARCHIVO_DATASET = os.path.join(directorio_actual, f"dataset{SUFIJO_PRUEBA}.csv") 
-
-
-ARCHIVO_DATASET = os.path.join(directorio_actual,"dataset_hibrido.csv") 
-
+# 2. Inyecta el sufijo dinámicamente usando f-strings
+ARCHIVO_DATASET = os.path.join(directorio_actual, f"dataset{SUFIJO_PRUEBA}.csv") 
 ARCHIVO_RESULTADOS_PREGUNTAS = os.path.join(directorio_actual, f"resultados_fase2_detalle_preguntas{SUFIJO_PRUEBA}.csv")
 ARCHIVO_RESULTADOS_AGENTES = os.path.join(directorio_actual, f"resultados_fase2_metricas_agentes{SUFIJO_PRUEBA}.csv")
 ARCHIVO_RESULTADOS_GLOBALES = os.path.join(directorio_actual, f"resultados_fase2_metricas_globales{SUFIJO_PRUEBA}.csv")
@@ -29,47 +24,49 @@ OLLAMA_URL = "http://localhost:11434/api/embeddings"
 OLLAMA_GENERATE_URL = "http://localhost:11434/api/generate"
 
 MODELO_EMBEDDING = "mxbai-embed-large" 
-# Agregamos TODOS los modelos del ecosistema para purgar la RAM completa
+# EXCLUIMOS el modelo de embeddings de la purga masiva para no forzar recargas
 MODELOS_A_LIMPIAR = [
     "llama3.2:3b", "llama3.1:8b", "qwen2.5:3b", "gemma2:2b",
-    "qwen2.5:14b", "mxbai-embed-large"  
+    "qwen2.5:14b"
 ]
 
 # ================= FUNCIONES DE LIMPIEZA DE RAM =================
 def limpiar_memoria_ollama():
-    """Fuerza a Ollama a descargar TODOS los modelos de la RAM/VRAM"""
-    print(f"\n ..... Forzando liberación total de memoria RAM en Ollama...")
+    """Fuerza a Ollama a descargar los LLMs pesados de la RAM/VRAM"""
+    print(f"\n ..... Forzando liberación de memoria RAM de los agentes...")
     for modelo in MODELOS_A_LIMPIAR:
         try:
             requests.post(OLLAMA_GENERATE_URL, json={"model": modelo, "keep_alive": 0}, timeout=5)
         except Exception:
-            pass # Ignoramos errores si el modelo ya estaba descargado
-    time.sleep(5) # Dar tiempo al sistema operativo para reclamar la RAM
+            pass 
+    time.sleep(5) 
     print("......... Memoria liberada exitosamente. Continuando...\n")
 
-def obtener_embedding(texto, max_reintentos=4):
+def obtener_embedding(texto, max_reintentos=5):
+    """Obtiene el embedding asegurando métricas puras sin recortar el texto"""
     if not isinstance(texto, str) or not texto.strip() or str(texto).lower() == 'nan':
         return None
     
-    texto_seguro = texto[:1500]
+    # Tomamos un límite inicial seguro de 1500 caracteres, pero NO lo reducimos en reintentos
+    texto_seguro = texto[:1500] 
     tiempo_espera = 5 
     
     for intento in range(max_reintentos):
         try:
             resp = requests.post(
                 OLLAMA_URL, 
-                json={"model": MODELO_EMBEDDING, "prompt": texto_seguro}, 
-                timeout=500
+                json={"model": MODELO_EMBEDDING, "prompt": texto_seguro, "keep_alive": "5m"}, 
+                timeout=120
             )
             resp.raise_for_status()
             return np.array(resp.json()["embedding"]).reshape(1, -1)
             
         except requests.exceptions.RequestException as e:
-            print(f"___Ollama saturado en embedding. (Intento {intento+1}/{max_reintentos})")
+            print(f"   [!] Ollama saturado en embedding. Reintento {intento+1}/{max_reintentos} en {tiempo_espera}s...")
             time.sleep(tiempo_espera) 
-            tiempo_espera *= 2 
+            tiempo_espera *= 2 # Espera exponencial para dar respiro al hardware
             
-    print(f".. Fallo definitivo al obtener embedding tras {max_reintentos} intentos.")
+    print(f"   [X] Fallo definitivo al obtener embedding tras {max_reintentos} intentos.")
     return None
         
 def parsear_tiempo_iso(iso_str):
@@ -98,7 +95,6 @@ def procesar_respuesta_ofp_detallado(data):
             tokens = features.get('text', {}).get('tokens', [])
             texto = tokens[0].get('value', '') if tokens else ""
             
-            # --- EXTRAER EL FRAGMENTO ENVIADO ---
             tokens_fragmento = features.get('context', {}).get('tokens', [])
             fragmento = tokens_fragmento[0].get('value', 'No enviado/No fraccionado') if tokens_fragmento else "No enviado"
             fragmentos_log.append(f"[{agente.upper()}]: {fragmento}")
@@ -119,7 +115,6 @@ def procesar_respuesta_ofp_detallado(data):
             
             texto_combinado += f"[{agente.upper()}]: {texto}\n\n"
             
-    # Retornamos solo las 3 variables originales
     string_fragmentos = " | ".join(fragmentos_log)
     return agents_info, texto_combinado.strip(), string_fragmentos
     
@@ -135,7 +130,6 @@ def ejecutar_evaluacion_completa():
     df.columns = df.columns.str.strip().str.lower().str.replace('"', '').str.replace("'", "")
     df = df.dropna(subset=['pregunta'])
 
-    # Inicialización de las columnas del DataFrame de resultados   
     df["fragmentos_enviados_por_agente"] = ""
     df["agentes_reales"] = ""
     df["texto_respuesta_global"] = ""
@@ -163,7 +157,6 @@ def ejecutar_evaluacion_completa():
             resp = requests.post(ORCHESTRATOR_URL, json={"query": pregunta}, timeout=500)
             resp.raise_for_status()
             data = resp.json()
-            # Desempaquetamos 3 variables
             agentes_reales_info, texto_bot_global, string_fragmentos = procesar_respuesta_ofp_detallado(data)
         except Exception as e:
             print(f"   X Error: {e}")
@@ -172,7 +165,6 @@ def ejecutar_evaluacion_completa():
         latencia_global = round(time.time() - inicio_global, 2)
         global_tiempos.append(latencia_global)
         
-        # --- EL RESPIRO TÁCTICO ---
         print("...Dando un respiro de 3s al hardware...")
         time.sleep(3) 
 
@@ -204,35 +196,33 @@ def ejecutar_evaluacion_completa():
             elif ag in agentes_esperados and ag not in agentes_reales_lista:
                 metricas_agentes[ag]['FN'] += 1
 
-        # ========================================================
-        # NUEVO: PURGA VITAL ANTES DE LOS EMBEDDINGS
-        # ========================================================
         print("... Purgando modelos de los agentes para hacer espacio al modelo de Embeddings ...")
         limpiar_memoria_ollama()
-        time.sleep(3) 
 
         # ========================================================
-        # MÉTRICAS COSENO 
+        # MÉTRICAS COSENO (OPTIMIZADO)
         # ========================================================
-        cos_g = None  # Inicializamos en None en lugar de 0.0 para no afectar promedios
+        cos_g = None  
         if "Error" not in texto_bot_global:
+            # Calculamos la ideal UNA SOLA VEZ para ahorrar memoria y tiempo
             v_ideal_g = obtener_embedding(respuesta_ideal_global)
             v_bot_g = obtener_embedding(texto_bot_global)
+            
             if v_ideal_g is not None and v_bot_g is not None:
                 cos_g = round(cosine_similarity(v_ideal_g, v_bot_g)[0][0], 4)
                 global_cosenos.append(cos_g)
             else:
-                print(" -> Aviso: Embedding falló (RAM llena), saltando coseno...")
+                print(" -> Aviso: Embedding falló, saltando coseno...")
 
-        for ag, info in agentes_reales_info.items():
-            metricas_agentes[ag]['latencias'].append(info['latencia'])
-            v_ideal_ind = obtener_embedding(respuesta_ideal_global)
-            v_bot_ind = obtener_embedding(info['texto'])
-            if v_ideal_ind is not None and v_bot_ind is not None:
-                cos_ind = round(cosine_similarity(v_ideal_ind, v_bot_ind)[0][0], 4)
-                metricas_agentes[ag]['cosenos'].append(cos_ind)
+            for ag, info in agentes_reales_info.items():
+                metricas_agentes[ag]['latencias'].append(info['latencia'])
+                v_bot_ind = obtener_embedding(info['texto'])
+                
+                # Reutilizamos el v_ideal_g de arriba
+                if v_ideal_g is not None and v_bot_ind is not None:
+                    cos_ind = round(cosine_similarity(v_ideal_g, v_bot_ind)[0][0], 4)
+                    metricas_agentes[ag]['cosenos'].append(cos_ind)
 
-        # --- GUARDADO EN EL DATAFRAME ---
         df.at[index, "fragmentos_enviados_por_agente"] = string_fragmentos
         df.at[index, "agentes_reales"] = ", ".join(agentes_reales_lista)
         df.at[index, "texto_respuesta_global"] = texto_bot_global
@@ -240,13 +230,16 @@ def ejecutar_evaluacion_completa():
         df.at[index, "precision_ruteo"] = round(prec_g, 4)
         df.at[index, "recall_ruteo"] = round(rec_g, 4)
         df.at[index, "f1_score_ruteo"] = round(f1_g, 4)
-        
-        # Si falló el embedding, escribimos un texto claro en el CSV
         df.at[index, "coseno_global"] = cos_g if cos_g is not None else "ERROR_EMBEDDING"
 
         # --- LIMPIEZA POST-PREGUNTA EXTREMA ---
         print(" === LIMPIEZA POST-PREGUNTA ===")
         limpiar_memoria_ollama() 
+        # Ahora sí, forzamos la liberación del embedding model para que no consuma RAM inútilmente
+        try:
+            requests.post(OLLAMA_GENERATE_URL, json={"model": MODELO_EMBEDDING, "keep_alive": 0}, timeout=5)
+        except:
+            pass
         gc.collect()             
 
     # ================= GUARDADO DE REPORTES EN CSV =================

@@ -1,6 +1,6 @@
 ﻿Metrica,Media,Varianza
-Precision de Ruteo,0.95,0.0125
-Recall de Ruteo,0.95,0.0125
-F1-Score de Ruteo,0.95,0.0125
-Similitud Coseno End-to-End,0.7942,0.005
-Latencia Global Total,265.81,8858.3913
+Precision de Ruteo,1.0,0.0
+Recall de Ruteo,1.0,0.0
+F1-Score de Ruteo,1.0,0.0
+Similitud Coseno End-to-End,0.791,0.0078
+Latencia Global Total,310.48,5764.171
