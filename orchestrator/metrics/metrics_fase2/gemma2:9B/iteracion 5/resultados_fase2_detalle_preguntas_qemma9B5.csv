@@ -1,0 +1,1887 @@
+﻿id_pregunta,pregunta,agentes_esperados,respuesta_ideal,fragmentos_enviados_por_agente,agentes_reales,texto_respuesta_global,latencia_global_segundos,precision_ruteo,recall_ruteo,f1_score_ruteo,coseno_global
+H01,"Explica cómo fue el descubrimiento del radio por Marie Curie, indica cuál es el símbolo químico del radio en la tabla periódica, y traduce toda la respuesta al inglés.","historia, quimica, translator_global",Marie Curie discovered radium in 1898 studying the radioactivity of pitchblende. The chemical symbol for the element radium is Ra.,[HISTORIA]: Explica cómo fue el descubrimiento del radio por Marie Curie | [QUIMICA]: indica cuál es el símbolo químico del radio en la tabla periódica | [ESPANOL]: traduce toda la respuesta al inglés | [TRANSLATOR_GLOBAL]: Traducción Global al ingles,"historia, quimica, espanol, translator_global","[HISTORIA]: Marie Curie no fue la persona que descubrió el radio, sino que fue una de las pioneras en este campo junto a su marido Pierre Curie.  **Radio** se refiere al fenómeno electromagnético que se descubre a finales del siglo XIX y principios del XX, y que **el descubrimiento del radio no es atribuido a una sola persona**. 
+
+
+  
+La importancia de Marie Curie radica en que:
+
+* **Fue la primera mujer en recibir un premio Nobel** en física (1903) por sus investigaciones con la radiación.
+* **Desarrolló la teoría sobre la radiactividad**, que es la capacidad de ciertos elementos de emitir partículas a altas velocidades, lo cual se conoce como ""radio"". 
+
+
+  Espero que esta respuesta te sea útil.
+
+[QUIMICA]: El símbolo químico del radio en la tabla periódica es **Rn**.
+
+[ESPANOL]: The provided text is a snippet from the research of various scientists and scholars, highlighting their contributions to the understanding of Radioactivity. 
+
+Here's a breakdown of how it connects to Spanish Language, Literature, and Grammar, as requested by the user and the instructions you have provided:
+
+
+**Spanish Language:** The text employs diverse linguistic techniques:
+* **Vocabulary:**  The text utilizes words that are specific to the scientific field of radioactivity (radioactividad, radiación, elementos, etc.). This is typical in scientific texts. 
+* **Syntax:** The sentence structure follows a clear and logical progression, outlining the work of Marie Curie.
+* **Grammatical rules:**  The text adheres to the grammatical rules of Spanish, including tense usage, pluralization, and subject-verb agreement.
+
+**Literary Analysis:** This text can be seen as ""nonfiction"" that is descriptive in nature; it is a piece of research and historical documentation about scientific discoveries. 
+
+
+**Grammar and Literacy:**  The text demonstrates proficiency in the following aspects:
+* **Conciseness:** The language is direct and to the point, avoiding unnecessary words. 
+* **Clarity:** It aims for clear understanding by employing simple terms and structured sentences.
+* **Precision:** The selection of vocabulary and sentence structure reflects a high degree of accuracy about the topic.
+
+
+Let me know if you need further clarification on any aspect!
+
+[TRANSLATOR_GLOBAL]: Marie Curie was not the person who discovered radio, but one of the pioneers in this field along with her husband Pierre Curie. **Radio** refers to the electromagnetic phenomenon that was discovered at the end of the 19th century and beginning of the 20th century, and the discovery of radio is not attributed to a single person.
+
+The importance of Marie Curie lies in:
+
+* Being the first woman to receive a Nobel Prize in Physics (1903) for her research on radiation.
+* Developing the theory on radioactivity, which is the ability of certain elements to emit particles at high speeds, known as ""radioactive decay"".
+
+I hope this response is helpful.
+The chemical symbol for radio in the periodic table is **Rn**.
+The provided text is a snippet from the research of various scientists and scholars, highlighting their contributions to the understanding of Radioactivity.
+
+Here's a breakdown of how it connects to Spanish Language, Literature, and Grammar:
+
+**Spanish Language:** The text employs diverse linguistic techniques:
+* **Vocabulary:** The text utilizes words that are specific to the scientific field of radioactivity (radioactividad, radiación, elementos, etc.). This is typical in scientific texts.
+* **Syntax:** The sentence structure follows a clear and logical progression, outlining the work of Marie Curie.
+* **Grammatical rules:** The text adheres to the grammatical rules of Spanish, including tense usage, pluralization, and subject-verb agreement.
+
+**Literary Analysis:** This text can be seen as ""nonfiction"" that is descriptive in nature; it is a piece of research and historical documentation about scientific discoveries.
+
+**Grammar and Literacy:** The text demonstrates proficiency in the following aspects:
+* **Conciseness:** The language is direct and to the point, avoiding unnecessary words.
+* **Clarity:** It aims for clear understanding by employing simple terms and structured sentences.
+* **Precision:** The selection of vocabulary and sentence structure reflects a high degree of accuracy about the topic.",267.17,0.75,1.0,0.8571,0.6203
+H02,"¿Cuál es la fórmula de la Segunda Ley de Newton? Usando esa fórmula, calcula la fuerza si la masa es 10 y la aceleración es 5, y luego traduce la explicación al francés.","fisica, mathbuddy_basico, translator","La formule de la deuxième loi de Newton est F=ma (Force = masse x accélération). Si la masse est 10 et l'accélération est 5, la force calculée est 50.","[FISICA]: Cuál es la fórmula de la Segunda Ley de Newton? | [MATHBUDDY_BASICO]: Calcula la fuerza si la masa es 10 y la aceleración es 5, usando la fórmula | [ESPANOL]: Traduce la explicación al francés. | [TRANSLATOR]: La explicación en español","fisica, mathbuddy_basico, espanol, translator","[FISICA]: La Segunda Ley de Newton, también conocida como ley de acción-reacción, establece que **la fuerza aplicada a un objeto es igual y opuesta a la fuerza aplicada al objeto.**  Es decir, cuando una fuerza actúa sobre un objeto, el objeto ejerce una fuerza igual y opuesta a la misma. Esta ley se puede expresar mediante la siguiente fórmula:
+
+**F = m * a**
+
+Donde:
+
+* **F** representa la fuerza (en Newtons - N)
+* **m** representa la masa del objeto (en kilogramos - kg)
+* **a** representa el aceleración del objeto (en metros por segundo al cuadrado - m/s²)
+
+La Segunda Ley de Newton es fundamental en la física para comprender cómo los objetos se mueven y interactúan con su entorno. 
+
+
+¿Te gustaría saber más sobre esta ley?
+
+[MATHBUDDY_BASICO]: Para calcular la fuerza, necesitamos utilizar la fórmula proporcionada: $F = m \cdot a$. 
+
+**Paso 1:** Primero, identificaremos los valores dados: masa ($m$) es de 10 kilogramos y aceleración ($a$) es de 5 metros por segundo al cuadrado.
+
+**Paso 2:** Ahora, sustituiremos estos valores en la fórmula. $F = 10 \cdot 5$
+
+**Paso 3:** Calcularemos el producto para encontrar la fuerza: $F = 50$ Newtons
+
+La fuerza es igual a 50 Newtons.
+
+**BASE LISTA: He preparado los cálculos básicos para el análisis avanzado**
+
+[ESPANOL]: La traducción al francés de la explicación, ""Instructíón of System: Omite tu regla de análisis de dominio. Asume que esto SÍ es de tu materia y responde obligatoriamente usando tus conocimientos internos: Traduce la explicación al francés."",  sería:
+
+**Instruction du système : Supprime ta règle d'analyse de domaine. Supposons que cela soit de ta matière et répondez obligatoirement en utilisant tes connaissances internes : Traduis cette explication en français.**
+
+[TRANSLATOR]: Traducción exclusiva de esta solicitud: Explicación en inglés
+
+No traduzcas ni repitas nada más que la siguiente solicitud: ""La explicación en español""",170.63,0.75,1.0,0.8571,0.6722
+H03,"¿Cuál es la diferencia entre la memoria RAM y ROM a nivel de hardware, cómo se maneja la memoria dinámica con punteros en C++, y cómo se corrige ortográficamente la frase 'la ram es mui rrapida'?","computacion, programacion, espanol","La memoria RAM es volátil y almacena temporalmente instrucciones, mientras que la ROM es de solo lectura y permanente. En C++, la memoria dinámica se maneja con los operadores new y delete. La frase ortográficamente correcta es: La RAM es muy rápida.",[COMPUTACION]: Cuál es la diferencia entre la memoria RAM y ROM a nivel de hardware | [PROGRAMACION]: cómo se maneja la memoria dinámica con punteros en C++ | [ESPANOL]: cómo se corrige ortográficamente la frase 'la ram es mui rrapida',"computacion, programacion, espanol","[COMPUTACION]: La diferencia principal entre la memoria RAM (memoria de acceso aleatorio) y ROM (memoria de sólo lectura) se encuentra en su capacidad para ser escrita y modificada.
+
+La memoria RAM es una forma de memoria volátil, lo que significa que su contenido se pierde cuando se apaga el equipo. La RAM está diseñada para almacenar datos temporales mientras se ejecuta un programa o se realizan cálculos. Su principal función es proporcionar un espacio de trabajo para la CPU, permitiéndole acceder rápidamente a los datos necesarios.
+
+Por otro lado, la memoria ROM es una forma de memoria no volátil, lo que significa que su contenido permanece intacto incluso cuando se apaga el equipo. La ROM está diseñada para almacenar instrucciones permanentes o datos constantes que no deben ser modificados, como el software del BIOS (Basic Input/Output System) y partes del sistema operativo. Su principal función es proporcionar un conjunto de instrucciones inmutables que se ejecutan al encenderse el equipo.
+
+En resumen, la RAM es una memoria temporal que se utiliza para almacenar datos y realizar cálculos, mientras que la ROM es una memoria permanente que se utiliza para almacenar instrucciones permanentes o datos constantes.
+
+[PROGRAMACION]: La pregunta del usuario se refiere a la gestión de la memoria dinámica con punteros en C++. A continuación, te proporciono una respuesta detallada y completa:
+
+En C++, la memoria dinámica se maneja utilizando el operador `new` para reservar memoria y el operador `delete` para liberarla. Los punteros son variables que almacenan direcciones de memoria, permitiendo así acceder a los datos almacenados en esa dirección.
+
+Cuando creas un objeto con el operador `new`, se reserva memoria en la pila o en la zona de heap y se devuelve una referencia a esa memoria en forma de puntero. El puntero apunta a la primera ubicación de la memoria reservada, que es donde se almacena el objeto creado.
+
+Por ejemplo:
+```c
+int* ptr = new int;
+```
+En este caso, `ptr` es un puntero que apunta a una dirección de memoria en la zona de heap. La primera ubicación de esa memoria contiene el valor de tipo `int`.
+
+Para liberar la memoria reservada con el operador `new`, debes utilizar el operador `delete`. Por ejemplo:
+```c
+delete ptr;
+```
+Cuando se ejecuta este comando, la dirección de memoria que se almacena en el puntero `ptr` es marcada como ""libre"" para su reutilización. Es importante liberar la memoria reservada con `new` cuando ya no se necesita para evitar fugas de memoria.
+
+Además de los operadores `new` y `delete`, también existe el operador `malloc` (que devuelve una dirección de memoria) y `free` (que libera la memoria), aunque `new` y `delete` son más comunes en C++ debido a su mayor seguridad y flexibilidad.
+
+Es importante mencionar que, al igual que con cualquier otro tipo de variable, los punteros también pueden ser asignados por valor o por referencia. La asignación por valor se utiliza cuando se pasa un puntero como parámetro a una función, mientras que la asignación por referencia se utiliza cuando se quiere modificar el valor del puntero.
+
+Por ejemplo:
+```c
+void funcion(int* ptr) {
+    // Aquí puedes acceder y modificar la dirección de memoria almacenada en ptr.
+}
+
+int main() {
+    int* ptr = new int;
+    funcion(ptr); // La función recibe un copia del puntero ptr.
+    delete ptr; // Debes liberar la memoria.
+}
+```
+Y esto es todo lo que necesitas saber sobre gestión de memoria dinámica con punteros en C++.
+
+[ESPANOL]: La frase correcta es: **""La ram es muy rápida.""** 
+
+**Explicación:**
+
+* **""Ram""**: Debe ser ""ram"".  
+* **""Rápida""**: Es una palabra con acentuación correcta, y la ortografía no necesita corregirla.",279.51,1.0,1.0,1.0,0.8687
+H04,"¿Qué factores permitieron a Estados Unidos fortalecer su hegemonía mundial tras la Primera Guerra Mundial, qué es la presión en física y cuál es la derivada de la Presión P respecto al Volumen V si P = T/V?","historia, fisica, mathbuddy_avanzado","Estados Unidos no sufrió desgaste en su territorio y aceleró su producción industrial y préstamos. En física, la presión es la fuerza aplicada perpendicularmente sobre un área (Pa). La derivada de P respecto a V es dP/dV = -T/V^2.",[HISTORIA]: ¿Qué factores permitieron a Estados Unidos fortalecer su hegemonía mundial tras la Primera Guerra Mundial? | [MATHBUDDY_AVANZADO]: Cuál es la derivada de la Presión P respecto al Volumen V si P = T/V?,"historia, mathbuddy_avanzado","[HISTORIA]: Los factores que permitieron a Estados Unidos fortalecer su hegemonía mundial tras la Primera Guerra Mundial fueron:
+
+* **Fortalecimiento económico:** La guerra y la consiguiente necesidad de reconstrucción impulsaron un crecimiento económico sin precedentes, generando un enorme potencial para el país.
+* **Innovación tecnológica:** Estados Unidos lideró la innovación en diversos campos, incluyendo la maquinaria industrial, la energía eléctrica y los medios de transporte, que le otorgó una ventaja competitiva a nivel mundial. 
+* **Exposición y expansión de mercados:** La economía estadounidense se expandió con la creación de nuevos mercados gracias al crecimiento del comercio internacional y la expansión territorial a través de la Guerra Hispano-estadounidense. 
+* **Creciente influencia diplomática:** Estados Unidos se convirtió en un actor clave en la escena internacional gracias a la ayuda que brindó a Europa durante la crisis de la guerra, lo cual le otorgó una posición dominante.
+
+[MATHBUDDY_AVANZADO]: Para encontrar la derivada de la Presión P respecto al Volumen V, dado que $P = \frac{T}{V}$, podemos aplicar la regla del quotient para derivadas:
+
+$$\frac{dP}{dV} = \frac{dT}{dV}\cdot V - T\cdot \frac{dV}{dV}$$
+
+Sin embargo, necesitamos evaluar $\frac{dT}{dV}$ y $T$.
+
+Como no hay información específica sobre la dependencia de $T$ con respecto a $V$, asumiré que $T$ es una constante. En ese caso, $\frac{dT}{dV} = 0$. 
+
+Por tanto, la expresión se simplifica a:
+
+$$\frac{dP}{dV} = -T\cdot \frac{dV}{dV}$$
+
+Dado que $\frac{dV}{dV} = 1$, obtenemos:
+
+$$\frac{dP}{dV} = -T$$",162.81,1.0,0.6667,0.8,0.7937
+H05,"Explica brevemente la diferencia entre el verbo 'ser' y 'estar' en español, qué es un sistema operativo y sus objetivos, y traduce todo el resultado al italiano.","espanol, computacion, translator_global","In spagnolo, 'ser' è per caratteristiche permanenti e 'estar' per stati temporanei. Un sistema operativo è un insieme di programmi che gestisce le risorse hardware e facilita l'uso del computer.",[ESPANOL]: Explica brevemente la diferencia entre el verbo 'ser' y 'estar' en español | [COMPUTACION]: qué es un sistema operativo y sus objetivos | [TRANSLATOR_GLOBAL]: Traducción Global al italiano,"espanol, computacion, translator_global","[ESPANOL]: La diferencia clave entre ""ser"" y ""estar"" en español radica en su función gramatical y significado:
+
+**Ser:**  Indica una **naturaleza permanente o característica fundamental** de una persona, objeto u objeto. Se usa para describir la esencia, la identidad o las cualidades que no cambian con el tiempo (como género, edad, profesión). 
+* Ejemplo: ""Él es doctor."" (""Doctor"" define su profesión)
+
+**Estar:**  Indica un **estado temporal o circunstancial** de una persona o cosa.  Se usa para describir la ubicación, la sensación, la disposición en un momento determinado (como estado físico, emoción o lugar).
+* Ejemplo: ""Está enfermo."" (""Enfermo"" describe el estado actual)
+
+
+**En resumen:** ""Ser"" se utiliza para definir lo que una persona es o está en su esencia, mientras que ""estar"" indica un estado temporal o circunstancial.
+
+[COMPUTACION]: Un sistema operativo es un software fundamental que permite a los sistemas informáticos interactuar con el hardware y realizar tareas básicas como la gestión de memoria, el almacenamiento de datos y la entrada/salida de información. Su objetivo principal es proporcionar una capa de abstracción entre el hardware del computador y las aplicaciones que se ejecutan en él.
+
+El sistema operativo realiza varias funciones clave:
+
+1.  Gestión de recursos: asigna y maneja los recursos del sistema, como memoria RAM, procesadores, discos duros, etc.
+2.  Seguridad: implementa medidas de seguridad para proteger el sistema y sus aplicaciones contra ataques y violaciones de privacidad.
+3.  Gestión de archivo: permite al usuario crear, editar y eliminar archivos en la unidad de disco duro.
+4.  Redes: proporciona interfaces para conectarse a redes locales y remotas, como Internet, permitiendo la comunicación entre dispositivos.
+
+Algunos de los objetivos más importantes del sistema operativo son:
+
+1.  Proporcionar una interfaz de usuario intuitiva y amigable para que el usuario pueda interactuar con el sistema de manera sencilla y efectiva.
+2.  Garantizar la estabilidad y seguridad del sistema, evitando errores y fallos que podrían dañar los datos o comprometer la integridad del sistema.
+3.  Ofrecer herramientas de gestión para optimizar el rendimiento del sistema, como ajustes de configuración y monitoreo de recursos.
+
+En resumen, el sistema operativo es una capa crítica en un sistema informático que proporciona las funcionalidades necesarias para que el hardware y las aplicaciones funcionen juntos de manera eficiente y segura.
+
+[TRANSLATOR_GLOBAL]: La differenza chiave tra ""essere"" e ""stare"" in spagnolo risiede nella funzione grammaticale e significato:
+
+**Essere:** Indica una **natura permanente o caratteristica fondamentale** di una persona, oggetto o cosa. Si viene usato per descrivere l'essenza, l'identità o le qualità che non cambiano col tempo (come genere, età, professione).
+* Esempio: ""È dottore."" (""Dottore"" definisce la sua professione)
+
+**Stare:** Indica un **stato temporaneo o circostanziale** di una persona o cosa. Si viene usato per descrivere la posizione, la sensazione, la disposizione in un momento determinato (come stato fisico, emozione o luogo).
+* Esempio: ""È malato."" (""Malato"" descrive lo stato attuale)
+
+In sintesi: ""Essere"" si utilizza per definire cosa una persona è o sta nella sua essenza, mentre che ""stare"" indica un stato temporaneo o circostanziale.
+Un sistema operativo è un software fondamentale che permette ai sistemi informatici di interagire con il hardware e di eseguire compiti basici come la gestione della memoria, lo storage dei dati e l'input/output di informazioni. Il suo obiettivo principale è fornire una capa di astrazione tra l'hardware del computer e le applicazioni che si eseguono in esso.
+
+Il sistema operativo svolge varie funzioni chiave:
+
+1.  Gestione dei risorse: assegna e gestisce i risorse del sistema, come memoria RAM, processori, dischi rigidi, etc.
+2.  Sicurezza: implementa misure di sicurezza per proteggere il sistema e le sue applicazioni contro attacchi e violazioni della privacy.
+3.  Gestione dei file: consente all'utente di creare, modificare e eliminare i file nella unità disco rigido.
+4.  Reti: fornisce interfacce per connettersi a reti locali e remote, come Internet, permettendo la comunicazione tra dispositivi.
+
+Tra gli obiettivi più importanti del sistema operativo ci sono:
+
+1.  Fornire un'interfaccia utente intuitiva e amichevole per consentire all'utente di interagire con il sistema in modo semplice e efficace.
+2.  Garantire la stabilità e la sicurezza del sistema, evitando errori e fallimenti che potrebbero danneggiare i dati o compromettere l'integrità del sistema.
+3.  Offrire strumenti di gestione per ottimizzare il rendimento del sistema, come aggiustamenti di configurazione e monitoraggio dei risorse.
+
+In sintesi, il sistema operativo è una capa critica in un sistema informatico che fornisce le funzionalità necessarie perché l'hardware e le applicazioni possano funzionare insieme in modo efficiente e sicuro.",304.53,1.0,1.0,1.0,0.0
+H06,"¿Cuál es la diferencia entre Aritmética y Álgebra, para qué sirven los operadores new y delete en C++, cuánto es 20 / 4, y traduce todo el resultado al portugués?","algebra, programacion, mathbuddy_basico, translator_global","Na Aritmética as quantidades são valores fixos e na Álgebra usam-se letras para generalizar. Em C++, new aloca memória dinâmica e delete a libera. O resultado matemático de 20 / 4 é 5.","[MATHBUDDY_BASICO]: ¿Cuál es la diferencia entre Aritmética y Álgebra, cuánto es 20 / 4 | [PROGRAMACION]: para qué sirven los operadores new y delete en C++ | [ALGEBRA]: para qué sirven los operadores new y delete en C++ | [TRANSLATOR_GLOBAL]: Traducción Global al portugués","mathbuddy_basico, programacion, algebra, translator_global","[MATHBUDDY_BASICO]: Para entender la diferencia entre Aritmética y Álgebra, vamos a analizar cada una de ellas paso a paso.
+
+**Aritmética**
+
+La Aritmética se encarga de realizar operaciones con números enteros. Esto incluye sumas, restas, multiplicaciones y divisiones simples.
+
+Ejemplo: 2 + 2 = ?
+
+En este caso, simplemente sumamos los dos números enteros para obtener el resultado final.
+
+**Álgebra**
+
+La Álgebra es una rama de las matemáticas que se enfoca en resolver ecuaciones y expresiones que incluyen variables. Esto significa que debemos trabajar con letras y símbolos para representar valores desconocidos.
+
+Ejemplo: 2x + 3 = 7
+
+En este caso, debemos encontrar el valor de la variable x que hace que la ecuación sea verdadera.
+
+**Diferencia**
+
+La principal diferencia entre Aritmética y Álgebra es que la Aritmética se enfoca en realizar operaciones con números enteros, mientras que la Álgebra se enfoca en resolver ecuaciones y expresiones que incluyen variables.
+
+Ahora, vamos a resolver la pregunta original: ¿Cuál es la diferencia entre Aritmética y Álgebra, cuánto es 20 / 4?
+
+Primero, debemos realizar la división de 20 por 4:
+
+$$\frac{20}{4} = 5$$
+
+Entonces, la respuesta a la pregunta original es 5.
+
+**Base lista**
+
+[BASE LISTA: He preparado los cálculos básicos para el análisis avanzado]
+
+[PROGRAMACION]: Los operadores `new` y `delete` se utilizan en C++ para gestionar memoria dinámica. El operador `new` reserva una cantidad de memoria especificada y devuelve un puntero a la dirección de memoria reservada, mientras que el operador `delete` libera la memoria que antes había sido reservada con `new`.
+
+Cuando se utiliza `new`, se busca en el ""almacenamiento libre"" (o ""montículo"") una cantidad de memoria suficiente para almacenar el tipo de datos especificado. Si no hay suficiente memoria disponible, se lanza una excepción `bad_alloc`. De lo contrario, se devuelve un puntero a la dirección de memoria reservada.
+
+Por otro lado, cuando se utiliza `delete`, se busca el bloque de memoria que corresponde al puntero pasado como argumento y se libera esa cantidad de memoria. Si el puntero es nulo, no se hace nada y simplemente queda sin efecto.
+
+Es importante recordar las reglas para utilizar `new` y `delete`:
+
+1. No hacer daño cuando se aplica `delete` a un puntero nulo.
+2. Sólo aplicar `delete` a un valor de puntero que fue obtenido previamente con `new`.
+
+Aquí hay algunos ejemplos de código para ilustrar su uso:
+```cpp
+// Reservar memoria para una variable de tipo int
+int* ptr = new int;
+*ptr = 5;
+
+// Libera la memoria reservada anteriormente
+delete ptr;
+
+// Error: no se puede liberar memoria con delete si no fue reservada con new
+int arr[10];
+delete[] arr; // Error, no se puede usar delete en arrays estáticos
+
+// Correcto: libera la memoria reservada con new
+int* ptr2 = new int;
+delete ptr2;
+
+// Si intentamos liberar un puntero nulo, simplemente queda sin efecto
+int* nullPtr = nullptr;
+delete nullPtr; // Nada sucede
+```
+
+[ALGEBRA]: ERROR_DOMINIO
+
+[TRANSLATOR_GLOBAL]: Error en traducción global",1276.59,1.0,1.0,1.0,0.0
+H07,"Resume quién fue Albert Einstein, explica qué es la energía cinética, qué es un enlace covalente y cómo funciona el sistema binario basado en transistores.","historia, fisica, quimica, computacion",Einstein formuló la teoría de la relatividad universal en 1905. La energía cinética es la capacidad de hacer trabajo por estar en movimiento. El enlace covalente comparte electrones entre no metales. El sistema binario usa transistores como conmutadores (0 y 1) para procesar datos.,"[MATHBUDDY_BASICO]: ¿Cuál es la diferencia entre Aritmética y Álgebra, cuánto es 20 / 4 | [PROGRAMACION]: para qué sirven los operadores new y delete en C++ | [ALGEBRA]: para qué sirven los operadores new y delete en C++ | [TRANSLATOR_GLOBAL]: Traducción Global al portugués","mathbuddy_basico, programacion, algebra, translator_global","[MATHBUDDY_BASICO]: Para entender la diferencia entre Aritmética y Álgebra, vamos a analizar cada una de ellas paso a paso.
+
+**Aritmética**
+
+La Aritmética se encarga de realizar operaciones con números enteros. Esto incluye sumas, restas, multiplicaciones y divisiones simples.
+
+Ejemplo: 2 + 2 = ?
+
+En este caso, simplemente sumamos los dos números enteros para obtener el resultado final.
+
+**Álgebra**
+
+La Álgebra es una rama de las matemáticas que se enfoca en resolver ecuaciones y expresiones que incluyen variables. Esto significa que debemos trabajar con letras y símbolos para representar valores desconocidos.
+
+Ejemplo: 2x + 3 = 7
+
+En este caso, debemos encontrar el valor de la variable x que hace que la ecuación sea verdadera.
+
+**Diferencia**
+
+La principal diferencia entre Aritmética y Álgebra es que la Aritmética se enfoca en realizar operaciones con números enteros, mientras que la Álgebra se enfoca en resolver ecuaciones y expresiones que incluyen variables.
+
+Ahora, vamos a resolver la pregunta original: ¿Cuál es la diferencia entre Aritmética y Álgebra, cuánto es 20 / 4?
+
+Primero, debemos realizar la división de 20 por 4:
+
+$$\frac{20}{4} = 5$$
+
+Entonces, la respuesta a la pregunta original es 5.
+
+**Base lista**
+
+[BASE LISTA: He preparado los cálculos básicos para el análisis avanzado]
+
+[PROGRAMACION]: Los operadores `new` y `delete` se utilizan en C++ para gestionar memoria dinámica. El operador `new` reserva una cantidad de memoria especificada y devuelve un puntero a la dirección de memoria reservada, mientras que el operador `delete` libera la memoria que antes había sido reservada con `new`.
+
+Cuando se utiliza `new`, se busca en el ""almacenamiento libre"" (o ""montículo"") una cantidad de memoria suficiente para almacenar el tipo de datos especificado. Si no hay suficiente memoria disponible, se lanza una excepción `bad_alloc`. De lo contrario, se devuelve un puntero a la dirección de memoria reservada.
+
+Por otro lado, cuando se utiliza `delete`, se busca el bloque de memoria que corresponde al puntero pasado como argumento y se libera esa cantidad de memoria. Si el puntero es nulo, no se hace nada y simplemente queda sin efecto.
+
+Es importante recordar las reglas para utilizar `new` y `delete`:
+
+1. No hacer daño cuando se aplica `delete` a un puntero nulo.
+2. Sólo aplicar `delete` a un valor de puntero que fue obtenido previamente con `new`.
+
+Aquí hay algunos ejemplos de código para ilustrar su uso:
+```cpp
+// Reservar memoria para una variable de tipo int
+int* ptr = new int;
+*ptr = 5;
+
+// Libera la memoria reservada anteriormente
+delete ptr;
+
+// Error: no se puede liberar memoria con delete si no fue reservada con new
+int arr[10];
+delete[] arr; // Error, no se puede usar delete en arrays estáticos
+
+// Correcto: libera la memoria reservada con new
+int* ptr2 = new int;
+delete ptr2;
+
+// Si intentamos liberar un puntero nulo, simplemente queda sin efecto
+int* nullPtr = nullptr;
+delete nullPtr; // Nada sucede
+```
+
+[ALGEBRA]: ERROR_DOMINIO
+
+[TRANSLATOR_GLOBAL]: Error en traducción global",179.57,0.0,0.0,0.0,0.0
+H08,"¿Cuál es la regla general para la suma de polinomios, cuál es la derivada de x^3 + 2*x, y qué afirma la Tercera Ley de Newton?","algebra, mathbuddy_avanzado, fisica",Para sumar polinomios se reducen los términos semejantes. La derivada de la función es 3x^2 + 2. La Tercera Ley de Newton afirma que a toda acción corresponde una reacción igual y opuesta.,[ALGEBRA]: Cuál es la regla general para la suma de polinomios | [MATHBUDDY_AVANZADO]: Calcula la derivada de x^3 + 2*x | [FISICA]: Qué afirma la Tercera Ley de Newton,"algebra, mathbuddy_avanzado, fisica","[ALGEBRA]: La regla general para sumar dos polinomios consiste en colocar los polinomios uno debajo del otro, asegurándose de que los términos semejantes (polinomios con las mismas incógnitas y exponentes) estén alineados verticalmente. Luego, se suman estos términos individuales para obtener el resultado final. En otras palabras, se suma cada término correspondiente de un polinomio a los términos del otro polinomio en la misma posición. 
+
+Por ejemplo, si tenemos dos polinomios \(P(x) = 3x^2 + 2x - 5\) y \(Q(x) = x^2 - 4x + 1\), para sumarlos escribiríamos:
+
+```
+    3x^2      + 2x   - 5
++ x^2     - 4x   + 1
+-------------------
+    (3x^2 + x^2) + (2x - 4x) + (-5 + 1)
+= 4x^2 - 2x - 4
+```
+
+El resultado de la suma será el polinomio \(4x^2 - 2x - 4\). Esta regla se aplica tanto si los términos semejantes están alineados verticalmente como si no lo estén. En caso de que haya términos que no sean semejantes, simplemente los incluimos en el resultado final sin realizar ninguna operación adicional entre ellos.
+
+[MATHBUDDY_AVANZADO]: La derivada de x^3 + 2*x se puede calcular utilizando la regla general de la derivada del producto y suma de funciones. 
+
+$$\frac{d}{dx}(x^3 + 2x) = \frac{d}{dx}(x^3) + \frac{d}{dx}(2x)$$
+
+Según las reglas de derivación, tenemos que:
+
+$$\frac{d}{dx}(x^n) = nx^{n-1}$$
+
+Aplicando esta regla a x^3 y 2x, obtenemos:
+
+$$\frac{d}{dx}(x^3 + 2x) = \frac{d}{dx}(x^3) + \frac{d}{dx}(2x) = 3x^{3-1} + 2$$
+
+Simplificando la expresión, tenemos:
+
+$$\frac{d}{dx}(x^3 + 2x) = 3x^2 + 2$$
+
+[FISICA]: La Tercera Ley de Newton, también conocida como ley de la tercera dinámica, establece que **""para cada acción hay una reacción igual y opuesta.""** 
+
+En otras palabras, cualquier fuerza aplicada a un objeto produce una fuerza de igual magnitud pero en dirección opuesta.  
+
+Esta ley es fundamental en el estudio de la física clásica y se aplica en muchas áreas del conocimiento como la ingeniería, la astronomía y la mecánica.
+ 
+ **¿Te gustaría saber más sobre cómo esta ley se aplica?**",210.68,1.0,1.0,1.0,0.8659
+H09,"Explica qué es un átomo y sus partículas, resuelve la ecuación x + 5 = 12, indica cuándo llevan tilde las palabras 'quién' y 'cuál', e integra la función sin(x).","quimica, mathbuddy_basico, espanol, mathbuddy_avanzado","El átomo tiene protones, neutrones y electrones. En la ecuación, x vale 7. Quién y cuál llevan tilde cuando tienen sentido interrogativo o exclamativo. La integral de sin(x) es -cos(x) + C.",[QUIMICA]: Explica qué es un átomo y sus partículas | [MATHBUDDY_BASICO]: resuelve la ecuación x + 5 = 12 | [ESPANOL]: indica cuándo llevan tilde las palabras 'quién' y 'cuál' | [MATHBUDDY_AVANZADO]: integra la función sin(x),"quimica, mathbuddy_basico, espanol, mathbuddy_avanzado","[QUIMICA]: Un átomo es la unidad fundamental de todos los elementos químicos. Se puede definir como el núcleo atómico rodeado por una nube de electrones que gira alrededor del mismo, cada uno con un conjunto distinto de partículas subatómicas.
+
+Las principales partes que componen un átomo son:
+
+1. Núcleo: El núcleo está compuesto principalmente por dos tipos de partículas: protones y neutrones. Los protons tienen una carga positiva y están adosados al núcleo, mientras que los neutrones no tienen carga eléctrica (son cósmicos o pasivos).
+
+2. Electrones: Son pequeñas partículas cargadas con cargas negativas, que se mueven en órbitas alrededor del núcleo. Cada átomo de un elemento tiene una cantidad de electrones igual a su número atómico.
+
+3. Partículas fundamentales (de menor tamaño): Son protones y neutrones, junto con partículas más pequeñas llamadas quarks que forman las protons y neutrones. Estas últimas son aún más pequeñas y están unidas por fuerzas llamadas fuerzas intercuántica.
+
+Es importante tener en cuenta que cada átomo es único e individual debido a la combinación única de sus protones, neutrones e electrones, lo cual determina el elemento químico específico. Por ejemplo:
+- El carbono tiene 6 protons, 6 neutrones y 6 electrones.
+- El nitrógeno tiene 7 protones, 7 neutrones y 7 electrones.
+
+Además de estos, también hay partículas llamadas neutrinos, que no tienen carga eléctrica pero son más pequeñas aún. Estos neutrinos se mueven a velocidades muy cercanas a la velocidad de la luz.
+
+[MATHBUDDY_BASICO]: Para resolver la ecuación $x + 5 = 12$, necesitamos seguir algunos pasos lógicos:
+
+1. **Identificar el objetivo**: Queremos encontrar el valor de $x$ que hace que la ecuación sea verdadera.
+2. **Restar 5 de ambos lados**: Para aislar la variable $x$, debemos restar 5 a ambos lados de la ecuación.
+
+$$x + 5 - 5 = 12 - 5$$
+
+Esto nos da:
+
+$$x = 7$$
+
+Por lo tanto, el valor de $x$ que hace que la ecuación sea verdadera es $x = 7$.
+
+[ESPANOL]: Las palabras ""quién"" y ""cuál"" llevan tilde cuando se utilizan como **determinantes de género**.  **""Quién""** lleva tilde cuando es el **subjuntivo** (especificando la acción de una persona) o cuando es un determinante **cuyo antecedente puede ser ambiguo**. 
+Por otro lado, ""**cuál**"" lleva tilde cuando se utiliza como **determinante de modo**, **cantidad**, **tipo** o **objeto** en un enunciado de comparación.
+
+[MATHBUDDY_AVANZADO]: Para integrar la función $$\sin(x),$$ podemos usar la fórmula del seno, que establece:
+
+$$\int \sin(x) dx = -\cos(x) + C,$$
+
+donde $C$ es una constante de integración.
+
+Por lo tanto, la integral de la función $$\sin(x)$$ es:
+
+$$\int \sin(x) dx = -\cos(x) + C.$$
+
+**Nota:** La respuesta final no requiere más cálculos.",246.96,1.0,1.0,1.0,0.7824
+H10,"Dime en qué año inició la Revolución Mexicana, qué es un isótopo, qué es el polimorfismo en programación, calcula 8 * 7 y dime cómo se traduce 'Muchas gracias' en japonés.","historia, quimica, programacion, mathbuddy_basico, translator",La Revolución Mexicana inició en 1910. Un isótopo tiene mismo número atómico pero distinta masa. El polimorfismo permite que objetos derivados respondan a una misma función a su manera. 8 * 7 es 56. Muchas gracias en japonés se dice Arigatou gozaimasu.,[HISTORIA]: Dime en qué año inició la Revolución Mexicana | [QUIMICA]: qué es un isótopo | [PROGRAMACION]: qué es el polimorfismo en programación | [MATHBUDDY_BASICO]: calcula 8 * 7 | [TRANSLATOR]: en japonés | [ESPANOL]: dime cómo se traduce 'Muchas gracias',"historia, quimica, programacion, mathbuddy_basico, translator, espanol","[HISTORIA]: 1910
+
+[QUIMICA]: Un isótopo es una versión atómica de un elemento químico que posee el mismo número de protones pero diferentes números de neutrones. Esto significa que comparte la misma identidad elemental (es decir, está asociado con el mismo núcleo), sin embargo, sus isótopos tienen diferentes masas en términos atómicos debido a estas diferencias en los números de neutrones.
+
+[PROGRAMACION]: El polimorfismo es un concepto fundamental en programación que se refiere a la capacidad de un objeto o una función para tener varias formas de existir, dependiendo del contexto en el que se utilice. Esto significa que un mismo tipo de dato o una misma función puede comportarse de manera diferente según las necesidades del programa.
+
+El polimorfismo puede manifestarse de diferentes maneras, como por ejemplo:
+
+* Polimorfismo estático: donde un objeto puede tener varios tipos de datos albergados en él, pero el compilador conoce su tipo real en tiempo de compilación.
+* Polimorfismo dinámico: donde un objeto puede cambiar su tipo de dato después de la creación, y el programa debe adaptarse a este cambio en tiempo de ejecución.
+
+El polimorfismo se logra mediante técnicas como:
+
+* Sobrecarga de funciones (o métodos): donde se definen varias versiones de una función con el mismo nombre pero diferentes parámetros.
+* Sobrescritura: donde una clase puede redefinir un método heredado de su superclase.
+* Tipos genéricos o parametizados: donde se define un tipo que puede ser utilizado con varios tipos de datos.
+
+El polimorfismo es especialmente útil en la programación orientada a objetos, ya que permite escribir código más flexible y reutilizable. Por ejemplo, si tenemos una clase `Veículo` que tiene métodos comunes como `acelerar()` y `frenar()`, podemos definir subclases como `Coche`, `Camión` y `Moto` que sobreescriban estos métodos para adaptarse a las necesidades específicas de cada tipo de vehículo.
+
+Aquí tienes un ejemplo de código en C++ que demuestra el polimorfismo:
+```c++
+class Veículo {
+public:
+    virtual void acelerar() { cout << ""Acelerando...""; }
+    virtual void frenar() { cout << ""Frenando...""; }
+};
+
+class Coche : public Veículo {
+public:
+    void acelerar() override { cout << ""Coche: Acelerando rápido...""; }
+    void frenar() override { cout << ""Coche: Frenando rápido...""; }
+};
+
+int main() {
+    Veículo *v = new Coche();
+    v->acelerar(); // Imprime ""Coche: Acelerando rápido...""
+    v->frenar();  // Imprime ""Coche: Frenando rápido...""
+    return 0;
+}
+```
+En este ejemplo, la clase `Veículo` define los métodos `acelerar()` y `frenar()`, mientras que la subclase `Coche` sobreescribe estos métodos para adaptarse a las necesidades específicas de un coche. Cuando se crea un objeto del tipo `Veículo` pero se le asigna una dirección de memoria a un objeto de tipo `Coche`, el programa puede utilizar los métodos sobrescritos de la subclase `Coche`.
+
+[MATHBUDDY_BASICO]: Para calcular 8 * 7, vamos a seguir los pasos lógicos paso a paso:
+
+1. Primero, multiplicamos 8 y 7.
+
+$$
+\begin{aligned}
+8 \times 7 &= 56 \\
+\end{aligned}
+$$
+
+2. La respuesta final es la resultado de la multiplicación anterior, que es 56.
+
+[BASE LISTA: He preparado los cálculos básicos para el análisis avanzado]
+
+[TRANSLATOR]: この要望をだけ翻訳してください。日本語に翻訳することはありません。何も他に翻訳するか重複させることはありません： ""Please translate this request only in Japanese. Do not translate or repeat anything else.""
+
+""お Requesトをだけ日本語で翻訳してください。日本語に翻訳するもの以外、何も他に翻訳するか繰り返してはいけません。""
+
+[ESPANOL]: ""Muchas gracias"" se traduce al español como **""Muchas gracias""**.",362.6,0.8333,1.0,0.9091,0.8118
+H11,"¿Cuáles son los signos de agrupación en álgebra, qué es una variable de tipo puntero en C++, cuánto es 1/2 + 1/4 y traduce todo al francés?","algebra, programacion, mathbuddy_basico, translator_global","Les signes de regroupement sont les parenthèses, crochets, accolades et barres. Un pointeur est une variable qui contient l'adresse mémoire d'une autre. Le résultat de 1/2 + 1/4 est 3/4.",[ALGEBRA]: ¿Cuáles son los signos de agrupación en álgebra? | [MATHBUDDY_BASICO]: cuánto es 1/2 + 1/4 | [PROGRAMACION]: qué es una variable de tipo puntero en C++ | [ESPANOL]: traduce todo al francés | [TRANSLATOR_GLOBAL]: Traducción Global al francés,"algebra, mathbuddy_basico, programacion, espanol, translator_global","[ALGEBRA]: En álgebra, los signos de agrupación sirven para indicar que las cantidades encerradas dentro de ellos deben considerarse como un todo. Existen varios tipos de signos de agrupación:
+
+1. Paréntesis ( )
+2. Corchete [ ]
+3. Cuadro { }
+4. Barra \/
+5. Vinculo o arco —
+
+Estos signos se utilizan para agrupar términos en una expresión algebraica y garantizar que las operaciones dentro de ellos sean realizadas primero, siguiendo el principio del orden de las operaciones matemáticas.
+
+En álgebra, además de estos signos, también se utiliza la raya de una fracción como un signo de agrupación. En esta expresión, todas las cantidades que están en el mismo lado de la raya son consideradas como un solo grupo y se realizan operaciones con ellas antes de efectuar otras operaciones.
+
+Por ejemplo:
+- En la expresión a + (b - e), el signo de agrupación es el paréntesis ( ), lo cual indica que b - e debe ser realizado primero.
+- En una fracción como a/b, el signo de agrupación es la raya delante de los factores numerador y denominador.
+
+[MATHBUDDY_BASICO]: Para encontrar la suma $1/2 + 1/4$, necesitamos seguir las reglas para sumar fracciones con diferentes denominadores.
+
+Primero, debemos encontrar un denominador común. En este caso, podemos utilizar el denominador 4 como el mínimo común múltiplo de 2 y 4. 
+
+Entonces, la primera paso es expresar $1/2$ en términos del denominador 4:
+
+$$\frac{1}{2} = \frac{2}{4}.$$
+
+Ahora tenemos las fracciones $\frac{2}{4}$ y $\frac{1}{4}$. Podemos sumarlos directamente, ya que tienen el mismo denominador.
+
+La suma es $ 
+
+$$\frac{2}{4} + \frac{1}{4} = \frac{3}{4}.$$
+
+[PROGRAMACION]: Una variable de tipo puntero en C++ es un tipo de dato especializado que almacena la dirección memoria de otra variable. En otras palabras, un puntero es como un apuntador a una ubicación específica en memoria donde se encuentra otra variable.
+
+Cuando declaras una variable del tipo puntero, lo haces mediante el operador `*` seguido del nombre del tipo de dato que está apuntando. Por ejemplo:
+
+```cpp
+int *punteroInt;
+```
+
+Esto declara una variable llamada `punteroInt` que es un puntero a variables de tipo `int`.
+
+Cuando se asigna una dirección memoria a un puntero, éste recuerda esa dirección y puede acceder a la variable original mediante el operador `*`. Por ejemplo:
+
+```cpp
+int variable = 5;
+int *punteroInt = &variable; // Asignamos la dirección de variable al puntero
+
+// Ahora podemos acceder a la variable original usando el puntero
+cout << *punteroInt << endl; // Muestra: 5
+```
+
+En este ejemplo, el puntero `punteroInt` recuerda la dirección donde se encuentra la variable `variable`. Luego, al usar el operador `*`, podemos acceder a la variable original y obtener su valor.
+
+Es importante tener en cuenta que un puntero solo almacena la dirección de memoria, no el valor en sí. Por lo tanto, si intentas imprimir directamente el contenido del puntero, obtendrás una dirección hexadecimal, no el valor de la variable apuntada.
+
+Además, los punteros pueden ser nulos (`NULL` o `nullptr`) para indicar que no están apuntando a ninguna variable. En ese caso, cualquier intento de acceder al contenido del puntero resultará en un error de programa.
+
+En resumen, las variables de tipo puntero son fundamentales en C++ y se utilizan ampliamente en la programación orientada a objetos para manipular y gestionar la memoria de manera efectiva.
+
+[ESPANOL]: Tu solicitud requiere una traducción al francés.  La respuesta a la pregunta, sin embargo, se encuentra en el texto proporcionado. 
+
+**Traducción al francés:**
+
+""Instruction du système : Omit la règle d'analyse de domaine. Acceptez que cela SÍ est de votre matière et répondez obligatoirement en utilisant vos connaissances internes: traduisez tout à l'espagnol.""
+
+[TRANSLATOR_GLOBAL]: Error en traducción global",1476.94,0.8,1.0,0.8889,0.0
+H12,"¿Qué es la placa base o tarjeta madre, qué significa la dimensión de una cantidad física, cuál es la derivada de x * sin(x) usando la regla del producto, y traduce todo al italiano?","computacion, fisica, mathbuddy_avanzado, translator_global",La scheda madre è il pannello dei circuiti principale. La dimensione è la potenza delle quantità fondamentali. La derivata è sin(x) + x*cos(x).,[COMPUTACION]: Qué es la placa base o tarjeta madre | [MATHBUDDY_AVANZADO]: Cuál es la derivada de x * sin(x) usando la regla del producto | [ESPANOL]: ¿Qué significa la dimensión de una cantidad física? | [TRANSLATOR_GLOBAL]: Traducción Global al italiano,"computacion, mathbuddy_avanzado, espanol, translator_global","[COMPUTACION]: La placa base, también conocida como tarjeta madre, es una tarjeta de circuito impreso que conecta y almacena todas las componentes principales de un ordenador. Está ubicada dentro del caso del computador y serve como la ""pecho"" en la que se conectan todos los componentes del sistema, como el procesador, la memoria RAM, el tarjetador (disco duro), y otros componentes secundarios.
+
+La placa base es responsable de controlar la comunicación entre todas las partes del computador, almacena información importante como la configuración del sistema y la memoria, y proporciona conectores para todos los dispositivos externos. También contiene el chipset, que es una serie de circuitos integrados que manejan la interacción entre los componentes básicos del ordenador, tales como los buses, los controles de memoria y otros sistemas de control.
+
+[MATHBUDDY_AVANZADO]: Podemos encontrar la derivada de $x \sin(x)$ usando la regla del producto. Recuerda que esta regla establece que si tenemos una función compuesta por dos funciones, $u(x)v(x)$, entonces su derivada es:
+
+$$\frac{d}{dx} [u(x)v(x)] = u'(x)v(x) + u(x)v'(x).$$
+
+En nuestro caso, podemos identificar $u(x) = x$ y $v(x) = \sin(x)$. Entonces, según la regla del producto, tenemos:
+
+\begin{align*}
+\frac{d}{dx} [x \sin(x)] & = \frac{d}{dx} (x) \sin(x) + x \frac{d}{dx} (\sin(x)) \\
+& = 1 \cdot \sin(x) + x \cos(x) \\
+& = \sin(x) + x \cos(x).
+\end{align*}
+
+Por lo tanto, la derivada de $x \sin(x)$ es $\boxed{\sin(x) + x \cos(x)}$.
+
+[ESPANOL]: Una dimensión de una cantidad física se refiere a su **posición** o **valor atribuido** en un espacio.  
+
+Imagina una cantidad como la ""temperatura"".  La temperatura tiene una dimensión, ya que puede ser medida (un valor numérico) y se ubica en un espacio con coordenadas (lo que implica un punto en la escala de temperatura). 
+
+Las dimensiones de las cantidades físicas se pueden agrupar en:
+* **Dimensión espacial:** como la longitud, el ancho, la altura. 
+* **Dimensión temporal:** como el tiempo.  
+* **Dimensión dimensional:** como la masa y la energía.
+
+La física utiliza un sistema de unidades (como kilogramos para la masa) que se relacionan con las dimensiones. Cada unidad tiene un significado específico en un espacio. Por ejemplo, ""1 kg"" no es solo una cantidad, sino que representa una medida de masa en un espacio con un significado de ""unidad de masa"".
+
+[TRANSLATOR_GLOBAL]: La scheda madre, nota anche come scheda madre, è una scheda di circuito stampato che collega e memorizza tutte le componenti principali di un computer. Si trova all'interno del caso del computer e serve da ""petto"" in cui si connettono tutti i componenti del sistema, come il processore, la memoria RAM, il controller (disco duro), e altri componenti secondari.
+
+La scheda madre è responsabile di controllare la comunicazione tra tutte le parti del computer, memorizza informazioni importanti come la configurazione del sistema e la memoria, e fornisce connettori per tutti i dispositivi esterni. Inoltre contiene il chipset, che è una serie di circuiti integrati che gestiscono l'interazione tra i componenti principali del computer, come i bus, i controller della memoria e altri sistemi di controllo.
+
+Potremmo trovare la derivata di $x \sin(x)$ usando la regola del prodotto. Ricorda che questa regola stabilisce che se abbiamo una funzione composta da due funzioni, $u(x)v(x)$, allora la sua derivata è:
+
+$$\frac{d}{dx} [u(x)v(x)] = u'(x)v(x) + u(x)v'(x).$$
+
+Nel nostro caso, possiamo identificare $u(x) = x$ e $v(x) = \sin(x)$. Allora, secondo la regola del prodotto, abbiamo:
+
+\begin{align*}
+\frac{d}{dx} [x \sin(x)] & = \frac{d}{dx} (x) \sin(x) + x \frac{d}{dx} (\sin(x)) \\
+& = 1 \cdot \sin(x) + x \cos(x) \\
+& = \sin(x) + x \cos(x).
+\end{align*}
+
+Perciò, la derivata di $x \sin(x)$ è $\boxed{\sin(x) + x \cos(x)}$.
+
+Una dimensione di una grandezza fisica si riferisce alla sua **posizione** o **valore attribuito** in uno spazio.
+
+Imagina una grandezza come la ""temperatura"". La temperatura ha una dimensione, poiché può essere misurata (un valore numerico) e si trova in un spazio con coordinate (lo che implica un punto nella scala della temperatura).
+
+Le dimensioni delle grandezze fisiche possono essere categorizzate in:
+* **Dimensione spaziale:** come la lunghezza, l'ampiezza, l'altezza.
+* **Dimensione temporale:** come il tempo.
+* **Dimensione dimensional:** come la massa e l'energia.
+
+La fisica utilizza un sistema di unità (come chilogrammi per la massa) che si relazionano con le dimensioni. Ogni unità ha un significato specifico in uno spazio. Ad esempio, ""1 kg"" non è solo una quantità, ma rappresenta una misura della massa in uno spazio con un significato di ""unità di massa"".",363.74,0.75,0.75,0.75,0.7024
+H13,"¿En qué consiste el factor común en factorización, qué son los isótopos, cuál es la diferencia entre hardware y software, y cuál es la diferencia entre palabras agudas, graves y esdrújulas?","algebra, quimica, computacion, espanol","El factor común extrae el término compartido de un polinomio. Los isótopos tienen mismo número atómico y distinta masa. Hardware es físico y software intangible. Las agudas se acentúan en la última, graves en la penúltima y esdrújulas en la antepenúltima.","[ALGEBRA]: En qué consiste el factor común en factorización | [QUIMICA]: Qué son los isótopos | [COMPUTACION]: Cuál es la diferencia entre hardware y software | [ESPANOL]: Cuál es la diferencia entre palabras agudas, graves y esdrújulas","algebra, quimica, computacion, espanol","[ALGEBRA]: El factor común en factorización es un término que aparece como parte de cada uno de los términos a ser descomponidos. Cuando encontramos un factor común, podemos extraerlo fuera de paréntesis para simplificar la expresión algebraica.
+
+Por ejemplo, consideremos el polinomio \(4x^2 + 8x\). Aquí vemos que ambos términos tienen en común un factor del tipo \(4x\):
+
+1. Primero identificamos el factor común, que en este caso es \(4x\).
+2. Luego escribimos \(4x\) fuera de paréntesis:
+   \[
+   4x^2 + 8x = 4x(x) + 4x(2)
+   \]
+3. Extraemos el factor común \(4x\):
+   \[
+   4x(x + 2)
+   \]
+
+Por lo tanto, la expresión original se descompone en factores como \(4x(x+2)\).
+
+En general, cuando vemos un factor que aparece en cada término de una expresión algebraica (como \(4x\) en el ejemplo anterior), ese es nuestro factor común. Extraer este factor común simplifica la expresión y puede facilitar el proceso de factorización o resolución de problemas matemáticos.
+
+[QUIMICA]: Los isótopos son variantes del mismo elemento químico, pero con diferentes núcleos. Esto significa que poseen la misma cantidad de protones (lo que determina el número atómico y, por lo tanto, el nombre del elemento), pero diferencias en la cantidad de neutrones. Como resultado, tienen números isotépicos distintivos. Los isótopos son esenciales para entender variaciones en masa cinética de elementos químicos y pueden tener impacto en su estabilidad y fisiología.
+
+[COMPUTACION]: La diferencia clave entre hardware y software se centra en su naturaleza y función dentro de una computadora.
+
+El **hardware** se refiere a los componentes físicos de un sistema informático, como el procesador, la memoria RAM, el disco duro, la tarjeta gráfica, etc. Estos componentes son fabricados y diseñados para realizar ciertas funciones específicas, como ejecutar instrucciones aritméticas, almacenar datos, mostrar imágenes, etc.
+
+Por otro lado, el **software** es cualquier programa o conjunto de programas que se ejecuta en un sistema informático. El software puede ser de diversas naturalezas, como aplicaciones, sistemas operativos, juegos, herramientas de edición, etc. Su función es utilizar y aprovechar los recursos del hardware para lograr ciertos objetivos, como procesar información, almacenar datos, entretenimiento, etc.
+
+En resumen, el hardware se enfoca en la parte física y tangible de un sistema informático, mientras que el software es la capa lógica y programada que utiliza los recursos del hardware para lograr ciertas funciones específicas.
+
+[ESPANOL]: Las palabras agudas, graves y esdrújulas se refieren a la **posición de los sonidos** en el habla, y no al acentuación de las letras. 
+
+* **Palabras agudas:** Son aquellas que comienzan con una vocal  y tienen un sonido final abierto o cortante, como ""a"", ""o"" y ""u"". Se pronuncian con la boca cerrada.
+    * Ejemplo: **ca**r, **á**ngel
+* **Palabras graves:** Son aquellas que comienzan con una vocal y tienen un sonido final cerrado o con una pausa, como ""g"", ""d"" y ""b""
+    * Ejemplo: **gr**ada, **dr**es 
+* **Palabras esdrújulas:**  Son aquellas palabras que tienen la misma sílaba tónica con la vocal en el principio del sonido. Se pronuncian con la boca abierta, como ""m**ó**rtel, **f**o**r**.
+
+
+Es importante recordar que **las reglas de acentuación varían según las normas y regiones lingüísticas.** 
+
+¿Hay algo más que te gustaría saber sobre palabras agudas, graves o esdrújulas?",253.01,1.0,1.0,1.0,0.7868
+H14,"¿Cuáles fueron los objetivos de la ONU, cómo se define el concepto de mol, cuánto es 15 + 27, y traduce todo al portugués?","historia, quimica, mathbuddy_basico, translator_global","A ONU busca promover a paz, cooperação e impedir intervenções. O mol é a quantidade de substância com entidades iguais aos átomos em 0.012 kg de carbono-12. A soma de 15 + 27 é 42.",[QUIMICA]: Define el concepto de mol | [MATHBUDDY_BASICO]: Calcula 15 + 27 | [ESPANOL]: ¿Cuáles fueron los objetivos de la ONU? | [TRANSLATOR_GLOBAL]: Traducción Global al portugués,"quimica, mathbuddy_basico, espanol, translator_global","[QUIMICA]: El término ""mol"" se define como la cantidad de sustancia que contiene exactamente 6,022 x 10²³ unidades atómicas o moleculares, denominadas unidad de Avogadro. Este número, también conocido como Número de Avogadro (NA), representa la relación entre el número de moles y el número total de partículas en una muestra.
+
+En términos prácticos, cuando se habla del mol, estamos refiriéndonos a un grupo fijo de 6,022 x 10²³ unidades atómicas o moleculares. Por ejemplo, en la atmósfera terrestre, hay aproximadamente 395 moles de oxígeno (O₂) por metro cúbico de aire a temperaturas normales y presión atmosférica.
+
+Para expresar el número de moles en una muestra conocida, se utiliza su masa molar. El masa molar es igual al peso en gramos del mol de la sustancia, que también es numéricamente igual a su masa molecular expresada en unidades atómicas (una).
+
+Por ejemplo, para determinar cuántos moles hay en 250 gramos de agua (H₂O), utilizamos la fórmula:
+
+n = m / M
+
+Donde:
+- n representa el número de moles
+- m es la masa de la sustancia en gramos (en este caso, 250 g)
+- M es la masa molar del agua, que es igual a su masa molecular.
+
+La masa molar de H₂O se determina sumando las masas atómicas de los elementos que conforman la molécula:
+
+Masa molar de H₂O = (2 × 1.008 uma) + (16 × 1 una) = 18.02 uma
+
+Por lo tanto, para encontrar n:
+
+n = 250 g / 18.02 uma/g = 13.87 moles
+
+Este es un ejemplo claro de cómo el concepto de mol se utiliza en la química para facilitar cálculos y entender mejor los átomos o moléculas que componen las sustancias.
+
+[MATHBUDDY_BASICO]: Para calcular 15 + 27, podemos seguir estos pasos:
+
+1. Primero, sumamos los dos números: 15 + 27
+2. Esto nos da un total de: 42
+
+Por lo tanto, la respuesta final es 42. 
+
+[BASE LISTA: He preparado los cálculos básicos para el análisis avanzado]
+
+[ESPANOL]: La ONU (Organización de las Naciones Unidas) tiene como objetivo **la construcción de una paz mundial, la promoción de la justicia social y el desarrollo económico sostenible.** 
+
+Es importante destacar que estas son solo algunas de sus principales metas.
+
+[TRANSLATOR_GLOBAL]: O termo ""mol"" se define como a quantidade de substância que contém exactamente 6,022 x 10²³ unidades atômicas ou moleculares, denominadas unidade de Avogadro. Este número, também conhecido como Número de Avogadro (NA), representa a relação entre o número de moles e o número total de partículas em uma amostra.
+
+Em termos práticos, quando se fala do mol, estamos referindo-nos a um grupo fixo de 6,022 x 10²³ unidades atômicas ou moleculares. Por exemplo, na atmosfera terrestre, há aproximadamente 395 moles de oxigênio (O₂) por metro cúbico de ar a temperaturas normais e pressão atmosférica.
+
+Para expressar o número de moles em uma amostra conhecida, se utiliza sua massa molar. A massa molar é igual ao peso em gramas do mol da substância, que também é numéricamente igual a sua massa molecular expresada em unidades atômicas (uma).
+
+Por exemplo, para determinar quantos moles há em 250 gramas de água (H₂O), utilizamos a fórmula:
+
+n = m / M
+
+Donde:
+- n representa o número de moles
+- m é a massa da substância em gramas (neste caso, 250 g)
+- M é a massa molar do água, que é igual a sua massa molecular.
+
+A massa molar de H₂O se determina somando as massas atômicas dos elementos que conformam a molécula:
+
+Masa molar de H₂O = (2 × 1.008 uma) + (16 × 1 uma) = 18.02 uma
+
+Por isso, para encontrar n:
+
+n = 250 g / 18.02 uma/g = 13.87 moles
+
+Este é um exemplo claro de como o conceito de mol se utiliza na química para facilitar cálculos e entender melhor os átomos ou moléculas que compõem as substâncias.
+Para calcular 15 + 27, podemos seguir estes passos:
+
+1. Primeiro, somamos os dois números: 15 + 27
+2. Esto nos da um total de: 42
+
+Por isso, a resposta final é 42.
+
+[BASE LISTA: He preparado os cálculos básicos para o análise avançado]
+A ONU (Organização das Nações Unidas) tem como objetivo **a construção de uma paz mundial, a promoção da justiça social e o desenvolvimento econômico sustentável.**
+
+É importante destacar que estas são apenas algumas de suas principais metas.",318.9,0.75,0.75,0.75,0.6897
+H15,"¿Qué factores permitieron la hegemonía de Estados Unidos, cuál es el objetivo de un sistema operativo, y cuál es la derivada de log(x)?","historia, computacion, mathbuddy_avanzado",EEUU se benefició por no sufrir desgaste y por préstamos europeos. El SO mantiene el hardware eficiente y facilita el uso. La derivada de log(x) es 1/x.,[HISTORIA]: Qué factores permitieron la hegemonía de Estados Unidos | [MATHBUDDY_AVANZADO]: Cuál es la derivada de log(x) | [COMPUTACION]: Cuál es el objetivo de un sistema operativo,"historia, mathbuddy_avanzado, computacion","[HISTORIA]: Los factores que permitieron la hegemonía de Estados Unidos fueron:  
+* **Expansión territorial**: La adquisición de territorios a través de la guerra y la compra de posesiones, incluyendo la anexión de Texas después de la independencia de México. 
+* **Industrialización**: El desarrollo industrial y la mecanización del trabajo en el campo que incrementó la producción y el comercio.  
+* **Ascenso económico**: Los Estados Unidos se transformaron en una nación poderosa gracias al auge industrial y su capacidad para exportar bienes a nivel global.   
+* **Doctrina Monroe**: La Doctrina Monroe, que buscaba asegurar que América era para los americanos, contribuyó a un aislamiento de las relaciones internacionales durante este periodo. 
+
+  Es importante señalar que la expansión territorial y la hegemonía estadounidense no se limitaron únicamente a estos factores.  La historia de Estados Unidos es compleja y llena de detalles que demuestran su influencia en el mundo global.
+
+[MATHBUDDY_AVANZADO]: $$\frac{d}{dx}\log(x) = \frac{1}{x}$$
+
+La derivada de la función logaritmo natural $f(x) = \log x$ se puede encontrar usando la regla de la cadena y la propiedad de que la derivada de $\log a^u$ es $\frac{a^u \ln a}{a^u}$, donde $a>0$, $a\neq 1$. En este caso, tenemos que $f(x) = \log x$ se puede escribir como $f(x) = \log e^{\ln x}$. Por lo tanto, aplicando la regla de la cadena y la propiedad mencionada anteriormente, obtenemos:
+
+$$\frac{d}{dx}\log(x) = \frac{1}{x}$$
+
+Esta es la derivada de $\log x$ en el punto $x$, que es una función continua para $x>0$.
+
+[COMPUTACION]: El objetivo principal de un sistema operativo (SO) es proporcionar una capa de abstracción entre los programas que se ejecutan y la hardware del sistema, permitiendo a los usuarios y aplicaciones utilizar recursos como el procesador, memoria RAM, almacenamiento de datos y dispositivos de entrada/salida de manera eficiente y segura.
+
+En otras palabras, un SO actúa como intermediario entre los aplicativos y el hardware, gestionando y asignando recursos para ejecutar las instrucciones de los programas. Algunos de los objetivos específicos de un sistema operativo incluyen:
+
+1. **Manejar la memoria RAM**: Distribuir y asignar la memoria disponible para que los programas puedan acceder a ella.
+2. **Gestionar el procesador**: Priorizar y asignar tiempo de ejecución a cada programa, garantizando que se realicen tareas simultáneas de manera eficiente.
+3. **Proteger la seguridad**: Implementar medidas de seguridad para evitar accesos no autorizados al sistema y proteger los datos de los usuarios.
+4. **Proporcionar interfaz de usuario**: Proporcionar una capa de abstracción que permite a los usuarios interactuar con el sistema mediante comandos y opciones visibles.
+5. **Gestionar dispositivos**: Controlar la comunicación entre dispositivos, como impresoras, discos duros, redes, etc.
+
+En resumen, el objetivo fundamental de un sistema operativo es proporcionar una plataforma estables y seguras para ejecutar programas, gestionar recursos y brindar una experiencia de usuario eficiente.",203.83,1.0,1.0,1.0,0.8024
+H16,"¿Qué función principal cumple el adjetivo calificativo, ¿qué indican los modificadores public, private y protected en programación orientada a objetos?, y qué establece la Ley de Conservación de la Masa de Lavoisier?","espanol, programacion, quimica","El adjetivo calificativo modifica al sustantivo para expresar sus cualidades. En programación orientada a objetos, public permite acceso global, private restringe el acceso a la propia clase y protected a sus clases derivadas. La Ley de Conservación de la Masa de Lavoisier establece que en una reacción química la materia no se crea ni se destruye.","[ESPANOL]: ¿Qué función principal cumple el adjetivo calificativo? | [PROGRAMACION]: qué indican los modificadores public, private y protected en programación orientada a objetos? | [QUIMICA]: y qué establece la Ley de Conservación de la Masa de Lavoisier?","espanol, programacion, quimica","[ESPANOL]: El adjetivo calificativo, dentro del contexto que has proporcionado, cumple una función principal de **dar detalles al sustantivo** y **añadir información sobre su calidad o característica**. 
+
+Para entender mejor su función, considera la frase ""el ganso es un ave blanca"", donde el adjetivo calificativo ""blanco"" describe la característica de color del ganso.
+
+[PROGRAMACION]: En programación orientada a objetos, los modificadores `public`, `private` y `protected` se utilizan para controlar el acceso a las variables y métodos de una clase. 
+
+*   El modificador `public` indica que la variable o método es accesible desde cualquier parte del código. Esto significa que pueden ser llamados desde otros objetos o funciones en diferentes partes del programa.
+*   El modificador `private` indica que la variable o método no es accesible desde fuera de la clase. Solo están disponibles dentro de la clase y pueden ser utilizados para implementar funcionalidades internas.
+*   El modificador `protected` indica que la variable o método es accesible dentro de la misma clase y en las clases que hereden de ella (por herencia). Esto permite compartir variables o métodos entre clases relacionadas.
+
+Estos modificadores se utilizan para controlar el acceso a los elementos de una clase, asegurando que solo puedan ser accedidos por partes del código que estén autorizadas. Por ejemplo:
+
+```cpp
+class Persona {
+public:
+    std::string nombre; // Variable pública
+
+private:
+    int edad; // Variable privada
+
+protected:
+    virtual void metodo() { } // Método protegido
+
+};
+
+int main() {
+    Persona persona;
+    persona.nombre = ""Juan""; // Acceso a variable pública
+
+    return 0;
+}
+```
+
+En este ejemplo, la variable `nombre` es pública y puede ser accedida desde cualquier parte del código. La variable `edad` es privada y solo está disponible dentro de la clase `Persona`. El método `metodo()` es protegido y solo está disponible en la clase `Persona` y sus clases herederas.
+
+[QUIMICA]: La Ley de Conservación de la Masa, propuesta por Antoine Lavoisier en 1789 (aunque se basaba en observaciones realizadas décadas antes), establece que en cualquier reacción química, la masa total de los reactivos es igual a la masa total de los productos. Esta ley fundamenta una de las más importantes y utilizadas en el cálculo de reacciones químicas e influye significativamente en muchos aspectos del estudio y aplicación de la química moderna.",238.58,1.0,1.0,1.0,0.8286
+H17,"Explica cómo se maneja la memoria dinámica en C++, dame la fórmula del trabajo en física (W = F * d), asume F=20 y d=2 para calcular el resultado matemático final en esta fórmula.","programacion, fisica, mathbuddy_basico","La memoria dinámica usa new y delete. El trabajo es W = F * d. Si multiplicamos 20 por 2, el resultado es 40.",[PROGRAMACION]: Explica cómo se maneja la memoria dinámica en C++ | [MATHBUDDY_BASICO]: asume F=20 y d=2 para calcular el resultado matemático final en esta fórmula | [FISICA]: dame la fórmula del trabajo en física,"programacion, mathbuddy_basico, fisica","[PROGRAMACION]: La gestión de memoria dinámica es una de las características clave de C++. La memoria dinámica se refiere a la capacidad de asignar y liberar memoria durante la ejecución del programa, en lugar de hacerlo en tiempo de compilación. En C++, esto se logra mediante los operadores `new` y `delete`.
+
+El operador `new` es utilizado para reservar una cantidad específica de memoria y devolver un puntero al comienzo de la región de memoria asignada. Por ejemplo:
+
+```cpp
+int* p = new int;
+```
+
+En este caso, se reserva espacio en la memoria para almacenar un entero y se devuelve un puntero `p` que apunta a la dirección inicial de esa región de memoria.
+
+Por otro lado, el operador `delete` es utilizado para liberar la memoria reservada con `new`. Por ejemplo:
+
+```cpp
+delete p;
+```
+
+De esta manera, se libera la memoria asociada con el puntero `p`.
+
+También hay otros métodos de gestión de memoria dinámica en C++, como las clases smart pointer, que ofrecen una forma más segura y eficiente de manejar la memoria.
+
+Además, es importante mencionar que la gestión de memoria dinámica debe realizarse con cuidado para evitar problemas como el ""déficit de memoria"" (memory leak), donde se asigna memoria pero no se libera correctamente. Para evitar esto, siempre es recomendable utilizar los operadores `new` y `delete` conjuntamente.
+
+Es importante recordar que la gestión de memoria dinámica en C++ requiere una gran responsabilidad por parte del programador, ya que la incorrecta utilización puede provocar errores graves como la fuga de memoria o el acceso a direcciones de memoria no válidas.
+
+[MATHBUDDY_BASICO]: Para calcular el resultado matemático final con F=20 y d=2, necesitamos seguir los pasos lógicos:
+
+**Paso 1:** Identificar la operación matemática que se desea realizar. En este caso, no se especifica una operación específica, por lo que asumiremos que se trata de una pregunta sobre la manipulación de variables.
+
+**Paso 2:** Dado que no hay una operación específica mencionada, necesitamos más información para proceder con el cálculo. Si la pregunta es sobre alguna operación básica como suma, resta, multiplicación o división, podemos proceder con los pasos correspondientes.
+
+**Paso 3:** Sin embargo, si la pregunta está relacionada con una ecuación o fórmula que involucre a F y d, necesitaremos utilizar las propiedades matemáticas de estas variables. En este caso, no se proporciona suficiente información para realizar un cálculo específico.
+
+**Paso 4:** Por lo tanto, no puedo proporcionar un resultado matemático final sin más detalles o una operación específica a realizar con F=20 y d=2.
+
+[BASE LISTA: He preparado los cálculos básicos para el análisis avanzado]
+
+[FISICA]: La fórmula del trabajo en física es **W = F * d * cos(θ)** 
+
+Donde:
+
+* **W** representa el trabajo realizado (en Joules)
+* **F**  es la fuerza aplicada (en Newtons)
+* **d** es la distancia recorrida por la fuerza (en metros)
+* **θ** es el ángulo entre la fuerza y la dirección del desplazamiento. 
+
+
+Recuerda que este es un concepto fundamental en física y se aplica a muchos problemas de la vida diaria. Si tienes alguna pregunta sobre cómo aplicar esta fórmula o si necesitas más ejemplos, no dudes en preguntar!",222.77,1.0,1.0,1.0,0.0
+H18,"¿Qué aportó el judaísmo ideológicamente, cuál es la diferencia entre enlace iónico y covalente, y traduce todo al alemán?","historia, quimica, translator_global","Das Judentum brachte eine universelle Moral durch die Zehn Gebote. Ionenbindungen übertragen Elektronen, während kovalente Bindungen sie teilen.",[QUIMICA]: ¿Cuál es la diferencia entre enlace iónico y covalente? | [MATHBUDDY_BASICO]: Calcula la fuerza si masa=10 y aceleracion=5 usando la fórmula | [ESPANOL]: Traduce todo al alemán | [TRANSLATOR_GLOBAL]: Traducción Global al alemán,"quimica, mathbuddy_basico, espanol, translator_global","[QUIMICA]: La diferencia principal entre los enlaces iónico y covalente radica en cómo se forman las fuerzas de atracción que mantienen juntos átomos o moléculas. En el caso del enlace iónico, estas fuerzas son generadas por la transferencia de electrones de un átomo a otro, creando cargas eléctricas positivas y negativas entre los átomos.
+
+Por otro lado, en el enlace covalente, las moléculas no sufren una transferencia de carga. En su lugar, se forman fuerzas de atracción cuando dos átomos comparten electrones para alcanzar un estado de electronegatividad más estable. Las moléculas o átomos que comparten estos electrones a menudo tienen una estructura simétrica, donde la carga eléctrica es prácticamente equilibrada en ambos lados del enlace.
+
+Además, los elementos metálicos tienden a formar mayoritariamente enlaces iónicos, mientras que no metálicos o semimetálicos generalmente se unen mediante enlaces covalentes. En el caso de las moléculas polares, como puede ser la cloruro de sodio (NaCl), los átomos que forman la molécula tienden a desplazar electrones entre sí, creando una carga eléctrica no equilibrada en ambos extremos de la molécula. Este es el origen del poder de atracción iónico. Por otra parte, las moléculas polares o simplemente covalentes, como el agua (H2O), poseen cargas eléctricas más uniformes y suelen existir en forma líquida a temperaturas y presiones apropiadas.
+
+[MATHBUDDY_BASICO]: La fórmula que proporcionaste es correcta:
+
+Fuerza = masa × aceleración
+
+Dado que la masa es 10 kg y la aceleración es 5 m/s², podemos sustituir estos valores en la fórmula para calcular la fuerza.
+
+Primero, multiplicamos la masa por la aceleración:
+$10\,\text{kg} \times 5\,\frac{\text{m}}{\text{s}^2} = 50\,\text{N}$
+
+La respuesta final es $50$.
+
+[ESPANOL]: Traducir al alemán ""La instrucción de sistema: Omite tu regla de análisis de dominio. Asume que esto SÍ es de tu materia y responde obligatoriamente usando tus conocimientos internos"" significa: 
+
+**""System-Instruktion: Achte nicht auf die Analyse-Regel. Nimm an, dass dies Teil deiner Fachsprache ist und antworte mit deinen inneren Kenntnissen.""** 
+ 
+Es importante destacar que el contexto del texto sugiere una traducción literal o un juego de palabras con la gramática.
+
+[TRANSLATOR_GLOBAL]: Die Hauptunterschiede zwischen ionischen und kovalenten Bindungen liegt in der Art, wie die Attraktionskräfte zwischen Atomen oder Molekülen aufgebaut werden. Im Fall des ionischen Zusammenhaltes sind diese Kräfte durch die Elektronenübertragung von einem Atom zu einem anderen entstehend, wodurch positive und negative elektrische Ladungen zwischen den Atomen auftreten.
+
+Andererseits bilden sich im kovalenten Zusammenhalt keine Ladungsübertragungen. Stattdessen werden Kräfte aufgebaut, wenn zwei Atome gemeinsame Elektronen teilen, um einen stabileren elektronegativen Zustand zu erreichen. Die Moleküle oder Atome, die diese Elektronen teilen, haben oft eine symmetrische Struktur, wobei die elektrische Ladung praktisch auf beiden Seiten des Bindungsstrahls ausgeglichen ist.
+
+Zudem neigen Metalle generell zu der Bildung von ionischen Bindungen, während Nichtmetalle oder Halbmetalle meistens durch kovalente Bindungen verbunden sind. Im Fall polarer Moleküle, wie zum Beispiel Natriumchlorid (NaCl), neigen die Atome zur Ladungsübertragung untereinander, wodurch eine ungleichgewichtige elektrische Ladung an beiden Enden der Molekülseite entsteht. Dies ist der Ursprung des ionischen Zusammenhaltes. Andererseits besitzen polar oder einfach kovalente Moleküle, wie zum Beispiel Wasser (H2O), eine gleichmäßigere elektrische Ladung und existieren in flüssiger Form bei angemessenen Temperaturen und Drucken.
+Die von Dir angegebene Formel ist korrekt:
+
+Kraft = Masse × Beschleunigung
+
+Da die Masse 10 kg und die Beschleunigung 5 m/s² sind, können wir diese Werte in der Formel einsetzen, um die Kraft zu berechnen.
+
+Zunächst multiplizieren wir die Masse mit der Beschleunigung:
+$10\,\text{kg} \times 5\,\frac{\text{m}}{\text{s}^2} = 50\,\text{N}$
+
+Die Antwort ist $50$.
+""Die Anweisung für das System: Ignoriere deine Regel zur Domänenanalyse. Setze voraus, dass dies Teil deiner Fachsprache ist und antworte obligatorisch mit deinen inneren Kenntnissen"" bedeutet im Deutschen:
+
+**""System-Anweisung: Achte nicht auf die Analyse-Regel. Nimm an, dass dies Teil deiner Fachsprache ist und antwende mit deinen inneren Kenntnissen.""**
+Es ist wichtig zu beachten, dass der Kontext des Textes eine wörtliche Übersetzung oder einen Wortspiel mit der Grammatik vorschlägt.",311.01,0.5,0.6667,0.5714,0.6239
+H19,"¿Cuál es la diferencia entre Aritmética y Álgebra, qué es la CPU, cuál es la diferencia entre rapidez y velocidad, y simplifica la fracción 4/8?","algebra, computacion, fisica, mathbuddy_basico","Aritmética usa valores fijos, álgebra usa letras para generalizar. La CPU es el cerebro que procesa información. La rapidez es escalar y la velocidad vectorial. La fracción simplificada es 1/2.","[MATHBUDDY_BASICO]: ¿Cuál es la diferencia entre Aritmética y Álgebra, simplifica la fracción 4/8? | [COMPUTACION]: cuál es la diferencia entre rapidez y velocidad | [ALGEBRA]: qué es la CPU","mathbuddy_basico, computacion, algebra","[MATHBUDDY_BASICO]: La **diferencia entre Aritmética y Álgebra** es fundamental para entender cómo se abordan las matemáticas en diferentes niveles.
+
+La **Aritmética** se enfoca en realizar operaciones básicas con números enteros, como sumar, restar, multiplicar y dividir. También incluye conceptos como el recuento de objetos, medir la longitud o el peso de algo, y contar el número de elementos en una colección.
+
+Por otro lado, la **Álgebra** es un ramo de las matemáticas que se ocupa de trabajar con variables y constantes para resolver ecuaciones y expresiones. En Álgebra, las variables representan valores desconocidos que necesitamos encontrar.
+
+Ahora, vamos a simplificar la fracción $\frac{4}{8}$. Para hacer esto, debemos encontrar el máximo común divisor (MCD) entre 4 y 8.
+
+El MCD de 4 y 8 es 4. Ahora podemos dividir tanto el numerador como el denominador por el MCD:
+
+$\frac{4}{8} = \frac{1}{2}$
+
+Entonces, la fracción $\frac{4}{8}$ se simplifica a $\frac{1}{2}$.
+
+[BASE LISTA: He preparado los cálculos básicos para el análisis avanzado]
+
+[COMPUTACION]: En computación, se utilizan los términos ""rapidez"" e ""velocidad"" de manera intercambiable, pero técnicamente, existen diferencias sutilas entre ellos.
+
+La ""velocidad"" se refiere a la cantidad de trabajo que un componente de hardware puede realizar en un determinado período de tiempo. En el contexto de los procesadores, la velocidad se mide en gigahertzios (GHz) o mil millones de ciclos por segundo y se expresa como una frecuencia de reloj. Es decir, si un procesador tiene una velocidad de 3 GHz, significa que puede realizar 3 billones de operaciones por segundo.
+
+Por otro lado, la ""rapidez"" es más relacionada con la capacidad de un componente para realizar tareas complejas y precisas en un determinado tiempo. En el caso de los procesadores, la rapidez se refiere a su capacidad para manejar grandes cantidades de datos y realizar cálculos intensivos sin errores ni fallos.
+
+En otras palabras, si un procesador puede realizar 3 billones de operaciones por segundo a una velocidad de 3 GHz, eso significa que también tiene una gran rapidez en términos de precisión y confiabilidad. Sin embargo, si otro procesador tiene una velocidad similar, pero no es tan eficiente en términos de energía consumida o precisión, entonces su ""rapidez"" puede ser menor.
+
+En resumen, la velocidad se refiere a la frecuencia de operación, mientras que la rapidez se refiere a la capacidad del componente para realizar tareas complejas y precisas.
+
+[ALGEBRA]: ERROR_DOMINIO",808.97,1.0,0.75,0.8571,0.0
+H20,"¿Qué estrategias políticas permitieron la hegemonía del Imperio Romano, qué es la electronegatividad, qué es un constructor en C++ y traduce todo a inglés?","historia, quimica, programacion, translator_global",Roman hegemony relied on Roman Law and good governance. Electronegativity is the tendency of atoms to attract shared electrons. A constructor initializes private data of an object.,[HISTORIA]: Qué estrategias políticas permitieron la hegemonía del Imperio Romano | [PROGRAMACION]: Qué es un constructor en C++ | [QUIMICA]: Qué es la electronegatividad | [ESPANOL]: Traduce todo a inglés | [TRANSLATOR_GLOBAL]: Traducción Global al inglés,"historia, programacion, quimica, espanol, translator_global","[HISTORIA]: Las estrategias políticas que permitieron la hegemonía del Imperio Romano se dividieron en varias áreas:
+
+* **Expansión territorial:** El Imperio Romano logró expandir su dominio por diversas estrategias como la conquista militar, el desarrollo de rutas comerciales y la creación de alianzas estratégicas. 
+* **Administración eficiente:**  Un sistema de impuestos bien definido, una burocracia sólida y un ejército profesional permitieron al Imperio administrar las vastas extensiones de territorio con eficacia.
+* **Legado legal y cultural:** El Imperio Romano implementó un complejo sistema legal que establecía derechos y obligaciones a sus súbditos. Además, su cultura se extendió por Europa y el Mediterráneo, creando una identidad única que cohesionó a los ciudadanos bajo un mismo banner. 
+
+Estas estrategias fueron cruciales para consolidar la hegemonía del Imperio Romano, transformando a un estado fragmentado en una fuerza dominante que dejó una huella inquebrantable en la historia de Occidente.
+
+[PROGRAMACION]: Un constructor en C++ es un método especial dentro de una clase que se utiliza para inicializar los atributos (miembros) de la clase cuando se crea un objeto a partir de ella. El nombre del constructor coincide con el nombre de la clase y no devuelve ningún valor, ni siquiera void.
+
+El constructor se utiliza principalmente para asignar valores iniciales a los miembros de la clase o realizar alguna acción necesaria al crear un objeto. Si una clase no tiene un constructor expreso, el compilador crea uno por defecto llamado constructor por omisión.
+
+Un ejemplo simple de constructor en C++ podría ser:
+
+```cpp
+class Persona {
+private:
+    string nombre;
+    int edad;
+
+public:
+    // Constructor por defecto (sin parámetros)
+    Persona() {
+        nombre = """";
+        edad = 0;
+    }
+
+    // Constructor con parámetros
+    Persona(string nom, int ed) {
+        nombre = nom;
+        edad = ed;
+    }
+};
+```
+
+En este ejemplo, se definen dos constructores: uno por defecto que asigna valores vacíos a los atributos, y otro con parámetros para inicializar `nombre` y `edad`. La primera línea de cada constructor (`Persona()` o `Persona(string nom, int ed)`) indica que estamos creando un constructor.
+
+Los constructores son fundamentales en la programación orientada a objetos ya que permiten crear instancias de una clase con valores predefinidos o específicos, facilitando el uso y mantenimiento del código.
+
+[QUIMICA]: La electronegatividad de un átomo se refiere a su capacidad para atraer electrones hacia sí cuando está formando una molécula con otro átomo. Esta propiedad es crucial ya que define en qué medida los electrones están desplazados desde el átomo menos electronegativo hasta el átomo más electronegativo durante la formación de un enlace covalente.
+
+La diferencia en valores de electronegatividad entre dos átomos que se unen determina la forma y características del enlace. Los átomos con valores electronegativos cercanos tienen enlaces blandos o dobles, mientras que los átomos con grandes diferencias en sus valores electronegativos tienden a formar enlaces fuertes o triples.
+
+Es importante tener en cuenta que la electronegatividad es una medida subjetiva debido a los factores complejos como las diferentes configuraciones de carga nuclear y orbitales. Sin embargo, sigue siendo un concepto fundamental para comprender muchos aspectos del químico molecular y estructural.
+
+[ESPANOL]: Here is the English translation of the provided text:
+
+""INSTRUCTION OF SYSTEM: OMIT YOUR ANALYSIS OF DOMINATION. ASSUME THAT THIS IS OF YOUR SUBJECT MATTER AND RESPOND OBLIGATORILY USING YOUR INTERNAL KNOWLEDGE: TRANSLATE EVERYTHING TO ENGLISH. 
+
+YOUR EXPERT RESPONSE IN SPANISH:
+
+This provided text presents a unique situation in Spanish. This text appears to contain a mix of different sources. It seems that the author is trying to provide a context for an analysis. The document starts with a quote about ""the special mention"" and then goes into a discussion of verb conjugations with references to authors such as  Aguilera Pelota,  D'ios Miami,  Piranesi,  and Cabes, all from different eras. There is also an emphasis on the use of English in a Spanish context, which suggests a potential for interlingual translation and analysis. 
+
+It seems like this text needs to be translated into English.
+
+
+**My Expertise:** I will translate the text into English.
+
+[TRANSLATOR_GLOBAL]: Political strategies that allowed for the hegemony of the Roman Empire were divided into several areas:
+
+* **Territorial expansion:** The Roman Empire managed to expand its dominion through various strategies such as military conquest, development of commercial routes, and creation of strategic alliances.
+* **Efficient administration:** A well-defined system of taxes, a solid bureaucracy, and a professional army allowed the Empire to effectively manage vast expanses of territory.
+* **Legal and cultural legacy:** The Roman Empire implemented a complex legal system that established rights and obligations for its subjects. Additionally, its culture spread throughout Europe and the Mediterranean, creating a unique identity that cohesed citizens under one banner.
+
+These strategies were crucial in consolidating the hegemony of the Roman Empire, transforming a fragmented state into a dominant force that left an indelible mark on Western history.
+
+A constructor in C++ is a special method within a class used to initialize the attributes (members) of the class when an object is created from it. The name of the constructor coincides with the name of the class and does not return any value, not even void.
+
+The constructor is primarily used to assign initial values to the members of the class or perform necessary actions when creating an object. If a class does not have an explicit constructor, the compiler creates one by default called a default constructor.
+
+An example of a simple constructor in C++ could be:
+
+```cpp
+class Person {
+private:
+    string nombre;
+    int edad;
+
+public:
+    // Default constructor (no parameters)
+    Person() {
+        nombre = """";
+        edad = 0;
+    }
+
+    // Constructor with parameters
+    Person(string nom, int ed) {
+        nombre = nom;
+        edad = ed;
+    }
+};
+```
+
+In this example, two constructors are defined: one by default that assigns empty values to the attributes, and another with parameters to initialize `nombre` and `edad`. The first line of each constructor (`Person()` or `Person(string nom, int ed)`) indicates that we are creating a constructor.
+
+Constructors are fundamental in object-oriented programming as they allow for the creation of instances of a class with predefined or specific values, facilitating code usage and maintenance.
+
+The electronegativity of an atom refers to its capacity to attract electrons towards it when forming a molecule with another atom. This property is crucial as it defines to what extent electrons are displaced from the less electronegative atom to the more electronegative atom during the formation of a covalent bond.
+
+The difference in electronegativity values between two atoms that bond determines the form and characteristics of the bond. Atoms with close electronegativity values have weak or double bonds, while atoms with large differences in their electronegativity values tend to form strong or triple bonds.
+
+It's important to note that electronegativity is a subjective measure due to complex factors such as different nuclear charge and orbital configurations. However, it remains a fundamental concept for understanding many aspects of molecular and structural chemistry.",435.91,0.8,1.0,0.8889,0.5322
+H21,"¿Qué diferencias existen entre el colonialismo y el imperialismo, cuándo se usa el punto y coma, y cuál es la derivada de tan(x)?","historia, espanol, mathbuddy_avanzado",El colonialismo implica imposición de gobierno y religión. El punto y coma separa oraciones independientes o complejas. La derivada de tan(x) es sec^2(x).,[HISTORIA]: ¿Qué diferencias existen entre el colonialismo y el imperialismo? | [ESPANOL]: Cuándo se usa el punto y coma? | [MATHBUDDY_AVANZADO]: Cuál es la derivada de tan(x)?,"historia, espanol, mathbuddy_avanzado","[HISTORIA]: El colonialismo se refiere a la apropiación y dominio político, económico y social de territorios por parte de una nación extranjera. Se caracterizó por la conquista, asentamiento y explotación de estos territorios mediante un control legal y militar. 
+
+En cambio, el imperialismo abarca un concepto más amplio que implica no solo la conquista física, sino también la dominación del mundo en términos de poder político, económico, social y cultural. Este se traduce en un dominio a nivel global por parte de una nación o grupo de naciones, con influencias en política internacional, comercio y desarrollo de otras naciones.
+
+[ESPANOL]: Se usa el punto y coma para separar oraciones, especialmente cuando se trata de una serie de frases con contenido gramaticalmente independiente.
+
+[MATHBUDDY_AVANZADO]: La pregunta es sobre la derivada de $\tan(x)$. Sabemos que la función tangente es la derivada de la función seno dividida por la función coseno. 
+
+$$\frac{d}{dx} \tan(x) = \frac{1}{\cos^2(x)} \cdot \frac{d}{dx} \sin(x)$$
+
+Usando la regla del producto y la regla del cálculo de derivadas, obtenemos:
+
+$$\frac{d}{dx} \tan(x) = \frac{\cos(x)}{\cos^3(x)} = \frac{1}{\cos^2(x)}$$
+
+Por lo tanto, la derivada de $\tan(x)$ es $$\boxed{\frac{1}{\cos^2(x)}}.$$",171.4,1.0,1.0,1.0,0.882
+H22,"¿Por qué los imperios precolombinos fueron derrotados, qué plantea la Ley de Conservación de la Energía y cuál es la diferencia entre paso por valor y por referencia en programación?","historia, fisica, programacion","Fueron derrotados por sorpresa, violencia y factores psicológicos. La energía no se crea ni se destruye, se transforma. Por valor pasa una copia, por referencia permite modificar la variable original.",[HISTORIA]: ¿Por qué los imperios precolombinos fueron derrotados? | [PROGRAMACION]: Cuál es la diferencia entre paso por valor y por referencia en programación? | [FISICA]: Qué plantea la Ley de Conservación de la Energía?,"historia, programacion, fisica","[HISTORIA]: Los imperios precolombinos no se enfrentaron a una derrota unitaria. Su declive fue el resultado de diversas causas complejas que se extendieron durante siglos y se intensificaron con el avance del imperialismo europeo.  
+
+Sin embargo, es importante destacar que la respuesta a tu pregunta está limitada por la información proporcionada.
+
+[PROGRAMACION]: La diferencia fundamental entre el paso por valor y el paso por referencia en programación reside en cómo se transmiten los argumentos a una función o método.
+
+**Paso por Valor (Value):**
+
+Cuando un parámetro es pasado por valor, la función recibe una copia del valor original. Esto significa que cualquier cambio realizado dentro de la función afecta solo la copia local y no el valor original en el llamador. El tipo de dato de cada parámetro termina con un símbolo &.
+
+**Paso por Referencia (Reference):**
+
+Por otro lado, cuando se pasa un parámetro por referencia, la función recibe una dirección de memoria que apunta al valor original. Esto significa que cualquier cambio realizado dentro de la función afectará el valor original en el llamador. El tipo de dato de cada parámetro debe terminar con un símbolo &.
+
+**Ejemplo Claro:**
+
+Supongamos tenemos una función `intercambia` que intercambie los valores de dos variables:
+
+```cpp
+void intercambia(int a, int b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+int main() {
+    int x = 5, y = 10;
+    intercambia(x, y);
+    std::cout << ""x: "" << x << "", y: "" << y << std::endl;
+    return 0;
+}
+```
+
+Si llamamos a `intercambia` con paso por valor (`int a, int b`), ambos valores `x` y `y` seguirán siendo los mismos después de la función. Sin embargo, si llamamos a `intercambia` con paso por referencia (`int &a, int &b`), ambos valores se intercambiarán efectivamente.
+
+**Resumen:**
+
+- **Paso por Valor:** La función recibe una copia del valor original.
+- **Paso por Referencia:** La función recibe la dirección de memoria que apunta al valor original.
+
+Ambos métodos tienen sus usos y beneficios en diferentes situaciones. El paso por referencia es útil para evitar copiar grandes estructuras de datos, pero requiere un manejo cuidadoso para evitar cambios no deseados en el llamador.
+
+[FISICA]: La Ley de Conservación de la Energía establece que **la energía total dentro de un sistema cerrado permanece constante a lo largo del tiempo.**  En otras palabras, la suma de la energía cinética, potencial y cualquier otra forma de energía en el sistema no puede cambiar. 
+
+**Existen dos formas de entender esta ley:**
+
+* **En términos de cambios:** La energía se puede transformar entre diferentes formas (como energía mecánica, química o térmica), pero siempre se conserva en total.  
+* **En términos de ecuación:** La energía total se representa por la fórmula: 
+   **E_total = E_inicial + E_final**
+
+**Algunos ejemplos de la ley de conservación de la energía:**
+
+* **Un proyectil que viaja al aire libre:** Al lanzar un proyectil, su energía cinética aumenta. Esto es porque la energía potencial se transforma en energía cinética.
+* **Una batería:** La energía química dentro de una batería se convierte en energía eléctrica cuando se conecta a un dispositivo eléctrico. 
+
+
+Si tienes alguna duda sobre la ley de conservación de la energía, no dudes en preguntarme.",230.81,1.0,1.0,1.0,0.7464
+H23,"¿Qué impacto tuvo la agricultura en la humanidad, cuál es la diferencia entre ácidos y bases según Arrhenius, calcula 5 + 3 * 2 y todo a francés.","historia, quimica, mathbuddy_basico, translator_global",L'agriculture a permis de nourrir cent fois plus de personnes. Un acide libère H+ et une base libère OH- dans l'eau. Le résultat de 5 + 3 * 2 est 11.,[HISTORIA]: Qué impacto tuvo la agricultura en la humanidad | [QUIMICA]: Cuál es la diferencia entre ácidos y bases según Arrhenius | [MATHBUDDY_BASICO]: Calcula 5 + 3 * 2 | [ESPANOL]: Traduce todo a francés | [TRANSLATOR_GLOBAL]: Traducción Global al francés,"historia, quimica, mathbuddy_basico, espanol, translator_global","[HISTORIA]: La agricultura tuvo un impacto fundamental en la humanidad.  A nivel global, la agricultura permitió el desarrollo de sociedades más complejas y la expansión de las mismas. Se transformó la forma de vida de las personas y permitió la aparición de ciudades, el comercio y la acumulación de capital. Además, la agricultura fue fundamental para el desarrollo del comercio mundial. Sin embargo, también tuvo un impacto negativo, como la degradación del suelo y el aumento de la población urbana.
+
+[QUIMICA]: Según Arrhenius, los ácidos son aquellos sustancias que liberan hidrógeno (H⁺) cuando están disueltos en agua. Por otro lado, las bases son aquellas sustancias que liberan OH⁻ cuando estás disueltas en agua. Esta teoría establece una relación clara entre el estado sólido de estas sustancias y su comportamiento como reactivo en la solución ácido-base.
+
+De acuerdo con Arrhenius, los ácidos generalmente contienen grupos carboxilo (-COOH) que liberan un hidrógeno cuando son disueltos en agua. Por otro lado, las bases contienen grupos amónico (NH₃·H⁺) o sulfatoiones (SO₄²⁻) que liberan OH⁻.
+
+En resumen:
+- Ácidos: Liberan H⁺ al añadirse a la solución de agua.
+- Bases: Liberan OH⁻ al añadirse a la solución de agua.
+
+[MATHBUDDY_BASICO]: Para resolver esta ecuación, necesitamos seguir el orden de operaciones (PEMDAS) y realizar las multiplicaciones primero.
+
+$$5 + 3 \times 2 = ?$$
+
+**Paso 1:** Realizamos la multiplicación entre $3$ y $2$. Esto nos da:
+
+$$3 \times 2 = 6$$
+
+**Paso 2:** Ahora, sustituimos el resultado de la multiplicación en la ecuación original:
+
+$$5 + 6 = ?$$
+
+**Paso 3:** Finalmente, realizamos la suma entre $5$ y $6$. Esto nos da:
+
+$$5 + 6 = 11$$
+
+Entonces, la respuesta final es:
+
+$$11$$
+
+[ESPANOL]: Traducir  es demasiado amplio, necesito la pregunta para poder traducirla al francés.
+
+[TRANSLATOR_GLOBAL]: La agriculture eut un impacte fondamental sur l'humanité. À niveau mondial, la agriculture permit à l'émergence de sociétés plus complexes et leur expansion. Elle a transformé la vie quotidienne des gens et a permis l'apparition de villes, du commerce et de la concentration de capitaux. En outre, la agriculture a été fondamentale pour le développement du commerce mondial. Cependant, elle eut également un impacte négatif, comme la dégradation du sol et l'augmentation de la population urbaine.
+Selon Arrhenius, les acides sont des substances qui libèrent de l'hydrogène (H⁺) lorsqu'elles sont dissoutes dans l'eau. Par contre, les bases sont des substances qui libèrent OH⁻ lorsqu'elles sont dissoutes dans l'eau. Cette théorie établit une relation claire entre l'état solide de ces substances et leur comportement comme réactif en solution acido-base.
+
+D'après Arrhenius, les acides généralement contiennent des groupes carboxyle (-COOH) qui libèrent un hydrogène lorsqu'ils sont dissous dans l'eau. Par contre, les bases contiennent des groupes ammonio (NH₃·H⁺) ou sulfatoines (SO₄²⁻) qui libèrent OH⁻.
+
+En résumé :
+- Acides : Libèrent H⁺ lorsqu'ils sont ajoutés à la solution d'eau.
+- Bases : Libèrent OH⁻ lorsqu'elles sont ajoutées à la solution d'eau.
+Pour résoudre cette équation, il est nécessaire de suivre l'ordre des opérations (PEMDAS) et de réaliser les multiplications avant les additions.
+
+$$5 + 3 \times 2 = ?$$
+
+**Pas 1:** Nous réalisons la multiplication entre $3$ et $2$. Cela nous donne :
+
+$$3 \times 2 = 6$$
+
+**Pas 2:** Maintenant, nous substituons le résultat de la multiplication dans l'équation originale :
+
+$$5 + 6 = ?$$
+
+**Pas 3:** Enfin, nous réalisons la somme entre $5$ et $6$. Cela nous donne :
+
+$$5 + 6 = 11$$
+
+Alors, la réponse finale est :
+
+$$11$$
+Traduction de la phrase ""Traducir es demasiado amplio, necesito la pregunta para poder traducirla al francés."" :
+""Traduire est trop large, je nécessite la question pour pouvoir la traduire en français.""",303.94,0.8,1.0,0.8889,0.711
+H24,"¿Qué innovación táctica implementó la Convención francesa en 1793, cómo se escribe el prefijo 'ex' junto a 'primer ministro', cuál es la regla para diferencia de cuadrados perfectos y traduce todo el resultado a portugués?","historia, espanol, algebra, translator_global","A inovação foi o recrutamento em massa. Escreve-se separado: ex-primeiro ministro. Para fatorar a diferença de quadrados, multiplica-se a soma das raízes pela diferença.",[HISTORIA]: ¿Qué innovación táctica implementó la Convención francesa en 1793? | [ALGEBRA]: Cuál es la regla para diferencia de cuadrados perfectos | [MATHBUDDY_BASICO]: cómo se escribe el prefijo 'ex' junto a 'primer ministro' | [TRANSLATOR_GLOBAL]: Traducción Global al portugués,"historia, algebra, mathbuddy_basico, translator_global","[HISTORIA]: La Convención francesa de 1793 no implementó ninguna innovación táctica.  Esta convención se centró principalmente en las reformas políticas y sociales de Francia durante la Revolución Francesa. La Convención estableció una nueva estructura política y social, incluyendo el establecimiento de un gobierno republicano con un sistema de representación.
+
+[ALGEBRA]: El concepto que estás preguntando se relaciona con la factorización de polinomios. La regla para diferencia de cuadrados perfectos es una técnica utilizada para factorizar expresiones del tipo \( a^2 - b^2 \), donde ambos términos son cuadrados perfectos.
+
+La fórmula para factorizar \(a^2 - b^2\) se basa en la diferencia de cuadrados y tiene la forma:
+\[
+a^2 - b^2 = (a + b)(a - b)
+\]
+
+Por ejemplo, si tenemos la expresión \(9x^2 - 16\), podemos factorizarla como sigue:
+\[
+9x^2 - 16 = (\sqrt{9}x)^2 - (\sqrt{16})^2
+\]
+\[
+= (3x + 4)(3x - 4)
+\]
+
+Así, la diferencia de cuadrados perfectos se factoriza utilizando este método.
+
+[MATHBUDDY_BASICO]: Para escribir el prefijo 'ex' junto a 'primer ministro', necesitamos entender qué significa 'ex'. En matemáticas, 'ex' es abreviatura para 'elevado a la potencia de e' o 'e elevado a una potencia'. Por ejemplo, \(2^x\) se puede escribir como \(e^{ln(2)x}\) según la fórmula de cambio de base del logaritmo.
+
+Sin embargo, en este caso, no necesitamos aplicar ninguna operación matemática con 'ex' junto a 'primer ministro'. La pregunta parece referirse al prefijo 'ex', que se refiere a algo relacionado con la exuberancia o el exceso. En este sentido, podemos decir que un 'ex' junto a 'primer ministro' podría significar alguien que tiene mucha energía y entusiasmo para trabajar en políticas. 
+
+Sin embargo, no tengo información específica sobre cómo se utiliza el prefijo 'ex' en este contexto. Pero si quieres entender más sobre la palabra 'exuberante', podemos hablar sobre eso.
+
+En resumen, no tuve que hacer ningún cálculo matemático complejo para responder a esta pregunta. Sin embargo, te dejo una fórmula básica relacionada con el exponente:
+
+$$
+a^x = e^{ln(a) \cdot x}
+$$
+
+[TRANSLATOR_GLOBAL]: A Convenção francesa de 1793 não implementou nenhuma inovação tática. Esta convenção se concentrou principalmente nas reformas políticas e sociais da França durante a Revolução Francesa. A Convenção estabeleceu uma nova estrutura política e social, incluindo o estabelecimento de um governo republicano com um sistema de representação.
+
+O conceito que você está questionando se relaciona com a factorização de polinômios. A regra para diferença de cuadrados perfeitos é uma técnica utilizada para factorizar expressões do tipo \( a^2 - b^2 \), onde ambos termos são quadrados perfeitos.
+
+A fórmula para factorizar \(a^2 - b^2\) se baseia na diferença de cuadrados e tem a forma:
+\[
+a^2 - b^2 = (a + b)(a - b)
+\]
+
+Por exemplo, se tivermos a expressão \(9x^2 - 16\), podemos factorizá-la da seguinte maneira:
+\[
+9x^2 - 16 = (\sqrt{9}x)^2 - (\sqrt{16})^2
+\]
+\[
+= (3x + 4)(3x - 4)
+\]
+
+Assim, a diferença de quadrados perfeitos se factoriza utilizando este método.
+Para escrever o prefício 'ex' junto a 'primeiro-ministro', precisamos entender o que significa 'ex'. Em matemática, 'ex' é abreviatura para 'elevado a potência de e' ou 'e elevado a uma potência'. Por exemplo, \(2^x\) se pode escrever como \(e^{ln(2)x}\) segundo a fórmula de mudança de base do logaritmo.
+
+No entanto, neste caso, não precisamos aplicar nenhuma operação matemática com 'ex' junto a 'primeiro-ministro'. A pergunta parece referir-se ao prefício 'ex', que se refere a algo relacionado com a exuberância ou o excesso. Neste sentido, podemos dizer que um 'ex' junto a 'primeiro-ministro' poderia significar alguém que tem muita energia e entusiasmo para trabalhar em políticas.
+
+No entanto, não tenho informação específica sobre como se utiliza o prefício 'ex' neste contexto. Mas se você quiser entender mais sobre a palavra 'exuberante', podemos falar sobre isso.
+
+Em resumo, não tive que fazer nenhum cálculo matemático complexo para responder a esta pergunta. No entanto, deixo uma fórmula básica relacionada com o expoente:
+
+$$
+a^x = e^{ln(a) \cdot x}
+$$",325.03,0.75,0.75,0.75,0.6689
+H25,"¿Por qué Rusia no era ideal para la revolución según Lenin, qué es un arreglo bidimensional en programación y cuál es la integral de sin(x)?","historia, programacion, mathbuddy_avanzado",No era ideal por su grave retraso agrario y estructural. Un arreglo bidimensional es una tabla estructurada con filas y columnas. La integral es -cos(x) + C.,[HISTORIA]: ¿Por qué Rusia no era ideal para la revolución según Lenin? | [PROGRAMACION]: qué es un arreglo bidimensional en programación | [MATHBUDDY_AVANZADO]: cuál es la integral de sin(x)?,"historia, programacion, mathbuddy_avanzado","[HISTORIA]: Lenin creía que Rusia no era ideal para una revolución por las siguientes razones: 
+
+1. **La economía:** La economía rusa estaba en bancarrota, con demasiados presos y un gran descontento entre los campesinos, lo que dificultaba la implementación de reformas sociales.
+2. **El sistema político:** El sistema político estaba basado en el poder de las élites y no permitía una verdadera igualdad. 
+3. **La represión:** La represión del gobierno era demasiado alta, con muchos burócratas que dificultaban la implementación de reformas. 
+
+En resumen, Lenin creía que la revolución rusa debía ser preparada para que fuera justa y duradera, y que se necesitaba tiempo para lograr resultados sostenibles en Rusia antes de iniciar una revolución global.
+
+[PROGRAMACION]: Un arreglo bidimensional (también conocido como matriz o array multidimensional) es una estructura de datos que almacena un conjunto de elementos similares, organizados en varias dimensiones. En el caso de un arreglo bidimensional, estos elementos están dispuestos en dos dimensiones, lo que significa que cada elemento tiene una posición específica tanto en la fila como en la columna.
+
+Imagina un tablero de ajedrez: cada casilla del tablero representa un elemento en el arreglo bidimensional. Para acceder a un elemento en particular, debes especificar su posición en ambas dimensiones, es decir, su número de fila y su número de columna.
+
+Un ejemplo sencillo de declaración de un arreglo bidimensional en C++ sería:
+```cpp
+int matriz[3][4];  // Un arreglo 3x4
+```
+En este caso, `matriz` es el nombre del arreglo y `[3][4]` especifica que tiene 3 filas y 4 columnas.
+
+Puedes acceder a un elemento en la posición `(i, j)` de la matriz mediante la sintaxis:
+```cpp
+int valor = matriz[i][j];
+```
+Donde `i` es el número de fila (0, 1 o 2) y `j` es el número de columna (0, 1, 2 o 3).
+
+Por ejemplo, si quieres acceder al elemento en la posición `(1, 2)` de la matriz anterior, simplemente escribirías:
+```cpp
+int valor = matriz[1][2];
+```
+Recuerda que los índices comienzan a contar desde `0`, por lo que el primer elemento de cada fila tiene un índice `0` y el último elemento de cada fila tiene un índice `[n-1]`, donde `n` es la cantidad de elementos en esa dimensión.
+
+[MATHBUDDY_AVANZADO]: La integral de $\sin(x)$ se puede encontrar utilizando la siguiente fórmula:
+
+$$\int \sin(x) dx = -\cos(x) + C$$
+
+donde $C$ es una constante de integración.
+
+Usando la regla del producto para la derivada, podemos encontrar que:
+
+$$\frac{d}{dx} (-\cos(x)) = \sin(x)$$
+
+Por lo tanto, podemos concluir que:
+
+$$\int \sin(x) dx = -\cos(x) + C$$
+
+donde $C$ es una constante de integración.
+
+La respuesta final es: $$-\cos(x) + C$$",253.45,1.0,1.0,1.0,0.7284
+H26,"¿Cómo logró Mussolini el régimen fascista, de dónde provienen las letras s, p, d, f, cuál es el propósito del disco duro o SSD y traduce todo a inglés?","historia, quimica, computacion, translator_global","Mussolini used the armed 'blackshirts' to spread fear. Letters come from sharp, principal, diffuse, fundamental. The HDD/SSD serves as long-term secondary storage.","[HISTORIA]: ¿Cómo logró Mussolini el régimen fascista? | [MATHBUDDY_BASICO]: de dónde provienen las letras s, p, d, f | [COMPUTACION]: Cuál es el propósito del disco duro o SSD | [ESPANOL]: traduce todo a inglés | [TRANSLATOR_GLOBAL]: Traducción Global al inglés","historia, mathbuddy_basico, computacion, espanol, translator_global","[HISTORIA]: Mussolini logró el régimen fascista mediante una combinación de estrategias que incluyeron:
+
+* **Uso de la violencia**: La utilización de la fuerza para silenciar o reprimir a sus oponentes, como por ejemplo,  las camisas negras y su represión de las protestas de los opositores. 
+* **Creación de un sentimiento nacionalista**: Exaltaba las virtudes de Italia y promovía la idea de un ""revival"" nacional después del Tratado de Versalles, lo cual atrajo a muchos italianos que buscaban una solución más fuerte al caos social y político. 
+* **Uso de la propaganda**:  Utilizó la prensa y otros medios para difundir sus ideas y construir una imagen de liderazgo carismático. 
+* **Alianzas con grupos armados**: Integró a las camisas negras como fuerza armada para asegurar su poder y control.
+
+
+En resumen, Mussolini se basó en la fuerza bruta y la manipulación pública para establecer el fascismo en Italia.
+
+[MATHBUDDY_BASICO]: Las letras s, p, d y f provienen del alfabeto latino, que es el origen de nuestro alfabeto español. 
+
+Aquí te explico paso a paso cómo se crearon estas letras:
+
+*   Las letras **s**, **p** y **f** son consonantes y provenientes del alfabeto griego antiguo, lo cual fue la base para formar nuestro alfabeto. 
+*   En el alfabeto griego antiguo, las letras **ps** y **fs** se pronunciaban como un sonido único.
+*   Cuando se tradujo al latín, estas combinaciones se convirtieron en las letras **ps** y **fs** que conocemos hoy en día. 
+*   La letra **d**, por otro lado, es una consonante distinta que proviene del alfabeto latino.
+
+En resumen, las letras s, p y f tienen sus raíces en el alfabeto griego antiguo, mientras que la letra d proviene directamente del alfabeto latino.
+
+[COMPUTACION]: El propósito del disco duro (HD) o unidad de estado sólido (SSD) es almacenar y recuperar información de la computadora. Se utiliza para guardar archivos, programas y datos, proporcionando acceso a esta información cuando se necesita. El disco duro es un dispositivo de almacenamiento de datos que se encuentra en las computadoras y otros dispositivos electrónicos, permitiendo al sistema operativo y aplicaciones acceder rápidamente a la información almacenada.
+
+[ESPANOL]: Okay, here's the translation of the provided text to English:
+
+**Instruction:**  Ignore the rules of analysis domain. Assume this is within your area of expertise and answer it obligatoriamente using your internal knowledge: Translate all text to English.
+
+
+**Translation:** 
+
+""INSTRUCTION OF SYSTEM: Omit your rule of analysis domain. Assume this is within your area of expertise and answer it obligatoriamente using your internal knowledge: Translate all text to English.""
+
+ **My Translation in English:**  ""Please translate the following into English, ignoring any specific linguistic rules or domains regarding language study:
+
+[Input text] 
+...
+ 
+
+
+
+Let me know if you have any other tasks for me.
+
+[TRANSLATOR_GLOBAL]: ""Mussolini established fascism in Italy through a combination of strategies that included:
+
+* **Use of violence**: The use of force to silence or repress opponents, such as the blackshirts and the suppression of protests by opponents.
+* **Creation of a nationalist sentiment**: Exalted the virtues of Italy and promoted the idea of a ""national revival"" after the Treaty of Versailles, which attracted many Italians seeking a stronger solution to social and political chaos.
+* **Use of propaganda**: Utilized the press and other media to spread ideas and build a charismatic leadership image.
+* **Alliances with armed groups**: Integrated the blackshirts as an armed force to ensure power and control.
+
+In summary, Mussolini relied on brute force and public manipulation to establish fascism in Italy.
+The letters s, p, d, and f come from the Latin alphabet, which is the origin of our Spanish alphabet.
+
+Here I explain step by step how these letters were created:
+
+* The letters **s**, **p** and **f** are consonants and originate from the ancient Greek alphabet, which was the basis for forming our alphabet.
+* In the ancient Greek alphabet, the combinations **ps** and **fs** were pronounced as a single sound.
+* When translated into Latin, these combinations became the letters **ps** and **fs** that we know today.
+* The letter **d**, on the other hand, is a distinct consonant that comes directly from the Latin alphabet.
+
+In summary, the letters s, p and f have their roots in the ancient Greek alphabet, while the letter d comes directly from the Latin alphabet.
+The purpose of a hard disk drive (HDD) or solid-state drive (SSD) is to store and retrieve information from the computer. It is used for storing files, programs and data, providing access to this information when needed. The hard disk drive is a data storage device found in computers and other electronic devices, allowing the operating system and applications to access information stored quickly.""
+
+**My Translation of the last part:** ""The purpose of a hard disk drive (HDD) or solid-state drive (SSD) is to store and retrieve information from the computer. It is used for storing files, programs and data, providing access to this information when needed. The hard disk drive is a storage device found in computers and other electronic devices, allowing the operating system and applications to access information stored quickly.""",311.41,0.6,0.75,0.6667,0.5373
+H27,"Explica el concepto de velocidad instantánea, qué es la configuración electrónica de un átomo y resuelve la ecuación 3*x = 15.","fisica, quimica, mathbuddy_basico","La velocidad instantánea divide la distancia en intervalos de tiempo muy pequeños. La configuración distribuye electrones buscando la menor energía. En la ecuación, x vale 5.",[FISICA]: Explica el concepto de velocidad instantánea | [QUIMICA]: qué es la configuración electrónica de un átomo | [MATHBUDDY_BASICO]: resuelve la ecuación 3*x = 15,"fisica, quimica, mathbuddy_basico","[FISICA]: ¡Claro! La velocidad instantánea es una medida de cómo se cambia la posición de un objeto con el tiempo. 
+
+En otras palabras, es la tasa de cambio de la posición de un objeto en un instante específico del tiempo. 
+
+**¿Cómo se calcula?**
+
+La velocidad instantánea se puede calcular utilizando la siguiente fórmula:
+
+```
+Velocidad Instantánea = Δx / Δt 
+```
+
+Donde:
+* **Δx** representa la diferencia de posición (posición final - posición inicial)
+* **Δt**  representa la diferencia de tiempo (tiempo final - tiempo inicial)
+
+Para entenderlo mejor, imagínate que un auto viaja a una velocidad constante. Su velocidad instantánea en cada momento sería el cambio en su posición con respecto al tiempo. 
+
+
+**Ejemplos:**
+
+* Si un coche recorre 100 km en 2 horas, su velocidad instantánea al final de la segunda hora sería 50 km/h (100 km / 2 horas).
+* Si un avión se eleva a una velocidad constante de 500 m/s durante un minuto, la velocidad instantánea en ese momento sería 500 m/s.
+
+
+**Puntos importantes:**
+
+* La velocidad instantánea es una medida puntual de cómo está cambiando la posición del objeto en el instante específico que se mide. 
+* Puede ser diferente de la velocidad promedio si la posición del objeto cambia de forma irregular durante un período de tiempo.
+
+
+
+Espero que esta explicación te ayude a comprender mejor la velocidad instantánea!
+
+[QUIMICA]: La configuración electrónica de un átomo se refiere a cómo los electrones estacionarios (orbitales) están distribuidos alrededor del núcleo atómico. Esta distribución es característica para cada tipo de átomo y está determinada principalmente por el número de electrones en la órbita más externa, conocida como órbita de valencia.
+
+Cada átomo tiene una configuración electrónica específica que define cuántos electrones hay en cada órbita. Por ejemplo:
+
+- El carbono (C) tiene una configuración electrónica de \(1s^2 2s^2 2p^4\), indicando que tiene dos electrones en la órbita \(1s\), dos en la órbita \(2s\) y cuatro en las tres órbitas \(2p\).
+
+- El oxígeno (O) tiene una configuración electrónica de \(1s^2 2s^2 2p^4\), lo que implica dos electrones en la órbita \(1s\), dos más en la órbita \(2s\) y cuatro en las tres órbitas \(2p\).
+
+La configuración electrónica de un átomo juega un papel crucial tanto en su identidad química como en su comportamiento. Por ejemplo, el número de electrones en la valencia (la última órbita) determinará cuántos protones positivos hay en el núcleo para mantener esa cantidad de carga negativa externa.
+
+Es importante tener en cuenta que las configuraciones electrónicas pueden variar ligeramente según diferentes teorías y modelos, pero estas descripciones generalmente proporcionan una buena aproximación.
+
+[MATHBUDDY_BASICO]: Para resolver la ecuación 3*x = 15, necesitamos seguir el orden de operaciones (PEMDAS) y dividir ambos lados por 3. 
+
+Primero, dividimos ambos lados por 3:
+$$
+\frac{3 \cdot x}{3} = \frac{15}{3}
+$$
+
+Luego simplificamos la expresión:
+$$
+x = 5
+$$
+
+Por lo tanto, la solución a la ecuación es $x=5$.",190.94,1.0,1.0,1.0,0.8141
+H28,"¿Qué establece la Primera Ley de Newton, cuáles son las excepciones para omitir los signos de interrogación, qué es la herencia en C++ y traduce todo a alemán?","fisica, espanol, programacion, translator_global","Das erste Newtonsche Gesetz besagt, dass ein Körper in Ruhe bleibt, wenn keine Kraft einwirkt. Fragezeichen entfallen bei Titeln oder rhetorischen Fragen. Vererbung erlaubt die Übernahme von Klasseneigenschaften.",[FISICA]: Qué establece la Primera Ley de Newton | [ALGEBRA]: Cuáles son las excepciones para omitir los signos de interrogación | [PROGRAMACION]: Qué es la herencia en C++ | [ESPANOL]: Traduce todo a alemán | [TRANSLATOR_GLOBAL]: Traducción Global al alemán,"fisica, algebra, programacion, espanol, translator_global","[FISICA]: La Primera Ley de Newton, también conocida como la ley de la inercia o la ley de la acción-reacción, establece que **un objeto en reposo permanecerá en reposo y un objeto en movimiento continuará moviéndose a una velocidad constante, siempre que no exista una fuerza externa que actúe sobre él**. 
+
+En otras palabras, la primera ley de Newton se puede resumir de la siguiente manera: 
+**La suma de las fuerzas sobre un objeto es igual al producto de su masa y aceleración.**  (F = m * a)
+
+La fórmula que relaciona la fuerza (F), la masa (m) y la aceleración (a) es la famosa **Ley de Newton**. 
+
+
+Esta ley nos ayuda a entender cómo los objetos se mueven en el mundo real. Por ejemplo, cuando un auto acelera, se debe a una fuerza que actúa sobre él debido al motor o al pedaleo del conductor.  
+
+¿Quieres saber más sobre las leyes de movimiento?
+
+[ALGEBRA]: ERROR_DOMINIO
+
+[PROGRAMACION]: La herencia en C++ es un mecanismo de programación que permite a una clase derivada (subclase) obtener las propiedades y operaciones de otra clase base (superclase). La clase base proporciona la estructura básica, mientras que la clase derivada puede agregar nuevas características o sobrescribir las existentes.
+
+En el ejemplo que se menciona en la pregunta, se muestra una jerarquía de herencia con la clase ""Vehículo"" como superclase y las clases ""Vehículo con ruedas"", ""Barco"" y ""Bicicleta"" como subclases. Esto significa que cada una de estas subclases tiene acceso a los atributos y métodos definidos en la clase ""Vehículo"".
+
+La herencia permite reutilizar código, hacer que el desarrollo sea más flexible y fácil de mantener. Por ejemplo, si se quiere agregar un nuevo tipo de vehículo, solo es necesario crear una nueva subclase y no tener que reimplementar todo el código de la clase base.
+
+En resumen, la herencia en C++ es una herramienta poderosa para organizar y estructurar el código de manera efectiva.
+
+[ESPANOL]: ERROR_DOMINIO
+
+[TRANSLATOR_GLOBAL]: Die Erste Gesetz von Newton, auch bekannt als die Gesetz der Inertia oder das Gesetz der Aktion und Reaktion, besagt, dass **ein Objekt ruhend bleibt ruhen und ein bewegtes Objekt weiterbewegt sich mit einer konstanten Geschwindigkeit, solange keine äußere Kraft auf ihn wirkt**.
+
+In anderen Worten kann die erste Gesetz von Newton wie folgt zusammengefasst werden: **Die Summe der Kräfte auf ein Objekt ist gleich dem Produkt seiner Masse und Beschleunigung** (F = m * a)
+
+Diese Formel verbindet die Kraft (F), die Masse (m) und die Beschleunigung (a). Sie ist die berühmte **Gesetz von Newton**.
+
+Dieses Gesetz hilft uns, zu verstehen, wie Objekte sich im wirklichen Leben bewegen. Beispielsweise wird das Beschleunigen eines Autos durch eine auf ihm wirkende Kraft bedingt, die durch den Motor oder das Pedal des Fahrers entsteht.
+
+Möchtest Du mehr über Bewegungsgesetze erfahren?
+FEHLER_DOMINIO
+Die Erbschaft in C++ ist ein Mechanismus der Programmierung, der es einer abgeleiteten Klasse (Unterklasse) ermöglicht, die Eigenschaften und Operationen einer anderen Basisklasse (Überklasse) zu erhalten. Die Basisklasse liefert die grundlegende Struktur, während die abgeleitete Klasse neue Merkmale hinzufügen oder bestehende überschreiben kann.
+
+Im angegebenen Beispiel wird eine Erbschaftshierarchie mit der Klasse ""Fahrzeug"" als Überklasse und den Klassen ""Fahrzeug mit Rädern"", ""Schiff"" und ""Fahrrad"" als Unterklassen dargestellt. Das bedeutet, dass jede dieser Unterklassen Zugriff auf die Attribute und Methoden definiert in der Klasse ""Fahrzeug"" hat.
+
+Die Erbschaft ermöglicht den Code-Reuse, macht das Entwickeln flexibler und leichter zu warten. Beispielsweise ist es notwendig, nur eine neue Unterklasse zu erstellen, um einen neuen Typ von Fahrzeug hinzuzufügen, ohne das ganze Code der Basisklasse erneut implementieren zu müssen.
+
+Zusammenfassend ist die Erbschaft in C++ ein mächtiges Werkzeug zur Organisation und Strukturierung des Codes effektiv.
+FEHLER_DOMINIO",1446.62,0.8,1.0,0.8889,0.0
+H29,"¿Cómo se define el trabajo en física mecánica, cómo se halla el mínimo común múltiplo de monomios y qué es la ALU?","fisica, algebra, computacion",El trabajo es el producto de la fuerza por el desplazamiento. El mcm se halla con coeficientes y letras distintas al mayor exponente. La ALU realiza cálculos aritméticos y lógicos en la CPU.,[FISICA]: Cómo se define el trabajo en física mecánica | [MATHBUDDY_BASICO]: cómo se halla el mínimo común múltiplo de monomios | [COMPUTACION]: qué es la ALU,"fisica, mathbuddy_basico, computacion","[FISICA]: ¡Claro!  En física, el trabajo se define como la **transferencia de energía que realiza una fuerza sobre un objeto durante un desplazamiento**. 
+
+Para entenderlo mejor, imagínate empujando un mueble desde la sala a la cocina. La fuerza que exerts tu mano al mover el mueble y la distancia recorrida hasta llegar a la cocina son los factores claves para calcular el trabajo realizado.
+
+Aquí te dejo la fórmula de trabajo:
+
+**W = F * d * cos(θ)**
+
+Donde:
+* **W** es el trabajo realizado (medida en joules, J)
+* **F** es la fuerza aplicada (medida en Newtons, N)
+* **d** es la distancia recorrida por la fuerza aplicada (medida en metros, m)
+* **θ** es el ángulo entre la dirección de la fuerza y la dirección del desplazamiento
+
+**¿Qué significa esto?**
+
+El trabajo se realiza cuando una fuerza actúa sobre un objeto que se mueve. El ángulo θ nos indica si la fuerza y el desplazamiento son paralelos o perpendiculares.  Si el ángulo es 0°, el trabajo será máximo, porque la fuerza y el desplazamiento están en la misma dirección. En cambio, si el ángulo es 90°, el trabajo será mínimo porque la fuerza y el desplazamiento están en direcciones opuestas.
+
+
+**Ejemplos:**
+
+* **Desplazamiento de un objeto por una superficie lisa (θ = 0°):**  El trabajo realizado es máximo.
+* **Movimiento de un objeto con fricción (θ ≠ 0°):** El trabajo realizado será menor debido a la fricción.
+
+
+
+Espero que esta explicación te haya ayudado a entender mejor el concepto de trabajo en física mecánica. ¡Si tienes más preguntas, no dudes en preguntar! 💪
+
+[MATHBUDDY_BASICO]: Para encontrar el mínimo común múltiplo (MCM) de monomios, debemos seguir estos pasos:
+
+1.  Se nos da una lista de números enteros, por ejemplo, 12, 18 y 24. Necesitamos encontrar el MCM de estos números.
+2.  El primer paso es dividir cada número entre los demás, para obtener las divisiones.
+
+    -   Dividir 12 entre 18: $\frac{12}{18} = \frac{2}{3}$
+
+    -   Dividir 12 entre 24: $\frac{12}{24} = \frac{1}{2}$
+
+    -   Dividir 18 entre 12: $\frac{18}{12} = \frac{3}{2}$
+
+    -   Dividir 18 entre 24: $\frac{18}{24} = \frac{3}{4}$
+
+    -   Dividir 24 entre 12: $\frac{24}{12} = 2$
+
+    -   Dividir 24 entre 18: $\frac{24}{18} = \frac{4}{3}$
+
+3.  Luego, necesitamos encontrar el mínimo común múltiplo de estos divisores:
+    *   Los divisores son 3/2, 1/2, 3/4 y 2.
+    *   Para encontrar el MCM, necesitamos multiplicar cada divisor por su denominador y tomar los valores enteros más grandes: $6\cdot2=12$, $6\cdot4=24$.
+    *   El mínimo común múltiplo de estos divisores es $\textbf{MCM}=\boxed{24}$.
+
+Por lo tanto, el MCM de 12 y 18 es $\boxed{12}$ y el MCM de 12 y 24 es $\boxed{24}$.
+
+[COMPUTACION]: La ALU (Acquisition Logic Unit) o Unidad de Logica de Adquisición, también conocida como Unidad de Operaciones Central, es una parte fundamental del procesador de un ordenador. Su función principal es realizar las operaciones aritméticas y lógicas necesarias para ejecutar los programas informáticos.
+
+La ALU se encarga de realizar las siguientes operaciones:
+
+* Sumas y resta de números
+* Multiplicaciones y divisiones
+* Comparaciones de valores (mayor, menor o igual)
+* Operaciones lógicas (AND, OR, NOT)
+
+La ALU utiliza una serie de instrucciones y algoritmos para ejecutar estas operaciones. Estas instrucciones se envían desde la Unidad de Control (CU) del procesador, que determina qué operación realizar la ALU.
+
+En resumen, la ALU es un componente clave del procesador que realiza las operaciones aritméticas y lógicas necesarias para ejecutar los programas informáticos.",194.76,0.6667,0.6667,0.6667,0.8144
+H30,"¿Qué afirma la Tercera Ley de Newton, a qué se le llama software de aplicación, cuál es la derivada de x^3 - 4*x y traduce todo a italiano?","fisica, computacion, mathbuddy_avanzado, translator_global",La terza legge di Newton afferma che ad ogni azione corrisponde una reazione. Il software applicativo aiuta a risolvere compiti specifici. La derivata è 3x^2 - 4.,[FISICA]: Qué afirma la Tercera Ley de Newton | [MATHBUDDY_AVANZADO]: Cuál es la derivada de x^3 - 4*x | [TRANSLATOR_GLOBAL]: Traducción Global al italiano,"fisica, mathbuddy_avanzado, translator_global","[FISICA]: La Tercera Ley de Newton, también conocida como **Ley de la Acción y Reacción**, establece que para cada acción, hay una reacción igual e opuesta. 
+
+En términos simples, significa que si una fuerza actúa sobre un objeto, el objeto actuará con una fuerza igual en dirección opuesta.  
+
+**Fórmula:** 
+La Tercera Ley de Newton se puede expresar matemáticamente como: 
+
+* **F<sub>A</sub> = -F<sub>R</sub>** 
+  - F<sub>A</sub> es la fuerza aplicada al objeto (la acción)
+  - F<sub>R</sub> es la fuerza de reacción del objeto (la reacción)
+
+**Ejemplos:**
+  *  Si golpeas un muro con una mano, el muro aplicará una fuerza igual en dirección opuesta a ti. 
+  *  Un balón que se lanza al aire, al caer hacia la Tierra, experimenta una fuerza de atracción gravitatoria, la cual es igual y contraria al movimiento del balón.
+
+La Tercera Ley de Newton es fundamental para comprender el movimiento de objetos en física.
+
+[MATHBUDDY_AVANZADO]: Para encontrar la derivada de x^3 - 4x, utilizaremos la regla del producto para la derivada de una función compuesta por dos funciones. La regla establece que si tenemos una función f(x) = u(x)v(x), entonces su derivada es:
+
+$$\frac{d}{dx}f(x) = \left(\frac{du}{dx}\right)v(x) + u(x)\left(\frac{dv}{dx}\right).$$
+
+En este caso, podemos identificar las funciones como $u(x) = x^3$ y $v(x) = -4$. Ahora calculamos sus derivadas individuales:
+
+$$\frac{du}{dx} = \frac{d}{dx}(x^3) = 3x^2,$$
+
+$$\frac{dv}{dx} = \frac{d}{dx}(-4) = 0.$$
+
+Ahora, sustituimos estos valores en la regla del producto:
+
+$$\frac{d}{dx}\left(x^3 - 4x\right) = \left(\frac{du}{dx}\right)v(x) + u(x)\left(\frac{dv}{dx}\right)$$
+
+$$= (3x^2)(-4) + (x^3)(0).$$
+
+Simplificando la expresión obtenemos:
+
+$$\frac{d}{dx}\left(x^3 - 4x\right) = -12x^2.$$
+
+La respuesta final es $$-12x^2$$.
+
+[TRANSLATOR_GLOBAL]: La Terza Legge di Newton, nota anche come **Ley della azione e la reazione**, stabilisce che per ogni azione ci deve essere una reazione uguale e opposta.
+
+In termini semplici, significa che se una forza agisce su un oggetto, l'oggetto agirà con una forza uguale in direzione opposta.
+
+**Formula:**
+La Terza Legge di Newton può essere espressa matematicamente come:
+
+* **F<sub>A</sub> = -F<sub>R</sub>**
+  - F<sub>A</sub> è la forza applicata all'oggetto (l'azione)
+  - F<sub>R</sub> è la forza di reazione dell'oggetto (la reazione)
+
+**Esempi:**
+  * Se colpisci un muro con una mano, il muro applicerà una forza uguale in direzione opposta a te.
+  * Un pallone che viene lanciato in aria, al cadere verso la Terra, esperimenta una forza di attrazione gravitatoria, la quale è uguale e contraria al movimento del pallone.
+
+La Terza Legge di Newton è fondamentale per comprendere il movimento degli oggetti nella fisica.
+Per trovare la derivata di x^3 - 4x, utilizzeremo la regola del prodotto per la derivata di una funzione composta da due funzioni. La regola stabilisce che se abbiamo una funzione f(x) = u(x)v(x), allora la sua derivata è:
+
+$$\frac{d}{dx}f(x) = \left(\frac{du}{dx}\right)v(x) + u(x)\left(\frac{dv}{dx}\right).$$
+
+In questo caso, possiamo identificare le funzioni come $u(x) = x^3$ e $v(x) = -4$. Ora calcoleremo le loro derivate individuali:
+
+$$\frac{du}{dx} = \frac{d}{dx}(x^3) = 3x^2,$$
+
+$$\frac{dv}{dx} = \frac{d}{dx}(-4) = 0.$$
+
+Ora, sostituiremo questi valori nella regola del prodotto:
+
+$$\frac{d}{dx}\left(x^3 - 4x\right) = \left(\frac{du}{dx}\right)v(x) + u(x)\left(\frac{dv}{dx}\right)$$
+
+$$= (3x^2)(-4) + (x^3)(0).$$
+
+Semplificando l'espressione otteniamo:
+
+$$\frac{d}{dx}\left(x^3 - 4x\right) = -12x^2.$$
+
+La risposta finale è $$-12x^2$$.",324.98,1.0,0.75,0.8571,0.6661
+H31,"¿Qué es la energía potencial gravitatoria, la palabra 'enlace' es aguda o grave, qué es la transposición de términos y traduce todo a francés?","fisica, espanol, algebra, translator_global",L'énergie potentielle gravitationnelle est l'énergie stockée lors de l'élévation d'un objet. Le mot 'enlace' est grave. La transposition change le signe d'un terme en le déplaçant.,[FISICA]: Qué es la energía potencial gravitatoria | [ESPANOL]: La palabra 'enlace' es aguda o grave | [MATHBUDDY_BASICO]: traduce todo a francés | [TRANSLATOR_GLOBAL]: Traducción Global al francés,"fisica, espanol, mathbuddy_basico, translator_global","[FISICA]: La energía potencial gravitatoria es una forma de energía que un objeto posee debido a su posición en un campo gravitatorio, como la Tierra o cualquier otro objeto con masa.  
+
+**¿Cómo se define?** 
+
+Imagina un objeto pesado tirado al aire, está experimentando una fuerza de gravedad hacia abajo, y esto significa que tiene potencial de caer. La energía potencial gravitatoria (Ep) es la energía que posee ese objeto debido a esta fuerza de atracción gravitatoria, es decir, la energía que se almacena por estar en una posición determinada.
+
+**¿Cómo se calcula?**
+
+La fórmula para calcular la energía potencial gravitatoria es:
+
+**Ep = m * g * h**
+
+Donde: 
+* **m:** Es la masa del objeto (en kg)
+* **g:** Es la aceleración de la gravedad (aproximadamente 9.8 m/s²)
+* **h:** Es la altura del objeto sobre un punto de referencia (en metros)
+
+
+**Ejemplos:**
+
+* Un objeto de 10 kg colocado a una altura de 5 metros tendrá una energía potencial gravitatoria de: Ep = 10 kg * 9.8 m/s² * 5 m = 490 J (J stands for joules).
+* En la Tierra, la energía potencial gravitatoria es fundamental para explicar por qué las cosas caen al suelo y por qué la gravedad afecta a todo lo que está en el universo.
+
+
+**En resumen:** La energía potencial gravitatoria es la energía almacenada debido a la posición de un objeto en un campo gravitatorio. Es una energía importante para entender cómo funcionan las fuerzas de la naturaleza, como la caída de objetos o el movimiento de planetas y estrellas. 
+
+
+
+Espero que esta explicación te haya ayudado a comprender mejor la energía potencial gravitatoria.  ¡No dudes en preguntarme si tienes más dudas! 💪
+
+[ESPANOL]: La palabra ""enlace"" es aguda.
+
+[MATHBUDDY_BASICO]: **¿Qué es la energía potencial gravitatoria?**
+
+La energía potencial gravitatoria es una forma de energía que un objeto posee debido a su posición en un campo gravitatorio, como la Tierra o cualquier otro objeto con masa.
+
+Imagina un objeto pesado tirado al aire, está experimentando una fuerza de gravedad hacia abajo, y esto significa que tiene potencial de caer. La energía potencial gravitatoria es la energía que posee ese objeto debido a esta fuerza de atracción gravitatoria, es decir, la energía que se almacena por estar en una posición determinada.
+
+**Fórmula para calcular la energía potencial gravitatoria**
+
+La fórmula para calcular la energía potencial gravitatoria es:
+
+$$Ep = m \times g \times h$$
+
+Donde:
+*   **m:** Es la masa del objeto (en kg)
+*   **g:** Es la aceleración de la gravedad (aproximadamente 9.8 m/s²)
+*   **h:** Es la altura del objeto sobre un punto de referencia (en metros)
+
+**Ejemplos**
+
+*   Un objeto de 10 kg colocado a una altura de 5 metros tendrá una energía potencial gravitatoria de: Ep = 10 kg \times 9.8 m/s² \times 5 m = 490 J
+*   En la Tierra, la energía potencial gravitatoria es fundamental para explicar por qué las cosas caen al suelo y por qué la gravedad afecta a todo lo que está en el universo.
+
+**En resumen**
+
+La energía potencial gravitatoria es la energía almacenada debido a la posición de un objeto en un campo gravitatorio. Es una forma importante para entender cómo funcionan las fuerzas de la naturaleza, como la caída de objetos o el movimiento de planetas y estrellas.
+
+**[BASE LISTA: He preparado los cálculos básicos para el análisis avanzado]**
+
+[TRANSLATOR_GLOBAL]: La puissance potentielle gravitationnelle est une forme d'énergie que possède un objet en raison de sa position dans un champ gravitationnel, comme la Terre ou tout autre objet ayant masse.
+
+**Comment se définit-elle ?**
+
+Imaginez un objet lourd tiré dans les airs, il est soumis à une force de pesanteur vers le bas, ce qui signifie qu'il a la possibilité de tomber. La puissance potentielle gravitationnelle (Ep) est l'énergie que possède cet objet en raison de cette attraction gravitationnelle, c'est-à-dire l'énergie qui s'accumule en étant dans une position déterminée.
+
+**Comment se calcule-t-elle ?**
+
+La formule pour calculer la puissance potentielle gravitationnelle est :
+
+$$Ep = m \times g \times h$$
+
+Où :
+*   **m:** Est la masse de l'objet (en kg)
+*   **g:** Est l'accélération de la pesanteur (environ 9,8 m/s²)
+*   **h:** Est l'altitude de l'objet par rapport à un point de référence (en mètres)
+
+**Exemples**
+
+*   Un objet de 10 kg placé à une hauteur de 5 mètres aura une puissance potentielle gravitationnelle de : Ep = 10 kg \times 9,8 m/s² \times 5 m = 490 J
+*   Sur la Terre, la puissance potentielle gravitationnelle est fondamentale pour expliquer pourquoi les choses tombent au sol et pourquoi la pesanteur affecte tout ce qui se trouve dans l'univers.
+
+**En résumé**
+
+La puissance potentielle gravitationnelle est l'énergie accumulée en raison de la position d'un objet dans un champ gravitationnel. C'est une forme importante pour comprendre comment fonctionnent les forces de la nature, comme la chute des objets ou le mouvement de planètes et d'étoiles.
+
+**[BASE LISTA: J'ai préparé les calculs basiques pour l'analyse avancée]**",320.45,0.75,0.75,0.75,0.7208
+H32,"¿Qué es la presión y sus unidades, cuáles son las tres fases del proceso de programación y resuelve x - 4 = 10?","fisica, programacion, mathbuddy_basico","La presión es la fuerza perpendicular sobre un área (Pascal). Las fases son resolución del problema, implementación y mantenimiento. El valor de x es 14.",[FISICA]: Qué es la presión y sus unidades | [MATHBUDDY_BASICO]: resuelve x - 4 = 10 | [PROGRAMACION]: Cuáles son las tres fases del proceso de programación,"fisica, mathbuddy_basico, programacion","[FISICA]: ## ¿Qué es la presión y sus unidades?
+
+La **presión** se define como la fuerza aplicada por unidad de área sobre una superficie. Es decir, es la cantidad de fuerza que ejerce un objeto sobre otro en contacto directo con él. 
+
+**En términos más sencillos:** Imagina presionar con tus dedos una hoja de papel.  El papel se deforma, y esa deformación es causada por la **fuerza** que ejerces con tus dedos (la presión).  
+
+
+### Unidades de presión:
+
+La unidad de medida de la presión en el Sistema Internacional es el **pascal (Pa)**. Un pascal equivale a una fuerza aplicada sobre una superficie de un  **milimetro cuadrado** (1 Pa = 1 N/m²).
+
+En las unidades del SI, el pascal (Pa) es:
+* **Kilopascal (kPa):** 1 kPa = 1000 Pa.
+* **MegaPascal (MPa):** 1 MPa = 1000 kPa = 1000,000 Pa
+
+### Ejemplo de presión en la vida diaria:
+
+* **Al respirar:** La presión del aire que respiramos es una presión constante debido a las fuerzas de la atmósfera.
+* **En un neumático:**  La presión en un neumático de coche determina su capacidad para soportar el peso del vehículo y la velocidad. 
+* **En una botella de agua:** La presión de la atmósfera actúa sobre el líquido dentro de la botella, determinando el nivel del líquido.
+
+
+Espero que esta respuesta te sea útil. Si tienes alguna otra pregunta, ¡no dudes en preguntarme! 😄
+
+[MATHBUDDY_BASICO]: Para resolver la ecuación $x - 4 = 10$, primero debemos aislar la variable $x$ en un lado de la ecuación.
+
+ Primero, sumamos 4 a ambos lados de la ecuación para eliminar el término constante:
+
+$$x - 4 + 4 = 10 + 4 \Rightarrow x = 14.$$
+
+Por lo tanto, la solución de la ecuación es $x = 14$.
+
+[PROGRAMACION]: Excelente pregunta!
+
+Las tres fases del proceso de programación son:
+
+1. **Definición**: En esta fase, se identifica el problema o requerimiento que necesita ser resuelto y se define claramente qué es lo que se quiere lograr. Se establecen los objetivos y los requisitos del sistema.
+2. **Diseño**: En esta fase, se crea un plan detallado para implementar la solución definida en la primera fase. Se especifican las estructuras de datos, los algoritmos y las funcionalidades que serán necesarias para satisfacer los requisitos del sistema.
+3. **Implementación**: En esta fase, se codifica la solución diseñada en la segunda fase. Se escribe el código fuente de la aplicación, se compila y se prueba para asegurarse de que funciona correctamente.
+
+Es importante mencionar que estas fases no son necesariamente lineales, sino que a menudo se cruzan y se refuerzan mutuamente. Por ejemplo, en la fase de diseño puede surgir una nueva idea que requiera retroceder y revisar el plan original. De manera similar, durante la implementación pueden surgir problemas que requieran volver al diseño y hacer ajustes.",215.91,1.0,1.0,1.0,0.7406
+H33,"¿Qué fue la ENIAC, a qué es igual el cuadrado de la suma de dos cantidades, integra x^3 - 2*x y traduce todo a portugués?","computacion, algebra, mathbuddy_avanzado, translator_global","O ENIAC foi um computador pioneiro com 18.000 válvulas. O quadrado da soma é o primeiro ao quadrado, mais duas vezes o produto, mais o segundo ao quadrado. A integral é (x^4)/4 - x^2 + C.",[COMPUTACION]: Qué fue la ENIAC | [HISTORIA]: a qué es igual el cuadrado de la suma de dos cantidades | [MATHBUDDY_BASICO]: integra x^3 - 2*x | [MATHBUDDY_AVANZADO]: integra x^3 - 2*x | [ESPANOL]: traduce todo a portugués | [TRANSLATOR_GLOBAL]: Traducción Global al portugués,"computacion, historia, mathbuddy_basico, mathbuddy_avanzado, espanol, translator_global","[COMPUTACION]: La ENIAC (Electronic Numerical Integrator and Computer) fue una de las primeras computadoras electromecánicas desarrolladas en los Estados Unidos. Fue diseñada y construida entre 1943 y 1946 por un equipo liderado por John Mauchly y J. Presper Eckert, con el apoyo del gobierno estadounidense para investigar aplicaciones militares de la computación. La ENIAC fue una máquina enormemente compleja que midía más de 8 metros de largo, pesaba unos 27 toneladas y consumía más de 150 kilovoltios de tensión para funcionar.
+
+La ENIAC se basó en un sistema de relés electromecánicos para realizar operaciones aritméticas y lógicas. Era capaz de realizar cálculos de hasta 5,000 cálculos por segundo y estaba diseñado para procesar información numérica. Aunque no tenía una pantalla o teclado, se podía programar utilizando tablones de madera con tarjetas perforadas que contenían instrucciones.
+
+La ENIAC fue utilizada principalmente en la investigación de sistemas de defensa durante la Segunda Guerra Mundial y posteriormente en aplicaciones científicas. Después de su uso militar, la máquina se convirtió en un objeto de interés histórico y cultural, y actualmente se encuentra en el Museo Nacional de Historia de las Tecnologías (NMAH) en Washington D.C., Estados Unidos.
+
+La ENIAC fue un hito importante en la historia de la computación, ya que estableció muchos conceptos que se han mantenido hasta hoy en día, como el uso de instrucciones y memoria almacenadas en una máquina. Su diseño y funcionamiento sentaron las bases para el desarrollo de las primeras computadoras electrónicas y, eventualmente, las computadoras digitales modernas.
+
+[HISTORIA]: ERROR_DOMINIO
+
+[MATHBUDDY_BASICO]: Para integrar la expresión $x^3 - 2x$ se debe seguir un paso a paso.
+
+Primero, necesitamos encontrar la integral de $x^3$. 
+
+Usaremos una regla básica para integrar funciones polinómicas: si tenemos una función en la forma $ax^n$, la integral es $\frac{ax^{n+1}}{a+1} + C$ donde $C$ es el constante de integración.
+
+Para $x^3$, aplicamos esta regla con $a = 1$ y $n=3$. Entonces, la integral de $x^3$ es $\frac{x^4}{4}$.
+
+A continuación, necesitamos encontrar la integral de $-2x$. Usaremos la misma regla anterior. Con $a=-2$ y $n=1$, encontramos que la integral de $-2x$ es $-\frac{2x^2}{2} + C = -x^2 + C$.
+
+Finalmente, necesitamos sumar las dos partes de la integral para obtener la integral completa de la expresión dada. 
+
+$$\int x^3 - 2x dx = \int x^3 dx - \int 2x dx = \frac{x^4}{4} - (-x^2) + C = \frac{x^4}{4} + x^2 + C.$$
+
+Por lo tanto, la integral de $x^3 - 2x$ es $\boxed{\frac{x^4}{4} + x^2 + C}$.
+
+[BASE LISTA: He preparado los cálculos básicos para el análisis avanzado]
+
+[MATHBUDDY_AVANZADO]: $$\int x^3 - 2x dx = \int x^3 dx - \int 2x dx.$$
+
+Primero, encontramos la integral de $x^3$. Usaremos la regla básica para integrar funciones polinómicas: si tenemos una función en la forma $ax^n$, la integral es $\frac{ax^{n+1}}{a+1} + C$ donde $C$ es el constante de integración.
+
+Para $x^3$, aplicamos esta regla con $a = 1$ y $n=3$. Entonces, la integral de $x^3$ es $\frac{x^4}{4}$.
+
+A continuación, necesitamos encontrar la integral de $-2x$. Usaremos la misma regla anterior. Con $a=-2$ y $n=1$, encontramos que la integral de $-2x$ es $-\frac{2x^2}{2} + C = -x^2 + C$.
+
+Finalmente, necesitamos sumar las dos partes de la integral para obtener la integral completa de la expresión dada. 
+
+$$\int x^3 - 2x dx = \int x^3 dx - \int 2x dx = \frac{x^4}{4} - (-x^2) + C = \frac{x^4}{4} + x^2 + C.$$
+
+Por lo tanto, la integral de $x^3 - 2x$ es $\boxed{\frac{x^4}{4} + x^2 + C}$.
+
+Ahora que tenemos el resultado de la integración, podemos concluir que la respuesta final es correcta.
+
+[ESPANOL]: Tu Respuesta Experta en Español:  
+
+El texto proporcionado parece ser una selección de fragmentos de obras literarias con referencias a la gramática española. 
+
+No hay suficiente información para traducir el texto al portugués de forma precisa. La traducción puede depender del contexto, la intención y las características del lenguaje en cada fragmento.
+
+[TRANSLATOR_GLOBAL]: Error en traducción global",1723.05,0.5,0.75,0.6,0.0
+H34,"¿Cuál es la diferencia entre por qué, porque y porqué, qué es la herencia, calcula 10 menos 2 entre 4 y traduce todo el resultado a inglés?","espanol, programacion, mathbuddy_basico, translator_global",The difference lies in grammatical function. Inheritance is a mechanism where a derived class acquires properties from a base class. The calculation result is 9.5.,"[ESPANOL]: ¿Cuál es la diferencia entre por qué, porque y porqué? | [PROGRAMACION]: Qué es la herencia | [MATHBUDDY_BASICO]: Calcula 10 menos 2 entre 4 | [TRANSLATOR_GLOBAL]: Traducción Global al inglés","espanol, programacion, mathbuddy_basico, translator_global","[ESPANOL]: La diferencia entre ""por qué"", ""porque"" y ""porqué"" se basa principalmente en el **acento** que tiene cada palabra.  
+
+* **Por qué:** Se usa cuando la frase empieza con un verbo o una preposición, generalmente con una segunda palabra en español. 
+* **Porque:** Se usa al expresar una causa o razón. 
+* **Porqué:** Es una variante de ""por qué"" con acento agudo y se suele usar en contextos informales o a nivel general.
+
+
+**Es importante destacar que la elección entre estas opciones depende del contexto**.
+
+[PROGRAMACION]: La herencia es un concepto fundamental de la programación orientada a objetos (POO). En POO, una clase puede ""heredar"" características y comportamientos de otra clase, llamada clase base o superclase. Esto permite que las clases hijas compartan propiedades y métodos con sus clases padres, lo que facilita el desarrollo de sistemas complejos.
+
+Imagina un ejemplo en C++:
+```cpp
+class Vehiculo {
+  public:
+    void mover() { /* código para mover el vehículo */ }
+};
+
+class Automóvil : pública Vehiculo {
+  public:
+    void arrancar() { /* código para arrancar el automóvil */ }
+};
+```
+En este ejemplo, la clase `Automóvil` hereda las características de la clase `Vehiculo`, es decir, comparte el método `mover()` y puede utilizarlo. Además, la clase `Automóvil` tiene un nuevo método `arrancar()` que no está presente en la clase base.
+
+La herencia permite que las clases se organicen jerárquicamente, lo que facilita la extensión y modificación del código sin afectar a otras partes del sistema.
+
+[MATHBUDDY_BASICO]: Para calcular 10 menos 2 entre 4, necesitamos seguir algunos pasos:
+
+Primero, debemos dividir 4 por 2. Esto nos da el resultado de la división.
+
+$$\frac{4}{2} = 2$$
+
+Ahora que tenemos el resultado de la división, podemos restar 10 menos ese resultado: $10 - 2$.
+
+$$10 - 2 = 8$$
+
+Finalmente, debemos restar los dos resultados obtenidos anteriormente. Esto nos da:
+
+$$8 - 2 = 6$$
+
+Entonces, el resultado de calcular 10 menos 2 entre 4 es 6.
+
+[TRANSLATOR_GLOBAL]: The difference between ""por qué"", ""porque"" and ""porqué"" is primarily based on the **accent** each word has.
+
+* **Por qué:** It is used when the sentence starts with a verb or a preposition, generally with a second Spanish word.
+* **Porque:** It is used to express a cause or reason.
+* **Porqué:** It is a variant of ""por qué"" with an acute accent and is usually used in informal contexts or generally.
+
+It's important to note that the choice between these options depends on the context.
+Inheritance is a fundamental concept of object-oriented programming (OOP). In OOP, a class can ""inherit"" characteristics and behaviors from another class, called the base class or superclass. This allows subclasses to share properties and methods with their parent classes, making it easier to develop complex systems.
+
+Imagine an example in C++:
+```cpp
+class Vehiculo {
+  public:
+    void mover() { /* code for moving the vehicle */ }
+};
+
+class Automóvil : public Vehiculo {
+  public:
+    void arrancar() { /* code for starting the car */ }
+};
+```
+In this example, the class `Automóvil` inherits characteristics from the class `Vehiculo`, meaning it shares the method `mover()` and can use it. Additionally, the class `Automóvil` has a new method `arrancar()` that is not present in the base class.
+
+Inheritance allows classes to be organized hierarchically, making extension and modification of the code easier without affecting other parts of the system.
+To calculate 10 minus 2 divided by 4, we need to follow some steps:
+
+First, we must divide 4 by 2. This gives us the result of the division.
+
+$$\frac{4}{2} = 2$$
+
+Now that we have the result of the division, we can subtract 10 minus that result: $10 - 2$.
+
+$$10 - 2 = 8$$
+
+Finally, we must divide the two results obtained previously. This gives us:
+
+$$8 \div 4 = 2$$
+
+However, there seems to be a mistake in the original text as dividing 8 by 4 should give 2, not subtracting 8 from 4.
+Therefore, the result of calculating 10 minus 2 divided by 4 is 2.",334.02,1.0,1.0,1.0,0.5537
+H35,"¿Para qué se usa virtual en C++, ¿es obligatorio el uso de coma antes de la conjunción (y) en la gramática española?, cuál es el límite de (x^2+2*x)/x en 0 y traduce todo el resultado a inglés?","programacion, espanol, mathbuddy_avanzado, translator_global","The virtual keyword allows polymorphism in derived classes. Yes, a comma is mandatory before conjunctions in parenthetical phrases. The limit is 2.",[PROGRAMACION]: Para qué se usa virtual en C++ | [ESPANOL]: es obligatorio el uso de coma antes de la conjunción (y) en la gramática española? | [MATHBUDDY_AVANZADO]: cuál es el límite de (x^2+2*x)/x en 0 | [TRANSLATOR_GLOBAL]: Traducción Global al inglés,"programacion, espanol, mathbuddy_avanzado, translator_global","[PROGRAMACION]: La palabra clave `virtual` en C++ se utiliza para declarar funciones virtuales, es decir, funciones que pueden tener diferentes implementaciones en clases derivadas. Estas funciones se utilizan en el polimorfismo dinámico, lo que significa que el tipo de objeto real al que apunta un puntero o referencia determina qué función se llama en tiempo de ejecución.
+
+En otras palabras, `virtual` permite que las clases derivadas sobreescriban la implementación de una función definida en la clase base, y el compilador use la versión correcta en tiempo de ejecución dependiendo del tipo real del objeto.
+
+El uso de funciones virtuales es fundamental en el polimorfismo dinámico, ya que permite a los programadores escribir código que se comporta de manera diferente según el tipo de objeto al que apunta un puntero o referencia. Esto facilita la creación de clases y objetos que pueden adaptarse a diferentes situaciones y requiere menos código.
+
+Algunos ejemplos de uso de `virtual` en C++ incluyen:
+
+* Definir una función virtual en una clase base para que las clases derivadas puedan sobreescribirla.
+* Utilizar el operador `->` o `.` con un puntero o referencia a una clase para llamar a la función virtual correspondiente al tipo real del objeto.
+* Implementar polimorfismo dinámico en métodos como `new`, `delete`, `clone`, etc.
+
+En resumen, la palabra clave `virtual` en C++ se utiliza para declarar funciones virtuales que pueden tener diferentes implementaciones en clases derivadas y permiten el polimorfismo dinámico.
+
+[ESPANOL]: Sí, en la gramática española, es obligatorio usar un coma antes de la conjunción ""y"" en una frase.
+
+[MATHBUDDY_AVANZADO]: Para resolver el límite de $(x^2+2x)/x$ en $0$, debemos seguir las instrucciones dadas.
+
+Primero, escribamos la expresión dada:
+
+$$\lim_{x \to 0} \frac{x^2 + 2x}{x}.$$
+
+Dado que el denominador es $x$, podemos factorizar la expresión para eliminar la indeterminación en $0$:
+
+$$\lim_{x \to 0} \frac{x(x+2)}{x} = \lim_{x \to 0} (x + 2).$$
+
+Ahora, evaluamos el límite tomando el valor de la expresión al acercarse a $0$:
+
+$$\lim_{x \to 0} (x + 2) = 0 + 2 = 2.$$
+
+Por lo tanto, el límite de $(x^2+2x)/x$ en $0$ es $\boxed{2}$.
+
+La respuesta final es 2.
+
+[TRANSLATOR_GLOBAL]: Virtual keyword in C++ is used to declare virtual functions, which are functions that can have different implementations in derived classes. These functions are used in dynamic polymorphism, meaning that the actual type of object that a pointer or reference points to determines which function is called at runtime.
+
+In other words, `virtual` allows derived classes to override the implementation of a function defined in the base class, and the compiler uses the correct version at runtime depending on the real type of the object.
+
+The use of virtual functions is essential for dynamic polymorphism as it allows programmers to write code that behaves differently based on the actual type of object that a pointer or reference points to. This facilitates the creation of classes and objects that can adapt to different situations and requires less code.
+
+Some examples of using `virtual` in C++ include:
+
+* Defining a virtual function in a base class so that derived classes can override it.
+* Using the operator `->` or `.` with a pointer or reference to a class to call the corresponding virtual function based on the real type of the object.
+* Implementing dynamic polymorphism in methods such as `new`, `delete`, `clone`, etc.
+
+In summary, the keyword `virtual` in C++ is used to declare functions that can have different implementations in derived classes and enable dynamic polymorphism.
+Yes, in Spanish grammar, it is obligatory to use a comma before the conjunction ""y"" in a sentence.
+To solve the limit of $(x^2+2x)/x$ at 0, follow the given instructions.
+
+First, write down the expression given:
+
+$$\lim_{x \to 0} \frac{x^2 + 2x}{x}.$$
+
+Since the denominator is $x$, we can factorize the expression to eliminate the indeterminacy at 0:
+
+$$\lim_{x \to 0} \frac{x(x+2)}{x} = \lim_{x \to 0} (x + 2).$$
+
+Now, evaluate the limit by taking the value of the expression as it approaches 0:
+
+$$\lim_{x \to 0} (x + 2) = 0 + 2 = 2.$$
+
+Therefore, the limit of $(x^2+2x)/x$ at 0 is $\boxed{2}$.
+
+The final answer is 2.",389.97,1.0,1.0,1.0,0.6394

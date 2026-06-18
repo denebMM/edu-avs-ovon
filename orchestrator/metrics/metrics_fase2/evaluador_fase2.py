@@ -10,28 +10,22 @@ import gc
 
 # ================= CONFIGURACIÓN =================
 directorio_actual = os.path.dirname(os.path.abspath(__file__))
-# 1. Define el identificador dinámico de tu prueba actual
-SUFIJO_PRUEBA = "_7_5"
 
-# 2. Inyecta el sufijo dinámicamente usando f-strings
-#ARCHIVO_DATASET = os.path.join(directorio_actual, f"dataset{SUFIJO_PRUEBA}.csv") 
-ARCHIVO_DATASET = os.path.join(directorio_actual, f"dataset_errores.csv") 
-ARCHIVO_RESULTADOS_PREGUNTAS = os.path.join(directorio_actual, f"resultados_fase2_detalle_preguntasERR.csv")
-ARCHIVO_RESULTADOS_AGENTES = os.path.join(directorio_actual, f"resultados_fase2_metricas_agentesERR.csv")
-ARCHIVO_RESULTADOS_GLOBALES = os.path.join(directorio_actual, f"resultados_fase2_metricas_globalesERR.csv")
+# Archivo de Entrada (Dataset con las 35 preguntas)
+ARCHIVO_DATASET = os.path.join(directorio_actual, "dataset_hibrido.csv") 
 
 ORCHESTRATOR_URL = "http://localhost:5000/query"
 OLLAMA_URL = "http://localhost:11434/api/embeddings"
 OLLAMA_GENERATE_URL = "http://localhost:11434/api/generate"
 
-MODELO_EMBEDDING = "nomic-embed-text" #"mxbai-embed-large" 
-# EXCLUIMOS el modelo de embeddings de la purga masiva para no forzar recargas
+MODELO_EMBEDDING = "nomic-embed-text" 
+# EXCLUIMOS el modelo de embeddings de la purga masiva para no forzar recargas continuas
 MODELOS_A_LIMPIAR = [
     "llama3.2:3b", "llama3.1:8b", "qwen2.5:3b", "gemma2:2b",
-    "qwen2.5:14b"
+    "qwen2.5:14b", "gemma2:9b", "mistral-nemo:12b", "mistral-nemo"
 ]
 
-# ================= FUNCIONES DE LIMPIEZA DE RAM =================
+# ================= FUNCIONES DE LIMPIEZA Y EMBEDDING =================
 def limpiar_memoria_ollama():
     """Fuerza a Ollama a descargar los LLMs pesados de la RAM/VRAM"""
     print(f"\n ..... Forzando liberación de memoria RAM de los agentes...")
@@ -44,11 +38,10 @@ def limpiar_memoria_ollama():
     print("......... Memoria liberada exitosamente. Continuando...\n")
 
 def obtener_embedding(texto, max_reintentos=5):
-    """Obtiene el embedding asegurando métricas puras sin recortar el texto"""
+    """Obtiene el embedding asegurando métricas puras sin recortar el texto base"""
     if not isinstance(texto, str) or not texto.strip() or str(texto).lower() == 'nan':
         return None
     
-    # Tomamos un límite inicial seguro de 1500 caracteres, pero NO lo reducimos en reintentos
     texto_seguro = texto[:1500] 
     tiempo_espera = 5 
     
@@ -65,7 +58,7 @@ def obtener_embedding(texto, max_reintentos=5):
         except requests.exceptions.RequestException as e:
             print(f"   [!] Ollama saturado en embedding. Reintento {intento+1}/{max_reintentos} en {tiempo_espera}s...")
             time.sleep(tiempo_espera) 
-            tiempo_espera *= 2 # Espera exponencial para dar respiro al hardware
+            tiempo_espera *= 2 
             
     print(f"   [X] Fallo definitivo al obtener embedding tras {max_reintentos} intentos.")
     return None
@@ -120,9 +113,16 @@ def procesar_respuesta_ofp_detallado(data):
     return agents_info, texto_combinado.strip(), string_fragmentos
     
 # ================= FUNCIÓN PRINCIPAL DE EVALUACIÓN =================
-def ejecutar_evaluacion_completa():
-    print(" === Iniciando Evaluación End-to-End (Fase 2) con Gestión Extrema de Memoria ===")
+def ejecutar_evaluacion_completa(iteracion):
+    print(f"\n=========================================================================================")
+    print(f" === Iniciando Evaluación End-to-End (Fase 2) - ITERACIÓN {iteracion} DE 5 ===")
+    print(f"=========================================================================================\n")
     
+    # Archivos de Salida Dinámicos por iteración
+    ARCHIVO_RESULTADOS_PREGUNTAS = os.path.join(directorio_actual, f"resultados_fase2_detalle_preguntas_qwen14B_iter_{iteracion}.csv")
+    ARCHIVO_RESULTADOS_AGENTES = os.path.join(directorio_actual, f"resultados_fase2_metricas_agentes_qwen14B_iter_{iteracion}.csv")
+    ARCHIVO_RESULTADOS_GLOBALES = os.path.join(directorio_actual, f"resultados_fase2_metricas_globales_qwen14B_iter_{iteracion}.csv")
+
     try:
         df = pd.read_csv(ARCHIVO_DATASET, encoding='utf-8-sig', sep=None, engine='python')
     except UnicodeDecodeError:
@@ -151,18 +151,39 @@ def ejecutar_evaluacion_completa():
         esperados_str = str(row.get('agentes_esperados', ''))
         agentes_esperados = [a.strip().lower() for a in esperados_str.split(',')] if esperados_str else []
 
-        print(f"\n-> Evaluando [{index+1}/{len(df)}]: {pregunta[:50]}...")
+        print(f"-> [Iteración {iteracion}] Evaluando [{index+1}/{len(df)}]: {pregunta[:50]}...")
         
         inicio_global = time.time()
-        try:
-            resp = requests.post(ORCHESTRATOR_URL, json={"query": pregunta}, timeout=500)
-            resp.raise_for_status()
-            data = resp.json()
-            agentes_reales_info, texto_bot_global, string_fragmentos = procesar_respuesta_ofp_detallado(data)
-        except Exception as e:
-            print(f"   X Error: {e}")
-            agentes_reales_info, texto_bot_global, string_fragmentos = {}, "Error", "Error al procesar"
-            
+        
+        # ================= BUCLE DE REINTENTOS AUTOMÁTICOS =================
+        max_reintentos_orquestador = 3
+        
+        for intento in range(max_reintentos_orquestador):
+            try:
+                resp = requests.post(ORCHESTRATOR_URL, json={"query": pregunta}, timeout=1200)
+                resp.raise_for_status()
+                data = resp.json()
+                agentes_reales_info, texto_bot_global, string_fragmentos = procesar_respuesta_ofp_detallado(data)
+                
+                texto_lower = texto_bot_global.lower()
+                if "error en traducción" in texto_lower or "error_dominio" in texto_lower or "error_domain" in texto_lower:
+                    raise ValueError("Un agente experto o traductor colapsó y devolvió un mensaje de error interno.")
+                
+                break 
+                
+            except Exception as e:
+                print(f"   [!] Fallo en el orquestador (Intento {intento+1}/{max_reintentos_orquestador}): {e}")
+                
+                if intento < max_reintentos_orquestador - 1:
+                    print("   ... Limpiando memoria RAM y esperando 10s antes de reintentar ...")
+                    limpiar_memoria_ollama() 
+                    time.sleep(10)
+                else:
+                    print("   [X] Fallo definitivo tras múltiples intentos. Se aplicará Penalización Dura (0.0) a los agentes caídos.")
+                    if 'texto_bot_global' not in locals():
+                        agentes_reales_info, texto_bot_global, string_fragmentos = {}, "Error al procesar (Fallo Total)", "Error al procesar"
+        # =============================================================
+        
         latencia_global = round(time.time() - inicio_global, 2)
         global_tiempos.append(latencia_global)
         
@@ -184,7 +205,7 @@ def ejecutar_evaluacion_completa():
         global_recall.append(rec_g)
         global_f1.append(f1_g)
 
-        # MÉTRICAS INDIVIDUALES
+        # MÉTRICAS INDIVIDUALES DE RUTEO
         todos_los_involucrados = set(agentes_esperados + agentes_reales_lista)
         for ag in todos_los_involucrados:
             if ag not in metricas_agentes:
@@ -201,29 +222,44 @@ def ejecutar_evaluacion_completa():
         limpiar_memoria_ollama()
 
         # ========================================================
-        # MÉTRICAS COSENO (OPTIMIZADO)
+        # MÉTRICAS COSENO (JUSTICIA INDIVIDUAL + HARD PENALTY)
         # ========================================================
         cos_g = None  
-        if "Error" not in texto_bot_global:
-            # Calculamos la ideal UNA SOLA VEZ para ahorrar memoria y tiempo
-            v_ideal_g = obtener_embedding(respuesta_ideal_global)
+        
+        v_ideal_g = obtener_embedding(respuesta_ideal_global)
+        texto_lower_global = texto_bot_global.lower()
+        
+        # 2. Evaluación GLOBAL
+        if "error" in texto_lower_global or "lo siento" in texto_lower_global:
+            print("   -> Detectado texto de Evasión/Error. Aplicando Hard Failure Penalty GLOBAL (0.0).")
+            cos_g = 0.0
+            global_cosenos.append(cos_g)
+        else:
             v_bot_g = obtener_embedding(texto_bot_global)
-            
             if v_ideal_g is not None and v_bot_g is not None:
                 cos_g = round(cosine_similarity(v_ideal_g, v_bot_g)[0][0], 4)
                 global_cosenos.append(cos_g)
             else:
-                print(" -> Aviso: Embedding falló, saltando coseno...")
+                cos_g = 0.0 
+                global_cosenos.append(cos_g)
 
-            for ag, info in agentes_reales_info.items():
-                metricas_agentes[ag]['latencias'].append(info['latencia'])
+        # 3. Evaluación INDIVIDUAL (Justicia por Agente)
+        for ag, info in agentes_reales_info.items():
+            metricas_agentes[ag]['latencias'].append(info['latencia'])
+            texto_ind_lower = info['texto'].lower()
+            
+            if "error" in texto_ind_lower or "lo siento" in texto_ind_lower or "error_dominio" in texto_ind_lower:
+                metricas_agentes[ag]['cosenos'].append(0.0)
+            else:
                 v_bot_ind = obtener_embedding(info['texto'])
                 
-                # Reutilizamos el v_ideal_g de arriba
                 if v_ideal_g is not None and v_bot_ind is not None:
                     cos_ind = round(cosine_similarity(v_ideal_g, v_bot_ind)[0][0], 4)
                     metricas_agentes[ag]['cosenos'].append(cos_ind)
+                else:
+                    metricas_agentes[ag]['cosenos'].append(0.0)
 
+        # Asignación de datos al Dataframe
         df.at[index, "fragmentos_enviados_por_agente"] = string_fragmentos
         df.at[index, "agentes_reales"] = ", ".join(agentes_reales_lista)
         df.at[index, "texto_respuesta_global"] = texto_bot_global
@@ -231,12 +267,11 @@ def ejecutar_evaluacion_completa():
         df.at[index, "precision_ruteo"] = round(prec_g, 4)
         df.at[index, "recall_ruteo"] = round(rec_g, 4)
         df.at[index, "f1_score_ruteo"] = round(f1_g, 4)
-        df.at[index, "coseno_global"] = cos_g if cos_g is not None else "ERROR_EMBEDDING"
+        df.at[index, "coseno_global"] = cos_g
 
         # --- LIMPIEZA POST-PREGUNTA EXTREMA ---
         print(" === LIMPIEZA POST-PREGUNTA ===")
         limpiar_memoria_ollama() 
-        # Ahora sí, forzamos la liberación del embedding model para que no consuma RAM inútilmente
         try:
             requests.post(OLLAMA_GENERATE_URL, json={"model": MODELO_EMBEDDING, "keep_alive": 0}, timeout=5)
         except:
@@ -244,7 +279,7 @@ def ejecutar_evaluacion_completa():
         gc.collect()             
 
     # ================= GUARDADO DE REPORTES EN CSV =================
-    print("\n === Procesamiento completado. Generando reportes CSV... ===")
+    print(f"\n === Procesamiento de ITERACIÓN {iteracion} completado. Generando reportes... ===")
 
     try:
         df.to_csv(ARCHIVO_RESULTADOS_PREGUNTAS, index=False, encoding='utf-8-sig')
@@ -301,7 +336,14 @@ def ejecutar_evaluacion_completa():
         print(f" [OK] Reporte Global Orquestador: {os.path.basename(ARCHIVO_RESULTADOS_GLOBALES)}")
     except Exception as e: print(f" Error: {e}")
 
-    print("\n === Evaluación Terminada Exitosamente. ===")
 
+# ================= BUCLE EJECUTOR DE LAS 5 ITERACIONES =================
 if __name__ == "__main__":
-    ejecutar_evaluacion_completa()
+    for i in range(1, 6): # Ejecutará 5 veces (del 1 al 5)
+        ejecutar_evaluacion_completa(i)
+        
+        if i < 5:
+            print(f"\n[!!!] ITERACIÓN {i} FINALIZADA. Iniciando periodo de enfriamiento de hardware de 30 segundos...\n")
+            time.sleep(30) # Pausa térmica para la tarjeta gráfica y la RAM
+            
+    print("\n🎉 TODAS LAS 5 ITERACIONES HAN TERMINADO EXITOSAMENTE 🎉")

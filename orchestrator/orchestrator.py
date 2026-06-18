@@ -14,7 +14,7 @@ app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_host=1)
 # ================= CONFIGURACIÓN =================
 OLLAMA_HOST = "http://ollama:11434"
 ollama_client = ollama.Client(host=OLLAMA_HOST)
-MODELO_CLASIFICACION = "qwen2.5:14b"  
+MODELO_CLASIFICACION = "mistral-nemo:12b" #"qwen2.5:14b"  #"llama3.1:8b" #"gemma2:9b" #"qwen2.5:14b" #"gemma2:9b"   
 
 # ================= DEFINICIÓN DE AGENTES =================
 AGENTS = {
@@ -233,7 +233,7 @@ def handle_query():
                 start_agent_t = time.time()
                 resp = requests.post(AGENTS[agente], 
                                    json=create_openfloor_envelope(create_utterance_event(texto_a_enviar), conversation_id),
-                                   timeout=450)
+                                   timeout=500)
                 reply = extract_reply_from_ovon(resp.json())
                 
                 # --- 2. BLINDAJE ANTI-ERROR DE DOMINIO ---
@@ -242,7 +242,7 @@ def handle_query():
                     
                     resp_forzada = requests.post(AGENTS[agente], 
                                                json=create_openfloor_envelope(create_utterance_event(texto_forzado), conversation_id),
-                                               timeout=450)
+                                               timeout=500)
                     reply = extract_reply_from_ovon(resp_forzada.json())
                 
                 duracion_agente = time.time() - start_agent_t
@@ -284,7 +284,7 @@ Es obligatorio que mantengas todos los párrafos originales. No agregues notas, 
                 start_trans_t = time.time()
                 resp = requests.post(AGENTS["translator"], 
                                    json=create_openfloor_envelope(create_utterance_event(prompt_trans), conversation_id),
-                                   timeout=450)
+                                   timeout=500)
                 trad = extract_reply_from_ovon(resp.json())
                 duracion_trans = time.time() - start_trans_t
                 
