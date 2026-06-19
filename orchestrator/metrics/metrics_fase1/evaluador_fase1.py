@@ -10,8 +10,8 @@ import os
 # ================= CONFIGURACIÓN =================
 directorio_actual = os.path.dirname(os.path.abspath(__file__))
 ARCHIVO_DATASET = os.path.join(directorio_actual, "dataset_individual.csv") # Asegúrate de que este archivo exista
-ARCHIVO_RESULTADOS = os.path.join(directorio_actual, "resultados_fase1_completo_mistral.csv")
-ARCHIVO_METRICAS_AGENTE = os.path.join(directorio_actual, "metricas_agentes_fase1_mistral.csv")
+ARCHIVO_RESULTADOS = os.path.join(directorio_actual, "resultados_fase1_completo_gemma.csv")
+ARCHIVO_METRICAS_AGENTE = os.path.join(directorio_actual, "metricas_agentes_fase1_gemma.csv")
 
 OLLAMA_URL = "http://localhost:11434/api/embeddings"
 MODELO_EMBEDDING = "nomic-embed-text"

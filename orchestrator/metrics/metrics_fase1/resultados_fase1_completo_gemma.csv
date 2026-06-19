@@ -1,0 +1,1677 @@
+﻿id_pregunta,asistente,puerto,pregunta,respuesta_libro,respuesta_sistema,tiempo_segundos,similitud_ideal,fidelidad_fuente,clasificacion,precision_individual,recall_individual,f1_score_individual
+1,historia,5016,ï¿½Quiï¿½n fue Albert Einstein y en quï¿½ aï¿½o publicï¿½ la Teorï¿½a de la Relatividad General?," El texto Toda la Historia del mundo indica que el cientï¿½fico Albert Einstein formulï¿½ su teorï¿½a de la ""relatividad universal"" a partir del aï¿½o 1905",Albert Einstein fue un físico teórico alemán nacido en 1879.  Publicaba su teoría de la relatividad general en **1915**.,18.91,0.6908,0.6908,FN,0.0,0.0,0.0
+2,historia,5016,ï¿½En quï¿½ aï¿½o iniciï¿½ la Revoluciï¿½n Mexicana y con quï¿½ plan?,"De acuerdo con las fuentes,  la Revoluciï¿½n Mexicana iniciï¿½ en el aï¿½o 1910","La Revolución Mexicana se inició en 1910, impulsada por una serie de factores sociales, económicos y políticos.  No existe un ""plan"" definido para iniciar la revolución, pero es crucial entender que el movimiento fue orgánico, con diferentes actores y grupos involucrados que buscaban reformas políticas y sociales. 
+
+Aquí hay algunos elementos claves:
+
+* **Insatisfacción social:** Existía una profunda desigualdad entre ricos y pobres. La clase obrera luchaba por mejores condiciones laborales y la igualdad ante la ley. 
+* **Crisis económica:** La crisis económica del siglo XX en México generó desempleo y pobreza. Esto creó un ambiente propício para el surgimiento de movimientos revolucionarios.
+* **Influencia de figuras clave:**  Personajes como Francisco Madero, Emiliano Zapata y Pancho Villa lideraron diferentes grupos de luchadores, cada uno con sus propios ideales y estrategias, pero todos en búsqueda de la transformación social del país. 
+
+Es importante recordar que la Revolución Mexicana fue un proceso complejo con múltiples actores y motivaciones. Se desarrolló a lo largo de varios años y no se puede reducir a una sola fecha o plan.",34.05,0.6911,0.6911,FN,0.0,0.0,0.0
+3,historia,5016,ï¿½Cï¿½mo fue el descubrimiento del radio por Marie Curie?," El texto de Historia universal contemporï¿½nea no detalla el descubrimiento. Sin embargo,  basï¿½ndose en el libro de Quï¿½mica incluido en las fuentes,  fue en el aï¿½o 1898 cuando Marie Curie,  junto con su esposo Pierre Curie,  descubrieron los elementos Radio (Ra) y Polonio (Po),  y bautizaron a las emisiones de estos elementos con el nombre de ""radiactividad"".","Marie Curie no descubrió el radio. La radiación y su descubrimiento es atribuido a Henri Becquerel en 1896.  Curiel, junto con su esposo Pierre Curie, realizó un trabajo fundamental en la comprensión del radioactividad.",19.57,0.7247,0.7247,FN,0.0,0.0,0.0
+4,historia,5016,Resume brevemente quiï¿½n fue Benito Juï¿½rez y su papel en las Leyes de Reforma,"Sobre Juï¿½rez,  las fuentes destacan que era un presidente convencido de que ""El respeto al derecho ajeno es la paz"",  caracterizando sus relaciones internacionales por la convivencia y el respeto a las leyes","Benito Juárez fue un político e importante líder de México durante la época del régimen mexicano del siglo XIX.  Fue Presidente de México (1858-1867) y luego fue llamado a liderar el movimiento por la independencia de México. Después de la independencia, luchó por una justicia social y política. Las leyes de reforma, que se implementaron en 1858, son un resultado de su liderazgo en la lucha contra las fuerzas del poder centralizado.",21.34,0.7374,0.7374,FN,0.0,0.0,0.0
+5,historia,5016,ï¿½Cuï¿½les son las principales diferencias entre los gobiernos totalitarios y los democrï¿½ticos?,"Los gobiernos totalitarios utilizan la fuerza para mantener el control interno,  agrupan las decisiones polï¿½ticas,  econï¿½micas y sociales en un solo partido y son dirigidos por grupos de ï¿½lite (frecuentemente militares o polï¿½ticos con ideologï¿½as de marcada discriminaciï¿½n) que no respetan la libertad individual","Las principales diferencias entre los gobiernos totalitarios y los democráticos se resumen en: 
+
+**Gobierno Totalitario:**
+
+* **Absolutismo:** El líder del gobierno (generalmente un dictador) posee el poder absoluto y no está sujeto a ningún control externo. La ley es una herramienta de control del gobierno y las élites, sin ser realmente independiente.
+* **Represión:** La libertad individual, la oposición política y los medios de comunicación son reprimidos o censurados. Los derechos humanos básicos se violan con frecuencia. 
+* **Control total de la información:** Los gobiernos totalitarios controlan toda la información para imponer su propia narrativa a la población. Se promueven ideologías únicas y se limita la diversidad de pensamiento.  
+* **Campañas de propaganda:** La propagación de ideas, ideales y mensajes específicos a través de medios de comunicación como radio o televisión, para manipular la opinión pública. 
+
+**Gobierno Democrático:**
+
+* **Democracia representativa:** El poder reside en la gente, que elige representantes a través de elecciones libres, justas y transparentes.
+* **Libertad individual:** Los ciudadanos tienen derecho a la libertad de expresión, de religión, de asociación y de movimiento sin restricciones. 
+* **Control legal del poder:** La ley se establece para proteger los derechos humanos y las libertades, y se aplica a todos los ciudadanos, sin excepción.  
+* **Diversidad de pensamiento:** Se promueve la libertad de pensamiento y de expresión, y se permite una amplia gama de ideas políticas y sociales.
+
+
+En resumen, los gobiernos totalitarios buscan controlar y manipular completamente la sociedad para mantener el poder absoluto, mientras que los gobiernos democráticos se basan en la participación ciudadana, la libertad individual y un sistema legal que protege los derechos humanos.",40.38,0.8263,0.8263,VP,1.0,1.0,1.0
+6,historia,5016,ï¿½Cuï¿½les fueron los objetivos principales para la creaciï¿½n de la Organizaciï¿½n de las Naciones Unidas (ONU)?,"La ONU fue constituida en 1945 en sustituciï¿½n de la Sociedad de las Naciones con tres objetivos fundamentales: promover la paz y la cooperaciï¿½n entre los paï¿½ses,  teniendo la posibilidad de desplegar fuerzas de paz para resolver conflictos; promover la cooperaciï¿½n en asuntos econï¿½micos,  humanitarios y de salud; e impedir la intervenciï¿½n de las naciones en los asuntos internos de las demï¿½s.","Los objetivos principales para la creación de la Organización de las Naciones Unidas (ONU) eran:
+
+* **Promover la paz mundial:** La ONU buscaba crear un sistema internacional que estableciera relaciones pacíficas entre los países y previese conflictos armados. 
+* **Fomentar el desarrollo económico y social:** La ONU buscaba ayudar a países en desarrollo a mejorar sus condiciones económicas y sociales, mediante programas de ayuda y cooperación. 
+* **Promover la cooperación internacional:**  La ONU buscaba que los países cooperaran en temas de interés común, como la salud pública, educación, cultura y el medio ambiente.
+
+Es importante destacar que la ONU fue creada después de la Primera Guerra Mundial para evitar futuras guerras y promover el desarrollo humano.",28.3,0.7951,0.7951,VP,1.0,1.0,1.0
+7,historia,5016,ï¿½Quï¿½ factores permitieron a Estados Unidos fortalecer su hegemonï¿½a mundial tras la Primera Guerra Mundial?,"Mientras el poderï¿½o europeo se debilitaba,  Estados Unidos no sufriï¿½ desgaste en su propio territorio durante la guerra y acelerï¿½ su producciï¿½n con el uso del acero y la aplicaciï¿½n de la quï¿½mica","Estados Unidos logró fortalecer su hegemonía mundial tras la Primera Guerra Mundial debido a una combinación de factores, incluyendo:
+
+* **Aumento demográfico y económico:** El país experimentó un rápido crecimiento poblacional y económico durante la década de 1920, lo que le permitió aumentar su capacidad de producción y expansión.
+* **Desarrollo tecnológico:** Estados Unidos lideró en investigación y desarrollo durante la era dorada de la posguerra, con avances en tecnología que impulsaron sus industrias y economía.
+* **Apertura comercial:** El país se dedicó a establecer una red comercial global, exportando bienes y servicios, lo que le permitió fortalecer su influencia económica y política internacionalmente.
+* **Posicionamiento neutral:** Estados Unidos se mantuvo neutral durante la crisis de 1929 y la guerra civil española, lo que le permitió mantenerse a salvo del conflicto y consolidar su posición como actor independiente.
+* **Crecimiento económico global:** Los préstamos otorgados por Estados Unidos a los países europeos tras la Primera Guerra Mundial incrementaron su influencia en el escenario económico mundial, lo que facilitó la expansión de sus intereses.",30.55,0.7714,0.7714,VP,1.0,1.0,1.0
+8,historia,5016,ï¿½Quï¿½ innovaciones ideolï¿½gicas y metafï¿½sicas aportï¿½ el judaï¿½smo?,"El judaï¿½smo aportï¿½ una normativa que ""impone una moral universal"" mediante los Diez Mandamientos,  pese a que en un inicio la ley fuera pensada solo para los judï¿½os",ERROR_DOMINIO,19.25,0.5388,0.5388,FN,0.0,0.0,0.0
+9,historia,5016,ï¿½Quï¿½ estrategias polï¿½ticas permitieron al Imperio Romano mantener su hegemonï¿½a?,"La hegemonï¿½a romana se sustentï¿½ en el Derecho Romano y el buen gobierno,  amparados en un sentido de la dignidad y filosofï¿½as como el estoicismo","El Imperio Romano logró mantener su hegemonía a través de una combinación de estrategias políticas, militares y económicas. Entre ellas destacan:
+
+* **Diplomacia:** El Imperio romano construyó un extenso sistema de relaciones diplomáticas con pueblos de diferentes culturas y regiones. Esta habilidad le permitió negociar acuerdos comerciales, alianzas estratégicas y mantener el control sobre vastos territorios.
+* **Administración eficiente:** La administración romana fue fundamental para su éxito. Se establecieron un complejo sistema administrativo que permitía la recaudación de impuestos, el control del territorio y la provisión de servicios públicos a la población. 
+* **Fuerza militar:** El ejército romano era una fuerza armada formidable, capaz de defender sus fronteras y conquistar nuevos territorios. Su táctica y disciplina militar fueron cruciales para su expansión y control de las regiones conquistadas. 
+* **Cultura y legado:** El Imperio Romano dejó un legado cultural que influyó en el desarrollo de otras culturas y sociedades.  Su sistema legal, su arquitectura, la lengua latina y sus técnicas de gobierno dejaron una huella profunda en el mundo occidental.
+
+Es importante destacar que la hegemonía romana no se mantuvo sin cambios. El imperio enfrentó desafíos internos y externos durante su larga historia.",32.82,0.7801,0.7801,VP,1.0,1.0,1.0
+10,historia,5016,ï¿½Quï¿½ diferencias fundamentales existen entre el colonialismo y el imperialismo del siglo XIX?,"El colonialismo implicaba la imposiciï¿½n de gobiernos,  administraciï¿½n y sistemas mercantilistas,  ademï¿½s de la evangelizaciï¿½n,  la enseï¿½anza del idioma a los pueblos conquistados y la creaciï¿½n de colonias de explotaciï¿½n para obtener materias primas o de poblamiento","El colonialismo se refiere a la **domina**ción política y económica de un país sobre un territorio, a menudo mediante la conquista y la explotación de recursos naturales y mano de obra.  En cambio, el imperialismo se enfoca más en **la expansión del poderío y la influencia de un país o región sobre otros**, no solo por la conquista de territorios, sino también por la imposición de su cultura, valores y sistemas de gobierno a los territorios sometidos. 
+
+En resumen, el colonialismo busca mantener el control sobre un territorio mediante la explotación de sus recursos y población, mientras que el imperialismo busca expandir el poderío político y económico de un país en todo el mundo.",24.32,0.8553,0.8553,VP,1.0,1.0,1.0
+11,historia,5016,ï¿½Por quï¿½ los grandes imperios precolombinos fueron derrotados rï¿½pidamente por los espaï¿½oles?,"Fueron derrotados rï¿½pidamente debido a factores psicolï¿½gicos,  sorpresa y extrema violencia. Por ejemplo,  en Mï¿½xico,  el imperio azteca se desestabilizï¿½ cuando Moctezuma creyï¿½ inicialmente que Cortï¿½s era un dios,  dejï¿½ndolo entrar pacï¿½ficamente a Tenochtitlï¿½n",ERROR_DOMINIO,17.9,0.5072,0.5072,FN,0.0,0.0,0.0
+12,historia,5016,"Segï¿½n el texto ""Toda la Historia del mundo"""," ï¿½quï¿½ impacto tuvo la invenciï¿½n de la agricultura en la humanidad?,  La invenciï¿½n de la agricultura en el Neolï¿½tico representï¿½ una revoluciï¿½n que permitiï¿½ alimentar a cien veces mï¿½s personas en un mismo territorio en comparaciï¿½n con la caza",ERROR_DOMINIO,15.79,0.5645,0.5645,FN,0.0,0.0,0.0
+13,historia,5016,ï¿½Quï¿½ innovaciï¿½n tï¿½ctica implementï¿½ la Convenciï¿½n francesa en 1793?,"La innovaciï¿½n clave fue una polï¿½tica de leva o movilizaciï¿½n masiva y permanente de la poblaciï¿½n civil para la guerra. Dictaminaron que ""todos los franceses son requeridos de modo permanente para el servicio de los ejï¿½rcitos"" (los jï¿½venes combatiendo,  los hombres forjando armas,  las mujeres fabricando tiendas de campaï¿½a y sirviendo en hospitales)",ERROR_DOMINIO,15.49,0.5694,0.5694,FN,0.0,0.0,0.0
+14,historia,5016,"Segï¿½n Lenin, ï¿½por quï¿½ el Imperio Ruso no era ideal para la revoluciï¿½n socialista?","Lenin y la teorï¿½a marxista consideraban a Rusia sï¿½lo una etapa circunstancial porque el imperio vivï¿½a en grave retraso agrario y estructural (Lenin ""despreciaba a los mujiks por el retraso en que vivï¿½an"")","Lenin creía que el Imperio Ruso era ineficiente para la revolución socialista por las siguientes razones:
+
+1. **Falta de libertad**:  El Imperio Ruso se caracterizaba por una fuerte represión y falta de libertad personal, lo que dificultaba la creación de un clima favorable para la revolución.
+2. **Corrupción**: El régimen zarista era altamente corrupto, lo que impidió el progreso social y económico de los ciudadanos. 
+3. **Ineficiencia**: La estructura del Imperio Ruso, con su sistema feudal y aristocracia, no permitía una transformación rápida y justa en la sociedad, haciendo la revolución un proceso lento e ineficiente.  
+
+**Es importante destacar que Lenin consideraba la Revolución Rusa como un punto de inflexión para construir un nuevo socialismo mundial.**",25.85,0.7815,0.7815,VP,1.0,1.0,1.0
+15,historia,5016,ï¿½Cï¿½mo logrï¿½ Benito Mussolini establecer el rï¿½gimen fascista en Italia?,"Mussolini alcanzï¿½ el poder valiï¿½ndose de una agrupaciï¿½n armada,  ""los camisas negras"" (o squadristi),  con los cuales sembrï¿½ el miedo al romper huelgas y perseguir a comunistas y socialistas","Benito Mussolini estableció el régimen fascista en Italia mediante un proceso que involucró la renuncia al gobierno de Luigi Facta, la instauración de una dictadura unipartidista y totalitaria y la consolidación del poder en manos del partido Nacional Fascista. 
+
+**Puntos claves:**
+
+* **Ascenso al poder:** Mussolini había sido miembro del partido socialista italiano, director de un periódico y  su experiencia previa le permitió construir un fuerte apoyo para su ascenso al poder.
+* **Renuncia al gobierno:** La renuncia del Primer Ministro Luigi Facta y la instauración de un régimen fascista fue crucial en el proceso de establecimiento de Mussolini. 
+* **Unipartidismo y totalitarismo:** Mussolini transformó el régimen en una dictadura unipartidista y totalitaria, eliminando a las oposición políticas y convirtiendo al Estado en el promotor de la economía.
+* **El partido Fascismo:** El Partido Nacional Fascista jugó un papel central en este proceso, promoviendo su ideología y consolidando el poder de Mussolini. 
+
+En resumen, la combinación de una estrategia política inteligente, la utilización del poder y la consolidación del Partido Nacional Fascista fueron claves para que Mussolini lograra establecer un régimen fascista en Italia.",30.8,0.7488,0.7488,FN,0.0,0.0,0.0
+16,fisica,5002,ï¿½Cuï¿½l es el objetivo principal de la fï¿½sica?,"Aunque la funciï¿½n principal de la fï¿½sica es estudiar la materia y la energï¿½a, su objetivo principal es comprender las reglas de la naturaleza, asï¿½ como desentraï¿½ar sus misterios
+. La fï¿½sica busca dar una explicaciï¿½n fundamental a los eventos naturales, y sus principios sirven como base para otras ramas de la ciencia","¡Hola! El objetivo principal de la física es comprender cómo funciona el **mundo que nos rodea**. 🤯  Para ello, estudiamos las leyes y principios fundamentales que rigen el comportamiento de los objetos, desde los más pequeños hasta los más grandes. 
+
+La física nos ayuda a:
+
+* **Explicar cómo se comportan las cosas:** ¿Por qué un balón sube al lanzar? ¿Cómo funciona una máquina de escribir?  
+* **Predecir el futuro:** ¿Qué pasara si modifico la altura de un balancín? ¿En qué momento un objeto empezará a moverse? 
+* **Crear nuevas tecnologías:**  La física nos da las bases para construir cosas increíbles como coches, smartphones o incluso medicinas.
+
+La física es una disciplina fascinante que nos abre las puertas a comprender el universo y todo lo que hay dentro de él. ✨  
+
+
+¡Espero que esto te haya ayudado!",27.57,0.7825,0.7825,VP,1.0,1.0,1.0
+17,fisica,5002,ï¿½Cuï¿½l es la fï¿½rmula de la Segunda Ley de Newton y quï¿½ relaciona?,La fï¿½rmula principal de la Segunda Ley de Newton es F=ma (Fuerza = masa ï¿½ aceleraciï¿½n) ,"La Segunda Ley de Newton establece la relación entre la **fuerza** que actúa sobre un objeto, su **masa** y la **velocidad** con la que se mueve.  En otras palabras, **más fuerza, mayor aceleración**. 
+
+La fórmula de la Segunda Ley de Newton es:
+
+**F = m * a**
+
+Donde:
+
+* **F** representa la **fuerza** (medida en Newtons, N)
+* **m** representa la **masa** (medida en kilogramos, kg)
+* **a** representa la **aceleración** (medida en metros por segundo al cuadrado, m/s²)
+
+Esta ley nos dice que para cambiar la velocidad de un objeto, se necesita una fuerza aplicada sobre él.  La masa del objeto, a su vez, influye en la aceleración resultante. 
+
+
+¿Te gustaría saber más sobre esta ley o quieres conocer algunos ejemplos?",33.51,0.6474,0.6474,FN,0.0,0.0,0.0
+18,fisica,5002,Explica el concepto fï¿½sico de velocidad instantï¿½nea," Para calcularla,  se debe medir la distancia recorrida durante un intervalo de tiempo muy pequeï¿½o y luego dividir esa distancia entre dicho intervalo de tiempo.","¡Claro que sí!  Vamos a entender el concepto de velocidad instantánea. 
+
+**¿Qué es la velocidad instantánea?**
+
+La velocidad instantánea se refiere a la **tasa de cambio instantánea de posición**. En otras palabras, se trata de la rapidez con la que un objeto cambia su posición en un instante determinado. Es decir, nos dice qué tan rápido se está moviendo una partícula en ese momento específico.  
+
+**Diferencias entre velocidad y aceleración:**
+
+Es importante entender que la velocidad instantánea es distinta a la **velocidad promedio**. 
+* **Velocidad promedio**:  Se calcula como la distancia recorrida dividida por el tiempo transcurrido. Es útil para describir la tendencia general de movimiento, pero no indica con precisión la rapidez de cambio en un instante específico. 
+
+* **Velocidad instantánea**: Representa la rapidez con la que se está moviendo un objeto en ese mismo instante.  Es útil para analizar cambios rápidos y bruscos.
+
+
+**Fórmula:**
+La velocidad instantánea se puede calcular utilizando la siguiente fórmula:
+
+**v = Δx / Δt** 
+
+Donde:
+* **v** es la velocidad instantánea 
+* **Δx** es la distancia recorrida durante un tiempo específico (Δt) 
+* **Δt** es el tiempo transcurrido durante el movimiento
+
+
+**Ejemplos:**
+Imagina que un coche recorre una distancia de 100 metros en un tiempo de 5 segundos. 
+
+* La velocidad instantánea del coche sería **v = 100 m / 5 s = 20 m/s**.  En este instante particular, el coche tiene una velocidad de 20 metros por segundo.
+
+
+**¿Cómo se relaciona con la física?**
+
+La velocidad instantánea es una herramienta fundamental en la física para estudiar:
+* El movimiento de objetos en diferentes situaciones (físicas)
+* Los cambios bruscos y rápidos de movimiento
+* La dinámica de los objetos en movimiento
+
+
+Espero que esto te ayude a entender mejor el concepto de velocidad instantánea. Si tienes alguna duda, ¡no dudes en preguntar!",50.86,0.749,0.749,FN,0.0,0.0,0.0
+19,fisica,5002,ï¿½Quï¿½ representa fï¿½sicamente la fï¿½rmula W = F * d?," W = F * d? La fï¿½rmula (presentada en el texto como W=Fs) representa matemï¿½ticamente el trabajo (Work) realizado 
+. Fï¿½sicamente, indica que el trabajo es el producto de la fuerza aplicada sobre un cuerpo y su desplazamiento (distancia) a lo largo de la direcciï¿½n de la fuerza.","La fórmula **W = F * d** se conoce como la **Ley de la Potencia**.  Es una expresión que relaciona la **trabajo (W)**, el **fuerza aplicada (F)** y la **distancia recorrida (d)**. 
+
+**¿Qué significa?**
+
+En términos sencillos, esta fórmula nos dice que **el trabajo realizado depende tanto de la fuerza aplicada como del recorrido de la misma.**  
+* **Fuerza:** La fuerza aplicada es la cantidad de empuje o resistencia que ejercemos sobre un objeto. 
+* **Distancia:** La distancia recorrida es la longitud del movimiento del objeto, es decir, la línea recta que se recorre.
+
+**Ejemplo:** Imagina que quieres mover una caja de cartón por el suelo. Si aplicas una fuerza constante de 10 Newtons (N) durante 5 metros, has realizado un trabajo de 50 Joules (J). En este caso, el **trabajo (W)** se calcula como la **fuerza (F) aplicada multiplicada por la distancia (d)**: 
+
+**W = F * d = 10 N * 5 m = 50 J**
+
+
+**Recuerda:** El trabajo es una medida de la energía transferida a un objeto, y este movimiento se realiza debido a un cambio en la energía potencial o cinética.
+
+
+Espero que esta explicación te haya sido útil! 😊",37.39,0.8456,0.8456,VP,1.0,1.0,1.0
+20,fisica,5002,ï¿½Cuï¿½l es la diferencia entre rapidez y velocidad en cinemï¿½tica?,"La rapidez (speed) indica ï¿½nicamente la tasa de cambio de posiciï¿½n de un cuerpo respecto al tiempo sin indicar su direcciï¿½n, por lo que es una cantidad escalar 
+. En cambio, la velocidad indica la tasa de cambio de posiciï¿½n (o desplazamiento) especificando una direcciï¿½n definida, lo que la convierte en una cantidad vectorial","¡Claro que sí! 🌎  La diferencia entre rapidez y velocidad en cinemática es sutil, pero muy importante. 
+
+**Velocidad** es una magnitud que describe **cuánto cambia la posición de un objeto en relación al tiempo**. Es decir, mide la distancia recorrida por un objeto dividido por el tiempo que ha tardado en recorrerla.  La fórmula para calcular la velocidad es: 
+ 
+ **Velocidad = Distancia / Tiempo**
+
+**Rapidez**, por otro lado, es una **forma de medir la rapidez con la que se mueve un objeto**, pero sin considerar el **tiempo**. La rapidez se mide como la distancia recorrida en un tiempo específico.  La formula para calcular la rapidez es: 
+
+**Rapidez = Distancia / Tiempo**
+
+En resumen:
+
+* **Velocidad:**  Mide la **cantidad de cambio de posición de un objeto con respecto al tiempo.**
+* **Rapidez:** Mide la **velocidad instantánea del objeto.**
+
+
+Espero que esta explicación te ayude a comprender mejor la diferencia entre rapidez y velocidad. ¡No dudes en preguntar si tienes más dudas! 💪",33.42,0.8389,0.8389,VP,1.0,1.0,1.0
+21,fisica,5002,ï¿½Quï¿½ establece la Primera Ley de Newton o Ley de la Inercia?,"Establece que si no actï¿½a ninguna fuerza sobre un cuerpo, este continuarï¿½ indefinidamente en su estado de reposo o de movimiento uniforme en lï¿½nea recta 
+. A esta propiedad inherente o tendencia de un cuerpo a mantener su estado actual se le conoce como inercia.","La Primera Ley de Newton, también conocida como Ley de la Inercia, establece que **un objeto en reposo permanecerá en reposo y un objeto en movimiento permanecerá en movimiento a una velocidad constante, a menos que actúen fuerzas externas sobre él.** 
+
+En otras palabras, un objeto no cambiará su estado de movimiento (velocidad o reposo) por sí mismo. Para que se modifique su velocidad o posición, debe ser afectado por una fuerza externa.  
+
+**Fórmula:** La Primera Ley de Newton se puede expresar matemáticamente como:
+
+**Fuerza (F) = masa (m) * aceleración (a)** 
+
+Donde la Fuerza (F) es la magnitud de la fuerza que actúa sobre un objeto y se mide en Newtons (N). La masa (m) es la cantidad de materia del objeto y se mide en kilogramos (kg).  La aceleración (a) es la velocidad a la que cambia la velocidad de un objeto y se mide en metros por segundo cuadrado (m/s²).
+
+**Ejemplo:** Si una pelota de fútbol con una masa de 0.5 kg se mueve a una velocidad de 5 m/s, y luego experimenta una fuerza aplicada que la desacelera hasta detenerse, el cambio de velocidad del objeto es proporcional al peso de la pelota.
+
+
+
+Espero que esto te ayude!",38.9,0.7521,0.7521,VP,1.0,1.0,1.0
+22,fisica,5002,ï¿½Cï¿½mo se define la Segunda Ley de Newton y cuï¿½l es su fï¿½rmula principal?,"Se define postulando que la tasa de cambio del momento de un cuerpo es proporcional a la fuerza que se le aplica, y este cambio se da en la misma direcciï¿½n de la fuerza 
+. Su fï¿½rmula principal o ecuaciï¿½n de mediciï¿½n es F=ma (Fuerza = masa ï¿½ aceleraciï¿½n).","La Segunda Ley de Newton, también conocida como ley de la inercia, describe cómo los objetos cambian su movimiento cuando actúan fuerzas.  En términos simples, establece que un objeto en reposo permanecerá en reposo y un objeto en movimiento continuará moviéndose a una velocidad constante, a menos que una fuerza externa actúe sobre él. 
+
+Su fórmula principal es: 
+**F = m * a**
+
+Donde:
+
+* **F** representa la fuerza aplicada al objeto (en Newtons - N)
+* **m** representa la masa del objeto (en kilogramos - kg)
+* **a** representa el aceleración del objeto (en metros por segundo cuadrado - m/s²)
+
+En resumen, la Segunda Ley de Newton nos dice que la fuerza es directamente proporcional a la masa del objeto y a su aceleración. 
+
+
+¿Te gustaría saber más sobre la Segunda Ley de Newton?",31.4,0.7309,0.7309,FN,0.0,0.0,0.0
+23,fisica,5002,ï¿½Quï¿½ afirma la Tercera Ley de Newton (Acciï¿½n y Reacciï¿½n)?,"La Tercera Ley de Newton afirma que a toda acciï¿½n corresponde una reacciï¿½n igual y opuesta 
+. Fï¿½sicamente, significa que cuando un cuerpo ejerce una fuerza sobre otro, los valores de las fuerzas de acciï¿½n y reacciï¿½n son los mismos, pero actï¿½an en direcciones contrarias.","La Tercera Ley de Newton, también conocida como Ley de la Acción y Reacción, establece que **para cada acción existe una reacción igual e opuesta**.  Esto significa que cuando una fuerza actúa sobre un objeto, este crea una fuerza igual y opuesta en el objeto que lo está actuando. 
+
+**En otras palabras:**  Si alguien te da una patada (acción), tú le devolverías la misma fuerza con mayor intensidad (reacción). La magnitud de la fuerza de la reacción es siempre igual a la fuerza aplicada, pero de sentido opuesto. 
+
+
+Aquí hay un ejemplo simple:  
+* **Aplicar una fuerza al muro:** Si golpeas un muro con una pelota, el muro te golpeará con la misma fuerza (acción) en la dirección opuesta (reacción).
+
+**Fórmula:** 
+La Tercera Ley de Newton se puede expresar con la siguiente fórmula:
+
+**Fuerza aplicada = Fuerza de reacción**
+
+
+Espero que esta respuesta te ayude a entender mejor la Tercera Ley de Newton.  ¿Tienes alguna otra pregunta?",32.51,0.8322,0.8322,VP,1.0,1.0,1.0
+24,fisica,5002,ï¿½Cï¿½mo se define el concepto de 'trabajo' en fï¿½sica mecï¿½nica?,"Se establece que solo se realiza trabajo cuando una fuerza actï¿½a sobre un cuerpo y logra desplazarlo de un lugar a otro 
+. De forma analï¿½tica, se define como el producto de la fuerza aplicada a un cuerpo multiplicada por el desplazamiento en la direcciï¿½n de dicha fuerza.","El **trabajo** en física mecánica se define como la **fuerza aplicada a un objeto sobre una distancia**, que provoca una **transformación de energía**.  Es decir, el trabajo es la magnitud del producto de la fuerza aplicada por un objeto sobre una distancia.
+
+En otras palabras, **el trabajo se realiza cuando hay una transformación de energía**, ya sea en forma de movimiento o cambio de posición. 
+
+Se representa por **W** y se calcula con la siguiente fórmula: 
+**W = F x d**
+
+Donde:
+
+* **F** es la fuerza aplicada al objeto (en Newtons, N)
+* **d** es la distancia que el objeto recorre bajo la acción de la fuerza (en metros, m)
+
+**Importante:**
+
+* El trabajo se realiza cuando existe una **fuerza aplicada a un objeto en movimiento**, lo que provoca que el objeto realice un cambio de posición. 
+* La **magnitud del trabajo depende de la magnitud de la fuerza y la distancia recorrida**. 
+* El trabajo es un concepto fundamental en la física mecánica, y se utiliza para entender la energía cinética, la energía potencial y otros conceptos importantes.
+
+
+Espero que esta respuesta te ayude a comprender el concepto de trabajo en física mecánica.  Si tienes alguna otra pregunta, no dudes en preguntar.",36.45,0.7802,0.7802,VP,1.0,1.0,1.0
+25,fisica,5002,ï¿½Quï¿½ es la energï¿½a cinï¿½tica?," La energï¿½a cinï¿½tica es la capacidad de realizar trabajo que adquiere un cuerpo en movimiento, originada precisamente por estar en movimiento 
+. A nivel molecular, esta energï¿½a es generada por el movimiento y la agitaciï¿½n libre de las partï¿½culas de una sustancia.","¡Claro que sí! La energía cinética es una medida de la **energía de movimiento** de un objeto.  Imagina que tienes una pelota que está moviéndose, puede ser que se mueva a gran velocidad o que se mueva con una pequeña fuerza. 
+
+En física, la energía cinética (Ec) depende de dos factores:
+
+* **La masa del objeto:** Cuanto mayor sea la masa, mayor será la energía cinética.  
+    * La masa del objeto se mide en kilogramos (kg).
+* **Su velocidad**: Cuanta mayor sea la velocidad del objeto, mayor será su energía cinética. 
+    * La velocidad se mide en metros por segundo (m/s).
+
+
+La fórmula para calcular la energía cinética es:
+
+**Ec = (1/2) * m * v²**
+
+donde:
+* **Ec:** representa la energía cinética
+* **m:** representa la masa del objeto (en kg)
+* **v:** representa la velocidad del objeto (en m/s)
+
+
+¡Espero que esto te ayude a entender mejor la energía cinética!",35.08,0.7705,0.7705,VP,1.0,1.0,1.0
+26,fisica,5002,ï¿½A quï¿½ se refiere el concepto de energï¿½a potencial gravitatoria?,"Se refiere a la energï¿½a o capacidad para hacer trabajo que se almacena en un objeto cuando es elevado o levantado del suelo,  trabajando en contra de la fuerza de gravedad ","La energía potencial gravitatoria es la energía que un objeto posee debido a su posición en un campo gravitatorio. 
+
+**Imagina esto:** Si una pelota está en la cima de un edificio, tiene energía potencial gravitatoria.  Esta energía se almacena porque la pelota está elevada y puede caer.  Cuanto mayor sea la altura del objeto, mayor será su energía potencial gravitatoria.
+
+**¿Cómo funciona?**
+
+La fuerza gravitatoria es la que mantiene a la Tierra y los objetos unidos a ella.  Es la misma fuerza que nos atrae hacia el suelo. 
+
+**Fórmula:**
+
+La fórmula para calcular la energía potencial gravitatoria (Ep) de un objeto con masa (m) en una altura (h) sobre la superficie de una Tierra es:
+
+**Ep = m * g * h**
+
+Donde:
+* **g** es la aceleración debida a la gravedad (9.8 m/s²) 
+* **h** es la altura del objeto
+
+**Ejemplo:**  Imagina que tienes un objeto con masa de 2 kg y quieres saber su energía potencial gravitatoria si está a una altura de 10 metros sobre el suelo.   Usando la fórmula:
+
+Ep = (2 kg) * (9.8 m/s²) * (10 m)
+**Ep = 196 Joules**",37.83,0.7505,0.7505,VP,1.0,1.0,1.0
+27,fisica,5002,ï¿½Quï¿½ plantea la Ley de Conservaciï¿½n de la Energï¿½a?,"Plantea que la energï¿½a no se crea ni se destruye,  solamente se transforma de unas formas a otras ","La Ley de Conservación de la Energía establece que **la energía no se puede crear ni destruir, solo transformarse**.  Es decir, la suma total de energía en un sistema cerrado permanece constante a lo largo del tiempo. 
+
+Esta ley es fundamental en física y se aplica a diversos fenómenos naturales. 
+
+**Algunos ejemplos:**
+
+* **Movimiento de una pelota:** Cuando una pelota se lanza al aire, su energía cinética (energía de movimiento) aumenta.  
+* **Calentamiento de agua:** Al calentarse, el agua absorbe energía térmica, lo que se traduce en un aumento en la temperatura y en la energía interna. 
+
+**Fórmula de la Ley de Conservación de la Energía:**
+
+La Ley de Conservación de la Energía se puede representar con la siguiente fórmula:
+
+**ΔE = ΔKE + ΔPE**
+
+Donde:
+* **ΔE** es la diferencia de energía total del sistema
+* **ΔKE** es la diferencia de energía cinética del sistema
+* **ΔPE** es la diferencia de energía potencial del sistema
+
+
+Espero que esta respuesta te sea útil. Si tienes alguna otra pregunta sobre física, no dudes en preguntarme.",34.66,0.8064,0.8064,VP,1.0,1.0,1.0
+28,fisica,5002,ï¿½Quï¿½ es la presiï¿½n y en quï¿½ unidades se mide en el Sistema Internacional?,"La presiï¿½n es la fuerza aplicada de manera perpendicular sobre una determinada ï¿½rea (se define como la relaciï¿½n P=F/A) 
+. En el Sistema Internacional, se mide en una unidad llamada Pascal (Pa), donde 1 Pascal equivale a aplicar 1 Newton de fuerza sobre 1 metro cuadrado (1N/m 
+2
+  o 1Nm 
+?2).","La presión es una medida de la fuerza aplicada por un objeto sobre una superficie determinada.  Imagina presionando con tus dedos sobre un papel, la fuerza que ejerces sobre el papel es la presión. 
+
+En el Sistema Internacional (SI), la presión se mide en **Pascales (Pa)**. 
+
+**¿Qué significa Pa?**
+Un Pascal es una unidad de presión equivalente a un Newton por metro cuadrado (N/m²).  Es decir, se refiere a la fuerza ejercida por cada metro cuadrado sobre una superficie. 
+
+**¿Cómo calcular la presión?**
+
+La presión se puede calcular con la siguiente fórmula:
+
+**Presión (Pa) = Fuerza (N) / Área (m²)**
+
+
+¡Espero que esta explicación te ayude a comprender mejor la presión!",31.41,0.8342,0.8342,VP,1.0,1.0,1.0
+29,fisica,5002,ï¿½Quï¿½ es la dimensiï¿½n de una cantidad fï¿½sica?,Cualquier cantidad fï¿½sica puede expresarse como el producto de una o mï¿½s cantidades fundamentales elevadas a diferentes potencias; la potencia de estas cantidades fundamentales dentro de una cantidad fï¿½sica es lo que se conoce como su dimensiï¿½n.,"La dimensión de una cantidad física se refiere a **cuáles son las unidades que usamos para medir esa cantidad**. 
+
+Imagina que quieres medir la velocidad, ¿qué unidades usas?  **m/s (metros por segundo)**.  ¡Esta es una unidad!
+
+En general, cada cantidad física tiene su propia dimensión:
+
+* **Masa:**  [M] -  Medimos en kilogramos (kg)
+* **Tiempo:** [T] -  Medimos en segundos (s)
+* **Electricidad:** [Q] - Medimos en Coulomb (C) 
+* **Temperatura:** [K] - Medimos en Kelvin (K) 
+* **Longitud:** [L] -  Medimos en metros (m)
+* **Energía:** [E] -  Medimos en Joules (J)
+* ... y así sucesivamente
+
+**¡Es importante entender que las dimensiones son claves para comprender la relación entre diferentes cantidades físicas!** 
+
+
+¿Quieres saber más sobre esto? 😜",31.37,0.8272,0.8272,VP,1.0,1.0,1.0
+30,fisica,5002,ï¿½Cuï¿½l es la diferencia fundamental entre calor y temperatura?,"El calor es una forma de energï¿½a que se transfiere de un cuerpo de mayor temperatura a uno de menor temperatura, y estï¿½ asociada al movimiento de las partï¿½culas 
+. En cambio, la temperatura es una medida de la energï¿½a cinï¿½tica promedio de las partï¿½culas en un sistema 
+; cuando se aplica energï¿½a tï¿½rmica a un cuerpo, es la parte correspondiente a la energï¿½a cinï¿½tica molecular la que hace que se eleve la temperatura.","¡Excelente pregunta!  La diferencia fundamental entre calor y temperatura radica en lo que representan y cómo se relacionan. 
+
+**Temperatura:** Es una medida de **cómo caliente o frío está un objeto**,  de su energía cinética interna. En otras palabras, la temperatura indica la energía promedio de las moléculas del objeto. 
+* Es una magnitud **cuantitativa**, es decir, podemos medirla con un termómetro.
+
+**Calor:** Se refiere a la **cantidad de energía térmica que se transfiere entre dos cuerpos en contacto**.  Es decir, la cantidad de ""calor"" que se mueve de un cuerpo a otro debido a una diferencia de temperatura. 
+* Es una magnitud **cuantitativa**, también, pero que se expresa en unidades como Joules o calorías.
+
+**En resumen:**
+
+* La **temperatura** describe el grado de **calidez o frialdad** de un objeto. 
+* El **calor** es la cantidad de **energía térmica** transferida entre dos objetos a diferentes temperaturas.
+
+
+Espero que esto te ayude a comprender la diferencia entre calor y temperatura.  Si tienes alguna otra pregunta, no dudes en preguntarme! 😊",36.62,0.8687,0.8687,VP,1.0,1.0,1.0
+31,translator,5010,ï¿½Cï¿½mo se dirï¿½a 'relatividad general' en alemï¿½n?,Allgemeine Relativitï¿½tstheorie,"Die Übersetzung von ""relatividad general"" ins Deutsche lautet ""Allgemeine Relativität"".",6.69,0.6166,0.6166,FN,0.0,0.0,0.0
+32,translator,5010,ï¿½Cï¿½mo se dirï¿½a 'enlace covalente' en inglï¿½s?,Covalent bond,"The term for ""covalent bond"" in English is ""covalent bond"". So, if you want to say ""enlace covalente"" in English, it would be ""covalent bond"".",9.04,0.7094,0.7094,FN,0.0,0.0,0.0
+33,translator,5010,Traduce al portuguï¿½s: La Revoluciï¿½n Mexicana iniciï¿½ en 1910 con el Plan de San Luis; este conflicto buscaba terminar con la dictadura de Porfirio Dï¿½az,A Revoluï¿½ï¿½o Mexicana comeï¿½ou em 1910 com o Plano de San Luis; este conflito procurava acabar com a ditadura de Porfirio Dï¿½az.,A traduzir para o português: A Revolução Mexicana começou em 1910 com o Plano de San Luis; este conflito procurava encerrar a ditadura de Porfírio Díaz.,11.69,0.8838,0.8838,VP,1.0,1.0,1.0
+34,translator,5010,Traduce al francï¿½s: Marie Curie descubriï¿½ el radio en 1898 estudiando la radiactividad de la pechblenda. Su sï¿½mbolo quï¿½mico es Ra.,Marie Curie a dï¿½couvert le radium en 1898 en ï¿½tudiant la radioactivitï¿½ de la pechblende. Son symbole chimique est Ra.,Marie Curie a découvert le radium en 1898 en étudiant la radioactivité de la pechblende. Son symbole chimique est Ra.,9.19,0.9961,0.9961,VP,1.0,1.0,1.0
+35,translator,5010,Traduce al inglï¿½s: La velocidad instantï¿½nea es el lï¿½mite de la velocidad media. La derivada es 15x^2.,Instantaneous velocity is the limit of average velocity. The derivative is 15x^2.,The instantaneous speed is the limit of the average speed. The derivative is 15 times the square of x. (In English),7.07,0.8492,0.8492,VP,1.0,1.0,1.0
+36,translator,5010,ï¿½Cï¿½mo se dice 'ï¿½Dï¿½nde estï¿½ la estaciï¿½n de tren?' en francï¿½s?,Oï¿½ est la gare ?,"En français, ""D'où est la gare de train ?"" signifie ""Where is the train station?""",6.52,0.7888,0.7888,VP,1.0,1.0,1.0
+37,translator,5010,ï¿½Me puedes decir cï¿½mo se dice 'Muchas gracias' en japonï¿½s y cï¿½mo es su pronunciaciï¿½n?,?????????? (Arigatou gozaimasu),"En japonés, ""Muchas gracias"" se traduce como ""ありがとうございます"" (arigatou gozaimasu). Esta frase se utiliza para agradecer a alguien.
+
+La pronunciación de cada palabra es:
+- ありがとう (arigato): gracias
+- ございます (gozaimasu): es (forma polita)
+
+Por lo tanto, la frase completa ""Muchas gracias"" se pronuncia como ""ah-ree-gah-toh goh-zai-mah-su"".",25.2,0.6521,0.6521,FN,0.0,0.0,0.0
+38,translator,5010,"Quiero practicar cï¿½mo pedir comida en un restaurante en espaï¿½ol. Yo serï¿½a el cliente, tï¿½ empieza.",ï¿½Hola! Bienvenido al restaurante. ï¿½Le gustarï¿½a ver el menï¿½ o ya sabe quï¿½ va a pedir?,"Claro! Aquí te proporciono algunos ejemplos de cómo puedes pedir comida en un restaurante en español. Recuerda que la forma más formal es usar el usted y la más informal es usar el tú.
+
+1. Hola, ¿qué hay para comer? (Hola, ¿qué se come aquí?) - Pregunta general sobre lo que se puede comer en el restaurante.
+2. ¿Tengo una mesa por favor? (¿Puedo tener una mesa por favor?) - Pregunta para pedir una mesa.
+3. ¿Qué recomiendas? (¿Qué recomiendas usted?) - Pregunta para pedir una recomendación del personal del restaurante.
+4. ¿Cuál es el plato más popular aquí? (¿Cuál es el plato más popular en este restaurante?) - Pregunta para saber qué plato es el favorito del restaurante.
+5. ¿Qué platos tienen queso? (¿Qué platos tienen queso en ellos?) - Pregunta para saber si hay algún plato que contenga queso.
+6. ¿Puedo pedir un menú, por favor? (¿Puedo solicitar un menú, por favor?) - Pregunta para pedir un menú del restaurante.
+7. ¿Cuánto cuesta este plato? (¿Cuánto cuesta este plato aquí?) - Pregunta para saber el precio de un plato en particular.
+8. ¿Puedo tener una cerveza, por favor? (¿Puedo tener una cerveza, por favor?) - Pregunta para pedir una cerveza.
+9. ¿Puedo pedir dos tacos de carne asada, por favor? (¿Puedo solicitar dos tacos de carne asada, por favor?) - Pregunta para pedir dos tacos de carne asada.
+10. ¿Cuándo podré recibir mi comida, por favor? (¿Cuándo podré recibir mi alimento, por favor?) - Pregunta para saber cuándo se entregará la comida.",80.14,0.7882,0.7882,VP,1.0,1.0,1.0
+39,translator,5010,ï¿½Cuï¿½l es la diferencia entre el verbo 'ser' y 'estar' en espaï¿½ol?,"'Ser' es para caracterï¿½sticas permanentes e identidad, 'estar' es para estados temporales y ubicaciï¿½n.","El verbo ""ser"" y ""estar"" son dos verbos importantes del idioma español que tienen significados ligeramente diferentes y se utilizan de manera distinta.
+
+1. El verbo ""ser"": Se utiliza para definir la identidad, calidad o estado permanente de una persona, cosa o idea. Por ejemplo: Yo soy estudiante (Me encanta este curso). En este caso, el estudiantado es un estado permanente del sujeto.
+
+2. El verbo ""estar"": Se utiliza para definir la situación o estado temporal de una persona, cosa o idea. Por ejemplo: Estoy en la biblioteca (Me gusta leer aquí). En este caso, el estado es temporal y puede cambiar rápidamente.
+
+Ambos verbos pueden también utilizarse para expresar aspectos como sentimientos, condiciones físicas o emociones, pero solo ""estar"" se utiliza en estos casos. Por ejemplo: Estoy cansado (Me siento cansado) y No estoy bien (No me siento bien).
+
+Es importante recordar que hay algunas excepciones a las reglas generales, por lo que es importante practicar para adquirir una comprensión más profunda de cómo se utilizan en español.",46.58,0.7787,0.7787,VP,1.0,1.0,1.0
+40,translator,5010,Traduce al alemï¿½n: 'Me encanta aprender nuevos idiomas'.,Ich liebe es neue Sprachen zu lernen.,"""Ich liebe es, neue Sprachen zu lernen."" (Literally translates to ""I love it, new languages to learn."")",7.07,0.8338,0.8338,VP,1.0,1.0,1.0
+41,translator,5010,ï¿½Es de buena educaciï¿½n usar el primer nombre de alguien en una reuniï¿½n de negocios en Corea del Sur?,"No, no es de buena educaciï¿½n. Se deben usar los tï¿½tulos formales o el apellido seguido del tï¿½tulo.","Sí, es correcto. En Corea del Sur, se considera más formal y cortés utilizar el título y apellido completo de la persona en una reunión de negocios, especialmente si no tienes una relación personal establecida con ella/él. Si conoces a la persona desde antes, puedes usar su primer nombre, pero es mejor preguntar por su preferencia para evitar cualquier desacuerdo o ofensa.",17.71,0.8078,0.8078,VP,1.0,1.0,1.0
+42,translator,5010,Intento decir 'Tengo hambre' en francï¿½s diciendo 'Je suis faim'. ï¿½Es correcto?,"No, es incorrecto. Se dice 'J'ai faim' que significa literalmente 'Tengo hambre'.","Sí, ""Je suis faim"" es la forma correcta de decir ""Tengo hambre"" en francés.",7.03,0.8474,0.8474,VP,1.0,1.0,1.0
+43,translator,5010,Dame 3 frases ï¿½tiles para hacer el check-in en un hotel en italiano.,"Vorrei fare il check-in, Ho una prenotazione a nome di, A che ora ï¿½ la colazione?","1. ""Benvenuto/a! Come stai? Sono il/la receptionista. Quanto è il numero del vostro prenotamento?"" (Welcome! How are you? I am the receptionist. What is your reservation number?)
+
+2. ""Le chiavi per la camera sono pronti. Il numero della camera ï¿½ ________. Grazie e buon viaggio!"" (The keys for the room are ready. The room number is _______. Thank you and have a good trip!)
+
+3. ""Ci sono qualsiasi problemi o richieste durante la sua permanenza? Sono sempre disponibile per aiutarvi."" (Is there any problems or requests during your stay? I am always available to help you.)",26.25,0.6978,0.6978,FN,0.0,0.0,0.0
+44,translator,5010,ï¿½Cï¿½mo pronuncio correctamente la palabra 'Croissant' en francï¿½s?,"Se pronuncia aproximadamente como 'kwa-sahn', arrastrando ligeramente la R desde la garganta.","La palabra ""Croissant"" se pronuncia [kʁwasã] en francés. El sonido ""r"" es un sonido nasal, similar al sonido ""r"" en inglés cuando está seguido de una vocal nasal (como en ""car""). El resto de la palabra se pronuncia como se escribe.",13.7,0.7732,0.7732,VP,1.0,1.0,1.0
+45,translator,5010,Traduce al portuguï¿½s: 'El clima estï¿½ hermoso hoy'.,O clima estï¿½ lindo hoje.,"O clima está lindo hoje.
+
+No entanto, se você quiser manter a estrutura da frase original em inglês, podemos dizer: ""O clima é belo hoje.""
+
+Ambas as opções são corretas e possuem o mesmo significado.",13.08,0.8484,0.8484,VP,1.0,1.0,1.0
+46,quimica,5018,ï¿½Me puedes explicar quï¿½ es un enlace covalente?,"El enlace covalente es la fuerza de atracciï¿½n entre dos ï¿½tomos (generalmente elementos no metï¿½licos) que resulta de compartir uno o mï¿½s pares de electrones
+. Al unirse y compartir sus electrones de valencia, los ï¿½tomos logran gran estabilidad o adquieren una configuraciï¿½n electrï¿½nica de gas noble, cumpliendo con la regla del octeto (con excepciï¿½n del hidrï¿½geno que solo requiere dos electrones).","Sí, puedo explicarte qué es un enlace covalente.
+
+El enlace covalente se refiere a una forma de formar lazo entre átomos. Se da cuando los átomos comparten electrones para completar su octeto electrónico. Este tipo de unión se encuentra comúnmente entre átomos no metálicos.
+
+Un ejemplo simple de este proceso sería el agua, H₂O. Aquí, cada hidrógeno (H) comparte dos electrones con un oxígeno (O), que a su vez comparte un electron con los dos átomos de hidrógeno. Esto resulta en la formación del enlace entre estos átomos.
+
+En términos de configuración electrónica, el oxígeno necesita dos electrones adicionales para completar su octeto. Los dos átomos de hidrógeno suman cuatro electrones. Si los átomos no compartieran electrones, se habría un desequilibrio y la masa molecular sería innegociable (ya que las partículas negativas tendrían más peso que las positivas). Gracias a los enlaces covalentes, estos átomos están correctamente equilibrados.
+
+Además, el término ""co"" en covalencia significa ""compartir"". Este enlace de comprensión entre dos o más atómicos se considera una formación de unión débil que no requiere transferencias electrónicas. En cambio, los átomos simplemente comparten sus electrones para alcanzar la configuración del gas noble.",43.05,0.9229,0.9229,VP,1.0,1.0,1.0
+47,quimica,5018,ï¿½Cuï¿½l es el sï¿½mbolo quï¿½mico del radio en la tabla periï¿½dica?, El sï¿½mbolo quï¿½mico del elemento radio es Ra.,"El radio atómico no tiene un símbolo químico específico como otros conceptos o propiedades de los elementos. Se refiere a una medida matemática que se obtiene al dividir el lado del cuadrado de la órbita de mayor energía (ósea, la distancia desde el núcleo hasta la última órbita) entre el número atómico (orden del elemento en la tabla periódica). Para responder preguntas sobre cómo varía este concepto, se necesita conocer las propiedades periódicas y sus variaciones.",27.23,0.8268,0.8268,VP,1.0,1.0,1.0
+48,quimica,5018,ï¿½Cuï¿½ntas molï¿½culas hay en un mol?,"En un mol de sustancia hay exactamente 6.022ï¿½10 
+23
+  molï¿½culas (o entidades elementales) de dicha sustancia
+. A este valor constante se le conoce universalmente como el nï¿½mero de Avogadro.","En un solo mol de cualquier substancia, hay exactamente 6.022 x 10²³ moléculas, según la definición del átomo fundamental o molar (conocido como Avogadro). Este número constante se utiliza para medir el tamaño de un mol en términos de número de moléculas presentes.",30.39,0.8206,0.8206,VP,1.0,1.0,1.0
+49,quimica,5018,Diferencia el enlace covalente de la quï¿½mica compartiendo electrones externos,"En un enlace covalente, la forma en que los ï¿½tomos comparten sus electrones externos (electrones de valencia) determina el tipo especï¿½fico de enlace:
+Enlace covalente simple (o sencillo): Los ï¿½tomos comparten un solo par de electrones, donde cada ï¿½tomo aporta un electrï¿½n (por ejemplo, en la molï¿½cula de agua o de flï¿½or).
+Enlace covalente doble: Los ï¿½tomos comparten dos pares de electrones, aportando dos electrones cada uno (por ejemplo, en el biï¿½xido de carbono u oxï¿½geno molecular).
+Enlace covalente triple: Los ï¿½tomos comparten tres pares de electrones (por ejemplo, en la molï¿½cula de nitrï¿½geno).
+Enlace covalente coordinado: A diferencia de los anteriores, el par de electrones que se comparte es aportado por un solo ï¿½tomo, uniï¿½ndose a otro que lo recibe (por ejemplo, la formaciï¿½n del ion amonio).","El enlace covalente se produce cuando dos átomos comparten electrones para alcanzar una configuración electrónica más estables. Este tipo de enlace no implica que uno de los átomos transfiera sus electrones al otro, sino que ambos átomos aportan sus valóres de carga negativa (electrones) al intentar completar su caña de valencia con 8 electronios.
+
+En contraste con el enlace polar o dipoloelectrónico (el cual ocurre cuando una molécula es menos electronegativa que otra y la transferencia de electrones se produce desde la parte más electronegativa a la menos electronegativa), el enlace covalente no implica transferencia de electrones. En lugar, los dos átomos comparten entre sí electrones.
+
+Este tipo de enlace es compartido y sucede en una variedad de moléculas, como en el dióxido de carbono (CO₂), donde cada uno de los doble enlaces covalentes que conectan un átomo de carbono con dos átomos de oxígeno comparten electrones entre ambos átomos. 
+
+En síntesis, el enlace covalente es una forma de moléculación en la cual las interacciones se producen por medio de compartir electróns entre los núcleos de los átomos involucrados, sin que haya transferencia completa de electrones como ocurre con los enlaces iones.",41.43,0.9289,0.9289,VP,1.0,1.0,1.0
+50,quimica,5018,ï¿½Quï¿½ es un ï¿½tomo y cuï¿½les son sus partï¿½culas subatï¿½micas principales?,"En la antigï¿½edad, filï¿½sofos como Demï¿½crito definï¿½an al ï¿½tomo como la partï¿½cula mï¿½nima e indivisible de la materia
+. Hoy en dï¿½a se sabe que el ï¿½tomo es una partï¿½cula compuesta constituida por un nï¿½cleo central y un conjunto de electrones a su alrededor
+. Sus partï¿½culas subatï¿½micas fundamentales son:
+Protones (p + ): Partï¿½culas con masa y carga elï¿½ctrica positiva, localizadas en el nï¿½cleo del ï¿½tomo.
+Neutrones (n+A520
+ ): Partï¿½culas sin carga elï¿½ctrica (neutras) con una masa semejante a la del protï¿½n, tambiï¿½n ubicadas en el nï¿½cleo atï¿½mico
+.
+Electrones (e 
+?
+ ): Partï¿½culas con carga elï¿½ctrica negativa y una masa muy inferior a los nucleones, ubicadas fuera del nï¿½cleo girando en niveles, subniveles y orbitales.","Un átomo es la unidad fundamental de composición de cualquier material químico. El átomo está constituido por tres tipos de partículas subatómicas principales:
+
+1. Protones (P): Cargas positivas con un número electrostatico de +1. Están localizados en el núcleo del átomo y son responsables de la masa atómica.
+2. Neutrones (N): Sin carga eléctrica, portan una carga nuclear de 0. Están también presentes en el núcleo, junto con los protones e influyen en la masa atómica.
+3. Electróns (E-): Cargas negativas con un número electrostatico de -1. Se encuentran alrededor del núcleo y son responsables de la eletronegatividad del átomo.
+
+Estas tres partículas forman el núcleo del átomo, rodeado por una región llamada electrónica donde se hallan los electrones en diferentes niveles o órbitales. El número total de protones en un átomo determina su símbolo químico y es igual al número de electrones neutrales que se encuentran alrededor del núcleo, resultando en una carga neutral para el átomo completo.",43.98,0.8514,0.8514,VP,1.0,1.0,1.0
+51,quimica,5018,ï¿½Quï¿½ es el nï¿½mero atï¿½mico de un elemento?,"El nï¿½mero atï¿½mico (representado convencionalmente con la letra Z) es la cantidad de protones que tiene el nï¿½cleo de un ï¿½tomo
+. Este nï¿½mero es crucial porque determina la identidad quï¿½mica de cada elemento, su posiciï¿½n en la Tabla Periï¿½dica, y, cuando el ï¿½tomo estï¿½ en estado neutro, nos indica tambiï¿½n su nï¿½mero total de electrones.","El número atómico de un elemento corresponde al número de protones que tiene su átomo. Si deseas encontrar el número atómico específico de un elemento, basta con tener la tabla periódica a mano, ya que cada fila representa uno de los elementos y el número en la parte superior de cada columna se refiere exactamente a este número atómico. Por ejemplo, el hierro (Fe) tiene un número atómico de 26, mientras que el cinc (Zn) tiene un número atómico de 30.",27.47,0.8079,0.8079,VP,1.0,1.0,1.0
+52,quimica,5018,ï¿½Cuï¿½l es la diferencia entre un enlace iï¿½nico y un enlace covalente?,"La diferencia fundamental se encuentra en el comportamiento de los electrones:
+En el enlace iï¿½nico ocurre una transferencia de electrones. Un ï¿½tomo pierde electrones (convirtiï¿½ndose en un catiï¿½n con carga positiva) y otro los gana (convirtiï¿½ndose en un aniï¿½n con carga negativa); la fuerza que los mantiene unidos es de tipo electrostï¿½tica.
+En el enlace covalente, los ï¿½tomos (tï¿½picamente no metï¿½licos) no transfieren electrones, sino que los comparten. Ambos nï¿½cleos atraen los electrones mutuos para completar sus octetos y estabilizarse.","La diferencia clave entre un enlace único (o simple) y un enlace covalente reside principalmente en la forma como los átomos comparten electrones.
+
+Un **enlace covalente** es una forma de unión donde dos átomos no metálicos se unen mediante el compartido de electrones. Este tipo de enlace suele caracterizarse por la existencia de un solo par de electrones entre los átomos, lo que se conoce como **enlace simple (σ)**.
+
+Por otro lado, el **enlace único** o también conocido como **enlace monoatomico**, es una forma extremadamente rara de unión química. En este tipo de enlace, solo un par de electrones son compartidos entre dos átomos, lo que resulta prácticamente imposible debido a la inestabilidad y energía requerida para mantener esta configuración.
+
+En resumen, el **enlace covalente** involucra la interacción de múltiples pares de electrones entre los átomos, mientras que un **enlace único** sería una forma extremadamente limitada o ilusoria del enlace covalente. En términos prácticos, no existe un enlace completamente único ya que esto violaría leyes básicas de la química y física.",36.77,0.8692,0.8692,VP,1.0,1.0,1.0
+53,quimica,5018,ï¿½Quï¿½ es la electronegatividad?,"La electronegatividad es una propiedad molecular que indica la tendencia de los ï¿½tomos para ejercer una mayor atracciï¿½n sobre los electrones compartidos en un enlace covalente. Esta propiedad se manifiesta ï¿½nicamente cuando los ï¿½tomos se encuentran unidos y permite predecir hacia cuï¿½l elemento estarï¿½n desplazados los electrones y si existirï¿½ polaridad en el enlace (por ejemplo, el flï¿½or es el elemento de mayor electronegatividad).","La electronegatividad es una propiedad química que mide el grado de atracción que un átomo del elemento muestra por los electrones que comparte con otro átomo en un enlace covalente. Se expresa a través de una escala numérica, y cuanto más alta sea la electronegatividad de un elemento, mayor será su capacidad para retener los electrones compartidos en el enlace.
+
+En términos periódicos, es importante tener en cuenta cómo cambia la electronegatividad al recorrer las filas (de izquierda a derecha) y columnas (de abajo hacia arriba) de la tabla periódica. Al hacer esto:
+
+- Los elementos que se encuentran más a la derecha tienen una mayor capacidad para retener electrones, lo que los hace más electronegativos.
+- Los elementos que están más bajos en la tabla generalmente son más electronegativos debido a su posición superior en el eje periodico de potencial de ionización.
+
+El elemento con la máxima electronegatividad es el flúor (F), mientras que el francio (Fr) tiene la menor.
+
+Linus Pauling, un reconocido químico estadounidense, fue quien introdujo y desarrolló una escala numérica para medir la electronegatividad en 1932. Este sistema de valores es utilizado ampliamente hoy día en muchos aspectos del análisis molecular y el diseño de moléculas.
+
+Por ejemplo, en los grupos periódicos, observamos que:
+
+- Al recorrer una columna (de abajo hacia arriba) desde el grupo 1 al grupo 17, la electronegatividad generalmente aumenta. Esto se debe a la pérdida de electrones más fácil para elementos en las columnas superiores.
+
+- En cambio, cuando examinamos un grupo horizontal de elementos que van del izquierda a la derecha (por ejemplo, el grupo 4), notamos una disminución gradual de la electronegatividad. Esto se debe principalmente al aumento del tamaño atómico, lo cual hace que los electrones compartidos sean menos retendidos por un solo átomo.
+
+Es importante recordar que la electronegatividad no es absoluta y depende en gran medida del contexto molecular. En algunos casos, puede ser difícil predecir la electronegatividad de una molécula debido a las variaciones locales en estructura o polarización.",56.27,0.9066,0.9066,VP,1.0,1.0,1.0
+54,quimica,5018,ï¿½Quï¿½ establece la Ley de Conservaciï¿½n de la Masa de Lavoisier?,"La Ley de Lavoisier establece que, en una reacciï¿½n quï¿½mica, la suma de la masa de las sustancias reaccionantes debe ser igual a la suma de la masa de los productos"". A nivel atï¿½mico,  esto significa que la materia no se crea ni se destruye; la cantidad de ï¿½tomos de un elemento es la misma al inicio y al final de la reacciï¿½n,  ocurriendo solamente un reacomodo de los mismos.""","La Ley de Conservación de la Masa fue propuesta por Lavoisier en 1785. Esta ley establece que durante un cambio químico, la masa no se crea ni se destruye, es decir, permanece constante. Este principio fue fundamental para reconceptualizar la química como una ciencia cuantitativa y permitió avanzar en el campo de los cálculos químicos basándonos en medidas de masa.",25.6,0.7546,0.7546,VP,1.0,1.0,1.0
+55,quimica,5018,ï¿½Quï¿½ es un isï¿½topo?," Los isï¿½topos son ï¿½tomos de un mismo elemento que poseen el mismo nï¿½mero atï¿½mico (igual cantidad de protones), pero diferente nï¿½mero de masa debido a que contienen una cantidad distinta de neutrones en su nï¿½cleo. Como ejemplo se mencionan el  12 C y el  13 C, los cuales son isï¿½topos del carbono.",ERROR_DOMINIO,19.8,0.5738,0.5738,FN,0.0,0.0,0.0
+56,quimica,5018,ï¿½Cï¿½mo se define el concepto de mol en quï¿½mica?,"El mol se define en el Sistema Internacional como la cantidad de sustancia de un sistema material que contiene exactamente tantas entidades elementales (pueden ser ï¿½tomos, molï¿½culas, iones, electrones, etc.) como ï¿½tomos hay en 0.012 kilogramos del isï¿½topo carbono-12.","En química, el concepto de ""mol"" se define como la cantidad de una sustancia material que contiene exactamente 6.022 × 10²³ elementos atómicos o moléculas, también conocido como número Avogadro. Este número constante es parte fundamental para medir y relacionar las cantidades de materiales en reacciones químicas.",25.34,0.8357,0.8357,VP,1.0,1.0,1.0
+57,quimica,5018,ï¿½Quï¿½ es la lluvia ï¿½cida y cuï¿½les son los principales ï¿½cidos que la componen?," La lluvia ï¿½cida es un lï¿½quido que presenta un pH menor a 5.6. Esta condiciï¿½n de acidez se debe a que lleva disueltos tres compuestos principales: el ï¿½cido sulfï¿½rico (H2SO4 ), el ï¿½cido nï¿½trico (HNO3) y el ï¿½cido carbï¿½nico (H2CO3 ).","La lluvia ácida, también conocida como lluvia de acidificación, es una lluvia o nieve que contiene un pH menor a 5.6, generalmente entre 4 y 5, debido al procesamiento de los gases atmosféricos por el proceso de polimerización. Los principales ácidos que componen esta lluvia son hidrógeno sulfúrico (H₂SO₄) y dióxido de azufre (SO₂).
+
+El SO₂ puede formarse a partir del procesamiento de los gases atmosféricos, principalmente en la producción de químicos como plásticos y pesticidas. Este proceso es conocido como polimerización, donde los monómeros se unen para formar las moléculas más grandes que utilizamos en nuestra vida diaria.
+
+H₂SO₄ forma parte del ciclo atmosférico y puede provenir principalmente de la actividad humana (como la combustion de combustibles fósiles) y del procesamiento de los gases atmosféricos. Este ácido es un producto del proceso de polimerización que también produce SO₂, e incluso en mayor cantidad.
+
+La acidificación de las lluvias y nieves tiene consecuencias perjudiciales para la salud y el medio ambiente. Es por eso que tanto los monómeros como sus productos de polimerización, incluyendo H₂SO₄ y SO₂, juegan un papel importante en este proceso y en la formación de la lluvia ácida.",44.24,0.8333,0.8333,VP,1.0,1.0,1.0
+58,quimica,5018,ï¿½Cuï¿½l es la diferencia entre un ï¿½cido y una base segï¿½n la teorï¿½a de Arrhenius?,"La teorï¿½a de Arrhenius diferencia a estas sustancias dependiendo del ion que liberan en el agua: un ï¿½cido de Arrhenius es una sustancia que libera iones hidrï¿½geno (H+ ) al disolverse en agua
+, mientras que una base de Arrhenius es la sustancia que libera iones hidrï¿½xido (OH ? ) al ser disuelta en agua.","Según la teoría de Arrhenius, los ácidos son sustancias que se disocian en agua para producir iones hidrógeno (H⁺). Las bases, por otro lado, son aquellas sustancias que disociándose en agua liberan iones hidróxido (OH⁻).
+
+En resumen:
+- **Ácidos Arrhenius**: Sustancias que se disocian en agua para producir iones H⁺. Ejemplo: Cl₂ + H₂O → 2H⁺ + Cl⁻
+- **Bases Arrhenius**: Sustancias que disociándose en agua liberan iones OH⁻. Ejemplo: NaOH → Na⁺ + OH⁻
+
+Esta teoría define claramente la conductividad de los ácidos y bases en soluciones acuosas, permitiendo su aplicación práctica en muchas áreas como análisis químico, formulación de productos farmacéuticos y ciencia ambiental.",34.11,0.8972,0.8972,VP,1.0,1.0,1.0
+59,quimica,5018,"ï¿½De dï¿½nde provienen las letras s, p, d y f de los orbitales?","Estas letras provienen de los tï¿½rminos en inglï¿½s empleados para clasificar y dar nombre a las lï¿½neas de las series espectrales observadas en los primeros estudios espectroscï¿½picos del hidrï¿½geno: s proviene de sharp (lï¿½neas nï¿½tidas), p de principal (lï¿½neas intensas), d de diffuse (lï¿½neas difusas) y f de fundamental (lï¿½neas frecuentes).","Las letras ""s"", ""p"", ""d"" e ""f"" utilizadas para representar diferentes orbitales no son asignadas arbitrariamente. Estos símbolos provienen del modelo hipotético que desarrolló el físico inglés John Newlands, quien propuso en 1864 la Ley de Octava Paridad (ahora conocida como Ley de Newlands). Según esta ley, cuando un elemento es seguido por otro con número atómico que es múltiplo de su propio número atómico, ambos elementos son semejantes entre sí y en general tienen propiedades similares. 
+
+Newlands observó que los elementos que estaban a una octava unidad del primer elemento en el átomo (por ejemplo, dos unidades más allá) formaban un grupo químico, al igual que si estuvieran juntos en el órbita de elección ""s"". Este modelo le permitía clasificar sus descubrimientos en 16 elementos en grupos cada uno con un símbolo correspondiente. 
+
+Este trabajo no fue apreciado por su época y Newlands murió sin recibir reconocimiento por su contribución, pero sus ideas sirvieron como base para el desarrollo posterior del modelo cuántico de los orbitales electrónicos. Aunque hoy en día sabemos que la relación entre número atómico y propiedades químicas se debe a factores moleculares más complejos que no son fácilmente explicados con símbolos simples como ""s"", ""p"", ""d"" e ""f"", estos términos siguen siendo ampliamente utilizados en el campo de la química debido a su conveniencia para representar y ordenar diferentes configuraciones electrónicas.",45.81,0.6542,0.6542,FN,0.0,0.0,0.0
+60,quimica,5018,ï¿½Quï¿½ es la configuraciï¿½n electrï¿½nica de un ï¿½tomo?,"La configuraciï¿½n electrï¿½nica es la distribuciï¿½n de los electrones de un ï¿½tomo en sus diferentes niveles, subniveles y orbitales de energï¿½a, de tal forma que los electrones se ordenen asumiendo la disposiciï¿½n mï¿½s estable posible para el ï¿½tomo (aquella que posea la menor energï¿½a).",ERROR_DOMINIO,23.55,0.5902,0.5902,FN,0.0,0.0,0.0
+61,espanol,5015,ï¿½La palabra 'enlace' es aguda o grave?,"De acuerdo con las reglas de acentuaciï¿½n, las palabras llanas,  graves o paroxï¿½tonas son aquellas cuya penï¿½ltima sï¿½laba es tï¿½nica"". Dado que la mayor fuerza de voz en la palabra 'enlace' recae en la penï¿½ltima sï¿½laba (en-la-ce),  se trata de una palabra grave o llana.""","La palabra ""enlace"" es **aguda**.",24.24,0.7944,0.7944,VP,1.0,1.0,1.0
+62,espanol,5015,Corrige esta frase: 'la ram es mui rrapida',"La RAM es muy rï¿½pida., La frase correcta es: La RAM es muy rï¿½pida. (Nota: Las siglas como RAM se escriben en mayï¿½sculas. El fonema /i/ ï¿½tono a final de palabra se escribe con 'y' . El fonema vibrante mï¿½ltiple a inicio de palabra se representa con una sola 'r', no con 'rr')","La frase ""la ram es mui rrapida"" tiene errores de ortografía y gramática. 
+
+**Corrección:** ""La RAM es muy rápida"". 
+
+
+**Explicación:**
+
+* **""ram""**: Es el acrónimo de ""Random Access Memory"", por lo que debe ser escrito con la letra ""R"".
+* **""mui""**:  Se corregirá a ""muy"" para ajustarse al contexto. 
+* **""rrapida""**: La ortografía correcta es ""rápida"" o simplemente con ""rápido"".  
+
+La frase correctamente escrita sería: **""La RAM es muy rápida.""**",33.06,0.8478,0.8478,VP,1.0,1.0,1.0
+63,espanol,5015,Redacta una breve oraciï¿½n usando un punto y coma,"De acuerdo con los ejemplos de la Ortografï¿½a de la RAE, una oraciï¿½n correcta serï¿½a: Lo ha hecho por el bien de su familia; no puede reprochï¿½rsele nada"".""",ERROR_DOMINIO,24.56,0.6221,0.6221,FN,0.0,0.0,0.0
+64,espanol,5015ï¿½Cuï¿½les son las dos excepciones en las que se pueden omitir los signos de interrogaciï¿½n en oraciones interrogativas directas? ," ""Como regla general"," las oraciones interrogativas directas siempre llevan signos,  pero existen dos excepciones: la primera es cuando constituyen el tï¿½tulo de una obra,  un capï¿½tulo o cualquier otra secciï¿½n de un texto (por ejemplo,  Cï¿½mo escribir bien en espaï¿½ol). La segunda excepciï¿½n es en las interrogaciones retï¿½ricas,  donde en realidad no se formula una verdadera pregunta (por ejemplo,  Dï¿½nde vas a estar mejor que aquï¿½).""",,0.0,0.0,0.0,,0.0,0.0,0.0
+65,espanol,5015, ï¿½Cuï¿½l es la diferencia entre 'por quï¿½'," 'porquï¿½' y 'por que'?,  ""La diferencia radica en su funciï¿½n gramatical y significado:","La diferencia entre ""por qué"" y ""porque"" radica en su uso en español. 
+
+**Por qué:** Se usa para indicar una causa o motivo de algo. Es el modo formal que se utiliza con la preposición “por” para expresar una razón.  Se traduce como “due to”, “because of” o “since”.
+
+**Porque:** Se usa en lenguaje coloquial y informal.  Se refiere a una idea general, como un pensamiento o sentimiento. 
+
+
+Aquí te dejo algunos ejemplos:
+
+* **Por qué**  soy tímido:  (por causa de algo)
+* **Porque** me gusta la música clásica: (como una inclinación personal)
+ 
+Espero que esta información te sea útil.",34.53,0.7871,0.7871,VP,1.0,1.0,1.0
+66,espanol,5015,"ï¿½Cuï¿½l es la diferencia entre palabras agudas, graves y esdrï¿½julas?","La diferencia radica en la posiciï¿½n de la sï¿½laba tï¿½nica:
+Las palabras agudas tienen la mayor fuerza de voz en la ï¿½ltima sï¿½laba (ej. bonDAD, IGLï¿½).
+Las palabras graves (o llanas) tienen la fuerza de voz en la penï¿½ltima sï¿½laba (ej. RESta, aZï¿½car).
+Las palabras esdrï¿½julas tienen la tï¿½nica en la antepenï¿½ltima sï¿½laba (ej. exPLï¿½cito, Vï¿½Lvula).","Las palabras agudas, graves y esdrújulas se clasifican según su **características fonéticas** y **el modo en que se pronuncian**. 
+
+* **Palabras agudas:**  Tienen el final de la palabra con una **acentuación mayor**, generalmente representada por un **""ñ""**. Su sonido se produce con una **fuerza de fricción en la última vocal**.
+    * Ejemplo: ""**búscalo**"", ""**casa**""
+
+* **Palabras graves:** Tienen el final de la palabra con una **acentuación menor**, generalmente representada por un **""y""**. Su sonido se produce con **un sonido que sale de la boca** .  
+    * Ejemplo: ""**caminar**"", ""**escribir**"" 
+
+
+* **Palabras esdrújulas:** Tienen el final de la palabra con una **acentuación mayor**, generalmente representada por un **""ñ""**. Su sonido se produce con una **fuerza de fricción en la última vocal**.
+    * Ejemplo: ""**chocar**"", ""**enfriar**"".
+
+
+Es importante destacar que existen **condiciones excepcionales**  donde las palabras agudas, graves y esdrújulas pueden ser **distintas** según el contexto. 
+
+¿Tiene alguna pregunta adicional sobre este tema?",43.71,0.8292,0.8292,VP,1.0,1.0,1.0
+67,espanol,5015,ï¿½Quï¿½ es un hiato ortogrï¿½fico y cuï¿½ndo lleva tilde?,"Un hiato ocurre cuando dos vocales seguidas pertenecen a sï¿½labas distintas. Segï¿½n las fuentes, cuando el hiato estï¿½ formado por una vocal cerrada tï¿½nica (i, u) seguida o precedida por una vocal abierta (a, e, o), llevan siempre tilde en la vocal cerrada,  con independencia de las reglas generales de acentuaciï¿½n"" (ej. mï¿½o,  cacatï¿½a,  raï¿½z). Si se trata de cualquier otro tipo de hiato,  la palabra simplemente se somete a las reglas generales de acentuaciï¿½n (ej. Jaï¿½n,  aï¿½reo).""","Un hiato ortográfico es una pausa que se coloca en la escritura de una palabra para marcar una pausa o silencio en la pronunciación.  No todas las palabras necesitan un hiato ortográfico. 
+
+Las palabras que llevan tilde en español son aquellas que, al ser pronunciadas, se dividen en dos partes distintas y que requieren la presencia de una tilde: **""h,"" ""u""** 
+
+**Ejemplo:** 
+* ""**h**urrá"" (con tilde)
+* ""**h**ollar"" (no con tilde)",32.09,0.7807,0.7807,VP,1.0,1.0,1.0
+68,espanol,5015,ï¿½Cuï¿½ndo se debe utilizar el punto y coma (;)?,"El punto y coma es un signo delimitador que se utiliza principalmente para:
+Separar oraciones sintï¿½cticamente independientes entre las que existe una estrecha relaciï¿½n semï¿½ntica.
+Separar los miembros de construcciones copulativas y disyuntivas en expresiones complejas que ya incluyen comas o que presentan cierta longitud.
+Colocarse ante conjunciones adversativas (pero, mas, aunque) cuando las oraciones vinculadas tienen cierta longitud o si alguna presenta comas internas.","El punto y coma (;) se utiliza para separar elementos de una lista, o cuando se necesita un espacio entre frases o oraciones. 
+  * Se coloca después del nombre de una persona, entidad o concepto que se está mencionando en una oración. 
+ 
+   Ejemplo:  ""Juan, María y Carlos fueron a la fiesta"".
+
+  ¡Recuerda! La gramática es fundamental en la escritura.",30.08,0.8183,0.8183,VP,1.0,1.0,1.0
+69,espanol,5015,ï¿½Dï¿½nde se deben colocar los signos de interrogaciï¿½n o exclamaciï¿½n cuando una secuencia estï¿½ escrita entre parï¿½ntesis?,"Si la secuencia que estï¿½ escrita entre parï¿½ntesis es en sï¿½ misma interrogativa o exclamativa, los signos correspondientes deben colocarse dentro de los parï¿½ntesis (ej. ï¿½habla con fluidez siete lenguas!). Por el contrario, cuando la secuencia interrogativa o exclamativa constituye una unidad mayor que contiene al parï¿½ntesis, los signos se escriben por fuera (ej. ï¿½Cuï¿½ntos paï¿½ses integran la ONU (Organizaciï¿½n de las Naciones Unidas)?).","Los signos de interrogación o exclamación se colocan **dentro** de las llaves, paréntesis o cualquier otro tipo de agrupamiento de texto que contenga la secuencia.",26.56,0.7928,0.7928,VP,1.0,1.0,1.0
+70,espanol,5015,ï¿½Quï¿½ funciï¿½n principal cumple el adjetivo calificativo?," Desde el punto de vista morfolï¿½gico, su finalidad principal es mostrar la concordancia de gï¿½nero y nï¿½mero con el nombre al que modifica (por ejemplo, nube tï¿½xica, tiempos remotos). Sintï¿½cticamente, forma grupos adjetivales que cumplen funciones de modificador nominal o de atributo.","El adjetivo calificativo, al ser un complemento de la oración, se encarga de **descripción o especificación** de los sustantivos.",26.52,0.7177,0.7177,FN,0.0,0.0,0.0
+71,espanol,5015,ï¿½Es correcto utilizar mï¿½s de un signo de exclamaciï¿½n al final de una palabra para dar mayor ï¿½nfasis?,"Sï¿½, es correcto en obras literarias y en textos con fuerte carga expresiva, como los registros informales o publicitarios. En estos casos, la norma establece que es posible escribir dos o tres signos de exclamaciï¿½n para indicar un mayor ï¿½nfasis en la expresiï¿½n (por ejemplo: ï¿½ï¿½ï¿½Traidor!!!).",ERROR_DOMINIO,24.02,0.6385,0.6385,FN,0.0,0.0,0.0
+72,espanol,5015,ï¿½Cï¿½mo se escribirï¿½a correctamente el prefijo ex junto a primer ministro?,"En secuencias donde el prefijo afecta a una base lï¿½xica formada por varias palabras, la ortografï¿½a muestra que se escribe separado. Por lo tanto, lo correcto es: ex primer ministro.","El prefijo ""ex"" se escribe junto al nombre del cargo, ""primer ministro"",  de la siguiente manera: **Ex-Primer Ministro**.",25.87,0.8607,0.8607,VP,1.0,1.0,1.0
+73,espanol,5015,ï¿½Cuï¿½ndo llevan tilde las palabras 'quiï¿½n'," 'cuï¿½l' y 'cuï¿½ndo' al funcionar como indefinidos?, Estas palabras son tï¿½nicas y llevan tilde cuando se emplean en ciertas correlaciones distributivas donde adquieren el valor de indefinidos. Por ejemplo, en las correlaciones quiï¿½n(es)..., quiï¿½n(es)... y cuï¿½l(es)..., cuï¿½l(es)... que se utilizan como sinï¿½nimos de 'uno(s)... otro(s)...'.","La palabra ""quién"" lleva tilde al final de la misma cuando se utiliza como sustantivo.",25.04,0.7162,0.7162,FN,0.0,0.0,0.0
+74,espanol,5015,ï¿½En quï¿½ casos la Ortografï¿½a hace obligatorio el uso de la coma antes de la conjunciï¿½n y?,"Se debe escribir coma antes de la y"" en los siguientes escenarios:","La ortografía determina que la coma se use antes de una conjunción **cuando hay dos o más oraciones que se conectan por una conejunación**. 
+
+  
+**Ejemplos:** 
+
+
+* **""No comía, no podía pensar.""** 
+* **""Caminé por el bosque y luego volví a casa.""**
+
+
+
+
+En resumen, la coma es crucial en estas oraciones para mantener claridad y un flujo lógico en la lectura.",30.39,0.7758,0.7758,VP,1.0,1.0,1.0
+75,espanol,5015 ï¿½Se debe escribir un punto final despuï¿½s de una direcciï¿½n de correo electrï¿½nico o pï¿½gina web al final de un enunciado? ,"Sï¿½, la norma acadï¿½mica especifica que si la direcciï¿½n electrï¿½nica o pï¿½gina web aparece al final de un enunciado que se escribe todo seguido, debe escribirse el punto final de cierre de manera normal (por ejemplo: consulta@rae.es. o www.hermitagemuseum.org.).",,,0.0,0.0,0.0,,0.0,0.0,0.0
+76,programacion,5017,ï¿½Cï¿½mo se maneja la memoria dinï¿½mica con punteros en C++?,"En C++, la memoria dinï¿½mica se maneja explï¿½citamente en tiempo de ejecuciï¿½n por medio de dos operadores especiales: new y delete. El operador new obtiene una secciï¿½n de memoria del ï¿½rea de almacenamiento libre (montï¿½culo o heap), crea una variable u arreglo y devuelve un apuntador a esta ubicaciï¿½n. Las variables creadas de esta forma no tienen nombre y se dirigen indirectamente usando el apuntador devuelto. Cuando los datos ya no son requeridos, se emplea el operador delete aplicï¿½ndolo al apuntador para destruir la variable y devolver el espacio a la memoria libre, evitando asï¿½ las fugas de memoria.","Excelente pregunta!
+
+En C++, la memoria dinámica se maneja utilizando los operadores `new` y `delete`. Estos operadores permiten reservar espacio de memoria para variables en tiempo de ejecución, en lugar de en tiempo de compilación.
+
+**Reservando memoria con `new`**
+
+El operador `new` se utiliza para reservar espacio de memoria para una variable. El formato general es:
+```c
+Tipo *puntero = new Tipo;
+```
+Donde `Tipo` es el tipo de dato que se va a almacenar en la memoria, y `puntero` es un apuntador al nuevo espacio de memoria reservado.
+
+Por ejemplo, si queremos crear un arreglo de enteros de longitud 10, podríamos hacerlo así:
+```c
+int *arr = new int[10];
+```
+**Liberando memoria con `delete`**
+
+Una vez que no necesitamos más el espacio de memoria reservado con `new`, podemos liberarlo utilizando el operador `delete`. El formato general es:
+```c
+delete puntero;
+```
+Donde `puntero` es un apuntador al espacio de memoria que se quiere liberar.
+
+Por ejemplo, para liberar el arreglo creado anteriormente, podríamos hacerlo así:
+```c
+delete[] arr; // importante usar delete[] para arreglos
+```
+**Punteros**
+
+Los punteros son variables que contienen la dirección en memoria de otra variable. En C++, se pueden utilizar punteros para almacenar direcciones a variables creadas con `new`. Por ejemplo:
+```c
+int *p = new int;
+*p = 5; // ahora p apunta a una variable entera con valor 5
+```
+**Ejemplo completo**
+
+A continuación, te muestro un ejemplo de cómo se maneja la memoria dinámica en C++:
+```c
+#include <iostream>
+
+int main() {
+    int *arr = new int[10]; // reservamos espacio para un arreglo entero de longitud 10
+    arr[0] = 5; // ahora arr apunta a una variable entera con valor 5
+
+    std::cout << ""Valor en la posición 0: "" << arr[0] << std::endl;
+
+    delete[] arr; // liberamos el espacio de memoria reservado
+
+    return 0;
+}
+```
+En resumen, la memoria dinámica se maneja en C++ utilizando los operadores `new` y `delete`. Los punteros permiten almacenar direcciones a variables creadas con `new`, y es importante liberar el espacio de memoria cuando ya no sea necesario para evitar fugas de memoria.",132.23,0.9024,0.9024,VP,1.0,1.0,1.0
+77,programacion,5017,Escribe un ejemplo breve de una clase en C++ llamada Procesador,"class Procesador { public: int nucleos; };,  "" Tomando en cuenta la sintaxis estï¿½ndar expuesta para la declaraciï¿½n de clases en los documentos proporcionados","Claro, aquí tienes un ejemplo simple de cómo definir una clase en C++:
+
+```cpp
+class Procesador {
+public:
+    // Constructor vacío por defecto
+    Procesador() {}
+
+    // Método para procesar algo (por ahora vacío)
+    void procesar() {
+        std::cout << ""Procesando..."" << std::endl;
+    }
+
+private:
+    // Variables privadas si fueran necesarias
+};
+```
+
+En este ejemplo básico, la clase `Procesador` tiene un constructor vacío por defecto y un método `procesar()` que simplemente imprime un mensaje en la consola. Las variables privadas se pueden agregar según las necesidades de tu aplicación. Esto es una forma muy simple de cómo crear una clase en C++.",69.44,0.7533,0.7533,VP,1.0,1.0,1.0
+78,programacion,5017,Explica quiï¿½n inventï¿½ C++ histï¿½ricamente y en quï¿½ dï¿½cada," El lenguaje de programaciï¿½n C++ fue inventado histï¿½ricamente por Bjarne Stroustrup en los laboratorios Bell de AT&T. Este desarrollo ocurriï¿½ en la dï¿½cada de los ochenta, especï¿½ficamente en el aï¿½o 1985.",ERROR_DOMINIO,43.2,0.5123,0.5123,FN,0.0,0.0,0.0
+79,programacion,5017,ï¿½Quï¿½ es un arreglo bidimensional en C++?,"Un arreglo bidimensional es una colecciï¿½n estructurada de componentes, todos del mismo tipo de datos, que se usan para representar unidades en una tabla con filas y columnas. Se accede a cada componente especificando un par de ï¿½ndices (uno para la fila y otro para la columna) que representan la posiciï¿½n exacta del componente.","Un arreglo bidimensional en C++ es una colección de componentes, todos del mismo tipo, estructurados en dos dimensiones. Se accede a cada componente por medio de un par de índices que representan la posición del componente en cada dimensión.
+
+A continuación, te proporciono un ejemplo de declaración y acceso a un arreglo bidimensional:
+
+```cpp
+int matriz[3][4]; // Declaración de un arreglo bidimensional 3x4
+
+matriz[0][0] = 10;  // Acceder al primer elemento (fila 0, columna 0)
+matriz[2][3] = 20;  // Acceder al último elemento (fila 2, columna 3)
+
+// Imprimir el arreglo bidimensional
+for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 4; j++) {
+        std::cout << matriz[i][j] << "" "";
+    }
+    std::cout << std::endl;
+}
+```
+
+En este ejemplo, el arreglo `matriz` tiene 3 filas y 4 columnas. Los índices se utilizan para acceder a cada componente del arreglo. El primer índice (`i`) representa la fila y el segundo índice (`j`) representa la columna.",78.68,0.9122,0.9122,VP,1.0,1.0,1.0
+80,programacion,5017,ï¿½Cuï¿½les son las tres fases del proceso de programaciï¿½n que constituyen el ciclo de vida de un programa?,"El ciclo de vida de un programa estï¿½ constituido por tres fases fundamentales:
+Fase de resoluciï¿½n del problema: Incluye entender y definir el problema (anï¿½lisis y especificaciï¿½n) y desarrollar una secuencia lï¿½gica de pasos para resolverlo, es decir, el algoritmo.
+Fase de implementaciï¿½n: Consiste en codificar o traducir el algoritmo en un lenguaje de programaciï¿½n para crear una soluciï¿½n concreta, y luego probar el programa en la computadora para corregir cualquier error (depuraciï¿½n).
+Fase de mantenimiento: Consiste en el uso del programa y su modificaciï¿½n continua para satisfacer nuevos requisitos o corregir errores que aparezcan durante su uso.","La respuesta a tu pregunta es que las tres fases del proceso de diseño de un ciclo, que se refieren al ciclo de vida de un programa, son:
+
+1. **Diseño**: En este paso se consideran las necesidades y requisitos del programa, se define la estructura general del ciclo y se determina cómo se inicializa, prueba y actualiza la condición de terminación.
+2. **Ejecución**: En esta fase, el programa es ejecutado y se verifica que cumpla con los requisitos establecidos en el diseño.
+3. **Finalización**: En este paso, se evalúa el estado del programa al salir del ciclo y se asegura que se hayan llevado a cabo todas las tareas necesarias.
+
+Estas tres fases son parte de la etapa de diseño del ciclo, pero también se pueden aplicar a otras áreas de la programación. La primera fase (diseño) es fundamental para establecer la base sólida del programa, la segunda fase (ejecución) es donde se verifica el comportamiento del programa y la tercera fase (finalización) es importante para asegurarse de que el programa se haya ejecutado correctamente.",83.38,0.8298,0.8298,VP,1.0,1.0,1.0
+81,programacion,5017, ï¿½Quï¿½ es un algoritmo recursivo y cuï¿½les son sus dos componentes principales?,"Un algoritmo recursivo es una soluciï¿½n que expresa el problema en tï¿½rminos de una llamada a sï¿½ misma. Debe terminar en algï¿½n momento, por lo que estï¿½ conformado por dos componentes vitales:
+El caso general: Es la parte donde la soluciï¿½n se expresa en tï¿½rminos de versiones (o instancias) mï¿½s pequeï¿½as de sï¿½ misma mediante llamadas recursivas.
+El caso base: Es el caso para el cual la soluciï¿½n es explï¿½citamente conocida y se puede declarar de forma no recursiva, siendo el punto donde el proceso se detiene.","Un algoritmo recursivo es un tipo de algoritmo que se define a sí mismo. Se utiliza para resolver problemas que pueden dividirse en subproblemas más pequeños, resolviendo cada uno de ellos y luego combinando sus soluciones.
+
+Los dos componentes principales de un algoritmo recursivo son:
+
+1. **La llamada recursiva**: Este es el paso en el que se llama a la función (o algoritmo) recursiva para resolver un subproblema más pequeño.
+2. **La condición de paro**: Esto es el paso en el que se determina si el problema actual ya no puede dividirse en subproblemas más pequeños y, por lo tanto, se devuelve la solución.
+
+Un ejemplo clásico de algoritmo recursivo es el de ordenamiento de un arreglo mediante inserción. En este caso, la llamada recursiva sería la función que ordena una parte del arreglo, mientras que la condición de paro sería cuando el arreglo esté completamente ordenado.
+
+Aquí te muestro un ejemplo simple en C++ para ilustrar cómo funciona un algoritmo recursivo:
+```cpp
+int factorial(int n) {
+  if (n == 0 || n == 1) return 1; // condición de paro
+  else return n * factorial(n-1); // llamada recursiva
+}
+```
+En este ejemplo, la función `factorial` se llama a sí misma para calcular el factorial de un número `n`. La llamada recursiva es `n * factorial(n-1)`, y la condición de paro es cuando `n` es igual a 0 o 1.",104.67,0.8479,0.8479,VP,1.0,1.0,1.0
+82,programacion,5017,ï¿½Quï¿½ es un constructor en C++ y cuï¿½l es su propï¿½sito principal?,"Un constructor es una funciï¿½n miembro especial que se invoca de modo automï¿½tico o implï¿½cito siempre que se declara o crea un objeto de una clase. Su propï¿½sito principal es garantizar la inicializaciï¿½n de los datos privados del objeto, dejï¿½ndolos en un estado predeterminado o parametrizado desde el momento exacto en que la variable nace.","Un constructor en C++ es una función especial que se utiliza para inicializar los objetos de una clase cuando se crean. Su propósito principal es asignar valores a las variables miembro de la clase y preparar el objeto para su uso.
+
+En otras palabras, un constructor es como un ""instalador"" del objeto, que lo configura con sus características iniciales antes de que comience a funcionar.
+
+Un constructor se distingue por el siguiente:
+
+* Se llama automáticamente cuando se crea un objeto de la clase.
+* No devuelve ningún valor (a diferencia de una función regular).
+* Puede tener parámetros para pasar valores al objeto durante su creación.
+
+Por ejemplo, considere la siguiente clase `Persona` con dos constructores:
+```cpp
+class Persona {
+public:
+    Persona(std::string nombre, int edad) : nombre_(nombre), edad_(edad) {}
+    Persona() : nombre_(""Desconocido""), edad_(0) {} // Constructor por omisión
+
+private:
+    std::string nombre_;
+    int edad_;
+};
+```
+En este ejemplo, el primer constructor `Persona` toma dos parámetros: `nombre` y `edad`, y los utiliza para inicializar las variables miembro correspondientes. El segundo constructor `Persona()` es un constructor por omisión que establece valores predeterminados para las variables miembro.
+
+Cuando se crea un objeto de la clase `Persona`, el constructor se invoca automáticamente. Por ejemplo:
+```cpp
+int main() {
+    Persona persona1(""Juan"", 30);
+    Persona persona2; // Invocará el constructor por omisión
+
+    return 0;
+}
+```
+En resumen, los constructores en C++ son funciones especiales que inicializan y preparan los objetos de una clase para su uso. Su propósito principal es configurar el objeto con sus características iniciales antes de que comience a funcionar.",102.42,0.875,0.875,VP,1.0,1.0,1.0
+83,programacion,5017,ï¿½Quï¿½ es un destructor en C++ y cï¿½mo se identifica en el cï¿½digo?,"Un destructor es la contraparte del constructor: es una funciï¿½n que se llama implï¿½citamente cuando un objeto de clase es destruido o sale de su alcance"" (por ejemplo,  al terminar la funciï¿½n donde se creï¿½). Se encarga comï¿½nmente de limpiar memoria dinï¿½mica. Se identifica en el cï¿½digo de la clase porque tiene el mismo nombre que la clase,  pero precedido por una tilde (~).""","Un destructor en C++ es una función miembro de clase que se invoca automáticamente cuando un objeto de la clase se destruye. Su propósito principal es liberar recursos asignados por el objeto, como memoria dinámica o conexiones a bases de datos.
+
+En el código, un destructor se identifica mediante la notación `~` antes del nombre de la función. Por ejemplo:
+
+```cpp
+class HybridList {
+  // ...
+  ~HybridList() { /* código para liberar recursos */ }
+};
+```
+
+La tilde (`~`) es una convención en C++ para indicar que una función es un destructor. Cuando se crea un objeto de la clase `HybridList`, se invoca automáticamente el constructor, y cuando el objeto sale del alcance, se invoca automáticamente el destructor.
+
+El destructor se utiliza para:
+
+* Liberar memoria dinámica asignada con `new`
+* Cerrar conexiones a bases de datos o archivos
+* Desconectar sockets
+* Liberar recursos exclusivos
+
+Es importante tener en cuenta que un destructor no devuelve valores como los constructores. Su propósito es liberar recursos, no devolver resultados.
+
+En el ejemplo del código proporcionado, el destructor `~HybridList()` se utiliza para liberar la lista ligada dinámica cuando un objeto de la clase `HybridList` se destruye.",88.27,0.8888,0.8888,VP,1.0,1.0,1.0
+84,programacion,5017,ï¿½Cuï¿½l es la diferencia entre el paso de parï¿½metros por valor y por referencia?," En el paso por valor, se transmite una copia del valor del argumento, por lo que la funciï¿½n que lo recibe no puede alterar la variable original. En el paso por referencia (denotado en C++ agregando el sï¿½mbolo &), se envï¿½a directamente la direcciï¿½n de memoria, permitiendo que la funciï¿½n refiera y modifique de forma directa el valor original de la variable que le entregï¿½ el invocador.","La pregunta está relacionada con la programación, específicamente con C++.
+
+En resumen, los parámetros de una función se pueden pasar de dos maneras:
+
+**Paso por valor**: La función recibe una copia del valor del argumento del invocador. Esto significa que cualquier cambio realizado dentro de la función no afecta el valor original del argumento en el código llamante.
+
+**Paso por referencia**: Se pasa una dirección de memoria a la función, lo que permite acceder directamente al valor original del argumento en el código llamante. Si se realiza un cambio dentro de la función, también se reflejará en el valor original del argumento.
+
+La diferencia clave entre ambos métodos es que el paso por referencia permite modificar el valor original del argumento, mientras que el paso por valor no lo hace.
+
+Aquí hay un ejemplo simple que ilustra la diferencia:
+
+```cpp
+void funcionPasoValor(int x) {
+    x = 10;
+}
+
+void funcionPasoReferencia(int& x) {
+    x = 10;
+}
+
+int main() {
+    int a = 5;
+
+    funcionPasoValor(a); // No hay cambio en el valor de 'a'
+    cout << ""Valor de 'a' después de paso por valor: "" << a << endl; // Output: 5
+
+    funcionPasoReferencia(a); // El valor de 'a' se modifica
+    cout << ""Valor de 'a' después de paso por referencia: "" << a << endl; // Output: 10
+
+    return 0;
+}
+```
+
+En este ejemplo, la función `funcionPasoValor` recibe una copia del valor de `a`, lo que significa que cualquier cambio realizado dentro de la función no afecta el valor original de `a`. Por otro lado, la función `funcionPasoReferencia` recibe una referencia a la variable `a`, lo que permite modificar su valor.",108.07,0.8734,0.8734,VP,1.0,1.0,1.0
+85,programacion,5017,ï¿½Quï¿½ es un puntero en C++?,"Un puntero (o apuntador) es una variable perteneciente a la categorï¿½a de tipos de direcciï¿½n. A diferencia de una variable tradicional, un apuntador no contiene un dato comï¿½n, sino que contiene y guarda la direcciï¿½n o ubicaciï¿½n de memoria de otra variable o estructura.",ERROR_DOMINIO,53.83,0.5574,0.5574,FN,0.0,0.0,0.0
+86,programacion,5017,ï¿½Para quï¿½ sirven los operadores new y delete en C++?," El operador new sirve para crear (asignar"") nuevas variables de datos dinï¿½micos durante la ejecuciï¿½n de un programa extrayendo un bloque de memoria del almacï¿½n libre y devolviendo un apuntador a ï¿½ste. El operador delete se utiliza para destruir (""desasignar"") esas variables cuando ya no se requieren,  devolviendo dicho espacio de memoria al almacenamiento libre para reutilizarlo y prevenir fugas de memoria.""","Los operadores `new` y `delete` en C++ se utilizan para administrar la memoria dinámica. El operador `new` es utilizado para reservar una cantidad determinada de memoria en el momento de ejecución, mientras que el operador `delete` es utilizado para liberar dicha memoria cuando ya no sea necesaria.
+
+En otras palabras, `new` permite a un programa pedir memoria a la computadora y recibir una dirección donde esa memoria está almacenada. Luego, cuando se termina de usar esa memoria, se utiliza `delete` para devolverla al sistema operativo, lo que libera memoria en el almacenamiento libre.
+
+Es importante utilizar estos operadores de manera cuidadosa, ya que si se utiliza demasiada memoria y no se libera la memoria sobrante, el programa puede fallar o incluso causar un problema conocido como ""tocado de memoria"" (segfault).",75.24,0.8553,0.8553,VP,1.0,1.0,1.0
+87,programacion,5017,ï¿½Quï¿½ es la herencia en C++?,La herencia es un mecanismo fundamental de la programaciï¿½n orientada a objetos mediante el cual una nueva clase (clase derivada) adquiere o hereda automï¿½ticamente todas las propiedades (datos y operaciones) de una clase existente (clase base). Esto permite ampliar y especializar el cï¿½digo existente sin tener que analizar o modificar internamente la clase base original.,"La herencia en C++ es un mecanismo que permite que una clase derive las propiedades (datos y operaciones) de otra clase. La clase base o superclase es la clase de la cual se hereda, mientras que la clase derivada o subclase es la que obtiene la herencia.
+
+Puede visualizar esto como una jerarquía en la que cada concepto hereda las propiedades del concepto inmediatamente superior. Por ejemplo, si tenemos una clase llamada `Vehículo` y luego creamos clases derivadas como `Automóvil` y `Barco`, el `Automóvil` heredaría las propiedades de `Vehículo` (como acoger a una o varias personas y transportarlas de un lugar a otro) y agregaría nuevas propiedades adicionales como tener cuatro ruedas, un motor, etc.
+
+La herencia se utiliza para agregar características a una clase sin necesidad de modificar su código fuente. Es una herramienta fundamental en la programación orientada a objetos (POO) y se puede implementar utilizando el operador `:` en C++.
+
+Aquí hay un ejemplo sencillo de cómo utilizar la herencia en C++:
+```cpp
+class Vehículo {
+public:
+    void mover() { /* ... */ }
+};
+
+class Automóvil : public Vehículo {
+public:
+    void arrancarMotor() { /* ... */ }
+};
+```
+En este ejemplo, la clase `Automóvil` hereda las propiedades de la clase base `Vehículo` y agrega una nueva propiedad llamada `arrancarMotor`.",98.13,0.9105,0.9105,VP,1.0,1.0,1.0
+88,programacion,5017,"ï¿½Quï¿½ indican los especificadores public, private y protected?","De acuerdo a las fuentes sobre abstracciï¿½n:
+public (pï¿½blico): Constituye la interfaz pï¿½blica; indica que los datos o funciones declarados ahï¿½ pueden ser accedidos directamente por el cï¿½digo del usuario o cliente.
+private (privado): Implementa la ocultaciï¿½n de informaciï¿½n; indica que los datos y funciones son inaccesibles para los clientes desde el exterior y sï¿½lo pueden ser utilizados por las propias funciones miembro de la clase. (Nota externa: El nivel protected, empleado en el contexto de herencia para dar acceso directo sï¿½lo a clases derivadas, no se detalla en las pï¿½ginas y fragmentos extraï¿½dos para esta consulta).","Excelente pregunta!
+
+En C++, los especificadores `public`, `private` y `protected` se utilizan para definir el acceso a las funciones y variables de una clase. Estos especificadores determinan qué partes de la clase pueden ser accedidas desde afuera, desde dentro de la clase pero fuera de un hermano, o solo desde dentro de la misma clase.
+
+*   `public`: indica que la función o variable puede ser accedida desde cualquier parte del programa. Esto significa que cualquier objeto que tenga una referencia a la clase en cuestión podrá acceder a las funciones y variables públicas.
+*   `private`: indica que la función o variable solo puede ser accedida dentro de la propia clase, es decir, por los miembros de la misma clase. Esto protege la información interna de la clase y evita que se modifique accidentalmente desde afuera.
+
+Por ejemplo:
+
+```cpp
+class Clase {
+public:
+    void funciónPública() {} // Puede ser accedida desde cualquier parte del programa
+
+private:
+    void funciónPrivada() {} // Sólo puede ser accedida dentro de la propia clase
+
+protected:
+    void funciónProteta() {} // Puede ser accedida por los hermanos y dentro de la propia clase
+};
+```
+
+En resumen, `public` es para funciones y variables que deben estar disponibles para el mundo exterior, `private` es para funciones y variables que deben permanecer ocultas, y `protected` es para funciones y variables que deben ser accesibles por los hermanos.",93.84,0.8067,0.8067,VP,1.0,1.0,1.0
+89,programacion,5017,ï¿½Quï¿½ es el polimorfismo en la programaciï¿½n orientada a objetos?,"El polimorfismo se refiere a la capacidad de tener una operaciï¿½n que tiene mï¿½ltiples significados dependiendo del tipo exacto de objeto que responde a ella en tiempo de ejecuciï¿½n. Permite que objetos de muchos tipos derivados distintos (distintas clases) respondan y ejecuten un mismo nombre de funciï¿½n general, pero cada uno lo harï¿½ a su propia manera.","El polimorfismo en la programación orientada a objetos es la capacidad de un objeto o método para tomar diferentes formas dependiendo del contexto en el que se utilicen. Esto se logra mediante la sobrecarga de métodos, donde múltiples métodos con nombres iguales pero parámetros diferentes pueden ser definidos en una clase.
+
+Por ejemplo, si tenemos una clase `Animal` con un método `hablar()` que devuelve un mensaje de ""El animal no puede hablar"", podemos crear clases hijas como `Perro` y `Gato`, cada una con su propia implementación del método `hablar()`. Por ejemplo:
+
+```cpp
+class Animal {
+public:
+    virtual void hablar() {
+        cout << ""El animal no puede hablar"" << endl;
+    }
+};
+
+class Perro : public Animal {
+public:
+    void hablar() override {
+        cout << ""Woof!"" << endl;
+    }
+};
+
+class Gato : public Animal {
+public:
+    void hablar() override {
+        cout << ""Meow!"" << endl;
+    }
+};
+```
+
+Ahora, si creamos un objeto `Perro` o `Gato` y llamamos al método `hablar()`, el código se comportará de forma diferente dependiendo del tipo real del objeto. Esto es polimorfismo en acción.
+
+```cpp
+int main() {
+    Perro perro;
+    Gato gato;
+
+    perro.hablar(); // Woof!
+    gato.hablar();  // Meow!
+
+    return 0;
+}
+```
+
+El polimorfismo nos permite escribir código más genérico y flexible, ya que podemos crear objetos de diferentes tipos que se comporten de manera diferente sin necesidad de saber su tipo real en tiempo de ejecución.",93.21,0.8399,0.8399,VP,1.0,1.0,1.0
+90,programacion,5017,ï¿½Para quï¿½ se utiliza la palabra reservada virtual en C++?,"La palabra reservada virtual se utiliza en la declaraciï¿½n de una funciï¿½n (en la clase base) para habilitar la ligadura dinï¿½mica (o enlace dinï¿½mico) de una operaciï¿½n hacia un objeto. Al colocarla, le indica al compilador que la decisiï¿½n de quï¿½ versiï¿½n de una funciï¿½n invocar no se tome de forma estï¿½tica al momento de compilar, sino que se resuelva en tiempo de ejecuciï¿½n basï¿½ndose en el tipo real del objeto transmitido.","La palabra reservada ""virtual"" en C++ se utiliza para declarar funciones virtuales. Una función virtual es una función que tiene múltiples implementaciones, dependiendo del tipo de objeto que se invoca en tiempo de ejecución.
+
+Cuando una clase declara una función como virtual, indica que la función debe ser ligada dinámicamente al tiempo de ejecución. Esto significa que el comportamiento de la función dependerá del tipo real de objeto que se pasa a ella, y no solo del tipo compilado en tiempo de compilación.
+
+La palabra ""virtual"" puede aparecer en varias situaciones:
+
+* En la declaración de una función virtual en una clase base, para indicar que la función debe ser ligada dinámicamente.
+* En la llamada a una función virtual, donde el objeto pasado al que invoca la función determina qué implementación se ejecutará.
+
+En resumen, la palabra reservada ""virtual"" es crucial para lograr la polimorfismo en C++, permitiendo que las clases y objetos comporten de manera flexible y dinámica.",82.44,0.879,0.879,VP,1.0,1.0,1.0
+91,computacion,5014,ï¿½Cuï¿½l es la diferencia entre la memoria RAM a nivel de hardware y otra memoria?,"A nivel de hardware, la memoria RAM (memoria de acceso aleatorio) es un tipo de almacenamiento primario volï¿½til formado por chips con circuitos que almacenan temporalmente las instrucciones y los datos del programa; si la energï¿½a se interrumpe, esta informaciï¿½n se pierde instantï¿½neamente. Por su parte, la memoria ROM (memoria de sï¿½lo lectura) es no volï¿½til y contiene informaciï¿½n permanentemente grabada de fï¿½brica que la computadora sï¿½lo puede leer, como las instrucciones de arranque. Tambiï¿½n difiere de otras memorias como la CMOS (de bajo consumo con baterï¿½a)  y la memoria flash (borrable, reescribible y no volï¿½til). Finalmente, se diferencia de los dispositivos de almacenamiento secundario (como discos duros o cintas) que guardan datos a largo plazo.","La diferencia clave entre la memoria RAM (Random Access Memory) y otras memorias radica en su capacidad para almacenar información temporalmente y ser accesible rápidamente por el procesador.
+
+La memoria RAM es una forma de memoria volátil, lo que significa que su contenido se pierde cuando la computadora se apaga. Esta memoria es utilizada por la CPU (Unidad Central de Procesamiento) como área de trabajo principal, ya que permite al procesador acceder y manipular los datos de manera rápida y eficiente.
+
+En contraste, otras memorias como el ROM (Random Access Memory de almacenamiento permanente), las unidades de estado sólido (SSD) o los discos duros (HD) tienen propiedades muy diferentes. El ROM es una memoria de almacenamiento permanente que contiene instrucciones y datos que se cargan desde la unidad de disco cuando la computadora se enciende. Las unidades de estado sólido y los discos duros, por otro lado, son dispositivos de almacenamiento masivo que permiten al usuario guardar archivos, programas y otros datos a largo plazo.
+
+En resumen, la memoria RAM es una memoria volátil diseñada para ser utilizada rápidamente por el procesador, mientras que otras memorias como el ROM o las unidades de estado sólido están destinadas a almacenar información de manera más permanente.",42.17,0.9104,0.9104,VP,1.0,1.0,1.0
+92,computacion,5014,Explica cï¿½mo funciona la CPU a nivel arquitectura mediante la ALU y la Unidad de Control,"A nivel arquitectï¿½nico, la CPU opera como una lï¿½nea de ensamblaje en la que sus unidades funcionales trabajan de forma conjunta. La Unidad de Control regula las acciones de los componentes asegurï¿½ndose de decodificar los pasos requeridos para ejecutar las instrucciones en el orden correcto. Por otro lado, la UAL (Unidad Aritmï¿½tico-Lï¿½gica) es la encargada directa de ejecutar la instrucciï¿½n realizando los cï¿½lculos aritmï¿½ticos y las operaciones lï¿½gicas utilizando el espacio de los registros de almacenamiento interno.","La CPU (Unidad Central de Procesamiento) es el corazón de una computadora, responsable de ejecutar las instrucciones del programa y realizar operaciones matemáticas. A nivel arquitectura, la CPU se compone de varias unidades funcionales que trabajan juntas para completar la ejecución de las instrucciones.
+
+La Unidad Aritmético-Lógica (UAL) es una de las unidades más importantes de la CPU, responsable de realizar operaciones matemáticas y lógicas. La UAL utiliza registros de 32 o 64 bits para almacenar los datos, que son los bloques de información procesados por la CPU.
+
+La Unidad Control es responsable de recibir las instrucciones del programa y decodificarlas en una serie de instrucciones controladas. Estas instrucciones controladas se envían a la UAL para realizar las operaciones matemáticas y lógicas necesarias.
+
+Además de la UAL y la Unidad Control, la CPU también cuenta con otras unidades funcionales como la Unidad de Decodificación (ID) y la Unidad de Bus (UB). La ID se encarga de decodificar las instrucciones del programa en una serie de instrucciones controladas, mientras que la UB se encarga de gestionar la comunicación entre las diferentes unidades de la CPU.
+
+La CPU utiliza un mecanismo llamado ""pipelining"" para optimizar su rendimiento. Esto significa que, al mismo tiempo que una unidad está realizando una tarea, otra unidad comienza a trabajar en una nueva tarea. Esto permite que el procesador complete más instrucciones por segundo.
+
+En resumen, la CPU funciona de la siguiente manera:
+
+1. La Unidad Control recibe las instrucciones del programa y decodifica en una serie de instrucciones controladas.
+2. Las instrucciones controladas se envían a la Unidad Aritmético-Lógica (UAL) para realizar operaciones matemáticas y lógicas.
+3. El resultado de las operaciones se almacena en registros de 32 o 64 bits.
+4. La CPU utiliza el mecanismo de pipelining para optimizar su rendimiento, completando más instrucciones por segundo.
+
+Espero que esta explicación te haya ayudado a entender cómo funciona la CPU a nivel arquitectura mediante la ALU y la Unidad de Control.",56.82,0.7749,0.7749,VP,1.0,1.0,1.0
+93,computacion,5014,Explica el sistema binario basado en transistores,"Las computadoras estï¿½n compuestas por una gran colecciï¿½n de circuitos electrï¿½nicos microscï¿½picos que funcionan como conmutadores(transistores) con sï¿½lo dos posiciones: encendido (on) y apagado (off). Las altas y bajas cargas elï¿½ctricas en estos transistores representan los dï¿½gitos del sistema binario, es decir, ceros (0) y unos (1) (llamados bits). Utilizando distintas agrupaciones y patrones formados por estos bits, la computadora logra codificar y procesar cualquier tipo de instrucciï¿½n, texto o nï¿½mero.","El sistema binario basado en transistores es un método de representación de información que utiliza dos estados: 0 y 1, representados por la presencia o ausencia de corriente eléctrica. En el contexto de los circuitos electrónicos, esto se logra mediante la utilización de transistores como elementos fundamentales.
+
+Un transistor es un componente electrónico que puede controlar la cantidad de corriente que fluye a través de una ruta. Cuando un transistor está en ""corte"" (no permitiendo la corriente), se considera 0, y cuando está ""abierto"" ( Permitiendo la corriente), se considera 1.
+
+En el sistema binario basado en transistores, cada dígito de información (0 o 1) es representado por un patrón de ondas o voltajes específico que controlan la corriente a través de los transistores. Estos patrones se pueden combinar para crear números enteros más grandes y formar palabras.
+
+El sistema binario basado en transistores era utilizado en las computadoras analógicas y electrónicas tempranas, ya que estos sistemas no podían manejar la representación de información binaria (binaria 0 y 1) directamente. A pesar de su limitante como método, el sistema binario basado en transistores se utilizó para impulsar la evolución de las computadoras digitales modernas.
+
+En resumen, el sistema binario basado en transistores es una forma de representación de información que utiliza transistores para generar patrones de corriente que representan 0 y 1. Aunque ha sido reemplazado por métodos más eficientes y precisos, sigue siendo un componente importante en la historia de la computación y su evolución hacia sistemas digitales modernos.",45.72,0.8589,0.8589,VP,1.0,1.0,1.0
+94,computacion,5014,Relata brevemente quï¿½ fue la ENIAC y quï¿½ hardware utilizaba,"La ENIAC (Electronic Numerical Integrator and Computer) fue una mï¿½quina pionera desarrollada despuï¿½s de la Segunda Guerra Mundial por John Mauchly y J. Presper Eckert originalmente para el ejï¿½rcito estadounidense, con el fin de calcular tablas de trayectorias de nuevas armas. Su hardware era un inmenso aparato de 30 toneladas conformado por 18.000 ruidosas vï¿½lvulas de vacï¿½o. Aunque era capaz de realizar cï¿½lculos 500 veces mï¿½s rï¿½pido que las calculadoras electromecï¿½nicas existentes, era muy propensa a averiarse, sufriendo caï¿½das del sistema en promedio cada siete minutos.","La ENIAC (Electronic Numerical Integrator and Computer) fue un computador electromecánico desarrollado a principios del siglo XX, específicamente entre 1943 y 1946. Fue el primer computador diseñado específicamente para realizar cálculos numéricos y se considera como el precursor de la era electrónica en la computación.
+
+En cuanto al hardware utilizaba, la ENIAC estaba compuesta por varios componentes, incluyendo:
+
+* Un tablero de palillos para introducir datos
+* Un reloj mecánico para generar temporizaciones
+* Un sistema de cables y conectores para conectar los diferentes componentes
+* Un procesador de datos electromecánico que realizaba las operaciones aritméticas y lógicas
+
+La ENIAC era un dispositivo muy grande y pesado, medía más de 8 metros de largo y pesaba casi 27 toneladas. Sin embargo, a pesar de su tamaño y complejidad, fue capaz de realizar cálculos numéricos con una velocidad relativamente rápida para ese tiempo. La ENIAC utilizaba un sistema de tableros de palillos y cables para conectar los diferentes componentes, lo que la hacía muy difícil de mantener y reparar.
+
+En resumen, la ENIAC fue un innovador computador electromecánico que sentó las bases para el desarrollo de computadoras electrónicas más avanzadas en el siglo XX. Su diseño y hardware se consideran como un precursor de la era electrónica en la computación.",43.71,0.8095,0.8095,VP,1.0,1.0,1.0
+95,computacion,5014,ï¿½Cuï¿½l es la diferencia principal entre el hardware y el software de una computadora?,"La diferencia radica en que el hardware son las partes fï¿½sicas tangibles de la computadora y sus componentes, mientras que el software (o los programas) lo conforman las instrucciones intangibles que controlan al hardware y le dictan exactamente quï¿½ debe hacer y cï¿½mo transformar los datos de entrada en resultados de salida.","La diferencia principal entre el hardware y el software de una computadora es que el hardware se refiere a las partes físicas de la computadora, como la CPU, la memoria RAM, el disco duro, la tarjeta gráfica, etc., que se utilizan para procesar y almacenar información.
+
+Por otro lado, el software se refiere a los programas y sistemas operativos que se ejecutan en la computadora, proporcionando funcionalidades específicas, como el sistema operativo, aplicaciones productivas, juegos, etc. El hardware es lo que hace que la computadora sea capaz de ejecutar software, mientras que el software es lo que le da sentido y propósito a la computadora.
+
+En otras palabras, sin hardware, no hay nada para ejecutar el software; y sin software, el hardware es solo una colección de componentes inactivos. La relación entre hardware y software es mutua: el hardware proporciona los recursos necesarios para ejecutar software, mientras que el software utiliza esos recursos para realizar tareas específicas.",34.84,0.8568,0.8568,VP,1.0,1.0,1.0
+96,computacion,5014,ï¿½Quï¿½ es la Unidad Central de Procesamiento (CPU) y cuï¿½l es su funciï¿½n principal?," La CPU, tambiï¿½n llamada procesador o microprocesador, es esencialmente el cerebro"" de la computadora. Su funciï¿½n principal es procesar la informaciï¿½n,  realizar cï¿½lculos aritmï¿½ticos y tomar decisiones bï¿½sicas basadas en la comparaciï¿½n de valores de informaciï¿½n. Para lograrlo,  sigue las instrucciones codificadas en los programas,  controlando el funcionamiento de los demï¿½s componentes del sistema.""","La Unidad Central de Procesamiento (CPU), también conocida como microprocesador o unidad central de procesamiento, es el componente hardware que ejecuta los pasos de un programa de software, realizando cálculos y moviendo datos de una parte a otra del sistema. Su función principal es realizar cálculos y tomar decisiones básicas comparando valores de información.
+
+La CPU se encarga de:
+
+* Realizar cálculos aritméticos y lógicos
+* Comparar valores de información
+* Controlar el flujo de datos en la computadora
+* Ejecutar instrucciones de software
+
+En resumen, la CPU es el ""cerebro"" de la computadora, que ejecuta los pasos de un programa y realiza cálculos y decisiones básicas para que la computadora funcione correctamente.",33.69,0.9092,0.9092,VP,1.0,1.0,1.0
+97,computacion,5014,ï¿½Quï¿½ funciï¿½n cumple la memoria RAM en un sistema informï¿½tico?,La memoria RAM cumple la funciï¿½n de servir como el ï¿½rea de almacenamiento temporal o de trabajo primario para la CPU. Su propï¿½sito es guardar de manera temporal las instrucciones de los programas y los datos para que el procesador tenga un acceso instantï¿½neo a ellos mientras la computadora se encuentra encendida y trabajando.,"La memoria RAM (Random Access Memory) es un componente fundamental de cualquier sistema informático, ya que proporciona un espacio de trabajo temporal para el procesador. Su función principal es actuar como una caja de trabajo donde la CPU puede acceder instantáneamente a los datos y las instrucciones necesarias para ejecutar un programa.
+
+En resumen, la memoria RAM cumple varias funciones clave:
+
+1. **Almacenamiento de datos y programación**: La RAM almacena los datos y las instrucciones que se van a procesar por el CPU.
+2. **Acceso rápido**: La RAM permite una acceso rápida a los datos, lo que es fundamental para la ejecución de programas que requieren procesos rápidos y eficientes.
+3. **Sustento del sistema en funcionamiento**: La RAM es esencial para mantener el sistema en funcionamiento, ya que proporciona un espacio de trabajo temporal para el CPU durante su ciclo de ejecución.
+
+En resumen, la memoria RAM cumple la función de proporcionar un espacio de trabajo temporal y acceso rápido para el procesador, lo que permite la ejecución de programas de manera eficiente y rápida.",36.26,0.9079,0.9079,VP,1.0,1.0,1.0
+98,computacion,5014,ï¿½En quï¿½ se diferencia la memoria ROM de la memoria RAM?,"La memoria RAM es una memoria de lectura/escritura y de carï¿½cter volï¿½til, es decir, su contenido desaparece al interrumpirse la energï¿½a. Por el contrario, la memoria ROM (memoria de sï¿½lo lectura) no es volï¿½til; su informaciï¿½n se conserva incluso sin energï¿½a. Ademï¿½s, mientras la computadora puede alterar los datos en la RAM constantemente, en la ROM la computadora solo puede leer la informaciï¿½n, sin poder grabar, modificar o borrar los datos (como las instrucciones de arranque esenciales pregrabadas en fï¿½brica).","La memoria ROM (Read-Only Memory) y la memoria RAM (Random Access Memory) son dos tipos de memorias que se utilizan en computadoras, pero con funciones y características distintas.
+
+**Memoria ROM**: La memoria ROM es un tipo de memoria no volátil, lo que significa que sus contenidos se mantienen sin necesidad de suministro eléctrico. Es un dispositivo de almacenamiento programable que contiene el código del sistema operativo y otros programas fundamentales que la computadora necesita para funcionar. La memoria ROM se carga en la memoria cuando se enciende el ordenador, pero sus contenidos no pueden ser modificados una vez cargados.
+
+**Memoria RAM**: La memoria RAM es un tipo de memoria volátil, lo que significa que sus contenidos se pierden cuando se apaga el ordenador o se baja la tensión eléctrica. Es un dispositivo de almacenamiento temporal que almacena los datos y programas que están siendo utilizados actualmente por la computadora. La memoria RAM es una memoria dinámica, ya que su contenido se puede modificar y reorganizar según sea necesario.
+
+En resumen, la principal diferencia entre la memoria ROM y la memoria RAM es que la primera es un dispositivo de almacenamiento programable inmutable, mientras que la segunda es un dispositivo de almacenamiento temporal mutable. Mientras que la memoria ROM contiene el código del sistema operativo fijo, la memoria RAM puede cambiar constantemente según las necesidades de la computadora.
+
+Es importante destacar que, aunque la memoria RAM es volátil y su contenido se pierde cuando se apaga el ordenador, los datos almacenados en ella pueden ser salvos en otros dispositivos de almacenamiento, como discos duros o unidades USB.",46.61,0.9009,0.9009,VP,1.0,1.0,1.0
+99,computacion,5014,ï¿½Quï¿½ son los perifï¿½ricos de entrada y menciona tres ejemplos comunes?,"Los perifï¿½ricos de entrada son aquellos dispositivos que aceptan o capturan informaciï¿½n y datos del mundo exterior para introducirlos en la memoria de la computadora y poder ser procesados. Tres ejemplos comunes de estos dispositivos son el teclado, el ratï¿½n (mouse) y los escï¿½neres.","Los periféricos de entrada son dispositivos que aceptan una entrada del mundo exterior y las transmiten a la computadora. Los ejemplos más comunes de periféricos de entrada son:
+
+1. Teclado: un dispositivo que permite al usuario escribir texto, números y símbolos en la pantalla de la computadora.
+2. Ratón: un dispositivo que detecta movimientos del dedo o del cuerpo para permitir al usuario interactuar con la computadora mediante clics y gestos.
+3. Cámara webcámara: es un dispositivo de entrada que permite grabar imágenes y videos en el sistema.
+
+Estos dispositivos son fundamentales para la interacción hum-computadora y permiten al usuario comunicarse con la computadora y acceder a sus funciones.",30.85,0.8846,0.8846,VP,1.0,1.0,1.0
+100,computacion,5014,ï¿½Cuï¿½l es la funciï¿½n principal de los dispositivos de salida?,La funciï¿½n principal de los dispositivos de salida es comunicar o enviar la informaciï¿½n procesada por la computadora de regreso al usuario o al mundo exterior. Estos aparatos aceptan los patrones de bits de la computadora y los transforman en un formato que tenga sentido humano o que otra mï¿½quina pueda comprender (como una imagen en una pantalla o un texto impreso).,"La función principal de los dispositivos de salida es enviar información al mundo exterior, como imprimir textos o imágenes en un papel, mostrar gráficos y videos en una pantalla, o reproducir sonidos a través de altavoces. En otras palabras, los dispositivos de salida permiten que la computadora envíe su contenido hacia fuera de sí misma, para ser percibido por el usuario o utilizado por otros dispositivos.",26.33,0.8716,0.8716,VP,1.0,1.0,1.0
+101,computacion,5014,ï¿½Quï¿½ es un sistema operativo y cuï¿½l es su objetivo fundamental?,"Un sistema operativo (SO) es un conjunto o sistema de programas que operan entre bastidores para gestionar los recursos informï¿½ticos. Su objetivo fundamental es mantener el hardware funcionando de manera eficiente y facilitar el uso de la computadora al crear una capa de aislamiento entre el usuario y los detalles tï¿½cnicos del hardware. Realiza operaciones esenciales como comunicarse con los perifï¿½ricos, administrar la memoria y coordinar los diferentes trabajos de procesamiento que se ejecutan al mismo tiempo.","Un sistema operativo es una parte fundamental de cualquier computadora. Su objetivo principal es proporcionar una capa de abstracción entre el hardware del ordenador y las aplicaciones que se ejecutan en él, permitiendo a estas últimas acceder y manipular los recursos del sistema de manera segura y eficiente.
+
+El sistema operativo actúa como un intermediario entre el hardware y las aplicaciones, gestionando la asignación de recursos como la memoria, el procesador y el disco rígido. También se encarga de proporcionar servicios básicos como el manejo de archivos, la gestión de redes, la seguridad y la interfaz gráfica.
+
+Además, el sistema operativo es responsable de la gestión del flujo de datos entre las aplicaciones y la entrada/salida de información, lo que permite a los usuarios interactuar con el ordenador de manera más natural.
+
+En resumen, el objetivo fundamental de un sistema operativo es proporcionar una plataforma estable y eficiente para ejecutar aplicaciones y acceder a recursos del sistema.",31.69,0.9192,0.9192,VP,1.0,1.0,1.0
+102,computacion,5014,ï¿½Cuï¿½l es el propï¿½sito del disco duro o la unidad de estado sï¿½lido (SSD)?," Tanto el disco duro (basado en platos magnï¿½ticos) como las alternativas de almacenamiento en estado sï¿½lido (basadas en memoria flash y sin partes mï¿½viles) tienen el propï¿½sito de servir como dispositivos de almacenamiento secundario para guardar la informaciï¿½n de manera semipermanente y a largo plazo. A diferencia de la RAM, estos dispositivos conservan grandes volï¿½menes de datos de forma segura incluso cuando la mï¿½quina es apagada.","La pregunta pide saber el propósito de un disco duro o una unidad de estado sólido (SSD), que es un dispositivo de almacenamiento de datos. 
+
+Un disco duro es un dispositivo de almacenamiento de datos que utiliza discos ópticos para almacenar y leer datos. Su propósito principal es proporcionar un espacio de almacenamiento para los programas, archivos y datos de una computadora.
+
+Una unidad de estado sólido (SSD), por otro lado, es un dispositivo de almacenamiento de datos que utiliza memoria solidaria para almacenar y leer datos. Su propósito principal es proporcionar un espacio de almacenamiento rápido y eficiente para los datos de una computadora, lo que mejora la velocidad de carga de sistemas operativos, programas y archivos.
+
+En resumen, el propósito de un disco duro es proporcionar un espacio de almacenamiento estático y duradero, mientras que el propósito de una unidad de estado sólido (SSD) es proporcionar un espacio de almacenamiento rápido y eficiente.",35.42,0.8645,0.8645,VP,1.0,1.0,1.0
+103,computacion,5014,ï¿½Quï¿½ es la placa base o tarjeta madre en la arquitectura de una computadora?,"La placa madre o placa base es el panel de circuitos principal que alberga los componentes informï¿½ticos clave, como la CPU, la memoria y diversos chips electrï¿½nicos necesarios para que el equipo opere. A travï¿½s de ella, la informaciï¿½n viaja y se interconecta entre estos componentes usando grupos de cables denominados buses del sistema.","La placa base, también conocida como tarjeta madre, es el componente principal que sostiene y conecta todos los demás componentes de una computadora. Es responsable de conectar y gestionar las conexiones entre la memoria RAM, el procesador, la placa gráfica, los periféricos y otros dispositivos. La placa base es como el cerebro de la computadora, ya que almacena todos los datos y instrucciones que requiere el sistema para funcionar.",27.11,0.8413,0.8413,VP,1.0,1.0,1.0
+104,computacion,5014,ï¿½Quï¿½ es la Unidad Aritmï¿½tico Lï¿½gica (ALU) dentro de un procesador?, La Unidad Aritmï¿½tico Lï¿½gica (UAL o ALU) es el componente funcional crï¿½tico dentro de la unidad central de procesamiento (CPU) que se encarga expresamente de realizar los cï¿½lculos aritmï¿½ticos y las operaciones de comparaciones lï¿½gicas de los datos. Incluye ademï¿½s registros internos donde se procesa y maneja dicha informaciï¿½n.,"La Unidad Aritmética Lógica (ALU) es una parte fundamental del procesador que se encarga de realizar operaciones aritméticas y lógicas. La ALU es responsable de ejecutar las instrucciones del programa, realizando operaciones como suma, resta, multiplicación, división, comparaciones y asignaciones.
+
+La ALU realiza estas operaciones utilizando una combinación de circuitos electrónicos y lógicos para manipular los bits que componen la información. Los algoritmos utilizados en la ALU permiten realizar operaciones con gran velocidad y eficiencia, lo que es fundamental para el rendimiento del procesador.
+
+En resumen, la ALU es un componente clave del procesador que permite realizar operaciones aritméticas y lógicas, lo que es esencial para ejecutar instrucciones de software y procesar información en una computadora.",33.44,0.797,0.797,VP,1.0,1.0,1.0
+105,computacion,5014,ï¿½A quï¿½ se le llama software de aplicaciï¿½n?,"El software de aplicaciï¿½n comprende las herramientas y programas productivos diseï¿½ados para ayudar a los usuarios de la computadora a resolver problemas o efectuar tareas especï¿½ficas. A diferencia del software de sistema que coordina el hardware, las aplicaciones estï¿½n hechas para beneficio directo del usuario (por ejemplo, procesadores de texto, hojas de cï¿½lculo o navegadores web).","El software de aplicación es un tipo de software que se utiliza para realizar tareas específicas y proveer servicios a los usuarios. Estos programas pueden variar desde herramientas básicas hasta sistemas complejos que gestionan información, procesan datos y interactúan con el hardware de la computadora.
+
+Entre las categorías principales de software se encuentran:
+
+1. **Aplicaciones**: Software que se utiliza para realizar tareas específicas, como la edición de texto, presentaciones, juegos, programas de contabilidad o gestión de información personal.
+2. **Sistemas operativos**: Software que gestiona y coordina el acceso al hardware del sistema, proporcionando un entorno ejecutable para otros programas (como el sistema operativo Windows o macOS).
+3. **Programas de sistema**: Software más básico como compiladores, editores de código, gestores de archivos y otros programas necesarios para la ejecución de aplicaciones.
+
+En resumen, el software de aplicación es un término genérico que abarca una amplia variedad de programas diseñados para realizar tareas específicas en computadoras.",34.04,0.9008,0.9008,VP,1.0,1.0,1.0
+106,algebra,5013ï¿½Cuï¿½l es la diferencia fundamental entre el concepto de cantidad en Aritmï¿½tica y en ï¿½lgebra? ,"En Aritmï¿½tica las cantidades se representan por nï¿½meros y estos expresan valores determinados (por ejemplo, el nï¿½mero 20 expresa un solo valor fijo). En cambio, en ï¿½lgebra el concepto es mucho mï¿½s amplio; para lograr la generalizaciï¿½n, las cantidades se representan por medio de letras, las cuales pueden representar todos los valores posibles que nosotros queramos asignarles.",,,0.0,0.0,0.0,,0.0,0.0,0.0
+107,algebra,5013,ï¿½Cuï¿½les son los signos de agrupaciï¿½n utilizados en ï¿½lgebra y quï¿½ indican? ,"Las fuentes indican que los signos de agrupaciï¿½n son cuatro: el parï¿½ntesis ordinario ( ), el parï¿½ntesis angular o corchete [ ], las llaves { } y la barra o vï¿½nculo. Estos signos se emplean para indicar que las operaciones colocadas entre ellos deben efectuarse primero, lo que significa que las cantidades encerradas en ellos deben considerarse como un todo, o sea, como una sola cantidad unificada.","Los signos de agrupación utilizados en álgebra incluyen paréntesis ( ) , corchetes [ ] , llaves { } y signos de víncula o barra / . Cada uno de estos signos se utiliza para indicar que las cantidades que estén dentro de ellos forman un conjunto unitario, es decir, que deben considerarse como una sola cantidad al momento de realizar operaciones aritméticas.
+
+Al eliminar los signos de agrupación en una expresión, estamos resolviendo la agrupación para poder evaluar correctamente las cantidades individuales. Ejemplos comunes de eliminación de estos signos incluyen el uso de reglas para cambios de signo en multiplicación, como mencionadas anteriormente.
+
+Por ejemplo:
+- El paréntesis permite que operaciones dentro de él sean consideradas unitarias.
+- Los corchetes y llaves suelen usarse junto con los paréntesis, generalmente para agrupar cantidades adicionales.
+- La barra o signo de víncula puede ser utilizado para separar elementos en una expresión compleja.
+
+Al eliminar estos signos de agrupación, se garantiza que todas las operaciones dentro del conjunto unitario sean realizadas primero según el orden de las operaciones matemáticas (frecuentemente recordado con la sigla PEMDAS: Paréntesis, Exponentes, Multiplicación y División, Suma y Resta).",46.47,0.8713,0.8713,VP,1.0,1.0,1.0
+108,algebra,5013, ï¿½A quï¿½ se le llama valor numï¿½rico de una expresiï¿½n algebraica?, El valor numï¿½rico de una expresiï¿½n algebraica se define en las fuentes como el resultado final que se obtiene al sustituir las letras por valores determinados y efectuar las operaciones matemï¿½ticas que estï¿½n indicadas en dicha expresiï¿½n.,"El valor numérico de una expresión algebraica es el resultado que obtenemos al reemplazar cada letra (el llamado ""letra literal"") por un número específico y luego simplificar la expresión. Este proceso no solo implica sustituir las letras con números, sino también realizar todas las operaciones permitidas según las leyes de operación matemáticas.
+
+Por ejemplo, si tenemos una expresión algebraica como \(2a + 3b - c\), cuando se nos da un valor numérico para \(a\), \(b\), y \(c\) (por ejemplo, \(a = 4\), \(b = 5\), \(c = 6\)), entonces podríamos calcular el valor numérico como sigue:
+
+\[2(4) + 3(5) - 6\]
+
+Realizando las operaciones aritméticas:
+
+\[8 + 15 - 6 = 17\]
+
+Por lo tanto, si \(a = 4\), \(b = 5\), y \(c = 6\), el valor numérico de la expresión algebraica \(2a + 3b - c\) sería \(17\).",40.46,0.8934,0.8934,VP,1.0,1.0,1.0
+109,algebra,5013,ï¿½Cuï¿½l es la diferencia entre los miembros y los tï¿½rminos de una ecuaciï¿½n?,"Se llama miembro"" a la expresiï¿½n completa que se encuentra a la izquierda (primer miembro) o a la derecha (segundo miembro) del signo de igualdad. Por el contrario,  los ""tï¿½rminos"" son cada una de las cantidades individuales que estï¿½n conectadas entre sï¿½ por el signo + o -,  o bien,  la cantidad que se encuentra completamente sola en un miembro. No deben confundirse,  ya que ""miembro"" y ""tï¿½rmino"" solo son equivalentes cuando en un miembro de la ecuaciï¿½n hay una sola cantidad.""","En una ecuación, los términos son componentes que pueden ser combinados o sumados/unidos para formar expresiones más grandes. Los miembros de la ecuación son aquellos conjuntos separados por un signo igual (=). Cada miembro consta de términos.
+
+Diferencia entre los miembros y los términos:
+- **Término**: Es una parte individual de una expresión algebraica, que puede ser una constante (un número), la variable elevada a algún exponente (como x² o 3y³), una combinación de ambas (como 5x + 2), o incluso un polinomio completo.
+- **Miembro**: Son conjuntos separados por el signo de igual (=). En un conjunto, todos los términos que están en la misma parte del signo de igual se consideran como un miembro. Por ejemplo, en la ecuación 2x + 3 = 5 - x, ""2x + 3"" y ""5 - x"" son dos miembros.
+
+Los miembros de una ecuación deben ser equivalentes para que la ecuación sea verdadera. El propósito de resolver una ecuación es encontrar el valor de la incógnita (la variable) que hace que ambos miembros sean iguales.",44.28,0.8329,0.8329,VP,1.0,1.0,1.0
+110,algebra,5013,ï¿½Quï¿½ es un tï¿½rmino algebraico y cuï¿½les son sus elementos?,"Un tï¿½rmino es una expresiï¿½n algebraica que consta de un solo sï¿½mbolo o de varios sï¿½mbolos no separados entre sï¿½ por el signo + o -"". Los elementos que conforman a un tï¿½rmino son cuatro: el signo,  el coeficiente,  la parte literal y el grado.""","Un término algebraico es una expresión que consta de un solo símbolo o de varios símbolos no separados entre sí por el signo ""+"" o ""-"". Sus elementos principales son:
+
+1. **Símbolo Literal**: Este puede ser cualquier letra que representa una incógnita (uma quantidade desconhecida). Por exemplo, a ou b.
+
+2. **Constante**: Um número fixo e não associado a uma incógnita. Por exemplo, 5.
+
+3. **Producto de Simbolos Literais e Constantes**: Pode ser o produto entre um símbolo literal e/ou uma constante. Por exemplo, ab ou 7a.
+
+Portanto, os seguintes são exemplos de termos algebraicos:
+- a
+- b
+- 5
+- xy
+- 3ab
+
+Estes elementos podem se juntar para formar expressões mais complexas na Álgebra, como polinômios.",37.77,0.8823,0.8823,VP,1.0,1.0,1.0
+111,algebra,5013,ï¿½Cuï¿½l es la regla general para la suma de polinomios?,"La regla general establece que para sumar dos o mï¿½s expresiones algebraicas, se escriben unas a continuaciï¿½n de las otras con sus propios signos y se reducen los tï¿½rminos semejantes si los hay"". En la prï¿½ctica,  suelen colocarse los polinomios ""unos debajo de los otros de modo que los tï¿½rminos semejantes queden en columna"" para realizar la reducciï¿½n separï¿½ndolos con sus propios signos.""","La regla general para la suma de polinomios es lo siguiente:
+
+Para sumar dos o más polinomios, se deben colocar todos los polinomios uno debajo del otro de manera que términos semejantes queden en columnas separadas. Luego, cada término semejante (es decir, aquellos con la misma incógnita elevada a la misma potencia) debe sumarse entre sí.
+
+Por ejemplo, si tenemos los polinomios \(3x - 5\) y \(2x + 3\), las columnas serían:
+
+```
+  3x    -5
++ 2x     3
+---------
+   5x     -2
+```
+
+La suma de estos dos polinomios sería \(5x - 2\).
+
+Por lo tanto, la regla general para sumar polinomios es que se deben agrupar los términos semejantes y luego sumarse dichos términos.",43.06,0.858,0.858,VP,1.0,1.0,1.0
+112,algebra,5013,ï¿½Quï¿½ regla de signos se aplica en la resta de polinomios?,"En la resta de polinomios, se debe restar del minuendo cada uno de los tï¿½rminos del sustraendo. La regla de signos indica que a continuaciï¿½n (o debajo) del minuendo se escribe el sustraendo, pero cambiï¿½ndole el signo a todos sus tï¿½rminos"".""","Para realizar una resta de polinomios, es fundamental aplicar la Regla General para Suprimir Signos de Agrupación. Esta regla establece cómo deben comportarse los signos al suprimir signos de agrupación (paréntesis, corchetes o cualquier otro tipo de signo de agrupación).
+
+La regla general es la siguiente:
+
+1) Para suprimir signos de agrupación precedidos del signo + se deja el mismo signo que tengan a cada una de las cantidades que se hallan dentro de él.
+2) Para suprimir signos de agrupación precedidos del signo - se cambia el signo a cada una de las cantidades que se hallan dentro de él.
+
+Estas reglas aplican tanto al suprimir paréntesis como a otros tipos de signos de agrupación. En la resta de polinomios, cuando veamos un signo de agrupación precedido del signo -, simplemente cambiamos el signo de todas las cantidades que están dentro de ese grupo de agrupación.
+
+Por ejemplo, si tenemos una expresión como \( (a + b) - c \), aplicando la regla de signos:
+
+- Suprimimos el paréntesis, y cambiamos el signo de 'c' porque está precedido por un signo '-'.
+- Por lo tanto, la resta se transforma en: \( a + b - (-c) \).
+- Esto simplifica a: \( a + b + c \).
+
+En resumen, al realizar una resta entre dos polinomios \( P(x) - Q(x) \), cualquier signo de agrupación que aparezca debe ser suprimido y su signo cambiado por todas las cantidades que están dentro de ese grupo.",52.61,0.8558,0.8558,VP,1.0,1.0,1.0
+113,algebra,5013,ï¿½Cuï¿½l es la ley de los exponentes para la multiplicaciï¿½n de bases iguales?," La ley de los exponentes para la multiplicaciï¿½n dictamina que para multiplicar potencias de la misma base se escribe la misma base y se le pone por exponente la suma de los exponentes de los factores"".""","La ley de los exponentes para la multiplicación de bases iguales establece que cuando se multiplican dos números con la misma base, se mantienen las mismas bases y se suman los exponentes.
+
+Específicamente, si tenemos \( a^m \cdot a^n \), donde \( m \) y \( n \) son enteros, el resultado será \( a^{m+n} \).
+
+Por ejemplo:
+- \( 2^3 \cdot 2^4 = 2^{3+4} = 2^7 \)
+- \( 5^6 \cdot 5^1 = 5^{6+1} = 5^7 \)
+
+Esta regla cumple con la función de simplificar operaciones que involucran multiplicar potencias de números con bases iguales, como lo explica en el contexto proporcionado.",34.02,0.8563,0.8563,VP,1.0,1.0,1.0
+114,algebra,5013,ï¿½A quï¿½ es igual el cuadrado de la suma de dos cantidades?,"El cuadrado de la suma de dos cantidades (representado algebraicamente como (a+b) ^2 ) es igual al cuadrado del primer tï¿½rmino, mï¿½s el doble del primero por el segundo, mï¿½s el cuadrado del segundo tï¿½rmino (lo que equivale a a^2 +2ab+b^2).","El cuadrado de la suma de dos cantidades es igual a la suma de los siguientes términos:
+1. El cuadrado de la primera cantidad.
+2. El doble producto de la primera cantidad por la segunda cantidad.
+3. El cuadrado de la segunda cantidad.
+
+En notación matemática, si consideramos dos cantidades \(a\) y \(b\), el cuadrado de su suma se expresa como:
+
+\[
+(a + b)^2 = a^2 + 2ab + b^2
+\]
+
+Por lo tanto, el cuadrado de la suma de dos cantidades es igual al cuadrado de la primera cantidad más el doble de la primera cantidad por la segunda cantidad más el cuadrado de la segunda cantidad.",38.33,0.8662,0.8662,VP,1.0,1.0,1.0
+115,algebra,5013,ï¿½Cuï¿½l es la regla para desarrollar el producto de la suma por la diferencia?,"La regla establece que la suma de dos cantidades multiplicada por su diferencia es igual al cuadrado del minuendo (en la diferencia) menos el cuadrado del sustraendo"".""","La regla para desarrollar un producto que involucra una suma por una diferencia se conoce como la fórmula del binomio al cuadrado. Esta fórmula establece que el desarrollo de (a + b)(a - b) es igual a \( a^2 - b^2 \). En términos más generales, si consideramos un término más en la suma o diferencia, por ejemplo, \( a + c \cdot b \), el desarrollo se realizaría según la fórmula de la diferencia de cuadrados: \( (a + b)(a - b) = a^2 - b^2 \). 
+
+Es importante notar que si hay un término multiplicando en la 'b' como en este caso, el desarrollo resultante será \( a^2 - cb^2 \).
+
+Por ejemplo, para desarrollar el producto \( (x + 3)(x - 2) \):
+
+\[
+(x + 3)(x - 2) = x^2 - 2x + 3x - 6 = x^2 + x - 6
+\]
+
+Si consideramos un término multiplicando en la 'b', como en \( (x + c)(x - b) \):
+
+\[
+(x + c)(x - b) = x^2 - bx + cx - cb = x^2 + (c-b)x - cb
+\]
+
+Dado que el desarrollo del producto de una suma por una diferencia siempre resulta en un polinomio cuadrático, donde la parte central es \( a^2 \) y los términos laterales son \( b^2 \). El signo entre estos términos determina si será \( +b^2 \) o \( -b^2 \) según la aplicación de las reglas del signo.",52.51,0.7359,0.7359,FN,0.0,0.0,0.0
+116,algebra,5013,ï¿½En quï¿½ consiste el caso de factorizaciï¿½n por factor comï¿½n?,"Consiste en identificar cuando todos los tï¿½rminos de un polinomio tienen un factor en comï¿½n (ya sea un monomio o un polinomio). Para factorizarlo, se escribe dicho factor comï¿½n como coeficiente de un parï¿½ntesis, y dentro de este se anotan los cocientes de dividir... los tï¿½rminos de la expresiï¿½n dada entre el factor comï¿½n"".""","El caso de factorización por común factor se refiere al proceso de identificar un término común que puede ser sacado como factor fuera de paréntesis. Esta técnica es útil para simplificar expresiones o resolver ecuaciones, especialmente cuando estos términos comunes aparecen repetidamente.
+
+Por ejemplo, en la factorización del polinomio \(x^2 + bx + y^2\), podemos ver que el término común es \(x^2\) (o \(y^2\)), pero dado su estructura específica, no existe un factor común explícito. Sin embargo, si consideramos expresiones como \(a^2 - b^2\), podemos identificar que \(a^2\) y \(-b^2\) son factores comunes de la siguiente manera:
+
+\[a^2 - b^2 = (a + b)(a - b)\]
+
+En términos más generales, factorizar por común factor implica identificar los términos que comparten un factor en común y extraer ese factor como factor.
+
+Por ejemplo, en el polinomio \(x^3 + 4x\), podemos ver que ambos términos comparten el factor \(x\):
+
+\[x^3 + 4x = x(x^2 + 4)\]
+
+En este caso, no hay ningún término en \(x^2 + 4\) que sea común a \(x^2\) y \(4\), por lo que solo podemos extraer el factor común \(x\).
+
+Si la expresión contiene términos con exponentes, como en el ejemplo proporcionado anteriormente: 
+
+\[5a' - 5 = 5(a' -1)\]
+
+Aquí, vemos que todos los términos comparten un factor común de \(5\). Después de dividir cada término por \(5\) obtenemos \(a'^2 - 1\), lo cual es el factorizado del trinomio cuadrado perfecto.
+
+Por tanto, al factorizar por común factor, se identifica un factor que aparece en cada término de la expresión y se saca fuera de paréntesis.",61.2,0.881,0.881,VP,1.0,1.0,1.0
+117,algebra,5013,ï¿½Cuï¿½les son las condiciones para que un trinomio sea considerado un cuadrado perfecto?," Aunque las fuentes no listan las reglas en forma de viï¿½etas exclusivas para la definiciï¿½n, establecen mediante ejemplos que, para que un trinomio sea cuadrado perfecto, los extremos deben tener raï¿½ces cuadradas exactas y hace falta que su segundo tï¿½rmino sea"" exactamente el doble del producto de la raï¿½z cuadrada del primer tï¿½rmino por la raï¿½z cuadrada del tercer tï¿½rmino (por ejemplo,  para a^4 +4b^4,  su segundo tï¿½rmino debe ser 2ï¿½a^2 ï¿½2b^2 =4a^2 b^2 ).""","Para que un trinomio se considere un cuadrado perfecto, debe atenderse a dos condiciones principales:
+
+1. El primer y tercer término deben ser cuadrados perfectos (tienen raíz cuadrada exacta) positivos.
+2. El segundo término debe ser el doble producto de las raíces cuadradas de los primeros términos.
+
+En otras palabras, si un trinomio se puede expresar como \((px + q)^2\), entonces:
+
+- \(p\) será la raíz cuadrada del primer término.
+- \(q\) será la raíz cuadrada del tercer término.
+- El segundo término será el doble producto de \(p\) y \(q\).
+
+Estas condiciones se pueden expresar matemáticamente como: 
+
+\[ ax^2 + 2bxy + by^2 \]
+
+donde:
+
+- \(a = p^2\)
+- \(b = q^2\)
+- El segundo término es \(2pq\), lo que cumple con la condición de ser el doble producto.
+
+Por ejemplo, consideremos el trinomio \(x'^2 + 2xy + y'^2\):
+
+- La raíz cuadrada del primer término \(a\) es \(1\) (la raíz cuadrada de \(x'^2\) es \(x'\)).
+- La raíz cuadrada del tercer término \(b\) es \(1\) (la raíz cuadrada de \(y'^2\) es \(y'\)).
+- El segundo término es \(2 \cdot x' \cdot y' = 2xy\).
+
+Como se ve, este trinomio puede expresarse como \((x' + y')^2\), lo que demuestra que cumple con las condiciones para ser un cuadrado perfecto.",57.91,0.8337,0.8337,VP,1.0,1.0,1.0
+118,algebra,5013,ï¿½Cuï¿½l es la regla general para factorizar una diferencia de cuadrados perfectos?,"Para factorizar una diferencia de cuadrados perfectos, se extrae la raï¿½z cuadrada de ambos tï¿½rminos y se multiplica la suma de estas raï¿½ces... por la diferencia"" de las mismas.""","La Regla General para factorizar una diferencia de cuadrados perfectos se expresa de la siguiente manera:
+
+**Regla 3:** 
+
+Si queremos descomponer un polinomio del tipo \(A^2 - B^2\), podemos usar la fórmula:
+\(A^2 - B^2 = (A + B)(A - B)\)
+
+Donde \(A\) y \(B\) son polinomios (o constantes en el caso de un binomio).
+
+Este proceso nos proporciona una factorización que simplifica el polinomio original. Si ambos cuadrados no tienen términos semejantes entre sí, entonces la diferencia de estos dos cuadrados perfectos puede ser factorizada directamente como el producto del sumado y el restado de sus raíces (o binomios) cúbicos si se trata de cubos perfectos.",39.67,0.8458,0.8458,VP,1.0,1.0,1.0
+119,algebra,5013,ï¿½Cï¿½mo se halla el mï¿½nimo comï¿½n mï¿½ltiplo (m.c.m.) de expresiones algebraicas?," Existen dos reglas dependiendo del tipo de expresiï¿½n:
+Para monomios: Se halla el m.c.m. de los coeficientes y a continuaciï¿½n se escriben todas las letras distintas,  sean o no comunes,  dando a cada letra el mayor exponente"" que tengan en las expresiones dadas.","El mínimo común múltiplo (MCM) de expresiones algebraicas se encuentra siguiendo estos pasos:
+
+1. Identificar los coeficientes y las letras distintas que aparecen en las expresiones.
+2. Para cada letra, tomar el mayor exponente que tenga esa letra en cualquiera de las expresiones dadas.
+3. El MCM será el producto de todos esos factores.
+
+Vamos a explicarlo con un ejemplo:
+
+Ejemplo 1: Hallar el m.c.m. de \(a^2 + b\) y \(a + b\).
+
+### Paso 1: Identificar los coeficientes y las letras distintas
+- **coeficiente**: Ninguno (son expresiones polinómicas)
+- **letras**: \(a, b\)
+
+### Paso 2: Tomar el mayor exponente para cada letra
+- Para \(a\): En ambas expresiones aparece con exponente 2 en \(a^2 + b\) y exponente 1 en \(a + b\). El máximo es 2.
+- Para \(b\): Aparece solo en \(a^2 + b\) con exponente 1. No hay otro exponente.
+
+### Paso 3: Construir el MCM
+El MCM de estas expresiones será \(a^2\).
+
+Por lo tanto, para las expresiones dadas:
+- El m.c.m. es \(a^2\).
+
+Si tuvieras otras expresiones a comparar, seguirías estos mismos pasos para encontrar el m.c.m. entre ellas. Para un caso más complejo, simplemente reiterarías los pasos de identificar coeficientes y letras distintas, y luego tomarías el mayor exponente para cada una.",55.4,0.7583,0.7583,VP,1.0,1.0,1.0
+120,algebra,5013,ï¿½Quï¿½ es la transposiciï¿½n de tï¿½rminos al resolver una ecuaciï¿½n de primer grado?,"La transposiciï¿½n de tï¿½rminos consiste en cambiar los tï¿½rminos de una ecuaciï¿½n de un miembro al otro"". Su regla de ejecuciï¿½n dicta que ""cualquier tï¿½rmino de una ecuaciï¿½n se puede pasar de un miembro a otro cambiï¿½ndole el signo"".""","La transposición de términos en una ecuación de primer grado implica mover un término de un lado de la ecuación a otro. Esto se hace cambiando el signo del término que lo mueve (por ejemplo, cambia de ""+a"" a ""-a""). La idea principal es mantener la igualdad mientras realizas esta operación.
+
+En resumen:
+1) Selecciona los términos que deseas mover.
+2) Cambia el signo de cada uno de estos términos (por ejemplo, +x se convierte en -x y -3a se convierte en +3a).
+3) Traslada estos cambios al otro lado de la ecuación.
+
+Por ejemplo, consideremos la ecuación 4x = 2x + 10. Para resolverla, desplazaríamos los términos x a un solo lado:
+
+- Seleccionamos el término que queremos trasladar: ""2x""
+- Cambiamos su signo: -2x
+- Añadimos -2x al otro lado de la ecuación:
+  4x + (-2x) = 10
+
+Al aplicar estos pasos, obtenemos:
+
+2x = 10
+
+Este ejemplo ilustra cómo la transposición nos permite aislar la incógnita para obtener su valor. En términos más generales, este proceso es fundamental para resolver ecuaciones de primer grado y se aplica a cualquier ecuación lineal con una única incógnita.",46.15,0.7372,0.7372,FN,0.0,0.0,0.0
+121,mathbuddy_basico,5012,ï¿½Cuï¿½l es el resultado numï¿½rico exacto de 20 / 4?,5,"Para resolver este problema, necesitamos seguir la jerarquía de operaciones, que es PEMDAS. En primer lugar, debemos realizar la división entre 20 y 4.
+
+$$\frac{20}{4} = ?$$
+
+Para hacer esta división, podemos pensar en el número 20 como 16 grupos de 4. ¡Exactamente! Si dividimos 20 por 4, obtenemos 5 grupos de 4. Por lo tanto, la respuesta es:
+
+$$\frac{20}{4} = 5$$",19.79,0.5202,0.5202,FN,0.0,0.0,0.0
+122,mathbuddy_basico,5012,Sustituyendo x=2 en 8x + 12 calcula el resultado aritmï¿½tico,28,"Para resolver este problema, necesitamos reemplazar el valor de $x$ con $2$ en la ecuación $8x+12$. 
+
+Primero, escribimos la ecuación:
+$$
+\text{Ecuación: } 8x + 12 \quad \text{(Aquí es x = 2)}$
+$$
+
+Paso 1: Reemplazamos el valor de $x$ con $2$: 
+$$
+8(2) + 12 = ?
+$$
+
+Paso 2: Multiplicamos $8$ por $2$: 
+$$
+16 + 12 = ?
+$$ 
+
+Paso 3: Sumamos $16$ y $12$: 
+$$
+28 = \text{El resultado de la sustitución}
+$$",22.9,0.4816,0.4816,FN,0.0,0.0,0.0
+123,mathbuddy_basico,5012,Suma matemï¿½ticamente 15 al nï¿½mero 10,25,"Para resolver la suma de 15 a un número dado como 10, necesitamos seguir los pasos de manera lógica. 
+
+**Paso 1:** Primero, escribimos la operación que queremos realizar. En este caso es una suma.
+
+$$
+\text{Suma} = \text{número a sumar} + \text{número base}
+$$
+
+**Paso 2:** Ahora sustituimos los números dados en nuestra ecuación.
+
+$$
+\text{Suma} = 15 + 10
+$$
+
+**Paso 3:** Finalmente, realizamos la suma. 
+
+$$
+\text{Suma} = 25
+$$
+
+La respuesta final es 25.",22.19,0.4315,0.4315,FN,0.0,0.0,0.0
+124,mathbuddy_basico,5012,Si en el polinomio x^2 + 2x sustituimos x por 4 ï¿½cuï¿½l es el cï¿½lculo aritmï¿½tico final?,24,"Para encontrar el valor del polinomio $x^2+2x$ cuando $x=4$, debemos seguir estos pasos:
+
+$$
+\text{Paso 1: Sustituir } x = 4 \text{ en el polinomio.}
+$$
+$$
+\begin{aligned}
+x^2 + 2x &= (4)^2 + 2(4) \\
+&= 16 + 8 \\
+&= 24
+\end{aligned}
+$$
+
+Entonces, el cálculo aritmético final es $\boxed{24}$.",20.59,0.5272,0.5272,FN,0.0,0.0,0.0
+125,mathbuddy_basico,5012,ï¿½Cuï¿½nto es 15 + 27?,42,"Para encontrar la respuesta a esta pregunta, debemos seguir un paso a paso lógico. Primero, necesitamos sumar los dos números dados:
+
+$15 + 27 = \boxed{42}$.
+
+Este resultado se obtiene sumando directamente los dos números. En este caso no hay ninguna operación compleja que realizar antes de sumar.",15.92,0.4959,0.4959,FN,0.0,0.0,0.0
+126,mathbuddy_basico,5012,Resuelve la siguiente ecuaciï¿½n: x + 5 = 12,7,"Para resolver la ecuación $x + 5 = 12$, necesitamos seguir los pasos lógicos de manera clara y sencilla.
+
+**Paso 1:** Queremos encontrar el valor de $x$ que hace que la ecuación sea verdadera. Para hacer esto, podemos comenzar a pensar en lo que significa ser igual a $12$. ¿Qué significa tener $5$ menos de algo? Significa tener un valor específico.
+
+**Paso 2:** Encontramos este valor tomando $12$ y restándole $5$. Esto nos da el valor de $x$ que queremos. 
+
+$$
+\text{Valor de x} = 12 - 5 \\
+= 7
+$$
+
+Entonces, la solución de la ecuación es $x = 7$.",24.02,0.5113,0.5113,FN,0.0,0.0,0.0
+127,mathbuddy_basico,5012,ï¿½Cuï¿½nto es 1/2 + 1/4?, 3/4,"Para calcular la cantidad de $1/2 + 1/4$, necesitamos seguir un paso a paso:
+
+**Paso 1:** Necesitamos encontrar un denominador común para las dos fracciones. En este caso, podemos usar como denominador común **8**, ya que es el mínimo común múltiplo de 2 y 4.
+
+$$\frac{1}{2} = \frac{4}{8}\qquad\text{y}\qquad\frac{1}{4}=\frac{2}{8}$$
+
+**Paso 2:** Ahora podemos sumar las dos fracciones:
+
+$$\begin{align*}
+\frac{4}{8} + \frac{2}{8}&amp;= \frac{6}{8}\\
+&amp;=\frac{3}{4}
+\end{align*}$$
+
+**Paso 3:** Finalmente, podemos expresar la fracción como una cantidad decimal o porcentual. En este caso, podemos expresarlo como un porcentaje:
+
+$$\frac{3}{4}=75\%$$
+
+Entonces, la respuesta final es: **$\boxed{75\%}$**",29.05,0.5476,0.5476,FN,0.0,0.0,0.0
+128,mathbuddy_basico,5012,Calcula la multiplicaciï¿½n de 8 * 7,56,"Para calcular la multiplicación de $8 \times 7$, debemos seguir el orden de las operaciones, que es PEMDAS. En este caso, no tenemos paréntesis ni exponentes, así que podemos empezar a multiplicar.
+
+$8 \times 7 = ?$
+
+Primero, consideremos lo que significa la multiplicación. Multiplicar dos números es igual a sumar un número el mismo número de veces que se encuentra en el otro número. En este caso, tenemos $8$ y $7$. Podemos pensar en esto como:
+
+""¿Cuántas veces puedo sumar $7$ para llegar a $8$?""
+
+La respuesta es 1, porque si sumo $7$ una vez, me doy cuenta de que es igual a $8$, pero no más. Por lo tanto, la multiplicación se puede simplificar a una suma.
+
+$8 \times 7 = ?$
+
+Ahora, podemos hacerlo:
+
+$8 + 7 + 7 + 7 + 7 + 7 + 7 + 7 = ?$
+
+Sumando los números, obtenemos:
+
+$8 + 7 = 15$
+$15 + 7 = 22$
+$22 + 7 = 29$
+$29 + 7 = 36$
+$36 + 7 = 43$
+$43 + 7 = 50$
+$50 + 7 = 57$
+
+Por lo tanto, la multiplicación de $8 \times 7$ es:
+
+$$
+\begin{array}{rcl}
+ 8 \veces 7 &amp;=&amp; 57\\
+\end{array}
+$$
+
+La respuesta final es 57.",36.96,0.4304,0.4304,FN,0.0,0.0,0.0
+129,mathbuddy_basico,5012,Encuentra el valor de x en la ecuaciï¿½n 3*x = 15,5,"Para resolver este problema, necesitamos encontrar el valor de $x$ que hace que la ecuación sea verdadera. 
+
+Primero, podemos escribir la ecuación como:
+$$3 \cdot x = 15$$
+
+Luego, siguiendo las reglas de los coeficientes multiplicativos, podemos reescribirlo como:
+$$\frac{3x}{1} = \frac{15}{1}$$
+
+Ahora, para resolver $x$, debemos dividir ambos lados entre 3. 
+
+$$\frac{\frac{15}{1}}{3}=\frac{x}{1}$$
+$$\frac{15}{1}\cdot\frac{1}{3} = \frac{x}{1}$$
+
+Finalmente, podemos simplificar la expresión:
+$$x=\frac{15}{1}\cdot\frac{1}{3}=5$$
+
+Por lo tanto, el valor de $x$ es $\boxed{5}$.
+
+[BASE LISTA: He preparado los cálculos básicos para el análisis avanzado]",27.53,0.4583,0.4583,FN,0.0,0.0,0.0
+130,mathbuddy_basico,5012,Si tengo la ecuaciï¿½n x - 4 = 10 ï¿½cuï¿½nto vale x?,14,"Para resolver esta ecuación, necesitamos seguir los pasos lógicos para aislar la variable $x$.
+
+Primero, queremos resolver la ecuación dada: $x - 4 = 10$.
+
+**Paso 1:** Nuestra primera acción es sumar 4 a ambos lados de la ecuación para eliminar el término negativo. Esto nos da:
+
+$$x + 6 = 14$$
+
+Pero, recuerda que tenemos que seguir la jerarquía de operaciones: **Paréntesis**, **Exponentes**, **Multiplicación y División** (y en algunos casos, suma y resta).
+
+En este caso, no hay exponentes ni división. Para sumar 6 a ambos lados de la ecuación original, debemos realizar la siguiente operación: Suma.
+
+Si tuviera un problema similar con la resta pero con un signo menos (x - 4 = 10), yo haría exactamente lo contrario (Resta) y seguiría los pasos del mismo tipo.",27.8,0.4833,0.4833,FN,0.0,0.0,0.0
+131,mathbuddy_basico,5012,ï¿½Cuï¿½l es el resultado de 5 + 3 * 2?,11,"Para encontrar el resultado de la ecuación $5+3 \cdot 2$, debemos seguir los pasos de PEMDAS:
+
+1. Primero, debemos multiplicar $3$ y $2$. Esto se debe a que la operación de multiplicación tiene prioridad sobre la suma.
+   - $3 \cdot 2 = 6$
+
+2. Ahora, podemos reescribir la ecuación como $5+6$, ya que hemos resuelto la multiplicación.
+
+3. Finalmente, podemos sumar $5$ y $6$ para obtener el resultado final.
+   - $5 + 6 = 11$
+
+Por lo tanto, el resultado de $5+3 \cdot 2$ es $\boxed{11}$.",22.34,0.5403,0.5403,FN,0.0,0.0,0.0
+132,mathbuddy_basico,5012,ï¿½Cuï¿½nto es 2^3?,8,"Para resolver el problema $2^3$, debemos seguir un paso a paso. 
+
+ Primero, recordemos qué significa la notación exponencial $a^b$. Se refiere al resultado de multiplicar $a$ por sí mismo $b$ veces.
+
+ En este caso, tenemos $2^3$, lo que significa 2 multiplicado por sí mismo 3 veces: 
+$$2^3 = 2 \times 2 \times 2$$
+
+ Ahora, podemos realizar la multiplicación:
+$$2 \times 2 = 4$$
+$$4 \times 2 = 8$$
+
+ Por lo tanto, $2^3$ es igual a $\boxed{8}$.",21.45,0.4977,0.4977,FN,0.0,0.0,0.0
+133,mathbuddy_basico,5012,Simplifica la fracciï¿½n 4/8, 1/2,"Para simplificar la fracción 4/8, debemos encontrar el máximo común divisor (MCD) de los dos números.
+
+Primero, encontramos los factores de cada número:
+
+* Los factores de 4 son: 1, 2 y 4.
+* Los factores de 8 son: 1, 2, 4 y 8.
+
+Ahora, identificamos el MCD, que es 4. Esto significa que podemos dividir tanto 4 como 8 entre 4.
+
+Entonces, la fracción se simplifica a:
+
+$$\frac{4}{8}=\frac{4 \div 4}{8 \div 4} = \frac{1}{2}$$
+
+La respuesta final es $\boxed{\frac{1}{2}}$.",22.89,0.4918,0.4918,FN,0.0,0.0,0.0
+134,mathbuddy_basico,5012,Resuelve esta pequeï¿½a ecuaciï¿½n: x / 2 = 10,20,"Para resolver la ecuación $x/2=10$, necesitamos seguir los pasos lógicos:
+
+1. **Comprendemos la ecuación**: La ecuación es $x/2=10$. Esto significa que el valor de $x$ dividido por 2 es igual a 10.
+   
+2. **Aplicamos el inverso de la división**: Para resolver $x$, necesitamos encontrar su inverso, que es multiplicar ambos lados de la ecuación por 2.
+
+   $$\frac{x}{2} = 10$$
+   Se convierte en:
+   \[ x = 10 \times 2 \]
+
+3. **Calculamos el valor**: Multiplicar 10 por 2 nos da $x=20$. Esto significa que el valor de $x$ es 20.
+
+   $$x = 10 \times 2$$
+   Se simplifica a:
+   \[ x = 20 \]
+
+Entonces, la solución para la ecuación $x/2=10$ es $x=20$.",28.37,0.3886,0.3886,FN,0.0,0.0,0.0
+135,mathbuddy_basico,5012,Calcula paso a paso: (10 - 2) / 4,2,"$$\frac{(10-2)}{4} = \frac{8}{4} = 2$$
+
+**Paso 1:** Primero, calculamos la expresión dentro del paréntesis, $10-2$.
+
+$$(10-2) = 8$$
+
+**Paso 2:** Luego, dividimos el resultado entre $4$. Según la regla de PEMDAS, primero se realizan las operaciones dentro de los paréntesis y luego se realiza la división.
+
+$$\frac{8}{4} = 2$$",19.7,0.5411,0.5411,FN,0.0,0.0,0.0
+136,mathbuddy_avanzado,5011,Calcula matemï¿½ticamente la derivada de 5*x^3,15x^2,"$$\frac{d}{dx} (5x^3) = \lim_{h \to 0} \frac{(5(x+h)^3 - 5x^3)}{h}$$
+
+Aplicando la regla del binomio, obtenemos:
+
+$$(5x^3 + 15x^2h + 15xh^2 + 5h^3) - 5x^3 = 15x^2h + 15xh^2 + 5h^3$$
+
+Simplificando la expresión y cancelando el término $h$, obtenemos:
+
+$$\lim_{h \to 0} \frac{15x^2h + 15xh^2 + 5h^3}{h} = \lim_{h \to 0} (15x^2 + 15xh + 5h^2)$$
+
+Al evaluar el límite, obtenemos:
+
+$$\lim_{h \to 0} (15x^2 + 15xh + 5h^2) = 15x^2$$
+
+Por lo tanto, la derivada de $5x^3$ es $\boxed{15x^2}$.",67.14,0.5117,0.5117,FN,0.0,0.0,0.0
+137,mathbuddy_avanzado,5011,Calcula la derivada de la Presiï¿½n P respecto al Volumen V si P = T/V asumiendo T constante,dP/dV = -{T/V^2,"$$\frac{dP}{dV} = \frac{dT}{dV} - \frac{T}{V^2}$$
+
+Dado que $T$ es constante, $\frac{dT}{dV}=0$, entonces:
+
+$$\frac{dP}{dV} = 0 - \frac{T}{V^2} = -\frac{T}{V^2}$$",39.34,0.6527,0.6527,FN,0.0,0.0,0.0
+138,mathbuddy_avanzado,5011,Calcula la derivada de v(t) = t^2 + 3*t,2t + 3,"$$\frac{d}{dt}v(t) = \frac{d}{dt}(t^2 + 3t)$$
+
+Según las reglas de la cadena de colaboración, voy a aplicar la propiedad lineal del derivado:
+
+$$\frac{d}{dt}(t^2 + 3t) = \frac{d}{dt}(t^2) + \frac{d}{dt}(3t)$$
+
+Ahora, vamos a calcular las dos derivadas individuales:
+
+$$\frac{d}{dt}(t^2) = 2t$$
+
+$$\frac{d}{dt}(3t) = 3$$
+
+Por lo tanto, la derivada de $v(t)$ es:
+
+$$\frac{d}{dt}v(t) = 2t + 3$$",51.71,0.5529,0.5529,FN,0.0,0.0,0.0
+139,mathbuddy_avanzado,5011,Calcula el lï¿½mite de (sin(x))/x cuando x tiende a 0,1,"$$
+\lim_{x \to 0} \frac{\sin(x)}{x}
+$$
+
+Para evaluar este límite, podemos usar la expansión en serie de Taylor para $\sin(x)$:
+
+$$
+\sin(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots
+$$
+
+Sustituyendo esta expansión en la expresión original, obtenemos:
+
+$$
+\lim_{x \to 0} \frac{\sin(x)}{x} = \lim_{x \to 0} \frac{x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots}{x}
+$$
+
+Podemos factorizar $x$ en el numerador y denominador:
+
+$$
+\lim_{x \to 0} \frac{\sin(x)}{x} = \lim_{x \to 0} \left(1 - \frac{x^2}{3!} + \frac{x^4}{5!} - \cdots\right)
+$$
+
+Ahora, podemos evaluar el límite:
+
+$$
+\lim_{x \to 0} \left(1 - \frac{x^2}{3!} + \frac{x^4}{5!} - \cdots\right) = 1
+$$
+
+Por lo tanto,
+
+$$
+\boxed{\lim_{x \to 0} \frac{\sin(x)}{x} = 1}
+$$",75.44,0.3733,0.3733,FN,0.0,0.0,0.0
+140,mathbuddy_avanzado,5011,ï¿½Cuï¿½l es la derivada de la funciï¿½n x^3 + 2*x?,3x^2 + 2,"$$\frac{d}{dx}(x^3+2x) = \frac{d}{dx}(x^3) + \frac{d}{dx}(2x)$$
+
+Según las reglas de la derivada, tenemos:
+
+$$\frac{d}{dx}(x^n) = nx^{n-1}$$
+
+Aplicando esta regla a cada término, obtenemos:
+
+$$\frac{d}{dx}(x^3+2x) = 3x^2 + 2$$",42.9,0.5635,0.5635,FN,0.0,0.0,0.0
+141,mathbuddy_avanzado,5011,Integra la expresiï¿½n matemï¿½tica x^2 + 3.,(x^3)/3 + 3x + C,"La integral de una función es el área bajo su gráfica y se denota con el símbolo $\int$. En este caso, queremos encontrar la integral de $x^2+3$.
+
+$$\int (x^2 + 3) \, dx = \frac{x^3}{3} + 3x + C$$
+
+donde $C$ es la constante de integración. Esta es la respuesta final para la integral dada.",40.47,0.6876,0.6876,FN,0.0,0.0,0.0
+142,mathbuddy_avanzado,5011,Deriva la siguiente expresiï¿½n trigonomï¿½trica: sin(x) + cos(x).,cos(x) - sin(x),"$$\frac{d}{dx} \left( \sin(x) + \cos(x) \right) = \frac{d}{dx} \sin(x) + \frac{d}{dx} \cos(x)$$
+
+Según la regla del producto, tenemos:
+
+$$\frac{d}{dx} \sin(x) = \cos(x)$$
+$$\frac{d}{dx} \cos(x) = -\sin(x)$$
+
+Por lo tanto:
+
+$$\frac{d}{dx} \left( \sin(x) + \cos(x) \right) = \cos(x) - \sin(x)$$",46.45,0.77,0.77,VP,1.0,1.0,1.0
+143,mathbuddy_avanzado,5011,Por favor integra la funciï¿½n sin(x).,-cos(x) + C,"La función que debemos integrar es:
+
+$$\int \sin(x) dx$$
+
+Según las reglas de integrales básicas, sabemos que la integral de $\sin(x)$ es $-\cos(x)$. Por lo tanto, la solución es:
+
+$$\int \sin(x) dx = -\cos(x) + C$$
+
+donde $C$ es una constante de integración.
+
+**Paso a paso:**
+
+1. Identificamos que la función $\sin(x)$ tiene un antiderivado conocido.
+2. Aplicamos la regla de integrales básicas para encontrar el antiderivado de $\sin(x)$, que es $-\cos(x)$.
+3. Sumamos la constante de integración $C$ al resultado.
+
+La respuesta final es:
+
+$$\int \sin(x) dx = -\cos(x) + C$$",54.28,0.6805,0.6805,FN,0.0,0.0,0.0
+144,mathbuddy_avanzado,5011,Simplifica algebraicamente la expresiï¿½n (x^2 - 1)/(x - 1).,x + 1,"$$\frac{x^2 - 1}{x-1} = \frac{(x-1)(x+1)}{x-1}$$
+
+Podemos factorizar el numerador como producto de dos factores que se cancelan con el denominador:
+
+$$= x + 1$$",34.9,0.5147,0.5147,FN,0.0,0.0,0.0
+145,mathbuddy_avanzado,5011,ï¿½Me puedes dar la derivada de log(x)?,1/x,"La función $f(x) = \log x$ es una función transcendental y su derivada se puede encontrar utilizando la regla de la cadena. Tenemos:
+
+$$\frac{d}{dx} \log x = \frac{1}{x} \cdot \frac{d}{dx} (x) = \frac{1}{x}.$$
+
+Por lo tanto, la derivada de $\log x$ es $\boxed{\frac{1}{x}}$.",40.06,0.5559,0.5559,FN,0.0,0.0,0.0
+146,mathbuddy_avanzado,5011,Encuentra el lï¿½mite de la funciï¿½n (x^2 + 2*x)/x cuando x tiende a 0.,2,"$$
+\lim_{x \to 0} \frac{x^2 + 2x}{x}
+$$
+
+Primero, podemos factorizar el numerador:
+
+$$
+\lim_{x \to 0} \frac{x(x + 2)}{x}
+$$
+
+Ahora, podemos cancelar la variable $x$ del numerador y denominador (teniendo en cuenta que $x \neq 0$, ya que estamos evaluando el límite cuando $x$ tiende a $0$):
+
+$$
+\lim_{x \to 0} x + 2
+$$
+
+Finalmente, podemos evaluar la expresión:
+
+$$
+0 + 2 = 2
+$$
+
+Por tanto, el límite de la función $(x^2 + 2x)/x$ cuando $x$ tiende a $0$ es $2$.",53.93,0.5901,0.5901,FN,0.0,0.0,0.0
+147,mathbuddy_avanzado,5011,Deriva la funciï¿½n x * sin(x) usando la regla del producto.,sin(x) + x*cos(x),"$$\frac{d}{dx} (x \sin(x)) = \sin(x) + x \cos(x).$$
+
+La regla del producto establece que si tenemos una función de la forma $$f(x)g(x),$$ entonces su derivada es $$f'(x)g(x) + f(x)g'(x).$$ En este caso, $f(x) = x$ y $g(x) = \sin(x),$ por lo que obtenemos:
+
+$$\frac{d}{dx} (x \sin(x)) = \frac{d}{dx} (x) \cdot \sin(x) + x \cdot \frac{d}{dx} (\sin(x)).$$
+
+La derivada de $x$ es 1, y la derivada de $\sin(x)$ es $\cos(x),$ por lo que obtenemos:
+
+$$\frac{d}{dx} (x \sin(x)) = 1 \cdot \sin(x) + x \cdot \cos(x).$$
+
+Por lo tanto, la derivada de $x \sin(x)$ es $$\sin(x) + x \cos(x).$$",61.82,0.7303,0.7303,FN,0.0,0.0,0.0
+148,mathbuddy_avanzado,5011,Integra la expresiï¿½n x^3 - 2*x.,(x^4)/4 - x^2 + C,"$$\int (x^3 - 2x) dx = \int x^3 dx - \int 2x dx$$
+
+Según las reglas de integración, $$\int x^n dx = \frac{x^{n+1}}{n+1} + C.$$ Aplicando esta regla a la primera parte de nuestra integral, obtenemos:
+
+$$\int x^3 dx = \frac{x^4}{4} + C_1$$
+
+Para la segunda parte de la integral, podemos factorizar el término $2x$ para obtener:
+
+$$\int 2x dx = \int 2x dx = 2 \cdot \frac{x^2}{2} + C_2 = x^2 + C_3$$
+
+Ahora podemos combinar las dos partes de la integral para obtener:
+
+$$\int (x^3 - 2x) dx = \frac{x^4}{4} + x^2 + C$$
+
+donde $C$ es la constante de integración.",59.67,0.6652,0.6652,FN,0.0,0.0,0.0
+149,mathbuddy_avanzado,5011,Calcula la derivada de la funciï¿½n tan(x).,sec^2(x),"La función dada es $$f(x) = \tan(x)$$. Para encontrar su derivada, aplicaremos la regla de la derivada de la tangente:
+
+$$\frac{d}{dx} \tan(x) = \sec^2(x)$$
+
+Por lo tanto, la derivada de la función $\tan(x)$ es $$f'(x) = \sec^2(x)$$.",37.96,0.5918,0.5918,FN,0.0,0.0,0.0
+150,mathbuddy_avanzado,5011,Calcula la derivada de x^3 - 4*x.,3x^2 - 4,"$$
+\frac{d}{dx} \left( x^3 - 4x \right) = \frac{d}{dx} (x^3) - \frac{d}{dx} (4x)
+$$
+
+Según la regla del producto, si tenemos una función de la forma $f(x)g(x)$, entonces su derivada es:
+
+$$
+\frac{d}{dx} [f(x)g(x)] = f'(x)g(x) + f(x)g'(x)
+$$
+
+En este caso, podemos aplicar esta regla con $f(x) = x^3$ y $g(x) = 1$, lo que nos da:
+
+$$
+\frac{d}{dx} (x^3) = \frac{d}{dx} [x^3] = 3x^2
+$$
+
+Y para la segunda parte, tenemos:
+
+$$
+\frac{d}{dx} (4x) = 4
+$$
+
+Por lo tanto, obtenemos que la derivada de $x^3 - 4x$ es:
+
+$$
+\frac{d}{dx} \left( x^3 - 4x \right) = 3x^2 - 4
+$$",65.55,0.6247,0.6247,FN,0.0,0.0,0.0
