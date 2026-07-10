@@ -1,0 +1,2 @@
+"H06","¿Cuál es la diferencia entre Aritmética y Álgebra, para qué sirven los operadores new y delete en C++, cuánto es 20 / 4, y traduce todo el resultado al portugués?"
+"H11","¿Cuáles son los signos de agrupación en álgebra, qué es una variable de tipo puntero en C++, cuánto es 1/2 + 1/4 y traduce todo al francés?"

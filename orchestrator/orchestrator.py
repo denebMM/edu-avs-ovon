@@ -14,7 +14,7 @@ app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_host=1)
 # ================= CONFIGURACIÓN =================
 OLLAMA_HOST = "http://ollama:11434"
 ollama_client = ollama.Client(host=OLLAMA_HOST)
-MODELO_CLASIFICACION = "gemma2:9b" #"llama3.1:8b" #"mistral-nemo:12b" #"qwen2.5:14b"    
+MODELO_CLASIFICACION = "qwen2.5:14b"  #"llama3.1:8b" #"mistral-nemo:12b" #"gemma2:9b"   
 
 # ================= DEFINICIÓN DE AGENTES =================
 AGENTS = {
