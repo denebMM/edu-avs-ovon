@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <!-- Letra C estilizada (Cinvestav / Computación) -->
+  <path d="M 90 60 C 90 45 78 35 60 35 C 38 35 20 52 20 75 C 20 98 38 115 60 115 C 78 115 90 105 90 90 L 73 90 C 73 98 66 102 60 102 C 48 102 36 90 36 75 C 36 60 48 48 60 48 C 66 48 73 52 73 60 Z" fill="#004A87"/>
+  
+  <!-- Birrete de Graduación -->
+  <polygon points="60,10 100,25 60,40 20,25" fill="#1A1A1A"/>
+  <polygon points="45,34 75,34 70,48 50,48" fill="#1A1A1A"/>
+  
+  <!-- Borla del birrete (Dorada) -->
+  <path d="M 60 25 L 88 35 L 88 48" fill="none" stroke="#FFB800" stroke-width="2.5"/>
+  <circle cx="88" cy="50" r="3.5" fill="#FFB800"/>
+  
+  <!-- Número 20 -->
+  <text x="60" y="88" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="900" fill="#004A87" text-anchor="middle">20</text>
+</svg>
